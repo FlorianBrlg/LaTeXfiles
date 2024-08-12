@@ -1,0 +1,281 @@
+\documentclass[]{scrbook}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Terence Tao's Analysis 1}
+\author{}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\chapter{Logical basics}
+
+Here are some of the logical devices I will use in this text. I will not explain every piece of Syntax, as I hope that throughout the text it will be sufficiently clear, when the rules are explained.
+
+\section{Statements}
+
+I will introduce the notion of logical statements here. Logical statements are sentences that are either true or wrong. In logical syntax you would say $\phi$ is a sentence, and $\neg\phi$ is the same sentence but negated. \\
+Meaning that if $\phi$ is true then $\neg\phi$ is false, and if $\phi$ is false then $\neg\phi$ is true. 
+
+Examples of statements in mathematics could be $3 + 4 = 7$ or $\mathbb{C}\subset\mathbb{R}$. The first statement is true and the second is false.
+
+\section{Logical Symbols}
+
+In logic you will use several Symbols to help connect Satements or to portray statements themselves.
+\begin{itemize}
+	\item[] The conjunction $\wedge$. This is used to display an "and"
+	\item[] The disjunction $\vee$. This is used to display an "or"
+\end{itemize}
+One way to memorize which one is which is the fact that there is an "n" in "and", and that the $\wedge$ symbol look like an "n".
+\begin{itemize}
+	\item[] The existential quantification $\exists$ is used to display that a property is true fro at least one object
+	\item[] The the universal quantification $\forall$ is used to display that a property is true for all objects
+\end{itemize}
+What does this mean? Basically you use these symbols in combination with statements to make statements that portray the truth of general statements. For example
+\begin{equation}
+	\exists x,y\left(\frac{1}{x} + \frac{1}{y} = 1\right) 
+\end{equation}
+shows that there exist two elements, x and y, that when inversely added make 1
+\begin{equation}
+	\forall x \exists y, z\left( y = x-1 \wedge z = x + 1\right) 
+\end{equation}
+shows that every number x has a number that follows it, and one that is before it. Here you can also see the conjunction.
+\begin{itemize}
+	\item[] The implication $\rightarrow, \Rightarrow, \leftarrow, \Leftarrow$. Is used to show that if one statement is true, then so is the other, but it isn't necessarily the case that the other way around is also true.
+	\item[] the equivalence $\leftrightarrow, \Leftrightarrow$ Is used to show that one thing implies the other, and also the other way around.
+\end{itemize}
+\section{Logical rules}
+I will now list some rules. I will use the sign $\Gamma$ to stand for an arbitrary assortment of statements, and I will use the sign $\vdash$ to signify that the right side can be constructed from the left side. Greek letters will stand for statements, and latin letters for variables.
+
+\begin{itemize}
+	\item[] Equality Rule - $\Gamma\vdash (t=t)$
+	\item[] Contradiction Rule - $\psi, \neg\psi \vdash \phi$
+	\item[] By Case Rule - $(\Gamma,\psi\vdash\phi)\wedge(\Gamma,\neg\psi\vdash\phi) \Rightarrow \Gamma\vdash\phi$
+	\item[] Implication rule - $(\Gamma,\phi\vdash\psi)\Rightarrow\Gamma\vdash(\phi\rightarrow\psi)$
+	\item[] Modus Ponens - $\phi, (\phi\rightarrow\psi) \vdash \psi$
+	\item[] Substitution Rule - $\phi(a,...,c) \vdash \exists x ... \exists z \phi(x,...,z)$
+	\item[] Implication reversal - $\Gamma\vdash(\phi\rightarrow\psi) \Rightarrow \Gamma,\phi\vdash\psi$
+	\item[] Contraposition - $(\phi\rightarrow\psi)\vdash(\neg\psi\rightarrow\neg\phi)$
+	\item[] Double negation - $\phi\vdash\neg\neg\phi$
+	\item[] Verum ex quodlibet (True Statements follow from anything) - $\psi \vdash (\phi\rightarrow\psi)$
+	\item[] Ex falso sequitur quodlibet (Anything follows from false statements) - $\neg\phi\vdash(\phi\rightarrow\psi)$
+	\item[] Falsum non ex verum (false statements don't follow from true statements) - $\phi,\neg\psi\vdash\neg(\phi\rightarrow\psi)$
+	\item[] Conjunction rule (Introduction) - $\phi,\psi\vdash\phi\wedge\psi$
+	\item[] Conjunction rule (Eradication) - $\phi\wedge\psi\vdash\phi$
+	\item[] Disjunction rule (Introduction) - $\psi\vdash\psi\vee\phi$
+	\item[] Disjunction rule (Eradication) - $(\phi\vee\psi),\neg\phi \vdash \psi$
+	\item[] Negation of universal quantification - $\neg\forall x\phi(x) = \exists x\neg\phi(x)$
+	\item[] Negation of existential quantification - $\neg\exists x\phi(x) = \forall x\neg\phi(x)$
+\end{itemize}
+
+These are many rules, but hopefully many of them will become obvious throughout the text.
+
+
+
+\chapter{The natural numbers}
+
+\subsection*{Principle of Mathematical Induction}
+Mathematical induction is a proof tactic that works for ordered sets like the Natural numbers. We take it here to be an Axiom.
+
+\subsubsection*{Axiom of Mathematical Induction}
+Let $P(n)$ be a property of a number $n$. Suppose that $P(n)$ is true, and that $P(succ(n))$ is true, then $P(n)$ is true for all $N \geqslant n$.\\
+In particular, if $P(0)$ is true and $P(succ(n))$ is true, then $P(n)$ is true for all natural numbers.
+
+
+\section{The Peano Axioms}
+
+\begin{itemize}
+	\item[1] 0 is a natural number
+	\item[2] If $n$ is a natural number, then $succ(n)$ is also a natural number
+	\item[3] 0 is the successor of no other natural number. So, $\neg\exists x\in\mathbb{N}(x++ = 0)$
+	\item[4] Different natural numbers have different successors. If $n \neq m$ then $succ(n) \neq suc(m)$. At the same time, if $succ(n) = succ(m)$ then $n = m$. 
+\end{itemize}
+
+
+\subsubsection*{Proposition: 6 is not equal to 2}
+We know that $6 = succ(succ(4)),\; 2 = succ(succ(0)).$ So, for $ 6 = 2$ we would need $4 = 0$, however $4 = succ(3)$ and we know that $0 \neq succ(3)$, so we can infer that $6 \neq 2$.
+
+\subsubsection*{Proving a Property $P(n)$ for all natural numbers}
+If we want to prove that a property $P(n)$ holds for all natural numbers, we can write a proof like the following:
+
+
+\textit{Proof by induction:} First, verify the base case $n=0$, so we will prove $P(0)$. (Proof of $P(0)$). Now assume that $P(n)$ is true, now we prove that $P(succ(n))$ is also true. (Proof of $P(succ(n))$). As $P(n)$ is true for $n=0$ and for all successors of 0, $P(n)$ is true for all natural numbers.
+
+\section{Addition}
+
+\subsection{Definition of addition}
+Addition will be defined recursively. Firstly, we will define addition with 0 to be $0 + m= m$, and addition with $succ(n)$ will be $succ(n) + m = succ(n+m)$.
+
+\subsubsection*{Remark on addition}
+You can see that this will define addition as a series of successions. For example
+\begin{equation}
+	2 + n = succ(1+n) = succ(succ(0+n)) = succ(succ(n)).
+\end{equation}
+
+\subsubsection*{Lemma: Commutativity of 0}
+For any number $n,\; n + 0 = n$.\\
+\textit{Proof:} We will use induction. The base case is n = 0. We calculate 0 + 0. We know, by the Definition of Addition, that $0+0 = 0$. We will assume that we have proven this for n, so we will prove it for $n\rightarrow succ(n)$. So, $succ(n) + 0 = succ(n + 0)$ which we know by our Induction step is $succ(n)$. This closes our Induction and proves our Lemma.
+
+\subsubsection*{Lemma: Invariance of Addition}
+For any numbers $n$ and $m$, $n + succ(m) = succ(n+m)$. I call this invariance because it doesn't matter if we take the successor of the left or the right number.\\
+\textit{Proof:} We first prove this for the base case $n=0$. Then $0 + succ(m) = succ(m)$ from the Definition of Addition, so $0 + succ(m) = succ(0 + m)$. We now assume that our Lemma is proven for $n$, now we prove it for $n\rightarrow succ(n)$. So we calculate, $succ(n) + succ(m) = succ(n + succ(m))$, which we know by our Induction step is $succ(succ(n + m))$, which proves our Lemma.
+
+\subsection{Theorem: Addition is Commutative}
+For any numbers $n$ and $m$, $n + m = m + n$. This is known as the commutative property.
+\textit{Proof:} We will use induction. The base case is $n = 0$. We calculate $0 + n = n$. From "Lemma: Commutativity of 0", we know that $n + 0 = n$. We assume this to be proven for $n$, and we prove $n\rightarrow succ(n)$. We know that $succ(n) + m = succ(n + m)$ and we also know from "Lemma: Invariance of Addition" that $m + succ(n) = succ(m + n)$. According to Peano Axiom 4 $succ(n+m) = succ(m+n)$ if $n+m=m+n$, which is our Induction step, and hence this proves our Theorem.
+
+This is, then, our first important finding about the Natural numbers.
+
+\subsection{Theorem: Addition is Associative}
+For any numbers $a,b$ and $c$, $(a+b)+c = a+(b+c)$. This is known as the commutative property.\\
+This will be proven in the exercise section.
+
+\subsection{Theorem: Cancellation Law}
+For any numbers $a,b$ and $c$, if $a + c = b + c$ then $a = b$. This is our first example of a cancellation law, and will lead us to developing Subtraction, without having defined it yet.\\
+\textit{Proof:} We use induction on $c$. The base case is $c = 0$, so we have $a + 0 = b + 0$, which means that $a = b$, proving the base case. We assume this to be proven for $n$, and prove it for $n\rightarrow succ(c)$. We then have $a + succ(c) = b + succ(c)$, which means that $succ (a+c) = succ(b+c)$ which then means $a+c = b+c$ which we know to be true from our Induction step. Hence, proving the Theorem.
+
+\subsection{Definition of positive numbers}
+A natural number is called positive if and only if (short: iff) it is not equal to 0.
+
+\subsubsection*{Lemma: Addition of positive numbers is positive}
+let $a$ be a natural number and $b$ a positive number, then $a + b$ is positive.\\
+\textit{Proof:} We use Induction with $a = 0$, so $0 + b = b$ which is positive, as b is positive. We now assume $a+b$ to be positive, and prove for $b\rightarrow succ(b)$. Then, $a + succ(b) = succ(a + b)$, and as we know $a+b$ to be positive, the successor is also positive. Proving this Lemma.
+
+\subsubsection*{Lemma: Addition is 0}
+let $a$ and $b$ be natural numbers, then if $a + b = 0$ then $a = 0$ and $b = 0$.\\
+\textit{Proof:} We use a proof by contradiction, thus we assume that $a \neq 0$ or $b \neq 0$. First, say that $a \neq 0$, then $a + b$ is positive. The same argument is made in case of $b \neq 0$. This contradicts our assumption that $a+b=0$, hence $a = 0$ and $b = 0$.
+
+\subsubsection*{Lemma: All positive numbers}
+Let $b$ be a positive number, then there exists a natural number $a$ such that $succ(a) = b$.\\
+This will be proven in the exercise section.
+
+\subsection{Definition: Ordering of natural numbers}
+Let $m$ and $n$ be natural numbers. We define $n$ to be greater than or equal to $m$, $(n\geqslant m)$, if there is a natural number $a$ such that $n = m + a$. We define $n$ to be strictly greater than $m$, $(n>m)$, if there exists a positive number $b$ such that $n = m + b$, or if $n \geqslant m$ and $n \neq m$.
+
+\subsubsection*{Lemma: Properties of Orderings}
+\begin{itemize}
+	\item[] Order is reflexive - $a\geqslant a$
+	\item[] Order is transitive - $a\geqslant b \wedge b\geqslant c \Rightarrow a\geqslant c$
+	\item[] Order is antisymmetric - $a \geqslant b \wedge b \geqslant a \Rightarrow a = b$
+	\item[] Addition preserves order - $a \geqslant b \Leftrightarrow a + c \geqslant b + c$
+	\item[] $a < b \Leftrightarrow succ(a) \leqslant b$
+\end{itemize}
+
+\subsection{Theorem: Trichotomy of order for natural numbers}
+For any numbers $a$ and $b$, $a$ is either exactly larger, equal to, or smaller than $b$.\\
+\textit{Proof:} Firstly, prove that only one of the three is possible, and then that at least one of them is true.\\
+Only one is possible: Let $a > b$, then by definition $a \neq b$. same for $b > a$. Now assume that $a>b$ and $b >a$, then by the antisymmetric property, $a = b$, but we just ruled this out, proving that only one of the three orderings is possible.\\
+At least one is true: Use induction on $a$. Start with $a = 0$, then $b \geqslant 0$ so either $ b = 0$ or $b > 0$, which proves the base case. We assume this to be proven for $a$, and now we prove $a\rightarrow succ(a)$. We take a by cases approach. Assume that $a > b$, then $succ(a) > b$.
+
+This follows from. $a > b$ means there exists a $c \neq 0$ s.t. $a = b + c$, meaning that $succ(a) = succ(b + c) = b + succ(c)$ which means that $a > b$, as $succ(c) \neq 0$.\\
+Assume now, that $a = b$, then $succ(a) > b$. This follows from the same argument, as $succ(a) = b + 1$ and $1 \neq 0$.\\
+Assume now, that $a < b$, then $succ(a) \leqslant b$, following as a property of orderings. From this follows that $succ(a) = b$ or $succ(a) < b$, proving that At least one of the three properties is true.
+
+As only one of the three cases can be true, and at least one must be true, only one of the three can be true. Proving the theorem.
+
+\subsection{Exercises}
+
+\subsubsection*{Theorem: Addition is associative}
+\textit{Proof:} Proof by Induction over $a$. Base case, $a = 0$, then $(0 + b) + c = 0 + (b + c)$ and with the commutativity of 0 we know $(b) + c = (b + c)$ which is equivalent. So this is proven for the base case. We assume this to be true for $a$, and will now prove it for $a\rightarrow succ(a)$. Then $(succ(a) + b) + c = succ(a) + (b + c)$ which we know to be $(succ(a + b)) + c = succ(a + (b + c))$ and then $succ((a + b) + c) = succ(a + (b+c))$ which is true if $(a +b) +c = a + (b+c)$, which is our Induction step, so we know it to be true. This proves our Theorem.
+
+\subsubsection*{Lemma: All positive numbers}
+\textit{Proof:} We will prove this for all positive numbers by induction, so we start with $b = 1$, we find that there is a natural number for which $b = succ(a)$, namely $a = 0$. We assume our Lemma to be true for $b$, and prove it for $b\rightarrow succ(b)$. We know that $b = succ(a)$, we then take the successor of both elements, and have $succ(b) = succ(succ(a))$, then meaning that we have found our number, namely $succ(a)$. This closes the Induction and proves the lemma.
+
+\section{Multiplication}
+
+\subsection{Definition of Multiplication}
+Just as with Addition, multiplication shall be defined recursively.\\
+Let $n, m$ be natural numbers. Define multiplication with 0 as $0 \times m = 0$. Then, define multiplication with $succ(n)$ as $succ(n) \times m = (n \times m) + m$.\\
+For example, $2 \times m = 0 + m + m$.
+
+\subsection{Theorem: Multiplication is commutative}
+Let $m,n$ be real numbers, then $m\times n = n\times m$.\\
+The proof is in the exercise section.
+
+\subsection{Theorem: Natural numbers have no zero divisors}
+let $n,m$ be natural numbers. Then $n m = 0$ iff $n = 0$ or $m = 0$, in particular if $n$ and $m$ are positive, then $nm$ is positive.\\
+The proof is in the exercise section.
+
+\subsection{Theorem: Distributive law}
+For any natural numbers $a,b,c$, $a(b+c) = ab + ac$ and $(a+b)c = ac+bc$.\\
+\textit{Proof:} Only one of the two need to be proven because of commutativity. Use Induction on $c$. For the base case, $c=0$ we calculate $a(b+0) = a(b) = ab$ and $ab + a0 = ab$. Now assume $a(b+c) = ab + ac$ and prove the case for $c\rightarrow c++$, then we have $a(b+(c++)) = a(b+c)++ = a(b+c) + a$and $ab + a(c++) = ab + ac + a$, so in total we have $a(b+c) + a = ab + ac + a$ which is true with our Induction step, proving our result.
+
+\subsection{Theorem: Multiplication is associative}
+For any natural numbers $a,b,c$, $a(bc) = (ab)c$\\
+The proof is in the exercise section.
+
+\subsubsection*{Lemma: Multiplication preserves Order}
+let $a,b,c$ be natural numbers and $c\neq 0$. Then $a < b$ iff $ac < bc$.\\
+\texttt{Proof:}\\
+$"\Rightarrow"$: Suppose $a < b$, then we know there is a positive $d$ s.t. $a + d = b$. Multiplying by $c$ gives $(a+d)c = ac + dc = bc$ we know $dc$ is positive as $c,d$ are positive, meaning $ac < bc$.\\
+$"\Leftarrow"$: Suppose $ac < bc$. Proof by contradiction, so suppose $a \geqslant b$. First case, $a > b$ then we know from $"\Rightarrow"$, that $ac > bc$, a contradiction. Second case, $a = b$, then $ac = bc$, also a contradiction. Therefore, $a < b$.\\
+Proving the Lemma.
+
+\subsection{Theorem: Cancellation law of multiplication}
+Let $a,b,c$ be natural numbers with $c\neq0$, if $ac = bc$ then $a = b$\\
+\textit{Proof:} It was already proven that if $a = b$ then $ac = bc$, through preservation of Order. Now we prove that if $ac = bc$ then $a = b$. Proof by contradiction, suppose that $ac = bc$ and $a\neq  b$, then either $a < b$ or $a >b$. Through order preservation, we can see that with $c\neq 0$ either $ac < bc$ or $bc < ac$, meaning that both cases can't be true. So, if $ac = bc$ then $a = b$.
+
+\subsection{Theorem: The Euclidean Algorithm}
+Let $n$ be a natural number, and let $q$ be a positive number. Then there exist natural numbers $m, r$ such that $0 \leqslant r < q$ and $n = mq + r$\\
+\textit{Proof:} Induct on $n$, start with $n=0$. Then, $ 0 = mq + r$, we find that $m = r = 0$. Now assume that there are $m,r$ such that $n = mq + r$ for some $n$. now check for $succ(n)$, then $succ(n) = succ(mq + r)$. We now have the restriction that $0 \leqslant r < q$. This means, that in the event that $succ(r) = q$ (It can't be greater as that breaks our Induction Hypothesis) we will set $r=0$ and $q\rightarrow succ(q)$. Otherwise $r\rightarrow succ(r)$. Then we have found $q$ and $r$ that fulfil our equation, closing the Induction and proving the theorem.
+
+\subsection{Definition of Exponentiation}
+Let $m$ be a natural number. Raising $m$ to the power of $0$ is defined as $m^0 = 1$, then we will define exponentiation to the power of $n++$ as $m^{n++} = m^n \times m$
+
+\subsubsection*{Binomial Fomula}
+$(a+b)^2 = a^2 + 2ab + b^2$.\\
+\textit{Proof:} We use Definitions. $(a+b)^2 = 1\times(a+b)\times(a+b) = (a+b)(a+b) = a(a+b) + b(a+b) = aa + ab + ba + b = a^2 + ab + ab + b^2 = a^2 + 2ab + b^2$.
+
+
+
+\subsection{Exercises}
+\subsubsection*{Theorem: Multiplication is commutative}
+First, prove the Lemma $0 \times n = n \times 0$\\
+\textit{Proof:} Proof by Induction, we induct on $n$. With $n = 0$ we have $0 \times 0 = 0 \times 0$ which is true. Then we suppose to have proven this for $n$, and we will prove it for $n\rightarrow succ(n)$, so we have $\succ n \times 0 = 0 \times succ(n)$. We have $succ(n)\times 0 = n\times 0 + 0 = n\times0$, which we know by our induction step is $0\times n = 0$, which we know by Definition. We also know $succ(n) \times 0 = 0$ by definition, so both sides are equal. This closes the induction and proves that $0\times n = n\times0$.
+
+Also, prove that $n \times succ(m) = n \times m + n$.\\
+\textit{Proof:} Proof by Induction, base case $n = 0$. Calculate $0 \times succ(m) = 0$ and $0 \times m + 0 = 0$, by definition of multiplication and addition. Then we assume the case to be true for $n$ and prove $n\rightarrow succ(n)$. We start $succ(n) \times succ(m) = n \times succ(m) + succ(n)$ and then through our Induction step we know this is $n \times m + m + succ(n)$. We then evaluate $succ(n) \times m + succ(n)$ which we know by definition is $n \times m + m + succ(n)$, which shows that both sides are equal. This closes the induction and proves $n\times succ(m) = n\times m + n$.
+
+Now to prove our Theorem, that $n\times m = m\times n$\\
+\textit{Proof:} Proof by Induction, we induct on $n$, starting with $n=0$. This case is already proven with our previous Lemma. Then we assume that $n\times m = m \times n$, and we prove $succ(n)\times m = m\times succ(n)$. From our previous Lemma we know that $m \times succ(n) = m\times n + m$ and by definition we know that $succ(n) \times m = n\times m + n$ we know with our induction step that these are equal, as $n\times m = m\times n$, and the additional $n$ can be cancelled through our additive cancellation law.
+
+\subsubsection*{Theorem: Natural numbers have no zero divisors}
+let $n,m$ be natural nubers. Then $nm=0$ iff $n=0$ or $m=0$, in particular, if $n$ and $m$ are positive, then $nm$ is positive.\\
+\textit{Proof:}\\
+$"\Rightarrow"$: Suppose $mn = 0$. Proof by contradiction, so assume $n\neq0$ and $m\neq0$. This means that $m$ and $n$ are positive, so there exist numbers $a,b$ s.t. $succ(a) = n$ and $succ(b) = m$. We can then calculate $mn = succ(a)m = am + m$ which is positive, or $n\times succ(b) = nb + n$ which is also positive, so $nm \neq 0$, which contradicts our assumption that $nm = 0$, so either $n$ or $m$ must be 0.\\
+$"\Leftarrow"$: Suppose $n = 0$ or $m = 0$. Firstly, suppose $n = 0$, then $nm = 0\times m = 0$ by Definition, then suppose $m = 0$, then $nm = n \times 0 = 0$ by Definition.\\
+Thus proving the equivalence.
+
+\subsubsection*{Theorem: Multiplication is associative}
+For any natural numbers $a,b,c$, $a(bc) = (ab)c$.\\
+\textit{Proof:} Proof by Induction, induct on $c$. Start with $c=0$. Then we calculate $a(b\times 0 = a\times 0 = 0,$ and also $(ab)\times 0 = 0$. We then assume $a(bc) = (ab)c$ and prove for $c\rightarrow c++$. Then we calculate $a(b\times c++) = a(bc + b) = a(bc) + ab$, and $(ab) + (c++) = (ab)c + ab$, from the Induction Hypothesis this is true, proving the theorem.
+
+
+\chapter{Set Theory}
+
+\section{Fundamentals}
+\subsection{Axioms of Set Theory}
+\begin{itemize}
+	\item[1] (Sets are Objects). If $A$ is a set then $A$ Is also an Object. Given two sets $A$ and $B$, it is meaningful to ask if $A$ is in $B$.
+	\item[2] (Empty Set) There exists a set $\emptyset$, the empty set, which contains no element, so for all elements $x$, $x\notin\emptyset$.
+	\item[3] (Singleton sets) If $a$ is an object, then there exists a set $\{a\}$ whose only element is $a$, so that $\forall x(x \in \{a\} \Leftrightarrow x = a$).
+	\item[4] (Pairwise union) Given two sets $A, B$, there exists a set $A\cup B$ such that its elements consist of all elements which belong to $A$ or $B$, so $x \in A\cup B \Leftrightarrow (x\in A\wedge x\in B)$.
+	\item[5] (Specification) Let $A$ be a set and for each $x\in A$ let $P(x)$ be a property of $x$, s.t. $P(x)$ is either true or false, then there exists a set such that $\{x\in A | P(x)\}$, whose elements are all elements of $A$ for which $P(x)$ is true.
+	\item[6] (Replacement) Let $A$ be a set. For any object $x\in A$ and any object $y$, suppose we have a statement $P(x,y)$ such that for any $x$ $P(x,y)$ is true for at most one $y$. Then there exists a set $\{y| P(x,y) , x\in A\}$. Such that for any object $z$
+	\begin{equation*}
+		z\in\{y | P(x,y) x\in A\} \Leftrightarrow P(x,z) \text{is true for some} x\in A.
+	\end{equation*}
+	\item[7] (Infinity) There exists a set $\mathbb{N}$ whose elements are called natural numbers, in which there exists the object $0$ and the object $n++$ for each element in $\mathbb{N}$, such that the Peano Axioms hold.
+	
+\end{itemize}
+
+
+
+\end{document}
+
