@@ -1,0 +1,192 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Lecture 2}
+\author{}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+ \section{Noether's Theorem}
+
+A continuous symmetry leads to a conservation law. A symmetry is a Transformation that leaves the equation of motion invariant.
+
+Infinitesimal transformation:
+\begin{gather}
+	\varphi(x) \mapsto \Phi + \alpha\Delta\varphi(x)\\
+	L(x) \mapsto L(x) + \alpha\Delta L(x)
+\end{gather}
+Where $\alpha$ is infinitesimal\\
+Assume, that
+\begin{equation}
+	L(x)\mapsto L(x) + \alpha\partial_\mu J^\mu\;\;\text{for some }J^\mu
+\end{equation}
+Meaning we assume that $\Delta\alpha$ can be written as a four-divergence.\\
+So we have the action
+\begin{equation}
+	s = \int\text d ^4x L + \alpha \int_\text{Surface}\text{d} S_\mu J^\mu
+\end{equation}
+And looking at the change of the action, the first integral stays the same and the Surface integral is 0, meaning the equation of motion stays the same.
+\begin{gather}
+	\alpha\Delta L = \pdv{L}{\varphi}\Delta\varphi + \pdv{L}{(\partial_\mu\varphi)}\underbrace{\Delta(\alpha\partial_\mu\varphi)}_{= \partial_\mu(\alpha\Delta\varphi)}\\
+	= \partial_\mu\left(\pdv{L}{(\partial_\mu\varphi)}\alpha\Delta\varphi\right) + \underbrace{\left(\pdv{L}{\varphi}-\partial_\mu\pdv{L}{(\partial_\mu\varphi)}\right)}_{0\text{ by Euler-Lagrange}}\alpha\Delta\varphi
+\end{gather}
+From our assumption we can then gather, that
+\begin{equation}
+	\partial_\mu\left(\pdv{L}{(\partial_\mu\varphi)}\Delta\varphi - J^\mu\right) = 0
+\end{equation}
+
+we then gather, that
+\begin{equation}
+	\partial_mu j^\mu = 0,\;\;\;\; j^\mu = \pdv{L}{(\partial_\mu\varphi)}\Delta\varphi - J^\mu
+\end{equation}
+If the time derivative is integrated over all space, then it can be seen that it is conserved.\\
+$j^\mu$ is the Noether current.
+\subsection{Example:}
+\begin{equation}
+	L = (\partial_\mu\varphi)(\partial^\mu\varphi*) - m\varphi\varphi*
+\end{equation}
+The Complex Klein Gordon field.\\
+Consider the transformation
+\begin{equation}
+	\varphi\mapsto e^{i\alpha}\varphi,\;\;\; \alpha=const
+\end{equation}
+This is a Symmetry transformation, as $L \mapsto L$. That means, $J^\mu = 0$.\\
+We treat $\varphi,\,\varphi*$ as independent fields. 
+
+\subsubsection{More than one field}
+If there is more than one field, $\varphi_r$, then
+\begin{equation}
+	L = L(\varphi_1, \varphi_2,..., \partial_\mu\varphi_1, \partial_\mu\varphi_2,...)
+\end{equation}
+There is one equation of motion for each field, that is because we can vary every field by itself, whose actions must each be minimal.
+
+Then, the Noether charge will look like
+\begin{equation}
+	\sum_r \pdv{L}{(\partial_\mu\varphi_r)}\Delta\varphi_r - J^\mu
+\end{equation}
+
+Then,
+\begin{align}
+	j^\mu &= \pdv{L}{(\partial_\mu\varphi)}\Delta\varphi + \pdv{L}{(\partial_\mu\bar\varphi)}\Delta\bar\varphi\\
+	\varphi &\mapsto e^{i\alpha}\varphi = (1+i\alpha)\varphi \Longrightarrow \alpha\Delta\varphi = i\alpha\varphi,\; \alpha\Delta\bar\varphi = -i\alpha\bar\varphi\\
+	j^\mu &= (\partial^\mu\bar\varphi)i\varphi + (\partial^\mu\varphi)(-i\bar\varphi)
+\end{align}
+
+\subsection{Example:}
+Translation: $x^\mu \mapsto x^\mu + a^\mu$\\
+$\varphi(x) \mapsto \varphi(x+a) = \varphi(x) + a^\mu\partial_\mu\varphi(x)$ As $a$ is infinitesimal.\\
+$L \mapsto L(x + a) = L(x) + a^\mu\partial_\mu L(x) = L(x) + a^\nu\partial_\mu(\delta^\mu_\nu L(x))$\\
+For $a^0 = \alpha,\,a^i=0$:	$\alpha\partial_\mu\underbrace{(\delta^\mu_0 L(x))}_{J^\mu}$
+
+and the Noether current: 
+\begin{equation}
+j^\mu = \pdv{L}{(\partial_\mu\varphi}\underbrace{\Delta\phi}_{\dot{\varphi}} - \delta^\mu_0 L(x)
+\end{equation}
+Then, for a general translation
+\begin{equation}
+	T^\mu_\nu = \pdv{L}{(\partial_\mu\varphi)}\partial_\nu\varphi - \delta^\mu_\nu L(x)
+\end{equation}
+This is the energy-momentum Tensor\\
+Through the Noether theorem, we then have, for each $\nu$, the conserved current
+\begin{equation}
+	\partial_\mu T^\mu_\nu = 0
+\end{equation}
+
+If we raise the index of the tensor,
+\begin{equation}
+	T^{\mu\nu} = \pdv{L}{(\partial_\mu\varphi)}\partial^\nu\varphi - g^{\mu\nu}L(x)
+\end{equation}
+Then we get
+\begin{equation}
+	T^{00} = \pdv{L}{\dot\varphi}\varphi - L(x) = \pi\dot\varphi - L = \mathcal{H} = \text{energy}
+\end{equation}
+\begin{equation}
+	T^{0i} = \pdv{L}{\partial_0\varphi}\partial^i\varphi = \pi\partial^i\varphi = -\pi\partial_i\varphi
+\end{equation}
+Define $P^i$ as
+\begin{equation}
+	P^i = \int \text{d}^3x T^{0i}: \text{ physical momentum carried by the field}
+\end{equation}
+Is this the momentum we are used to?
+
+\section{Classical, real Klein-Gordon field}
+\begin{equation}
+	L = \frac{1}{2}(\partial_\mu\varphi)^2 - \frac{1}{2}m^2\varphi^2
+\end{equation}
+\begin{equation}
+	\pi = \pdv{L}{\dot\varphi} = \dot\varphi
+\end{equation}
+The physical momentum and the conjugate momentum density doesn't have to be equal.
+\begin{equation}
+	\mathcal{H} = \pi\dot\varphi - L = \dot\varphi^2 - L = \frac{1}{2}\dot\varphi^2 + \frac{1}{2}(\nabla\varphi)^2 + \frac{1}{2}m^2\varphi^2
+\end{equation}
+And the Klein-Gordon equation
+\begin{equation}
+	(\partial_\mu\partial^\mu + m^2)\varphi = 0 = (\partial_t - \nabla^2 + m^2)\varphi
+\end{equation}
+We fourier transform our equation in order to get a representation we can work with better.
+\begin{equation}
+	\varphi(x,t) = \int \frac{\text{d}^3p}{(2\pi)^3}e^{ipx}\cdot\underbrace{\varphi(p,t)}_{\text{Fourier Transform}}
+\end{equation}
+Consider the symmetry, that $\varphi$ is real.
+\begin{equation}
+	\int \frac{\text{d}^3p}{(2\pi)^3}e^{ipx}\varphi(p,t) = \int \frac{\text{d}^3p}{(2\pi)^3}e^{-ipx}\bar\varphi(p,t)
+\end{equation}
+Then, through a coordinate transformation $p\mapsto -p$,
+\begin{equation}
+	= \int \frac{\text{d}^3p}{(2\pi)^3}e^{ipx}\bar\varphi(-p,t)
+\end{equation}
+So we have the symmetry
+\begin{equation}
+	\varphi(p,t) = \bar\varphi(-p,t),\;\; \forall p,t
+\end{equation}
+And we return to the Klein-Gordon equation
+\begin{gather}
+	(\partial_t^2 - (ip)^2 + m^2)\varphi(p,t) = 0\\
+	(\partial_t^2 + \omega_p^2)\varphi(p,t) = 0,\;\;\omega_p^2 = m^2+p^2
+\end{gather}
+And we get the solution
+\begin{equation}
+	\varphi(p,t) = \frac{1}{\sqrt{2\omega_p}}\left(a_pe^{-i\omega_p t} + b_p e^{i\omega_p t}\right)
+\end{equation}
+Through the boundary condition, $\varphi(p,t) = \bar\varphi(-p,t)$ and $t = 0$ we also get
+\begin{equation}
+	\bar a_{-p} + \bar b_{-p} = a_p + b_p
+\end{equation}
+Then, this must also be the same after a time derivative,
+\begin{gather}
+	\bar a_{-p} - \bar b_{-p} = - a_p + b_p
+	\Rightarrow b_p = \bar a_{-p}
+\end{gather}
+and then the full solution
+\begin{equation}
+	\varphi(x,t) = \int \frac{\text{d}^3p}{(2\pi)^3} e^{ipx}\frac{1}{\sqrt{2\omega_p}}\left(a_pe^{-i\omega_p t} + \bar a_{-p} e^{i\omega_p t}\right)
+\end{equation}
+\begin{equation}
+	\int \frac{\text{d}^3 p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_p}}\left(a_p e{-i\omega_p t + ipx} + \bar a_p e^{i\omega_p t - ipx}\right)
+\end{equation}
+and now change $p = (\omega_p, p)$ and $x = (t, x)$. So $p$ and $x$ are four vectors.
+\begin{equation}
+	\varphi(x) = \int \frac{\text{d}^3 p}{(2\pi)^3} \frac{1}{\sqrt{2\omega_p}}\left(a_p e^{-ipx} + \bar a_p e^{ipx}\right)
+\end{equation}
+
+For quantization we require, that the commutator
+\begin{equation}
+	[q_i, p_j] = i\hbar\delta_{ij} = i\delta_{ij}
+\end{equation}
+and because of fields,
+\begin{equation}
+	[\varphi(x), \pi(y)] = i\delta(x-y)
+\end{equation}
+
+
+\end{document}
+

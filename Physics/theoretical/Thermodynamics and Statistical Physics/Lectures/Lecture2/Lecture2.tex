@@ -1,0 +1,111 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Lecture 2}
+\author{}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+ 
+For a solid crystal, when heated such that it becomes a liquid, you need to add a "latent heat", and the Energy is used to break the crystal bonds.
+
+\section{basic concepts}
+
+\subsection{heat capacity and latent heat}
+
+The heat capacity is defined as $c = \frac{Q}{\Delta T}$, so it's the Heat $Q$ needed to raise the Temperature by $\Delta T$. We also define the specific heat capacity $c_v$ such that $c = c_v\cdot m$.
+
+To transform a solid to a liquid, we need the latent heat $L_m$, so to raise the temperature from below the solid temperature to the liquid temperature, the required heat is $Q = c\Delta T + L_m$. Which we then also define as $Q = (c_v\Delta T + \ell_m)m$ where $\ell_m$ is the specific latent heat.
+
+\subsection{Thermal Radiation}
+\subsubsection{Reflection, Absorption and Transfer}
+Every material Reflects, absorbs and transfers the incoming Thermal Radiation. We then have
+\begin{equation}
+	J_Q = J_{Q,R} + J_{Q, a} + J_{Q, T}
+\end{equation}
+Where the Reflectivity, Absorptivity and Transmissivity are defined as
+\begin{gather}
+	\rho = \frac{J_{Q,R}}{J_Q}\\
+	\alpha = \frac{J_{Q,a}}{J_Q}\\
+	\tau = \frac{J_{Q,T}}{J_Q}
+\end{gather}
+
+We also have the Emissivity
+\begin{equation}
+	\epsilon = \alpha
+\end{equation}
+Where for example for Black bodies $J_Q = J_{Q,a}$ and $\epsilon = \alpha = 1$. We also know, that for a Black body
+\begin{equation}
+	J_Q = \sigma T^4
+\end{equation}
+and for real bodies
+\begin{equation}
+	J_Q = \epsilon\sigma T^4
+\end{equation}
+
+In the Summer and Winter month, we want to keep our House cold, or warm. When we have a Temperature $T_1$ and $T_2$, and a wall between it with thickness $\Delta x$ then there is a Flux $J_Q$ through it. With a temperature difference $\Delta T = T_2 - T-1$. We define $T_1$ be inside and $T_2$ be outside.
+
+If we double the Temperature difference, then the Flux is also doubled.
+
+If we double the width of the wall, then the Flux is halfed. We therefore define
+\begin{equation}
+	J_Q = \lambda \frac{\Delta T}{\Delta x} = \underbrace{\pm}_{?}\lambda\nabla T
+\end{equation}
+where $\lambda$ is the thermal conductivity.
+
+\subsection{Heat conduction experiment}
+
+The temperature curve of just the hot block is linear when looking at the temperature on a logarithmic scale, thus:
+\begin{equation}
+	\log{(T-T_{Room})} \propto -t
+\end{equation}
+Thus
+\begin{equation}
+	T - T_{Room} = \Delta T\propto e^{-t/c}
+\end{equation}
+And for the temperature difference of the hot and cold block we have
+\begin{equation}
+	T_h - T_c \propto e^{-t/\tau_1}
+\end{equation}
+We also see that both materials had different Temperature changes.
+\begin{equation}
+	\Delta T_B = 30°K
+\end{equation}
+\begin{equation}
+	\Delta T_Y = 60°K
+\end{equation}
+Blue = hot, Yellow = cold
+
+Then
+\begin{equation}
+	\frac{\Delta T_h}{\Delta T_c} = \frac{Q/c_h}{Q/c_c} = \frac{c_h}{c_c} = \frac{1}{2}
+\end{equation}
+
+\subsection{Thermal Conduction, boundary condition}
+
+\begin{gather}
+	J_Q = -\lambda \nabla T\\
+	Q = c\Delta T
+\end{gather}
+use Energy conservation in the form of the continuity equation.
+\begin{gather}
+	\pdv{Q}{t} + V\nabla J_Q = 0\\
+	\pdv{Q}{t} - \lambda V \nabla^2 T = 0\\
+	c\pdv{T}{t} - \lambda V\nabla^2 T = 0\\
+	\pdv{T}{t} - \frac{\lambda V}{c_v m} \nabla^2 T = 0\\
+	\pdv{T}{t} - \frac{\lambda}{c_v \rho}\nabla^2 T = 0
+\end{gather}
+
+
+
+
+\end{document}
+
