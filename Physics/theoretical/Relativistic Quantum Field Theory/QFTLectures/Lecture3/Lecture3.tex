@@ -1,0 +1,136 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Lecture 3}
+\author{}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Classical Klein-Gordon field} 
+
+\begin{gather}
+	L = \frac{1}{2}(\partial_\mu\phi)^2 - \frac{1}{2}m^2\phi^2\\
+	\pi = \dot\phi, \;\; \mathcal{H} = \frac{1}{2}\dot\phi^2 + \frac{1}{2}(\nabla\phi)^2 + \frac{1}{2}m^2\phi^2\\
+	\text{Klein-Gordon Equation: } (\partial^2 + m^2)\phi = 0\\
+	\text{Solution: } \phi(x) = \int \frac{\text{d}^3p}{(2\pi)^3} \frac{1}{\sqrt{2\omega_p}}\left(a_p e^{-ipx} + \bar{a_p}e^{ipx}\right)
+\end{gather}
+
+\section{Quantized Klein-Gordon field}
+Fields promoted to Operators
+
+\begin{gather}
+	\left[\phi(x), \pi(y)\right] = i\delta(x-y)\\
+	\left[\phi(x), \phi(y)\right] = [\pi(x),\pi(y)] = 0
+\end{gather}
+
+We consider only equal-time commutators.
+
+\begin{gather}
+	\phi(x) \text{satisfies the Klein-Gordon equation}\\
+	\phi(x) = \int\frac{\text{d}^3p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_p}}\left[a_p e^{-ipx} + a_p^\dagger e^{ipx}\right]
+\end{gather}
+($\phi(x)$ is hermitian)
+\begin{gather}
+	= \int\frac{\text{d}^3 p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_p}}[a_p e^{-i\omega_p t + ipx} + a^\dagger e^{i\omega_p t - ipx}]\\
+	\pi(x) = \dot\phi(x) = (-i)\int\frac{\text d^3p}{(2\pi)^3}\sqrt{\frac{\omega}{2}}[a_p e^{-i\omega_p t + ipx} - a^\dagger e^{i\omega_p t - ipx}]
+\end{gather}
+
+we want the commutator relations of the $a_p$.
+\begin{gather}
+	[a_p, a_q^\dagger] = (2\pi)^3\delta(p-q)
+	[a_p, a_q] = [a_p^\dagger, a_q^\dagger] = 0
+\end{gather}
+Assume this to be true and evaluate the previous commutator relations:
+\begin{gather*}
+	[\phi(x), \pi(y)] = \frac{-i}{2}\int\frac{\text d^3 p}{(2\pi)^3} \int \frac{\text d^3 q}{(2\pi)^3} \frac{\omega_p}{\omega_q}\left(-\underbrace{[a_p, a_q^\dagger]}_{(2\pi)^3\delta(p-q)}e^{i(px-qy)} + \underbrace{[a_p^\dagger, a_q]}_{-(2\pi)^3\delta(p-q)}e^{i(qy-px)}\right)\\
+	= \frac{-i}{2}\int\frac{\text d^3p}{(2\pi)^3}(- e^{ip(x-y)} - e^{-ip(x-y)})\\
+	= \frac{-i}{2}\int\frac{\text d^3p}{(2\pi)^3}(-2e^{ip(x-y)})\\
+	= (-i)(-1)\delta(x-y)
+\end{gather*}
+
+Next task: calculating the hamiltonian.
+\begin{gather}
+	\mathcal{H} = \frac{1}{2}\pi^2 + \frac{1}{2} (\nabla\phi)^2 + \frac{1}{2}m^2\phi^2\text{: Hamiltonian Density}\\
+	H = \int\text d^3x \mathcal{H} = \int \text d^3x \mathcal{H}\big\rvert_{t=0}\text{: no explicit t dependency in $L$.}\\
+	\phi(x) = \int \frac{\text d^3 p}{(2\pi)^3}\frac{1}{\sqrt{2\omega_p}}[a_p + a_{-p}^\dagger]e^{ipx}\\
+	\pi(x) = \int \frac{\text d^3p}{(2\pi)^3}\sqrt{\frac{\omega_p}{2}}[a_q - a_{-q}^\dagger]e^{iqx}\\
+	H = \frac{1}{4}\int\text d^3x \int \frac{\text d^3p}{(2\pi)^3} \int \frac{\text d ^3q}{(2\pi)^3} \biggl[-\sqrt{\omega_p\omega_q}(a_p -a_{-p}^\dagger)(a_q - a_{-q}^\dagger)e^{i(p+q)x}\\ 
+	+ \frac{1}{\sqrt{\omega_p\omega_q}}(ip)(iq)(a_p + a_{-p}^\dagger)(a_q + a_{-q}^\dagger)e^{i(p+q)x} \nonumber \\ 
+	+ \frac{m^2}{\sqrt{\omega_p\omega_q}}(a_p + a_{-p}^\dagger)(a_q + a_{-q}^\dagger)e^{i(p+q)x}\biggr] \nonumber
+\end{gather}
+Now use Fubini to interchange the spatial and momentum integrals, which leads to delta functions $\delta(p + q)$.
+\begin{gather}
+	H = \frac{1}{4}\int \frac{\text d^3p}{(2\pi)^3}\biggl[-\omega_p (a_p - a_{-p}^\dagger)(a_{-p}- a_p^\dagger)\\
+	+ \frac{p^2}{\omega_p}(a_p + a_{-p}^\dagger)(a_{-p} + a_p^\dagger) - \frac{m^2}{\omega_p}(\cdots)(\cdots)\biggr]\;\; \omega_p = p^2 + m^2 \nonumber\\
+	H = \frac{1}{4}\int \frac{\text d^3p}{(2\pi)^3}-\omega_p (a_p - a_{-p}^\dagger)(a_{-p} - a_p^\dagger) + \omega_p (a_p + a_{-p}^\dagger)(a_{-p} + a_p^\dagger)\\
+	= \frac{1}{4}\int \frac{\text d^3p}{(2\pi)^3} \omega_p (- a_p a_{-p} + a_pa_p^\dagger + a_{-p}^\dagger a_{-p} - a_{-p}^\dagger a_p^\dagger + a_p a_{-p} + a_pa_p^\dagger + a_{-p}^\dagger a_{-p} + a_{-p}^\dagger a_p^\dagger\\
+	= \frac{1}{2}\int \frac{\text d^3p}{(2\pi)^3}\omega_p (a_p a_p^\dagger + a_p^\dagger a_p) \;\;\; [a_p, a_q^\dagger] = (2\pi)^3 \delta(p-q)\\
+	= \int \frac{\text d^3p}{(2\pi)^3} \omega_p \biggr(a_p^\dagger a_p + \frac{1}{2}(2\pi)^3\delta(0)\biggl)
+\end{gather}
+We get an infinity in the Hamiltonian, by subtracting the infinity. Then
+\begin{equation}
+	H = \int \frac{\text d^3p}{(2\pi)^3}\omega_p(a_p^\dagger a_p)
+\end{equation}
+For the Quantum Mechanical Harmonic Oscillator we have the Hamiltonian
+\begin{equation}
+	H = \frac{p^2}{2} + 1/2\omega^2q^2 = \cdots = a^\dagger a + \frac{1}{2}
+\end{equation}
+We could have just as well written the Hamiltonian in the form
+\begin{equation}
+	\frac{1}{2}(\omega q - ip)(\omega q + ip) = a^\dagger a
+\end{equation}
+So we essentially picked a different point of view to write down the Hamiltonian. This also goes for our Infinite Hamiltonian.
+
+We have: $[H, a_p^\dagger] = \int \frac{\text d^3p}{(2\pi)^3} \omega_q (a_q^\dagger a_q, a_p)$
+\begin{gather}
+	\int \frac{\text d^3p}{(2\pi)^3} \omega_q a_q^\dagger (2\pi)^3(q-p) = \omega_p a_p^\dagger\\
+	\text{Similarly, } [H, a_p] = -\omega_p a_p
+\end{gather}
+Which are the same commutators as the ones in Quantum Mechanics. Then, we know that $a_p^\dagger$ and $a_p$ are ladder operators. And, every $p$-mode is a harmonic oscillator.
+
+What "is" the state $a_p^\dagger \ket{0}$? We will calculate the Eigenvalue of the Hamiltonian of the state.
+\begin{gather}
+	Ha_p^\dagger \ket{0} = (a_p^\dagger H + \omega_p a_p^\dagger) \ket{0}\\
+	= \omega_p a_p^\dagger \ket 0
+\end{gather}
+which means that our ket $a_p^\dagger\ket0$ has an Eigenvalue $\omega_p$ $(\hbar\omega_p)$.
+
+The total momentum operator looks like
+\begin{equation}
+	P = -\int \text d^3x \pi\nabla\phi = \cdots = \int\frac{\text d^3p}{(2\pi)^3}pa_p^\dagger a_p
+\end{equation}
+so then, similarly $P a_p^\dagger \ket 0 = p a_p^\dagger \ket 0$.\\
+Then, $a_p^\dagger$ is a single excitation of the harmonic oscillator associated with mode $p$, with Energy $\omega_p$, and the momentum $p$. Called a \textbf{particle}.
+
+Then, a particle is an excitation of a quantum field.\\
+We have a two particle system $a_p^\dagger a_q^\dagger \ket{0}$. And an n-particle state $(a_p^\dagger)^n\ket 0$, these are Bosons. Later on, for fermions $(a_p^\dagger)^2 = 0$.
+
+To recall, we have the Klein Gordon field, which is the solution to the KG Equation. We define the commutator relations that we want. It turns out that $a_p$ and $a_p^\dagger$ are ladder operators. The excitation of the empty space is a particle. A particle is an infinite plane wave, which means that we need to overlap several particles to get a localized particle. 
+
+next Lecture: Lorentz Invariance.
+
+\section{Lorentz-Transformation}
+
+\begin{equation}
+	x^\mu \mapsto x'^\mu = \Lambda^\mu_\nu x^\nu
+\end{equation}
+we want a transformation such that
+\begin{equation}
+	\text ds^2 = \text d (x^0)^2 - \text d x^2 = g_{\mu\nu}\text dx^\mu \text dx^\nu
+\end{equation}
+is invariant.
+\begin{gather}
+	g_{\mu\nu} = \text d x^\mu \text d x^\nu = g_{\rho\sigma}\text d x'^\rho \text d x'^\sigma\\
+	= g_{\rho\sigma}\Lambda^\rho_\mu \text d x^\mu \Lambda^\sigma_\nu \text d x^\nu\\
+	\Rightarrow g_{\mu\nu} = g_{\rho\sigma}\Lambda^\rho_\mu \Lambda^\sigma_\nu
+\end{gather}
+\end{document}
+
