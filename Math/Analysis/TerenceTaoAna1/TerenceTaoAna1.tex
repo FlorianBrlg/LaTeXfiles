@@ -272,8 +272,28 @@ For any natural numbers $a,b,c$, $a(bc) = (ab)c$.\\
 		z\in\{y | P(x,y) x\in A\} \Leftrightarrow P(x,z) \text{is true for some} x\in A.
 	\end{equation*}
 	\item[7] (Infinity) There exists a set $\mathbb{N}$ whose elements are called natural numbers, in which there exists the object $0$ and the object $n++$ for each element in $\mathbb{N}$, such that the Peano Axioms hold.
-	
+	\item[8] (Universal Specification) Suppose that for every object $x$ there is a Property $P(x)$ that pertains to $x$. Then there exists a set $\{x | P(x)\}$, such that for every object $y$
+		\begin{equation}
+			y\in\{x | P(x)\} \Leftrightarrow P(y) \text{is true}
+		\end{equation}
+	This can lead to Paradoxes, so the next Axiom is needed if this Axiom is introduced.
+	\item[9] (Regularity) If $A$ is a non-empty set, then there is at least one element $x$ of $A$ which is either not a set, or is disjoint from $A$.
 \end{itemize}
+
+\subsection{Definition of Equality of Sets}
+
+Two sets $A$ and $B$ are Equal, $A=B$, iff every element of $A$ is an element of $B$ and the other way around.
+
+\subsubsection{Lemma of Single Choice}
+Let $A$ be a non-empty set. Then there exists an object $x$ such that $x\in A$.\\
+\textit{Proof:} Proof by Contradiction. Assume there is no Object with $x\in A$, meaning that $\forall x(x\neg\in A)$. Thus, from the Axiom of the Empty Set, $A = \emptyset$ as $x\in A \Leftrightarrow x\in\emptyset$. This contradicts that $A$ is nonempty, as $\emptyset$ is empty. Proving the Lemma.
+
+
+
+
+
+
+
 
 
 

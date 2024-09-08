@@ -1,0 +1,75 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Thermodynamics and Statistical Mechanics}
+\author{}
+\date{3.9.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+
+\subsection{Ideal Gas}
+
+\begin{itemize}
+	\item Point particles that don't fill up space
+	\item Non interacting particles
+	\item Newtonian physics, $m\frac{\text d v}{\text d t} = F$
+	\item The particles have a Kinetic Energy $T = \frac{1}{2}mv^2$
+
+\end{itemize}
+
+We have a Box with length $\ell$ and a particle interacting with the surface $A$ with its $v_x$ velocity.
+
+The time between colissions with the surface is $\Delta t = \frac{2 \ell}{v_x}.$ We calculate the Pressure with
+\begin{equation}
+	P = \frac{F}{A} = \frac{m\Delta v}{A \Delta t} = \frac{m2v_x^2}{A2\ell} = \frac{mv_x^2}{V}
+\end{equation}
+And then
+\begin{equation}
+	PV = mv_x^2 = kT
+\end{equation}
+from this we gather
+\begin{itemize}
+	\item Equipartition principle: every squared degree of freedom has $\frac{1}{2}kT$ Energy.
+\end{itemize}
+And the total Energy for the particle is
+\begin{equation}
+	E = \sum_i \frac{1}{2}m<v_i^2> = \frac{3}{2}m<v^2> = \frac{3}{2}kT
+\end{equation}
+
+
+
+\section{Molecular Dynamics}
+Lennard Jones Potential
+\begin{equation}
+	U(r) = 4\epsilon \left(\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right)
+\end{equation}
+For example
+\begin{itemize}
+	\item Argon
+		\begin{itemize}
+			\item $\sigma = 0.34$ nm
+			\item $\epsilo/k_B = 120$K
+			\item $m=40u$
+		\end{itemize}
+	\item Methane
+		\begin{itemize}
+			\item $\sigma=0.38$
+			\item $\epsilon/k_B = 148$K
+			\item $m = 16u$
+		\end{itemize}
+\end{itemize}
+
+ 
+
+
+
+\end{document}
+

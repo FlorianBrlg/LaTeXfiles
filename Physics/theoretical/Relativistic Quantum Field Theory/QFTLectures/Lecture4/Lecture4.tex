@@ -1,0 +1,155 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 4}
+\author{}
+\date{28.8.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Lorentz Transformation} 
+
+\begin{gather}
+	x^\mu \mapsto x'^\mu = \Lambda^\mu_\nu x^\nu\\
+	g_{\mu\nu} = g_{\rho\sigma}\Lambda^\rho_\mu\Lambda^\sigma_\nu\\
+	g = \Lambda^T g \Lambda
+	\text{det}(g) = \text{det}(\Lambda)^2 \text{det}(g)\;\;\Rightarrow\;\; \text{det}(\Lambda) = \pm 1
+\end{gather}
+We take these as defining properties for the Lorentz Transformation matrix.\\
+Discrete transformation:
+\begin{equation}
+	\Lambda = P =
+	\begin{pmatrix}
+		1 & 0 & 0 & 0\\
+		0 & -1 & 0 & 0\\
+		0 & 0 & -1 & 0\\
+		0 & 0 & 0 & -1
+	\end{pmatrix}
+\end{equation}
+Then there is also
+\begin{equation}
+	\Lambda = T = -P
+\end{equation}
+and then
+\begin{equation}
+	PT = -1 =
+	\begin{pmatrix}
+		-1 & 0 & 0 & 0\\
+		0 & -1 & 0 & 0\\
+		0 & 0 & -1 & 0\\
+		0 & 0 & 0 & -1
+	\end{pmatrix}
+\end{equation}
+Proper Lorentz Transformations:
+\begin{gather}
+	\Lambda^0_0 > 1\\
+	\text{det}(\Lambda) = +1
+\end{gather}
+The proper Lorentz Transformation can be continuously connected to the identity. The previous 3 Transformations cannot be transformed.
+
+Rotation:
+\begin{equation}
+	\Lambda =
+	\begin{pmatrix}
+		1 & 0 & 0 & 0\\
+		0 & R_{xx} & R_{xy} & R_{xz}\\
+		0 & R_{yx} & R_{yy} & R_{yz}\\
+		0 & R_{zx} & R_{zy} & R_{zz}
+	\end{pmatrix}
+\end{equation}
+Boost:
+\begin{equation}
+	\Lambda = 
+	\begin{pmatrix}
+		\gamma & \gamma\beta & 0 & 0\\
+		\gamma\beta & \gamma & 0 & 0\\
+		0 & 0 & 1 & 0\\
+		0 & 0 & 0 & 1\\
+	\end{pmatrix}
+	\;\;\beta = v/c, \;\;\gamma = \frac{1}{\sqrt{1-\beta^2}}
+\end{equation}
+\begin{equation}
+	\text{det}(\Lambda) = \gamma^2 - \gamma^2\beta^2 = \gamma^2(1-\beta^2) = 1
+\end{equation}
+
+\section{Quantized Klein-Gordon field}
+the ket $a_p^\dagger \ket0$ is a single particle state. The ket has Energy $E_p$ with momentum $p$
+
+We will now consider the normalization.
+\begin{gather}
+	\bra 0 a_q a_p^\dagger \ket 0 = (2\pi)^3\delta(p-q)
+\end{gather}
+We now need to make this Lorentz-Invariant.
+
+\subsection{Lorentz Transformation of $\delta(p-q)$}
+\begin{equation}
+	\delta(p-q) = \delta(p_1 - q_1)\delta(p_2 - q_2)\delta(p_3 - q_3)
+\end{equation}
+Consider a boost in the 3-direction:
+\begin{gather}
+	p_3' = \gamma(p_3 + \beta E)\;\;\;\;\;\;\; p = (E,p_1,p_2,p_3),\; p' = (E', p_1, p_2, p_3')
+	E' = \gamma(E + \beta p_3)\\
+	\delta(p-q) \mapsto \delta(p_1-q_1)\delta(p_2-q_2)\delta(p_3'-q_3')\cdot\biggl\rvert \frac{\text d p_3'}{\text d p_3}\biggr\rvert\\
+	\delta(f(x) - f(x_0) = \frac{1}{|f'(x_0)|}\delta(x-x_0)\\
+	%(15) = \biggl\rvert\frac{\text{d}p_3'}{\text d p_3}\biggr\rvert\cdot(13)\\
+	E^2 = \sum_i (p^i)^2 + m^2, \;\;\;\; 2E \text d E = 2p_3\text d p_3.\\
+	\frac{\text dp_3'}{\text dp_3} = \gamma\left( 1 + \beta \frac{\text d E}{\text d p_3} \right) = \gamma\left( 1+ \beta\frac{p_3}{E} \right) = \frac{\gamma}{E}(E + \beta p_3) = \frac{E'}{E}\\
+	\Rightarrow \delta(p-q) = \delta(p'-q')\frac{E'}{E} \longrightarrow E\delta(p-q) = E'\delta(p'-q'):\;\;\text{Lorentz-Invariant}
+\end{gather}
+
+\subsection{Normalization}
+Choose normalization as follows.
+\begin{gather}
+	\ket p = \sqrt{2 E_p}a_p^\dagger \ket 0\\
+	\bra q \ket p = 2\sqrt{E_pE_q}\bra 0 a_q a_p^\dagger \ket 0 = 2\sqrt{E_pE_q}(2\pi)^3\delta(p-q) = 2E_p(2\pi)^3\delta(p-q)
+\end{gather}
+
+\section{Lorentz Invariance of $\int \frac{d^3 p}{(2\pi)^3}\frac{1}{2E_p}f(p)$}
+
+Invariant under proper Lorentz transformations:
+\begin{gather}
+	\int \frac{\text d^3p}{(2\pi)^3}\frac{1}{2E_p} = \int \frac{\text d^4p}{(2\pi)^4}\frac{1}{2E_p} 2\pi \delta(p^0 - E_p)\\
+	=\int_{p^0 > 0} \frac{\text d^4p}{(2\pi)^4}2\pi\delta(p^2 - m^2) %\bigg\rvert_{p^0 > 0}
+\end{gather}
+to see that these delta functions are the same, consider:
+\begin{gather}
+	p^2 - m^2 = (p^0)^2 - p^2 - m^2 = (p^0)^2 - E_p^2 = (p^0 - E_p)\underbrace{(p^0 + E_p)}_{=2E_p}\\
+	\delta(ax) = \frac{1}{|a|}\delta(x)
+\end{gather}
+Lorentz Invariant, because:
+\begin{itemize}
+	\item $\text d ^4p' = J \text d^4p = |\text{det}(\Lambda)|\text d ^4p = \text d ^4p$
+	\item a proper Lorentz Transformation transforms $p^0 > 0$ into $p^0' > 0$, Since it can be continuously connected to the identity.
+\end{itemize}
+
+\section{.}
+\begin{equation}
+	D(x-y) = \bra 0 \varphi(x)\varphi(y) \ket 0
+\end{equation}
+in Peskin and Schröder: "$\varphi(x)\ket0$ is a particle at position x."
+\begin{gather}
+	\varphi(\vec x)\ket0 = \int \frac{\text d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p)}a_p^\dagger e^{-ipx}}\ket 0\\
+	= \int \frac{\text d^3p}{(2\pi)^3}\frac{1}{2E_p}e^{-ipx}\ket p "\approx \ket x"
+\end{gather}
+if we ignore the factor $1/2E_p$ then we have a normal Fourier-Transform as in non relativistic QM, which would make our approxmiation equal.
+
+non-relativistic case: $E_p^2 = p^2 + m^2 \approx m^2$
+
+\begin{equation}
+	\Rightarrow D(x-y) = \bra 0 \varphi(x)\varphi(y) \ket0
+\end{equation}
+"is the probability amplitude that a particle at $x$ is detected at position $y$"
+
+Next Lecture: We will prove $D(x-y) \neq 0$ even if x-y is spacelike.
+
+
+
+\end{document}
+

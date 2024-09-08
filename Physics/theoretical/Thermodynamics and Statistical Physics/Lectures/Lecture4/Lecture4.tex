@@ -1,0 +1,109 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 4}
+\author{}
+\date{28.8.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Microstates and Macrostates}
+\begin{itemize}
+	\item what is the most likely outcome of tossing 3 coins?
+	\item Microstates: state of all coins
+		\begin{itemize}
+			\item heads: $s_i = 1$, tails $s_i = 0$.
+			\item all microstates are equally likely
+		\end{itemize}
+	\item Macrostate: collective property
+		\begin{itemize}
+			\item sum of states: $n = \sum_i s_i = \{0,1,2,3\}$
+		\end{itemize}
+	\item wWhich is the most likely macrostate?
+		\begin{itemize}
+			\item $8 = 2^3$ possible microstates
+			\item Probabilities:
+				\begin{itemize}
+					\item n = 0, P = 1/8
+					\item n = 1, P = 3/8...
+				\end{itemize}
+		\end{itemize}
+\end{itemize}
+
+Some Two-State models:
+\begin{itemize}
+	\item Paramagnets
+	\item two-sided box
+	\item random walk
+\end{itemize}
+System: $N$ spins, particles, steps, coins
+\begin{itemize}
+	\item Isolated
+	\item Independent (no interaction between spins/particles, no correlation between successive steps)
+	\item Distinguishable (the order matters)
+	\item Equal probability of states $s_i = \pm1$
+\end{itemize}
+
+Macroscopic explanation of diffusion:\\
+Net transport of energy of particles until thermodynamics equilibrium is reached
+
+\begin{itemize}
+	\item $J = -D\nabla c$ Matter flux is proportional to gradient of concentration
+	\item $Q = -\lambda\nabla T$ Heat flux is proportional to gradient of temperature
+	\item what are the equilibrium conditions?
+\end{itemize}
+
+Microscopic explanation of diffuction
+\begin{itemize}
+	\item[] Net transport of energy or particles
+		\begin{itemize}
+			\item through random thermal motion and particle collisions
+			\item until the most likely states are reached
+		\end{itemize}
+	\item At any $T>0K$, particles are in thermal motion
+	\item Collisions between particles is a zigzag
+\end{itemize}
+
+Microscopic models of diffusion
+\begin{enumerate}
+	\item Random walk
+	\item Algorithmic
+	\item Molecular Dynamics
+\end{enumerate}
+\begin{itemize}
+	\item Reversible laws of motion
+	\item Irreversible development: arrow of time
+	\item Measure average property: distribution in box (left/right)
+\end{itemize}
+
+\section{Einstein Crystal}
+
+There are $N$ independent, distinguishable quantum harmonic oscillators.\\
+They have discrete energy states $E_n = (n + \frac{1}{2})\hbar\omega$\\
+The microstates of this crystal are $\{n_i\}; \{n_1, n_2, n_3, \cdots, n_N\}$\\
+Macrostate $U_N = \sum_{i \in \{n_i\}} \E_i = \sum_i n_i\hbar\omega + \frac{1}{2}\hbar\omega$
+\begin{equation}
+	q = \frac{U_N - \frac{1}{2}\hbar\omega}{\hbar\omega} = \sum_i n_i
+\end{equation}
+The macrostates are defined by $(N,q)$.
+
+Example: 3 oscillators.
+\begin{equation}
+	q = 2
+\end{equation}
+we have 6 microstates for this macrostate. We will map this problem onto a two state model. We say that our oscillators are 3 boxes, where the walls are 1s and the balls are 0s. Then for example $\{0,0,2\} = 1100$. This fully describes our system with a $4$-bit number. Then we calculate
+\begin{gather}
+	N'=4 = N - 1 + q = \text{ walls + balls}\\
+	n = q\\
+	\Rightarrow \Omega(N, q) = \frac{(N-1+q)!}{q!(N-1)!}
+\end{gather}
+
+\end{document}
+

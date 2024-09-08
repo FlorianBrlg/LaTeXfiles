@@ -1,0 +1,127 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 5}
+\author{}
+\date{2.9.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+%\bigg
+\begin{equation}
+$D(x-y) = \bra 0 \varphi(x)\varphi(y) \ket 0$
+\end{equation}
+%\normal
+\begin{equation}
+	\varphi(x) = \int\frac{\text d ^3p}{(2\pi)^3}\frac{1}{\sqrt{2 E_p}}\left[a_p e^{-ipx} + a_p^\dagger e^{ipx}\right]
+\end{equation}
+Interpretation of $\varphi(x)\ket 0$?\\
+Particle localized at $x$?
+\begin{equation}
+	\varphi(x) \ket 0 = \int \frac{\text d ^3p}{(2\pi)^3} \frac{1}{2E_p}e^{-ipx}\ket p,\;\;\;\; \ket p = \sqrt{2 E_p}a_p^\dagger \ket 0
+\end{equation}
+
+(Abb1.1)
+
+\begin{gather}
+	D(x-y) = \int\frac{\text d^3p}{(2\pi)^3}\int\frac{\text d^3q}{(2\pi)^3}\frac{1}{2E_p2E_q}e^{iqy-ipx}\bra q \ket p \\
+	\text{The Delta function collapses one of the integrals, here q is chosen.} \nonumber\\
+	= \int\frac{\text d ^3p}{(2\pi)^3}\frac{1}{2E_p}e^{-ip(x-y)},\;\;\;\; -r = x-y.\\
+	= \frac{1}{2(2\pi)^2}\int_0^\infty \text dp \frac{p^2}{\sqrt{p^2+m^2}}\underbrace{\int_0^\pi \underbrace{\text d \theta \sin(\theta)}_{=-\text du} e^{ipr\underbrace{\cos(\theta)}_{u}}}_{II}\\
+	\text{Choose $r$ along the $z$ axis, where it and the $p$ vector span the angle $\theta$, Abb1.2}\nonumber\\
+	(II) = -\int_{-1}^1\text du e^{ipru} = -\frac{e^{ipr} - e^{-ipr}}{ipr}\\
+	(\text{tot}) = \frac{i}{2(2\pi)^2 r}\int_0^\infty \frac{\text dp p^2}{\sqrt{p^2 + m^2}}\frac{e^{ipr}-e^{-ipr}}{p}\\
+	= \frac{1}{2(2\pi)^2 r}\int_{-\infty}^\infty \frac{p}{\sqrt{p^2+m^2}}e^{ipr} \approx \frac{e^{-mr}}{\sqrt{r}}\\
+	\text{Look up Fourier Transform, Get Bessel function, Look at asymptotic behavior.}\nonumber
+\end{gather}
+That means, that $D(x-y)$ is non-zero everywhere. This makes sense, if the particle is not localized, meaning it has tails. Not a violation of Causality.
+
+\subsection{Causality in QFT}
+
+A measurement at $x$ does not affect a measurement at $y$, if $x-y$ is spacelike.
+
+We then calculate the commutator of $\varphi(x)$ and $\varphi(y)$. It should be $0$.
+
+\begin{gather}
+	\left[\varphi(x),\varphi(y)\right] = \int\frac{\text d^3p}{(2\pi)^3}\int\frac{\text d ^3q}{(2\pi)^3}\frac{1}{\sqrt{2E_p 2E_q}}\left(\left[a_p e^{-ipx,}, a_q^\dagger e^{iqy}\right] + \left[ a_p^\dagger e^{ipx}, a_q e^{-iqy}\right]\right)\\
+	=\int\frac{\text d^3p}{(2\pi)^3}\frac{1}{2 E_p}\left(e^{-ip(x-y)} - e^{ip(x-y)}\right)\\
+	= D(x-y) - D(y-x)\\
+	\text{Assume, that $x$ and $y$ are spacelike.}\nonumber\\
+	\text{Put $y = (0,0,0,0)$ and $x = (t,0,0,z)$. $z>t$ because $x$ spacelike.}\nonumber\\
+	\text{there exists a Lorentz Transformation such that $x\mapsto x'$, $t\mapsto t' = 0$.}\nonumber\\
+	\text{This is satisfied for $\beta = -t/z$. Then $t' = \gamma(t + \beta z) = 0.$}\nonumber\\
+	= D(x-y) - \underbrace{D(y-x)}_{= D(x-y)}\;\;(3-vectors)\\
+	= 0
+\end{gather}
+
+
+\section{Klein-Gordon Propagator.}
+
+Let $x^0 > y^0$. 
+\begin{gather}
+	\left[\varphi(x),\varphi(y)\right] = \int\frac{\text d ^3p}{(2\pi)^3}\frac{1}{E_p}\left(\underbrace{e^{-ip(x-y)}}_{D(x-y)} - \underbrace{e^{ip(x-y)}}_{D(y-x)}\right)\\
+\text{We transform $\vec p \mapsto - \vec p$}\nonumber\\
+=\int\frac{\text d^3p}{(2\pi)^3}\left[\frac{e^{-ip(x-y)}}{2E_p} \bigg\rvert_{p^0 = E_p} - \frac{e^{-ip(x-y)}}{2E_p}\bigg\rvert_{p^0 = -E_p}\right]\\
+\int \frac{\text d^3p}{(2\pi)^3}\frac{1}{-2\pi i}\int \text d p^0 \frac{e^{-ip(x-y)}}{p^2-m^2}\\
+\text{We have two poles, one at $p^0 = E_p$ and one at $p^0 = -E_p$. Abb2.1} \nonumber\\
+= i\int\frac{\text d^4p}{(2\pi)^4}\frac{e^{-ip(x-y)}}{p^2-m^2}
+\end{gather}
+
+\subsection{Retarded propagator}
+
+For any $x^0$ and $y^0$. The Retarded Operator:
+\begin{align}
+	D_R(x-y) &= \int\frac{\text d^4 p}{(2\pi)^4}\frac{i}{p^2 - m^2}e^{-ip(x-y)}
+	\begin{dcases*}
+		D(x-y) - D(y-x) &, $x^0 > y^0$\\
+		0 & , $x^0 < y^0$
+	\end{dcases*}\\
+	&= \Theta(x^0 - y^0)[D(x-y) - D(y-x)] \text{ Heaviside function}
+\end{align}
+$iD_R(x-y)$ is a Green's function for the Klein Gordon equation.
+\begin{gather}
+	(\partial^2 + m^2)i D_R(x-y) = \int\frac{\text d^4p}{(2\pi)^4}\frac{(i)i}{p^2 - m^2}\left((-ip_\mu)(-ip^\mu) + m^2\right)e^{ip(x-y)}\\
+	= \int\frac{\text d^4p}{(2\pi)^4} e^{ip(x-y)} = \delta(x-y)
+\end{gather}
+
+\section{Feynman propagator}
+\begin{gather}
+	D_F(x-y = \int\frac{\text d^4p}{(2\pi)^4}\frac{i}{p^2-m^2}e^{-ip(x-y)}\\
+	\text{Here, the integration path is different. We integrate below the first}\nonumber\\
+	\text{pole, and above the second.}\nonumber\\
+	= \int\frac{\text d^4p}{(2\pi)^4}\frac{i}{p^2-n^2 +i\epsilon}e^{-ip(x-y)} \text{, Abb3.1}
+\end{gather}
+The Feynman Propagator is used a lot.
+
+When $x^0 > y^0$: Loop has to be closed below, this gives $D(x-y).$\\
+When $x^0 < y^0$: Loop has to be closed above, this gives $D(y-x).$
+\begin{equation}
+	D_F(x-y) =
+	\begin{dcases*}
+		D(x-y)& , $x^0 > y^0$\\
+		D(y-x)& , $x^0 < y^0$
+	\end{dcases*}
+= \bra 0 T\{\varphi(x)\varphi(y)\} \ket 0
+\end{equation}
+$T$ is the time ordering symbol. It is defined as
+\begin{gather}
+	T\varphi(x)\varphi(y) = \varphi(x)\varphi(y), \text{ when } x^0 > y^0\\
+	T\varphi(x)\varphi(y) = \varphi(y)\varphi(x), \text{ when } y^0 < y^0
+\end{gather}
+
+Next Topic: Chapter 3 in Peskin and Schröder. Before that, discuss Group Theory.
+
+
+
+
+
+
+\end{document}
+
