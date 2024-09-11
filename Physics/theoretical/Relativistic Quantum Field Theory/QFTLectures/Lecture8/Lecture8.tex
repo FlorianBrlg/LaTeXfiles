@@ -1,0 +1,160 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 8}
+\author{}
+\date{11.9.2023}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+Lorentz Transformation: $$
+\Lambda = e^{\frac{1}{2}\Omega_{\rho\sigma}M^{\rho\sigma}}
+$$
+Spinor Representation: $$
+S[\Lambda] = e^{\frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}}
+$$
+Some things:
+\begin{itemize}
+	\item $S[\Lambda]$ is not unitary (for boosts)
+	\item $S[\Lambda] \neq \Lambda$
+\end{itemize}
+In the chiral representation,
+\begin{gather}
+	(\gamma^0)^\dagger = \gamma^0\\
+	(\gamma^i)^\dagger = -\gamma^i\\
+	(\gamma^\mu)^\dagger = \gamma^0\gamma^\mu\gamma^0
+\end{gather}
+\section{Dirac Spinor $\psi^\alpha$}
+The Dirac spinor are four complex numbers $\psi^\alpha$ that transform as
+\begin{equation}
+	\psi_\alpha(x) \mapsto S[\Lambda]_{\alpha\beta} \psi_\beta(\Lambda^{-1}x)
+\end{equation}
+This is similar to the four vector transformation
+$$
+A^\mu(x)\mapsto \Lambda^\mu_\nu A^\nu(\Lambda^{-1}x)
+$$
+\begin{itemize}
+	\item $\psi^\alpha$ is not a four-vector.
+	\item $\psi^\dagger \psi \mapsto \psi^\dagger S^\dagger S\psi \neq \psi^\dagger\psi$ in general, as $S$ is not unitary. $\psi^\dagger\psi$ is then not a scalar.
+	\item Define $\bar\psi = \psi^\dagger\gamma^0$.
+	\begin{gather}
+	\bar\psi \mapsto \psi^\dagger S^\dagger\gamma^0, S[\Lambda]^\dagger = e^{\frac{1}{2}\Omega_{\rho\sigma}(S^{\rho\sigma})^\dagger}\\
+	(S^{\rho\sigma})^\dagger = \frac{1}{4}[\gamma^\rho\gamma^\sigma - \gamma^\sigma\gamma^\rho]^\dagger = \frac{1}{4}(\gamma^0\gamma^\sigma\gamma^0\gamma^0\gamma^\rho\gamma^\sigma - \gamma^0\gamma^\rho\gamma^0\gamma^0\gamma^\sigma\gamma^0)\\
+= \frac{1}{4}\gamma^0[\gamma^\sigma,\gamma^\rho]\gamma^0 = -\gamma^0 S^{\rho\sigma} \gamma^0\\
+\bar\psi\mapsto\psi^\dagger S[\Lambda]^\dagger \gamma^0\\
+= \psi^\dagger(e^{-\frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}}\gamma^0) = \psi^\dagger\gamma^0e^{-\frac{1}{2}\Omega_{\rho\sigma}\gamma^0S^{\rho\sigma}\gamma^0}\gamma^0\\
+= \bar\psi S[\Lambda]^{-1}
+	\end{gather}
+	\item $\bar\psi\psi$ is a scalar.
+	\item $\bar\psi\gamma^\mu\psi$ is a four vector!
+	\begin{gather}
+	\bar\psi\gamma^\mu\psi \mapsto \bar\psi S[\Lambda]^{-1}\gamma^\mu S[\Lambda]\psi \questeq \Lambda^\mu_\nu \bar\psi\gamma^\nu\psi %get questeq to work	
+	\end{gather}
+	This is the case if $S^{-1}\gamma^\mu S = \Lambda^\mu_\nu\gamma^\nu$. We use Taylor series:
+	\begin{gather}
+		\left(1 - \frac{1}{2}\Omega_{\rho\sigma} S^{\rho\sigma}\right)\gamma^\mu\left(1 + \frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}\right) \questeq \left( \delta^\mu_\nu + \frac{1}{2}\Omega_{\rho\sigma}(M^{\rho\sigma})^\mu_\nu\right)\gamma^\nu\\
+		-\frac{1}{2}\Omega_{\rho\sigma}[S^{\rho\sigma},\gamma^\mu] \questeq \frac{1}{2}\Omega_{\rho\sigma}(M^{\rho\sigma})^\mu_\nu\gamma^\nu\\
+		-[S^{\rho\sigma}, \gamma^\mu] \overset{?}{=} (M^{\rho\sigma})^\mu_\nu\gamma^\nu\\
+		= g^{\rho\mu}\gamma^\sigma - g^{\sigma\mu}\gamma^\rho
+	\end{gather}
+	This is in fact true, proving the equality, proving that $\bar\psi\gamma^\mu\psi$ is a four vector.
+	\item $\bar\psi\gamma^\mu\gamma^\nu\psi$ is a tensor.
+	\item $\bar\psi\gamma^\mu\partial_\mu\psi$ is a scalar.
+		\begin{gather}
+		\bar\psi\gamma^\nu\partial_\mu \psi \mapsto \bar\psi S^{-1}\gamma^\mu \Lambda^{-1\nu}_\mu\partial_\nu S\psi\\
+		\text{$S$ may be moved after $\gamma^\mu$.}\nonumber\\
+		\bar\psi\Lambda^\mu_\kappa \gamma^\kappa\Lambda^{-1\,\nu}_\mu\partial_\nu\psi = \bar\psi \gamma^\kappa \delta^\nu_\kappa \partial_\nu \psi\\
+		= \bar\psi\gamma^\nu\partial_\nu\psi
+		\end{gather}
+\end{itemize}
+
+\section{Dirac field}
+
+\begin{gather}
+	L = \bar\psi(x)(i\gamma^\mu\gamma_\mu - m)\psi(x)\\
+	=\bar\psi_\alpha(i\gamma^\mu_{\alpha\beta}\gamma_\mu-m\delta_{\alpha\beta})\psi_\beta
+\end{gather}
+\subsection{Euler-Lagrange equations}
+considering $\psi$ and $\bar\psi$ as independent. For $\bar\psi_\alpha$
+\begin{gather}
+	\pdv{L}{\bar\psi_\alpha} - \partial_\mu \pdv{L}{(\partial_\mu\bar\psi_\alpha)} = 0\\
+	i\gamma^\mu_{\alpha\beta}\partial_\mu\psi_\beta - m\delta_{\alpha\beta}\psi_\beta = 0\\
+	(i\gamma^\mu\partial_\mu - m)\psi = 0,\;\;\text{Dirac equation}\\
+	(i\slashed\partial - m)\psi
+\end{gather}
+\begin{itemize}
+	\item $\slashed A\slashed A = \gamma^\mu A_\mu \gamma^\nu A_\nu = \gamma^\mu\gamma^\nu A_\mu A_\nu = \frac{1}{2}(\gamma^\mu\gamma^\nu + \gamma^\nu\gamma^\mu)A_\mu A_\nu = g^{\mu\nu}A_\mu A_\nu= A^2$, It is always implied that $A$ is multiplied by the $4\times4$ identity.
+\end{itemize}
+Each spinor component satisfies the Klein-Gordon equation.
+\begin{gather}
+	(i\slashed\partial + m)\underbrace{(i\slashed\partial - m)\psi = 0}_{\text{Dirac}}\\
+	\Rightarrow (\partial^2 + m^2)\psi = 0,\;\;\;\text{Klein Gordon}
+\end{gather}
+\subsection{Forms of the Dirac Equation}
+\begin{itemize}
+	\item $(i\gamma^\mu\partial_\mu - m)\psi = 0$
+	\item $(i\slashed\partial - m)\psi = 0$
+	\item write $\psi = (\psi_L, \psi_R)^T$. Then
+	$$
+	\begin{pmatrix}
+		-m & i(\partial_0 + \sigma\nabla)\\
+		i(\partial_0 - \sigma\nabla) & -m
+	\end{pmatrix}
+	\begin{pmatrix}
+		\psi_L \\ \psi_R
+	\end{pmatrix}
+	= 0
+	$$
+	This is useful, for example, for the massless case (Photons).
+\end{itemize}
+Define that
+$$
+\sigma^\mu = (1, \sigma),\;\;\bar\sigma^\mu = (1, -\sigma)
+$$
+then
+\begin{itemize}
+	\item
+	$$
+	\begin{pmatrix}
+		-m & i\sigma\partial\\
+		i\bar\sigma\partial & -m
+	\end{pmatrix}
+	\begin{pmatrix}
+		\psi_R \\ \psi_L
+	\end{pmatrix} = 0
+	$$
+\end{itemize}
+We had
+$$
+S[\Lambda] = 
+\begin{pmatrix}
+	e^{\frac{i}{2}\phi\sigma} & 0\\
+	0 & e^{-\frac{i}{2}\phi\sigma}
+\end{pmatrix}
+$$
+for rotations, and
+$$
+S[\Lambda] =
+\begin{pmatrix}
+	e^{-\eta\sigma/2} & 0\\
+	0 & e^{\eta\sigma/2}
+\end{pmatrix}
+$$
+for boosts.
+
+Thus, $\psi_R$ and $\psi_L$ transform separately. $\psi_R, \psi_L$ are called Weyl spinors.
+
+When $m=0$ then the dirac Equation can be written as
+\begin{gather}
+	i(\partial_0 + \sigma\nabla)\psi_R = 0\\
+	i(\partial_0 - \sigma\nabla)\psi_L = 0
+\end{gather}
+\end{document}
+
