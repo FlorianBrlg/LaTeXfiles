@@ -1,0 +1,223 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 7}
+\author{}
+\date{9.9.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Lorentz Transformations} 
+
+\begin{equation}
+	x^\mu \mapsto x'^\mu = \Lambda^\mu_\nu x^\nu
+\end{equation}
+\begin{equation}
+	x' = \Lambda x
+\end{equation}
+Scalar Field:
+\begin{equation}
+	\varphi'(x) = \varphi(\Lambda^{-1}x)
+\end{equation}
+Vector field:
+\begin{equation}
+	A'^\mu(x) = \Lambda^\mu_\nu A^\nu(\Lambda^{-1}x)
+\end{equation}
+\begin{equation}
+	\Lambda = e^{\frac{1}{2}\Omega_{\rho\sigma}M^{\rho\sigma}}
+\end{equation}
+\begin{equation}
+	S[\Lambda] = e^{\frac{1}{2}\Omega_{\rho\sigma}S^{\rho\sigma}} (Notation from Tom's Lecture notes)
+\end{equation}
+Here, $\Omega$ is a set of coefficients, and $S, M$ are bases.
+\begin{equation}
+	[M^{\rho\sigma}M^{\tau\nu}] = g^{\sigma\tau}M^{\rho\nu} - g^{\rho\tau}M^{\sigma\nu} + g^{\rho\nu}M^{\sigma\tau} - g^{\sigma\nu}M^{\rho\tau} 
+\end{equation}
+\begin{equation}
+	[S^{\rho\sigma}, S^{\tau\nu}] = \text{same as before just with S.}
+\end{equation}
+The Dirac Spinor:
+\begin{equation}
+	\psi'^\alpha = S[\Lambda]^\alpha_\beta \psi(\Lambda^{-1}x)
+\end{equation}
+$S[\Lambda]$ must be a representation of the Lorentz Group.
+\begin{align}
+	\Lambda = &\Lambda_2 \Lambda_1\\
+		  &\underbrace{S[\Lambda_2]S[\Lambda_1]}_{S[\Lambda]}\psi
+\end{align}
+Baker-Campbell-Hausdorff Forumla:
+\begin{gather}
+	e^X e^Y = e^Z\\
+	Z = X + Y + \frac{1}{2}[X,Y] + \frac{1}{12}\cdots
+\end{gather}
+If we know the commutator of a Group, we can construct the whole Group.
+
+We will work on finding a representation for $S[\Lambda]$.
+
+\section{Spinor Representation}
+Clifford Algebra
+\begin{itemize}
+	\item 4 matrices $\gamma^\mu$
+	\item $\{\gamma^\mu, \gamma^\nu\} = 2g^\mu\nu I$.
+	\item $(\gamma^0)^2 = 1, (\gamma^i)^2 = -1$
+\end{itemize}
+Chiral representation
+$$\gamma^0 =
+\begin{pmatrix}
+	0 & 1 \\ 1 & 0
+\end{pmatrix},
+\;\;\; \gamma^i =
+\begin{pmatrix}
+	0 & \sigma^i \\ -\sigma^i & 0
+\end{pmatrix}$$
+
+with the Pauli matrices
+\begin{equation}
+	\sigma^1 = 1, 0, 0, 1\;\;\; \sigma^2 = 0, -i, i, 0\;\;\;\sigma^3 = 1, 0,0,-1
+\end{equation}
+anti- and commutator
+\begin{equation}
+	\{\sigma^i, \sigma^j\} = 2\delta^{ij},\;\;\; [\sigma^i, \sigma^j] = 2i\epsilon^{ijk}\sigma^k
+\end{equation}
+\begin{equation}
+	\sigma^i\sigma^j = \delta^{ij} + i\epsilon^{ijk}\sigma^k
+\end{equation}
+..
+\begin{equation}
+	S^{\rho\sigma} = \frac{1}{4}[\gamma^\rho, \gamma^\sigma] =
+	%\begin{cases}
+	%	0 & ,$\rho = \sigma$\\
+	%	\frac{1}{2}\gamma^\rho\gamma^\sigma &,$\rho\neq\sigma$
+	%\end{cases}
+	= (\frac{1}{2}\gamma^\rho\gamma^\sigma - g^{\rho\sigma})
+\end{equation}
+\begin{gather}
+	[S^{\mu\nu}, \gamma^\rho] =_{\mu\neq\nu} \frac{1}{2}[\gamma^\mu\gamma^\nu, \gamma^\rho] = \frac{1}{2}(\gamma^\mu\gamma^\nu\gamma^\rho - \gamma^\rho\gamma^\mu\gamma^\nu)\nonumber\\
+	= \frac{1}{2}(\gamma^\mu \{\gamma^\nu,\gamma^\rho\} - \gamma^\nu\gamma^\rho\gamma^\nu - \{\gamma^\rho,\gamma^\mu\}\gamma^\nu + \gamma^\mu\gamma^\rho\gamma^\nu\nonumber\\
+	= \frac{1}{2}(\gamma^\mu 2g^{\mu\rho} - 2g^{\rho\mu}\gamma^\nu) = \gamma^\nu g^{\mu\rho} - g^{\rho\mu}\gamma^\mu\\
+	[S^{\rho\sigma},S^{\tau\nu}] = \cdots = g^{\sigma\tau}S^{\rho\nu} - g^{\rho\tau}S^{\sigma\nu} + S^{\rho\nu}S^{\sigma\tau} - g^{\sigma\nu}S^{\rho\tau}
+\end{gather}
+Is $S[\Lambda]\neq\Lambda$?
+\subsection{Example Rotations}
+Let $\Omega_{0\nu} = \Omega{\mu0} = 0$ for all $\mu,\nu$.
+\begin{gather}
+	S^{ij} =_{i\neq j} \frac{1}{2}\gamma^i\gamma^j = \frac{1}{2}
+	\begin{pmatrix}
+		0 & \sigma^i\\ -\sigma^i & 0
+	\end{pmatrix}
+	\begin{pmatrix}
+		0 & \sigma^j \\ -\sigma^j & 0
+	\end{pmatrix}\\
+	=
+	\frac{-1}{2}
+	\begin{pmatrix}
+		\sigma^i\sigma^j & 0 \\ 0 & \sigma^i\sigma^j
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		-\frac{i}{2}\epsilon^{ijk}\sigma^k & 0 \\ 0 & -\frac{i}{2}\epsilon^{ijk}\sigma^k
+\end{pmatrix}\;\; \Omega_{ij} = \epsilon_{ijk}\varphi^k\\
+S[\Lambda] =  e^{\frac{1}{2}\Omega_{ij}S^{ij}} = exp
+\begin{pmatrix}
+	-\frac{i}{2}\Omega_{ij}\epsilon^{ijk}\sigma^k & 0\\
+	0 & -\frac{i}{2}\Sigma_{ij}\epsilon^{ijk}\sigma^k
+\end{pmatrix}\\
+\end{gather}
+use that $\epsilon_{ijk}\epsilon^{ij\ell} = \delta^\ell_k$
+\begin{gather}
+= exp
+\begin{pmatrix}
+	-\frac{i}{2}\varphi^k \sigma^k & 0\\
+	0 & -\frac{i}{2}\varphi^k\sigma^k
+\end{pmatrix}
+=
+\begin{pmatrix}
+	e^{-\frac{i}{2}\varphi\sigma} & 0\\
+	0 & e^{-\frac{i}{2}\varphi\sigma}
+\end{pmatrix}\\
+\Lambda = e^{\frac{1}{2}\Omega_{ij}M^{ij}} = _{\Omega_{12} = -\Omega_{21} = 1} e^{\Omega_{12}M^{12}}\\
+= exp
+\begin{pmatrix}
+	0 & 0 & 0 & 0\\
+	0 & 0 & -\varphi^3 & 0\\
+	0 & \varphi^3 & 0 & 0\\
+	0 & 0 & 0 & 0
+\end{pmatrix}
+\end{gather}
+Only the middle part is nontrivial. Calculate
+\begin{gather}
+	\Lambda_{2\times2} = exp
+	\begin{pmatrix}
+		0 & -\varphi^3 \\ \varphi^3 & 0
+	\end{pmatrix}
+	= exp
+	\left(-i 
+	\begin{vmatrix}
+		0 & -i \\ i & 0 %square braces
+	\end{vmatrix}
+	\varphi^3
+	\right)
+	= \exp(-i\sigma^2\varphi^3)\\
+	= \cos(\varphi^3) - i\sigma^2\sin(\varphi^3)
+	\end{gather}
+This is a rotation about the $3-$ axis
+
+For $\varphi^3 = 2\pi$ we expect the Identity. So $\Lambda = 1$.
+But what about $S[\Lambda]$? We will get
+\begin{equation}
+	\begin{pmatrix}
+		e^{-\frac{i}{2}2\pi\sigma^3} & 0\\
+		0 & e^{-\frac{i}{2}2\pi\sigma^3}
+	\end{pmatrix}=
+	\begin{pmatrix}
+		e^{-i\pi\sigma^3} & 0\\
+		0 & e^{-i\pi\sigma^3}
+	\end{pmatrix}=
+	-1
+\end{equation}
+That means that doing nothing results in a $-1$ change. This means that the Dirac Spinor is not a physical object, not an observable.
+
+\subsection{Example Boosts}
+$\Omega_{ij} = 0$, $\Omega_{i0} = -\Omega_{0i} = -\eta_i$. $-\eta$ is a real quantitiy called rapidity. In Tom's notes this is $\chi$.
+We start
+\begin{gather}
+	S^{0i} = \frac{1}{2}\gamma^0\gamma^i = = \frac{1}{2}
+	\begin{pmatrix}
+		0 & 1 \\ 1 & 0
+	\end{pmatrix}
+	\begin{pmatrix}
+		0 & \sigma^i \\ -\sigma^i & 0
+	\end{pmatrix}=
+	\frac{1}{2}
+	\begin{pmatrix}
+		-\sigma^i & 0 \\ 0 & \sigma^i
+	\end{pmatrix}\\
+	S[\Lambda] = \exp\left[\frac{1}{2}\Omega_{0i}S^{0i} + \frac{1}{2}\Omega_{i0}S^{i0}\right]\\
+	= \exp\left[\Omega_{0i}S^{0i}\right] = \exp\left[-\frac{\eta_i}{2}
+	\begin{pmatrix}
+		-\sigma^i & 0 \\ 0 & \sigma^i
+	\end{pmatrix}
+	\right]
+	=
+	\begin{pmatrix}
+		e^{\frac{\eta_i\sigma^i}{2}} & 0\\
+		0 & e^{\frac{\eta_i\sigma^i}{2}}
+	\end{pmatrix}
+\end{gather}
+Boost along the $1-$direction:
+\begin{gather}
+	\eta_1 = 1, \eta_2 = \eta_3 = 0.\\
+	\Lambda = \exp[\Omega_{0i}M^{0i}] = \exp[\eta_1M^{01}]. 
+	\Lambda_{2\times2} = \exp\left(\eta_1\sigma^1\right) = \cosh\eta_1 + \sigma^1\sinh\eta_1
+\end{gather}
+
+We saw that $S[\Lambda] \neq \Lambda$ and we see that $S[\Lambda]$ is not unitary.
+\end{document}
+
