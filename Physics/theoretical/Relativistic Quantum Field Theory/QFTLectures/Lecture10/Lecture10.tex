@@ -1,0 +1,250 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 10}
+\author{}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+Dirac Equation:
+$$
+	(i\slashed\partial - m) \psi = 0
+$$
+Solutions:
+\begin{gather}
+	\psi = u(p)e^{-ipx},\;\; u^s(p) = 
+	\begin{pmatrix}
+		\sqrt{p\sigma}\xi^s\\
+		\sqrt{p\bar\sigma}\xi^s
+	\end{pmatrix}\\
+	\psi = v(p)e^{ipx},\;\; v^s(p) =
+	\begin{pmatrix}
+		\sqrt{p\sigma}\eta^s\\
+		-\sqrt{p\bar\sigma}\eta^s
+	\end{pmatrix}
+\end{gather}
+we usually take $\eta^s = \xi^s$, and $\xi^1 = \ket +,\;\; \xi^2 = \ket -$.\\
+$\gamma^5 = i\gamma^0\gamma^1\gamma^2\gamma^3 =
+\begin{pmatrix}
+	-1 & 0 \\ 0 & 1
+\end{pmatrix}$
+
+\subsection{Special case of Solution}
+Let $p = (E,0,0,p^3).$
+\begin{gather}
+	p\sigma = 
+	\begin{pmatrix}
+		E-p^3 & 0 \\ 0 & E+p^3
+	\end{pmatrix},\;\; p\bar\sigma =
+	\begin{pmatrix}
+		E + p^3 & 0 \\ 0 & E-p^3
+	\end{pmatrix}
+\end{gather}
+Then
+\begin{gather}
+	\xi^1 =
+	\begin{pmatrix}
+		1 \\ 0
+	\end{pmatrix}:\;\;
+	u^1(p) =
+	\begin{pmatrix}
+		\sqrt{E-p^3} 
+		\begin{pmatrix}
+			1 \\ 0
+		\end{pmatrix}\\
+		\sqrt{E + p^3} 
+		\begin{pmatrix}
+			1 \\ 0
+		\end{pmatrix}
+	\end{pmatrix}
+	\rightarrow_{\text{ultra-rel}}
+	\begin{pmatrix}
+		\begin{pmatrix}
+			0 \\ 0
+		\end{pmatrix}
+		\\
+		\sqrt{2E}
+		\begin{pmatrix}
+			1 \\ 0
+		\end{pmatrix}
+	\end{pmatrix}
+	\\
+	\xi^2 = 
+	\begin{pmatrix}
+		0 \\ 1
+	\end{pmatrix}:\;\;
+	u^2(p) =
+	\begin{pmatrix}
+		\sqrt{E-p^3}
+		\begin{pmatrix}
+			0 \\ 1
+		\end{pmatrix}
+		\\
+		\sqrt{E-p^3}
+		\begin{pmatrix}
+			0 \\ 1
+		\end{pmatrix}
+	\end{pmatrix}
+		\rightarrow
+		\begin{pmatrix}
+			\sqrt{2E}
+			\begin{pmatrix}
+				0 \\ 1
+			\end{pmatrix}\\
+			\begin{pmatrix}
+				0 \\ 0
+			\end{pmatrix}
+		\end{pmatrix}
+\end{gather}
+
+from Quantum Mechanics:
+\begin{equation}
+	S = \frac{\sigma}{2}
+\end{equation}
+And we will take
+\begin{equation}
+	S = \frac{1}{2}
+	\begin{pmatrix}
+		\sigma & 0 \\
+		0 & \sigma
+	\end{pmatrix}
+\end{equation}
+Which is our spin operator.\\
+We will define the helicity, which is the spin in the direction of motion:
+$$
+h = S\cdot p
+$$
+for $p$ along the 3-Axis we have
+$$
+h = \frac{1}{2}
+\begin{pmatrix}
+	\sigma^3 & 0\\
+	0 & \sigma^3
+\end{pmatrix}
+$$
+the helicity is not Lorentz Invariant, but it is a constant of motion.
+
+To correct last lecture:
+\begin{gather}
+	\gamma^{5\dagger} = -i \gamma^{3\dagger}\gamma^{2\dagger}\gamma^{1\dagger}\gamma^{0\dagger}\\
+	= -i \gamma^0\gamma^3\gamma^0\gamma^0\gamma^2\gamma^0\gamma^0\gamma^1\gamma^0\gamma^0\gamma^0\gamma^0\\
+	= -i\gamma^0\gamma^3\gamma^2\gamma^1 = i\gamma^0\gamma^1\gamma^2\gamma^3 = \gamma^5
+\end{gather}
+
+From Exercise:
+\begin{gather}
+	j^\mu = \bar\psi\gamma^\mu\psi\\
+	\partial_\mu j^\mu = 0
+\end{gather}
+is a conserved quantity. We define
+$$
+(j^\mu)^5 = \bar\psi \gamma^\mu\gamma^5\psi
+$$
+$(j^\mu)^5$ is a vector:
+\begin{gather}
+	(j^\mu)^5 \mapsto^\Lambda \bar\psi S[\Lambda]^{-1}\gamma^\mu\gamma^5 S[\Lambda]\psi\\
+	S[\Lambda] = e^{\frac{1}{2} \Omega_{\rho\sigma}S^{\rho\sigma}},\;\; S^{\rho\sigma} = \frac{1}{4}(\gamma^\rho\gamma^\sigma - \gamma^\sigma\gamma\rho)\\
+	[\gamma^5, \gamma^\mu\gamma^\nu] = 0\\
+	(13) = \bar\psi \Lambda^\mu_\nu\gamma^\nu\gamma^5\psi = \Lambda^\mu_\nu \bar\psi\gamma^\nu\gamma^5\psi
+\end{gather}
+so it is a vector. It is conserved (for $m=0$):
+\begin{gather}
+	\partial_\mu (j^\mu)^5 = \partial_\mu\bar\psi\gamma^\mu\gamma^5\psi + \bar\psi\gamma^\mu\gamma^5\partial_\mu\psi\\
+	= 0 - \bar\gamma^5\gamma^\mu\partial_\mu\psi = 0 \text{  (From Dirac Equation)}
+\end{gather}
+
+The transformation for the current is $\psi \mapsto e^{i\alpha\gamma^5}\psi$.\\
+$j^\mu$ is the electric current.\\
+Consider $\frac{1 - \gamma^5}{2} = 
+\begin{pmatrix}
+	1 & 0 \\ 0 & 0
+\end{pmatrix},\;\; \frac{1 + \gamma^5}{2} = 
+\begin{pmatrix}
+	0 & 0 \\ 0 & 1
+\end{pmatrix}.$\\
+$j_L^\mu = \bar\psi\gamma^\mu \frac{1-\gamma^5}{2}\psi, j_R^\mu = \bar\psi\gamma^\mu \frac{1+\gamma^5}{2}\psi$
+Then, $j_L^\mu$ only depends on $\psi_L$ as does $j_R^\mu$ on $\psi_R$. They are the respective electrical currents.
+
+\subsection{Dirac field bilinears:}
+\begin{itemize}
+	\item $\bar\psi\psi$
+	\item $\bar\psi\gamma^\mu\psi$
+	\item $\bar\psi\gamma^\mu\gamma^\nu\psi$
+	\item $\bar\psi\gamma^\mu\gamma^5\psi$
+	\item $\bar\psi T \psi$
+\end{itemize}
+where $T$ is a $4\times4$ matrix
+
+\section{Quantization of the Dirac field}
+\begin{equation}
+	\mathcal{L} = \bar\psi(i\gamma^\mu\partial_\mu - m)\psi
+\end{equation}
+and the canonical momentums
+\begin{gather}
+	\pi = \pdv{L}{\dot\psi} = i\bar\psi\gamma^0 = i\psi^\dagger\\
+	\pi_{\bar\psi} = 0
+\end{gather}
+The Hamiltonian is given by the integral of the Hamiltonian density
+\begin{equation}
+	\int \text d^3x (\pi\dot\psi - L) = \int\text d^3x (i\psi^\dagger\dot\psi - i\psi^\dagger\dot\psi - \bar\psi i\gamma^i \partial_i\psi + m\bar\psi\psi)
+\end{equation}
+Which results in a Hamiltonian
+\begin{equation}
+	H = \int\text d^3x (-i\bar\psi\gamma\nabla\psi + m\bar\psi\psi)
+\end{equation}
+General Solution:
+\begin{gather}
+	\psi(x) = \int \frac{\text d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}}\sum_s \left(a_p^su^s(p)e^{-ipx} + b_p^{s\dagger}v^s(p)e^{ipx}\right)\\
+	\bar\psi(x) = \int \frac{\text d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}}\sum_s \left(a_p^{s\dagger}\bar u^s(p) e^{ipx} + b^s_p \bar v^s(p) e^{-ipx}\right)
+\end{gather}
+\subsection{Canonical quantization}
+\begin{gather}
+	\left[\psi_\alpha(x), \psi_\beta^\dagger(y)\right] = \delta(x-y)\delta_{\alpha\beta}
+\end{gather}
+This would lead to ladder operator properties of $a_p^s$ and $b_p^s$
+\begin{equation}
+	\Rightarrow \cdots \Rightarrow H = \int\frac{\text d^3p}{(2\pi)^3}\sum_s \left(E_p a_p^{s\dagger}a_p^s - E_p b_s^{s\dagger}b_p^s\right)
+\end{equation}
+where the $b$ particles have negative Energy. But this does not lead to the correct theory.
+
+Instead, impose
+\begin{equation}
+	\left\{\psi_\alpha(x), \psi_\beta^\dagger(y)\right\} = \delta(x-y)\delta_{\alpha\beta}
+\end{equation}
+\begin{equation}
+	\left\{\psi_\alpha(x), \psi_\beta(y)\right\} = 0
+\end{equation}
+
+This leads to:
+\begin{equation}
+	\left\{a_p^r, a_q^{s\dagger}\right\} = (2\pi)^3\delta(p-q)\delta^{rs}
+\end{equation}
+\begin{equation}
+	\left\{b_p^r, b_q^{s\dagger}\right\} = (2\pi)^3\delta(p-q)\delta^{rs}
+\end{equation}
+all others vanish. Note:
+\begin{equation}
+	(a\dagger)^2 = a^\dagger a^\dagger = \frac{\left\{a^\dagger, a^\dagger\right\}}{2} = 0
+\end{equation}
+We will prove the opposite implication, proving that (30, 31) lead to (28,29).
+\begin{gather}
+	\{\psi_\alpha(x),\psi_\beta^\dagger(y)\} = \int\frac{\text d^3p}{(2\pi)^3}\frac{1}{2E_p}\sum_s \left( u_\alpha^s(p)v^{s\dagger}_\beta(p) e^{ip(x-y)} + v^s_\alpha(p)v_\beta^{s\dagger}(p) e^{-ip(x-y)} \right)\\
+	\int\frac{\text d^3p}{(2\pi)^3} \frac{1}{2E_p}\left[ (\slashed p + m)\gamma^0 + (\underbrace{\slashed p}_{\text{flip $\vec p$}} - m)\gamma^0 \right]_{\alpha\beta}e^{ip(x-y)}\\
+	\int \frac{\text d^3p}{(2\pi)^3}\frac{1}{2E_p}\left[ (\gamma^0 p_0 + \gamma^ip_i + m)\gamma^0 + (\gamma^0p_0 - \gamma^ip_i -m)\gamma^0 \right]_{\alpha\beta}e^{ip(x-y)}\\
+	= \int\frac{\text d^3p}{(2\pi)^3}e^{ip(x-y)}\delta_{\alpha\beta} = \delta(x-y)\delta_{\alpha\beta}
+\end{gather}
+Fermionic Property important here:
+\begin{equation}
+	\sum_s u^s(p)\bar u^s(p) = \slashed p + m, \;\;\;\; \sum_s u^s(p)u^{s\dagger}(p) = (\slashed p + m) \gamma^0
+\end{equation}
+
+\end{document}
+

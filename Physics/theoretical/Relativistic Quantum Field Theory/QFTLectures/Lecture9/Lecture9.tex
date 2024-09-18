@@ -1,0 +1,226 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture9}
+\author{}
+\date{16.9.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Functions of matrices}
+1)\\
+$A$ is the square matrix.\\
+$fx) = \sum_{n}c_n x^n$. Then
+$$
+f(A) = \sum_{n} c_n A^n.
+$$
+assuming that the Taylor expansion exists, and converges.
+
+2)\\
+Now, assuming that $A$ is normal, meaning that $A^\dagger A = AA^\dagger$. Then
+$$
+A = U \Lambda U^\dagger
+$$
+then we can define
+$$
+f(A) = Uf(\Lambda)U^\dagger,\;\; f(\Lambda) = 
+\begin{pmatrix}
+	f(\lambda_1) & 0 & \cdots\\
+	0 & f(\lambda_2) & \cdots\\
+	\vdots & \cdots & 0
+\end{pmatrix}
+$$
+When 1) and 2) both exist:
+\begin{gather}
+	f_1 = \sum c_n A^n = \sum c_n (U\Lambda U^\dagger)^n = \sum_n c_n U\Lambda^n U^\dagger\\
+	= U \sum c_n A^n U^\dagger = U f(\Lambda) U ^\dagger = f_2
+\end{gather}
+If normal $A$ and $B$ commute, then $\sqrt{AB} = \sqrt A \sqrt B$.
+
+\textit{Proof:}\\
+\begin{gather}
+	[A,B] = 0 \Rightarrow A = U \Lambda_A U^\dagger, B = U\Lambda_B U^\dagger.\\
+	\sqrt{AB} = sqrt{U\Lambda_A U^\dagger U \Lambda_B U^\dagger} = \sqrt{U \Lambda_A \Lambda_B U^\dagger} = U\sqrt{\Lambda_A \Lambda_B}U^\dagger\\
+	= U\sqrt\Lambda_A U^\dagger U \sqrt{\Lambda_B}U^\dagger = \sqrt A \sqrt B.
+\end{gather}
+
+\section{Solutions to the Dirac Equation}
+\begin{equation}
+	(i\slashed\partial - m) \psi = 0
+\end{equation}
+Let $\psi(x) = u(p)\cdot e^{ipx}$
+
+Psi must also be a solution to the Klein Gordon equation.
+\begin{equation}
+	(\partial_\mu \partial^\mu + m^2)\psi = 0
+\end{equation}
+Starting:
+\begin{gather}
+	(i(-i\slashed p) - m)u(p) = 0 = (\slashed p - m)u(p)\\
+	(-p^2 + m^2) u(p) \overset{!}{=} 0
+\end{gather}
+Which means that we require the On-Shell condition, so that $p^2 = m^2$.
+
+Assume that we are in the rest frame, such that $p = (m,0)$. Thus
+\begin{equation}
+	\slashed p = \gamma^0 p_0 = m\gamma^0 = m
+	\begin{pmatrix}
+		0 & 0 & 1 & 0\\
+		0 & 0 & 0 & 1\\
+		1 & 0 & 0 & 0\\
+		0 & 1 & 0 & 0
+	\end{pmatrix}
+\end{equation}
+So (8) yields
+\begin{equation}
+	m
+	\begin{pmatrix}
+		-1 & 1\\
+		1 & -1
+	\end{pmatrix} u = 0, \; u =
+	\begin{pmatrix}
+		\xi \\ \xi
+	\end{pmatrix},\; \xi = (1, 0)^T \text{ or } \xi = (0,1)^T
+\end{equation}
+Rotation: $u \mapsto S(\Lambda) u = 
+\begin{pmatrix}
+	e^{-i\varphi\sigma/2} & 0\\
+	0 & e^{-i\varphi\sigma/2}
+\end{pmatrix}
+\begin{pmatrix}
+	\xi \\ \xi
+\end{pmatrix}
+$\\
+Boost: $u \mapsto S(\Lambda)u =
+\begin{pmatrix}
+	e^{-\eta\sigma/2} & 0\\
+	0 & e^{+\eta\sigma/2}
+\end{pmatrix}
+\begin{pmatrix}
+	\xi \\ \xi
+\end{pmatrix}
+$\\
+$\cdots$
+$$
+u(p) =
+\begin{pmatrix}
+	\sqrt{p\sigma} \xi\\
+	\sqrt{p\bar\sigma} \xi
+\end{pmatrix}
+$$
+Claim: $\sqrt{(p\sigma)(p\bar\sigma)} = m$.
+
+\textit{Proof:}\\
+\begin{gather}
+	(p\sigma)(p\bar\sigma) = (E - \vec p \vec\sigma)(E + \vec p\vec\sigma) = E^2 - (\vec p \vec\sigma)^2\\
+	= E^2 - p^i \sigma^i p^j \sigma^j = E^2 - p^i p^j \cdot \frac{\sigma^i\sigma^j + \sigma^j\sigma^i}{2} = E^2 - p^i p^j = E^2 - \vec p ^2 = p^2 = m
+\end{gather}
+Verify that $u(p)$ satisfies the Dirac equation:
+\begin{gather}
+	\begin{pmatrix}
+		-m & i\sigma\partial\\
+		i\bar\sigma\partial & -m
+	\end{pmatrix}
+	\begin{pmatrix}
+		\sqrt{p\sigma}\xi\\
+		\sqrt{p\bar\sigma}\xi
+	\end{pmatrix} e^{-ipx} =
+	\begin{pmatrix}
+		-m\sqrt{p\sigma}\xi + i\sigma(-ip)\sqrt{p\bar\sigma}\xi\\
+		i\bar\sigma(-ip)\sqrt{p\sigma}\xi - m\sqrt{p\sigma}\xi
+	\end{pmatrix}\\
+	(-m\sqrt{p\sigma} + \sqrt{p\sigma}\sqrt{p\sigma}\sqrt{p\bar\sigma})\xi = 0
+\end{gather}
+So, it is zero and $u(p)$ fulfills the Dirac equation.
+
+\section{Normalization}
+\begin{equation}
+	\bar\psi = \psi^\dagger \gamma^0,\;\;\bar u = u^\dagger \gamma^0
+\end{equation}
+So,
+\begin{gather}
+	(\xi^\dagger \sqrt{p\sigma}, \xi^\dagger \sqrt{p\bar\sigma})
+	\begin{pmatrix}
+		\sqrt{p\sigma}\xi \\ \sqrt{p\bar\sigma}\xi
+	\end{pmatrix} = \xi^\dagger (p\sigma + p\bar\sigma)\xi  = 2E\xi^\dagger\xi
+\end{gather}
+\begin{gather}
+	\bar u u = \xi^\dagger(\sqrt{p\sigma}\sqrt{p\bar\sigma} + \sqrt{p \bar\sigma}\sqrt{p\sigma})\xi = 2m\xi^\dagger \xi
+\end{gather}
+
+We have 2 linearly independent solutions $\psi(x) = u^s(p)e^{-ipx}, u^s(p)=
+\begin{pmatrix}
+	\sqrt{p\sigma}\xi^s \\ \sqrt{p \bar\sigma}\xi^s
+\end{pmatrix},\;\; s = 1,2$.
+and $\psi(x) = v^s(p)e^{ipx}, v^s(p) = 
+\begin{pmatrix}
+	\sqrt{p\sigma}\eta^s \\ -\sqrt{p \bar\sigma}\eta^s
+\end{pmatrix}$
+
+Orthogonality:
+\begin{gather}
+	\bar u^r(p) v^s(p) = (\xi^{r\dagger} \sqrt{p\sigma}, \xi^{r\dagger}\sqrt{p\bar\sigma})
+	\begin{pmatrix}
+		-\sqrt{p\bar\sigma}\eta^s \\ \sqrt{p\sigma}\eta^s
+	\end{pmatrix} = \xi^{r\dagger}(-m + m)\eta^s = 0
+\end{gather}
+\begin{gather}
+	u^{r\dagger}(\vec p)v^s(-\vec p) = (\xi^{r\dagger}\sqrt{p\sigma}, \xi^{r\dagger}\sqrt{p\bar\sigma})
+	\begin{pmatrix}
+		-\sqrt{p\bar\sigma}\eta^s\\
+		\sqrt{p\sigma}\eta^s
+	\end{pmatrix}\\
+	E + \vec p \vec\sigma = p\bar\sigma,\;\; E - \vec p \vec\sigma = p\sigma
+\end{gather}
+$\bar u^r(p)u^s(p) = 2m\delta^{rs}$
+
+\section{Spin sums}
+When calculating cross sections, we will need:
+\begin{gather}
+	\sum_{s = 1,2} u^s(p)\bar u^s(p) = 
+	\sum_{s=1,2}
+	\begin{pmatrix}
+		\sqrt{p\sigma}\xi^s \\ \sqrt{p\bar\sigma}\xi
+	\end{pmatrix}
+	(\xi^{s\dagger}\sqrt{p\sigma},\, \xi^{s\dagger}\sqrt{p\bar\sigma})\gamma^0\\
+	\left[\sum_s \xi^s \xi^{s\dagger} = 1,\;\;\; \sum_s \ket s \bra s = 1\right]\\
+	=
+	\begin{pmatrix}
+		p\sigma & \sqrt{p\sigma}\sqrt{p\bar\sigma}\\
+		\sqrt{p\bar\sigma}\sqrt{p\sigma} & p\bar\sigma
+	\end{pmatrix} \gamma^0 =
+	\begin{pmatrix}
+		m & p\sigma\\
+		p\bar\sigma & m
+	\end{pmatrix} = m + p^0\gamma^0 - p^i\gamma^i = m + \slashed p
+\end{gather}
+\begin{gather}
+	\sum_s v^s(p)v^{-s}(p) = \cdots = \slashed p - m
+\end{gather}
+
+Addition: $m = \sqrt{(p\sigma)(p\bar\sigma)} = \sqrt{p\sigma}\sqrt{p\bar\sigma}$
+\begin{gather}
+	p\sigma = E - \vec p \vec\sigma,\;\; p\bar\sigma = E + \vec p \vec\sigma\\
+	[p\sigma,p\bar\sigma] = 0.
+\end{gather}
+
+\section{$\gamma^5$}
+\begin{gather}
+	\gamma^5 = i\gamma^0\gamma^1\gamma^2\gamma^3\\
+	(\gamma^5)^\dagger = -i \gamma^0\gamma^0\gamma^0 \gamma^0\gamma^1\gamma^0 \gamma^0\gamma^2\gamma^0 \gamma^0\gamma^3\gamma^0 = -i\gamma^1\gamma^2\gamma^3\gamma^0 = i\gamma^0\gamma^1\gamma^2\gamma^3\\
+	(\gamma^5)^2 = 1, \;\; \gamma^5 =
+	\begin{pmatrix}
+		- 1 & 0\\ 0 & 1
+	\end{pmatrix}\\
+	\{\gamma^5, \gamma^\mu\} = 0,\; \gamma^5\gamma^\mu = i\gamma^0\gamma^1\gamma^2\gamma^3\gamma^\mu = -\gamma^\mu\gamma^5
+\end{gather}
+
+\end{document}
+
