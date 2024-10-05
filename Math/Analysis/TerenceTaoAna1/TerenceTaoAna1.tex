@@ -265,7 +265,7 @@ For any natural numbers $a,b,c$, $a(bc) = (ab)c$.\\
 	\item[1] (Sets are Objects). If $A$ is a set then $A$ Is also an Object. Given two sets $A$ and $B$, it is meaningful to ask if $A$ is in $B$.
 	\item[2] (Empty Set) There exists a set $\emptyset$, the empty set, which contains no element, so for all elements $x$, $x\notin\emptyset$.
 	\item[3] (Singleton sets) If $a$ is an object, then there exists a set $\{a\}$ whose only element is $a$, so that $\forall x(x \in \{a\} \Leftrightarrow x = a$).
-	\item[4] (Pairwise union) Given two sets $A, B$, there exists a set $A\cup B$ such that its elements consist of all elements which belong to $A$ or $B$, so $x \in A\cup B \Leftrightarrow (x\in A\wedge x\in B)$.
+	\item[4] (Pairwise union) Given two sets $A, B$, there exists a set $A\cup B$ such that its elements consist of all elements which belong to $A$ or $B$, so $x \in A\cup B \Leftrightarrow (x\in A\vee x\in B)$.
 	\item[5] (Specification) Let $A$ be a set and for each $x\in A$ let $P(x)$ be a property of $x$, s.t. $P(x)$ is either true or false, then there exists a set such that $\{x\in A | P(x)\}$, whose elements are all elements of $A$ for which $P(x)$ is true.
 	\item[6] (Replacement) Let $A$ be a set. For any object $x\in A$ and any object $y$, suppose we have a statement $P(x,y)$ such that for any $x$ $P(x,y)$ is true for at most one $y$. Then there exists a set $\{y| P(x,y) , x\in A\}$. Such that for any object $z$
 	\begin{equation*}
@@ -288,9 +288,13 @@ Two sets $A$ and $B$ are Equal, $A=B$, iff every element of $A$ is an element of
 Let $A$ be a non-empty set. Then there exists an object $x$ such that $x\in A$.\\
 \textit{Proof:} Proof by Contradiction. Assume there is no Object with $x\in A$, meaning that $\forall x(x\neg\in A)$. Thus, from the Axiom of the Empty Set, $A = \emptyset$ as $x\in A \Leftrightarrow x\in\emptyset$. This contradicts that $A$ is nonempty, as $\emptyset$ is empty. Proving the Lemma.
 
+\subsubsection{Example: The Empty set and the Set of the Empty set}
+The empty set $\emptyset$ and the set of the empty set $\{\emptyset\}$ are different sets.\\
+\textit{Proof:} Two sets are the same iff every element in A is an element of B. Per definition, for all $x$, $x\notin \emptyset$. As per the Single Choice Lemma, and that the set of the empty set is not empty, there is an $x \in \{\emptyset\}$. As there is an element in the set of the empty set, and there is no element in the empty set, the sets can't be equal.
 
-
-
+\subsubsection{Example: Substitution in Unions}
+Let $A, B, A'$ be sets and $A = A'$. Then $A\cup B = A'\cup B$.\\
+\textit{Proof:} 
 
 
 

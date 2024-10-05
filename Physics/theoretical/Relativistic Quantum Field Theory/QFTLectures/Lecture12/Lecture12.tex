@@ -1,0 +1,201 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 12}
+\author{}
+\date{25.09.24}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Quantized Dirac field} 
+ 
+\begin{gather}
+	\psi(x) = \int\frac{\text d^3p}{(2\pi)^3}\frac{1}{\sqrt{E_p}}\sum_s \left(a_p^s u^s(p) e^{-ipx} + b_p^{s\dagger}v^s(p)e^{ipx}\right)\\
+	\bar\psi(x) = \int\frac{\text d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}}\sum_s\left(b_p^s \bar v^{s}(p) e^{-ipx} + a_p^{s\dagger}\bar u^s(p)e^{ipx}\right)
+\end{gather}
+Single fermion: Energy, Momentum, Charge, Spin
+\begin{equation}
+	\sqrt{2E_p}a_p^{s\dagger}\ket0,\;\; E_p,\;\; p,\;\; +1,\;\;
+\end{equation}
+Single anti-fermion:
+\begin{equation}
+	\sqrt{2E_p}b_p^{s\dagger}\ket0,\;\; E_p,\;\; p,\;\; -1,\;\;
+\end{equation}
+Noether, Rotation:
+\begin{gather}
+	\int \text d^3x \psi^\dagger(x\times(-i\nabla) + \frac{1}{2}\Sigma)\psi\\
+	\text{is conserved. }\Sigma^i =
+	\begin{pmatrix}
+		\sigma^i & 0 \\ 0 & \sigma^i
+	\end{pmatrix}
+\end{gather}
+Spin:
+\begin{equation}
+	\vec J = \int \text d^3x \psi^\dagger \frac{1}{2}\Sigma\psi
+\end{equation}
+Now,
+\begin{gather}
+	\xi^1 = (1,\,0)^T,\;\; \xi^2 = (0,\,1)^T,\;\; \sigma^3 = 
+	\begin{pmatrix}
+		1 & 0 \\ 0 & -1
+	\end{pmatrix}\\
+	J_z a_p^{s\dagger}\ket 0 = \frac{1}{2}\sum_r \xi^{r\dagger}\sigma^3\xi^s a_p^{s\dagger}\ket 0 = 
+	\begin{cases}
+		\frac{1}{2} & s=1\\
+		-\frac{1}{2} & s = 2
+	\end{cases} a_p^{s\dagger}\ket 0\\
+	= \pm \frac{1}{2}a_p^{s\dagger}\ket 0
+\end{gather}
+Therefore the Eigenvalues of $J_z$ are $\pm1/2$ for fermions and $\mp1/2$ for anti-fermions.
+
+\section{Dirac propagator}
+
+\begin{gather}
+	\bra 0 \psi_\alpha(x) \bar\psi_b(y) \ket 0\\
+	= \int \frac{\text d^3p}{(2\pi)^3}\int\frac{\text d^3q}{(2\pi)^3}\frac{1}{\sqrt{2E_p 2E_q}}\sum_{r,s}\bra0 a_p^r u^r(p) e^{-ipx} a_q^{s\dagger}\bar u^s(q)e^{iqx}\ket 0\\
+	\text{anti commute with } \{a_p^r, a_q^{s\dagger}\} = \delta^{rs}\delta(p-q)(2\pi)^3 \nonumber\\
+	\text{and also use that } \sum_s u^s(p)\bar u^s(q) = \slashed p + m \nonumber\\
+	= \int\frac{\text d^3p}{(2\pi)^3}\frac{1}{2E_p}(\slashed p + m)_{\alpha\beta}e^{-ip(x-y)}\\
+	= (i\slashed\partial + m) \underbrace{\int\frac{\text d^3p}{(2\pi)^3}\frac{1}{2E_p}e^{-ip(x-y)}}_{D(x-y)} = (i\slashed\partial + m)D(x-y)
+\end{gather}
+Klein Gordon:
+\begin{equation}
+	D_F(x-y) = \bra0 T\phi(x)\phi(y) \ket0 =
+	\begin{cases}
+		D(x-y) & x^0 > y^0\\
+		D(y-x) & x^0 < y^0
+	\end{cases}
+	= \int\frac{\text d^4p}{(2\pi)^4}\frac{ie^{-ip(x-y)}}{p^2 - m^2 + i\epsilon}
+\end{equation}
+
+\begin{equation}
+	\bra 0 \bar\psi_\beta(y) \psi_\alpha(x)\ket 0 = \cdots = -(i\slashed\partial + m) D(y-x)
+\end{equation}
+\subsection{Define time ordering}
+Define time ordering for fermionic fields.
+\begin{equation}
+	T\psi_A(x)\psi_B(y) =
+	\begin{cases}
+		\psi_A(x)\psi_B(y) & x^0 > y^0\\
+		-\psi_B(y)\psi_A(x) & x^0 < y^0
+	\end{cases}
+\end{equation}
+
+\section{Feynmann propagator}
+Defining the Feynmann propagator
+\begin{equation}
+	S_F(x-y) = \bra0 T\psi(x)\bar\psi(y)\ket0 =
+	\begin{cases}
+		(i\slashed\partial + m)D(x-y) & x^0 > y^0\\
+		(i\slashed\partial + m)D(y-x) & x^0 < y^0
+	\end{cases}
+\end{equation}
+So,
+\begin{gather}
+	S_F(x) = (i\slashed\partial + m) D_F(x-y)\\
+	= (i\slashed\partial + m) \int\frac{\text d^4p}{(2\pi)^4}\frac{ie^{-ip(x-y)}}{p^2 - m^2 + i\epsilon} = \int\frac{\text d^4p}{(2\pi)^4}\frac{i(\slashed p + m)e^{-ip(x-y)}}{p^2 - m^2 + i\epsilon}\\
+	= F^{(4)}\left\{\frac{i(\slashed p + m)}{p^2 - m^2 + i\epsilon}\right\}
+\end{gather}
+
+\section{Discrete symmetries of Dirac theory}
+Parity (Space flip)
+$$
+P: (t,x) \mapsto (t,-x)
+$$
+Time reversal
+$$
+T: (t,x)\mapsto(-t,x)
+$$
+$$
+C: \text{interchange fermions to anti-fermions}
+$$
+$P, T$ are Lorentz transformations, $C$ is not.
+
+\subsection{Parity}
+$3D$ space: $P$ can be implemented as a reflection followed by a rotation. In particular, a reflection about the $yz$ plane, and a $\pi$ rotation about the $x$ axis.
+
+$$
+P = 
+\begin{pmatrix}
+	1 & 0 & 0 & 0\\
+	0 & -1 & 0 & 0\\
+	0 & 0 & -1 & 0\\
+	0 & 0 & 0 & -1
+\end{pmatrix} =
+\begin{pmatrix}
+	1 & 0 & 0 & 0\\
+	0 & 1 & 0 & 0\\
+	0 & 0 & -1 & 0\\
+	0 & 0 & 0 & -1
+\end{pmatrix}
+\begin{pmatrix}
+	1 & 0 & 0 & 0\\
+	0 & -1 & 0 & 0\\
+	0 & 0 & 1 & 0\\
+	0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+consider the reflection. A vector will be reflected, such that it flips the sign under parity. There are also vectors such as torque or spin, which represent a rotation, which do not flip sign under parity. 
+
+\begin{equation}
+	\text{flipped sign: } r,\;\dot r,\; \ddot r,\; F,\; E
+\end{equation}
+\begin{equation}
+	\text{invariant sign: } T = r\times F,\; L = r\times p,\; B
+\end{equation}
+Vectors which flip sign are called polar vectors, vectors. Vectors which do not flip sign are called axial-vectors, or pseudovectors.\\
+On a quantum state $P$ is implemented as a unitary transformation $U(p)$, but call it $P$. We expect
+$$
+a_p^{s\dagger}\ket 0 = \bar\eta_\alpha a_{-p}^{s\dagger}\ket0, \;\; |\eta_\alpha| = 1
+$$
+\begin{gather}
+	Pa_p^{s\dagger}\ket 0 = P a_p^{s\dagger} PP \ket 0\\
+	P a_p^{s\dagger}P = \bar\eta_\alpha a_{-p}^{s\dagger}\\
+	Pa_p^s P = \eta_\alpha a_{-p}^s\\
+	P b_p^{s\dagger}P = \bar\eta_\beta b_{-p}^{s\dagger}
+\end{gather}
+What happens to $\psi$ under parity?
+\begin{gather}
+	P\psi(x) P = \int \frac{\text d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}}\sum_s \left(\eta_\alpha a_{-p}^s u(p) e^{-ipx} + \bar\eta_\beta b_{-p}^{s\dagger}v(p)e^{ipx}\right)\\
+	\text{Change the variable to } p' = (p^0, -p). \text{ Define } x' = (x^0, -x).\nonumber\\
+	px = p'x'.\; p'\sigma = p\bar\sigma,\; p'\bar\sigma = p\sigma\nonumber\\
+	u(p) = 
+	\begin{pmatrix}
+		\sqrt{p\sigma} \xi\\ \sqrt{p\bar\sigma}\xi
+	\end{pmatrix} =
+	\begin{pmatrix}
+		\sqrt{p'\bar\sigma} \xi \\ \sqrt{p'\sigma}\xi
+	\end{pmatrix} =
+	\gamma^0 u(p').\; v(p) = -\gamma^0 v(p') \nonumber\\
+	\int\frac{\text d^3p'}{(2\pi)^3}\frac{1}{\sqrt{2E_p}}\sum_s\left(\eta_\alpha a^s_{p'}\gamma^0u(p') e^{-ip'x'} - \bar\eta_\beta b_{p'}^{s\dagger} \gamma^0v(p') e^{ip'x'}\right)\\
+	= \gamma^0\psi(x), \text{ if $n_\alpha = 1$ and $\eta_\beta = -1$.}
+\end{gather}
+We conclude that the Parity operation produces a Gamma naught.
+\begin{gather}
+	P\psi(x)P = \gamma^0 \psi(x)\\
+	P\bar\psi(x) P = P\psi^\dagger\gamma^0P = P\psi^\dagger P P\gamma^0 P = \psi^\dagger\gamma^0\gamma^0 = \bar\psi\gamma^0\\
+	P\bar\psi\psi P = P\bar\psi PP \psi P = \bar\psi\gamma^0\gamma^0\psi = \bar\psi\psi\\
+	P\bar\psi \gamma^\mu \psi P = P\bar\psi PP \gamma^\mu PP \psi P = \bar\psi \gamma^0 \gamma^\mu \gamma^0 \psi
+	\begin{cases}
+		\bar\psi\gamma^\mu\psi& \mu = 0\\
+		-\psi\gamma^\mu\psi &\mu = i
+	\end{cases}\\
+	P\bar\psi \gamma^\mu\gamma^5\psi P = \cdots = \bar\psi\gamma^0\gamma^\mu\gamma^5\gamma^0\psi=
+	\begin{cases}
+		-\bar\psi\gamma^\mu\gamma^5\psi & \mu = 0\\
+		\bar\psi\gamma^\mu\gamma^5\psi & \mu = i
+	\end{cases}
+\end{gather}
+There is a Table in Peskin and Schröder about Parity operations.
+
+
+
+\end{document}
+

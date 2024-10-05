@@ -1,0 +1,136 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 11}
+\author{}
+\date{23.9.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Quantized Dirac Field}
+\begin{gather}
+\psi(x) = \int \frac{\text d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}}\sum_s\left(a_p^s u^s(p) e^{-ipx} + b_p^{s\dagger} v^s(p) e^{ipx}\right)\\
+\pi(x) = \pdv{L}{(\partial_0\psi)}  = i\psi^\dagger(x),\;\; H=\int\text d^3x \bar\psi(-i\gamma\nabla + m)\psi\\
+\text{anti-commutators: } \{a_p^r, a_q^{s\dagger}\} = (2\pi)^3\delta(p-q)\delta^{rs}, \text{ all others are zero}\\
+H = \cdots = \int\frac{\text d^3p}{(2\pi)^3} \sum_s E_p(a^{s\dagger}_p a^s_p + b^{s\dagger}_p b^s_p)\\
+Q = \int\text d^3x \bar\psi\gamma^0\psi = \int\text d^3x \psi^\dagger\psi = \cdots = \int \frac{\text d^3p}{(2\pi)^3}\sum_s (a_p^{s\dagger}a_p^s + b_p^{s\dagger}b_p^s)
+\end{gather}
+
+\subsection{Are $a$ and $b$ ladder operators?}
+Quantum Mechanics:\\
+Assume: $[H,a] = -\omega a$ (harmonic Oscillator)
+$$
+(Ha - aH)\ket\psi = -\omega a\ket\psi
+$$
+where $\ket\psi$ is an energy Eigenstate with Energy $E$.
+\begin{gather}
+	(Ha - aE)\ket\psi = -\omega a\ket\psi\\
+	Ha\ket\psi = (E - \omega)a\ket\psi\\
+	\text{there is a vacuum state s.t. } a\ket 0 = 0
+\end{gather}
+QFT:\\
+\begin{gather}
+	[H, a_p^s] =_{[BC, A] = B\{A,C\} - \{A,B\}C} -a_p^s \cdot E_p
+\end{gather}
+This ladder only has $2$ steps.
+$$
+a_p^s\ket0=0
+$$
+for all $p$ and $s$ defines the vacuum state $\ket0$
+$$
+a_p^{s\dagger}\ket0
+$$
+$$
+\left(a_p^{s\dagger}\right)^2\ket0 = 0
+$$
+because the anticommutator is $0$.\\
+Let $\ket{p,s} = \sqrt{2E_p}a_p^{s\dagger}\ket0$ be a single fermion.
+$$
+\braket{p,r | q,s} = \sqrt{2E_p 2E_q}\bra0 a_p^r a_q^{s\dagger}\ket0 = 2E_p (2\pi)^3\delta(p-q)\delta^{rs}
+$$
+Similarly, $\sqrt{2E_p}b_p^{s\dagger}\ket 0$ is an anti-fermion.
+\subsection{Angular Momentum, Spin}
+Consider an infinitesimal rotation $\Theta$ around the 3-axis.
+$$
+\Lambda = 
+\begin{pmatrix}
+	1 & 0 & 0 & 0\\
+	0 & \cos\theta & -\sin\theta & 0\\
+	0 & \sin\theta & \cos\theta & 0\\
+	0 & 0 & 0 & 1
+\end{pmatrix} =
+\begin{pmatrix}
+	1 & 0 & 0 & 0\\
+	0 & 1 & -\theta & 0\\
+	0 & \theta & 1 & 0\\
+	0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+\begin{gather}
+	\psi(x) = S[\Lambda]\psi(\Lambda^{-1}x), \;\; S[\Lambda] =
+	\begin{pmatrix}
+		e^{-i\theta\sigma^3/2} & 0\\
+		0 & e^{-i\theta\sigma^3/2}
+	\end{pmatrix}\\
+	S[\Lambda] = 1 - \frac{i\theta}{2}\Sigma^3,\;\; \Sigma^3 = 
+	\begin{pmatrix}
+		\sigma^3 & 0 \\ 0 & \sigma^3
+	\end{pmatrix}\\
+	\Lambda^{-1}x =
+	\begin{pmatrix}
+		1 & 0 & 0 & 0\\
+		0 & 1 & \theta & 0\\
+		0 & -\theta & 1 & 0\\
+		0 & 0 & 0 & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+		t \\ x \\ y \\ z
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		t \\ x+\theta y\\ -\theta x + y\\ z
+	\end{pmatrix}\\
+	\psi \mapsto \psi + \theta\Delta\psi,\;\; L \mapsto L + \theta\partial_\mu J^\mu\\
+	\theta\Delta\psi = S[\Lambda]\psi(\Lambda^{-1}x) - \psi(x) = \left(1 - \frac{i\theta}{2}\Sigma^3\right)\psi(t, x+\theta y, -\theta x + y, z) - \psi(t,x,y,z)\\
+	= \left(1 - \frac{i\theta}{2}\Sigma^3\right)(\psi + \theta y\partial_x \psi - \theta x \partial_y \psi) - \psi\\
+	= \theta\underbrace{\left(\frac{-i}{2}\sigma^3 \psi + y\partial_x\psi - x\partial_y\psi\right)}_{\Delta\psi}\\
+	\theta\partial_\mu j^\mu = L(\Lambda^{-1}) - L(x) = \theta\left(y\partial_x L - x \partial_y L\right) \\
+	\Rightarrow j^\mu = (0, yL , -xL, 0).\\
+\text{Conserved Noether Current: } j^\mu = \pdv{L}{(\partial_\mu\psi)} \Delta\psi + J^\mu
+\end{gather}
+We consider the timelike component
+\begin{gather}
+	j^0 = \pi\Delta\psi + J^0\\
+	= \pi\left(\frac{-i}{2}\Sigma^3\psi + y\partial_x \psi - x\partial_y\psi\right)\\
+	= -i\psi^\dagger\left(\frac{i}{2}\Sigma^3 + x\partial_y - y\partial_x\right)\psi\;\;\text{conserved}\\
+	\vec J = \int\text d^3x -i\psi^\dagger\left(\frac{i}{2}\Sigma + (x \times (-i\nabla))\right)\psi
+\end{gather}
+For nonrelative fermions: Spin: $J_z = \int \text d^3x -i\psi^\dagger\frac{i}{2}\Sigma^3\psi$
+To find the spin we will want to find the Eigenvalue of $J_z$ in a one-particle state $a_p^{s\dagger}\ket0$. 
+$$
+J_z a_0^{s\dagger}\ket0 =_{J_z\ket0 = 0} [J_z, a_0^{s\dagger}]\ket0
+$$
+Through the Poincaré symmetry we know that $[J_z, H] = 0$. That means that the Vacuum state is an Eigenvalue of $J_z$, meaning that $\bra 0 J_z \ket 0 = 0$ implies $J_z\ket 0 = 0$.
+\begin{gather}
+	J_z = \frac{1}{2}\int\text d^3x\int\frac{\text d^3p}{(2\pi)^3}\int\frac{\text d^3p'}{(2\pi)^3} \frac{1}{\sqrt{2E_p 2E_{p'}}} e^{-ip'x + ipx} \\\sum_{r,r'}\left(a_{p'}^{r'\dagger}u^{r'\dagger}(p') + b_{-p'}^{r'}v^{r'\dagger}(-p')\right)\Sigma^3\left(a_p^r u^r(p) + b_{-p}^{r\dagger}v^r(-p)\right)\\ \text{having put $x^0 = 0$. Now use: } \left[a_p^{r'\dagger}a_p^r, a_0^{s\dagger}\right] = a_p^{r'\dagger}(2\pi)^3\delta^{rs}\delta(p-0)\nonumber\\
+	\int\text d^3x \cdots \Rightarrow \delta(p-p')\\
+	\left[J_z, a_0^{s\dagger}\right]\ket0 = \frac{1}{4m} \sum_{r'}u^{r'\dagger}(0) \Sigma^3 u^s(0)a_0^{r'\dagger}\ket0\\ = \frac{1}{4}\sum_r (\xi^{r\dagger}, \xi^{r\dagger})
+	\begin{pmatrix}
+		\sigma^3 & 0 \\ 0 & \sigma^3
+	\end{pmatrix}
+	\begin{pmatrix}
+		\xi^s \\ \xi^s
+	\end{pmatrix}
+	a_0^{r\dagger}\ket0\\
+	=\frac{1}{2}\xi^{s\dagger}\sigma^3\xi^s
+\end{gather}
+
+
+\end{document}
+
