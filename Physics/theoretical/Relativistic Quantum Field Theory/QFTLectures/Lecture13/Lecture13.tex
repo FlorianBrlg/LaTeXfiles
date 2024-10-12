@@ -1,0 +1,136 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 13}
+\author{}
+\date{7.10.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Interacting fields} 
+
+1)
+$$
+\varphi^4 \text{-Theory: } \mathcal{L} = \frac{1}{2}\partial_\mu\varphi\partial^\mu\varphi - \frac{1}{2}m^2\varphi^2 - \frac{\lambda}{4!}\varphi^4
+$$
+\begin{itemize}
+	\item Self interaction theory
+	\item Simplest interaction theory (Interaction between Fourier components)
+	\item Contains all essential features of an interaction theory
+	\item Not possible to solve analytically
+	\item Relevance to the Standard model and in statistical mechanics and solid state physics
+\end{itemize}
+2)
+$$
+\text{Yukawa-Theory: } \mathcal{L}_\text{Yukawa} = L_{\text{Dirac}} + L_\text{KG} - g\bar\psi\psi\varphi
+$$
+\begin{itemize}
+	\item Very similar to QED, but simpler
+\end{itemize}
+3)
+$$
+\text{QED: } \mathcal{L}_\text{QED} = \mathcal{L}_\text{Maxwell} + \mathcal{L}_\text{Dirac} - \underbrace{e\bar\psi\gamma^\mu\psi A_\mu}_{j^\mu A_\mu}
+$$
+$$
+= \mathcal L_\text{Maxwell} + \bar\psi(i\slashed\partial - m)\psi - \underbrace{e\bar\psi\gamma^\mu\psi A_\mu}_{e\bar\psi \slashed A \psi}
+$$
+$$
+= \mathcal L_\text{Maxwell} + \bar\psi(i\slashed D -m)\psi,\;\; \slashed D = \slashed\partial + ie \slashed A,\;\text{ Gauge covariant Derivative}
+$$
+\begin{itemize}
+	\item explains almost all phenomena down to $10^{-15}m$
+	\item The QED Lagrangian is invariant under gauge transformation $A_\mu \mapsto A_\mu - \frac{1}{e}\partial_\mu \alpha(x)$ and $\psi \mapsto e^{i\alpha(x)}\psi$ together
+\end{itemize}
+
+\section{The Interaction Picture}
+\begin{itemize}
+	\item Define a $t_0$ where all pictures coincide.
+	\item Schrödinger Picture:
+		\begin{itemize}
+			\item State kets evolve in time $\ket{\psi(t)} = e^{iH(t-t_0)}\ket{\psi(t_0)}$
+			\item Operators $A(t_0)$ independent of time
+		\end{itemize}
+	\item Heisenberg Picture:
+		\begin{itemize}
+			\item State kets $\ket{\psi(t_0}$ are indepdentent of time
+			\item Operators evolve in time $A(t) = e^{iH(t-t_0)}A(t_0)e^{-iH(t-t_0)}$
+		\end{itemize}
+	\item Interaction Picture:
+		\begin{itemize}
+			\item $A(t) := e^{iH_0(t-t_0)}A(t_0)e^{-iH_0(t-t_0)}$ where we have $H = H_0 + H_{\text{interacting}}$
+			\item $\ket{\psi(t)} := e^{iH_0(t-t_0)}e^{-iH(t-t_0)}\ket{\psi(t_0)}$
+		\end{itemize}
+\end{itemize}
+
+Calculating the expectation values:
+\begin{gather}
+	\langle A \rangle = \bra{\psi(t)} A(t) \ket{\psi(t)} = \cdots \\
+	= \bra{\psi(t_0)} e^{iH(t-t_0)} A(t_0) e^{-iH(t-t_0)}\ket{\psi(t_0)}
+\end{gather}
+Showing that the definitions are equivalent physically.
+
+We define the Operator:
+$$
+U(t,t_0) = e^{iH_0(t-t_0)}e^{-iH(t-t_0)}
+$$
+Some properties we want:
+\begin{itemize}
+	\item $U(t_3,t_2)U(t_2,t_1) = U(t_3,t_1)$
+	\item $U(t_2,t_1) = U^\dagger(t_1,t_2)$
+	\item $U(t,t')$ General
+\end{itemize}
+
+We want an expression for $U(t,t') = U(t,t_0) U(t_0,t')$
+\begin{gather}
+	U(t,t_0)U^\dagger(t',t_0) = e^{iH_0(t-t_0)}e^{-iH(t-t_0)}e^{iH(t'-t_0)}e^{-iH_0(t'-t_0)}\\
+	= e^{iH_0(t-t_0)}e^{iH(t'-t)}e^{-iH_0(t'-t_0)}
+\end{gather}
+
+
+\section{Perturbation Theory}
+Goal: Calculating $\bra\Omega T\phi(x)\phi(y)\ket\Omega$ in $\phi^4$-Theory
+$$
+H = H_0 + \int \text d^3x \frac{\lambda}{4!}\phi^4
+$$
+with $H_0$ being the KG Hamiltonian.\\
+Hamiltonian in the interaction picture:
+\begin{gather}
+	e^{iH_0(t-t_0)}(H_0 + H_\text{int})e^{-iH_0(t-t_0)}\\
+	= H_0 + H_I(t),\;\; H_I = e^{iH_0(t-t_0)}H_\text{int}e^{-iH_0(t-t_0)}\\
+	\phi_I(t) = e^{iH_0(t-t_0)}\phi(t_0)e^{-iH_0(t-t_0)}\\
+		= e^{iH_0(t-t_0)}e^{-iH(t-t_0)}\phi(t)e^{iH(t-t_0)}e^{-iH_0(t-t_0)}\\
+		= U(t,t_0)\phi(t)U^\dagger(t,t_0)\\
+		\Rightarrow \phi(t) = U^\dagger(t,t_0)\phi_I(t)U(t,t_0)
+\end{gather}
+
+Find a useful expression for $U(t,t')$.
+\begin{gather}
+	i\pdv{U(t,t')}{t} = e^{iH_0(t-t_0)}\underbrace{(H-H_0)}_{H_\text{int}}\left(e^{-iH_0(t-t_0)}e^{iH_0(t-t_0)}\right)e^{iH(t'-t)}e^{-iH_0(t-t_0)}\\
+	= H_I(t) U(t,t')
+\end{gather}
+Solution through Dyson series:
+\begin{gather}
+	U(t,t') = 1 + (-i)\int_{t'}^t \text dt_1 H_I(t_1) + (-i)^2 \int_{t'}^t\int_{t'}^{t_1}\text dt_1 \text dt_2 H_I(t_1)H_I(t_2) + \cdots\\
+	\pdv{U}{t_1} = (-i)H_I(t_1) + (-i)^2 H_I(t_1)\int_{t'}^t \text d t_2 H_I(t_2) + \cdots
+\end{gather}
+Useful rewrite:
+\begin{gather}
+	U(t,t') = 1 + (-1) \int_{t'}^t \text dt_1 H_I(t_1) + \frac{(-i)^2}{2}\int_{t'}^t\int_{t'}^{t_1}\text dt_1 \text dt_2 T\{H_I(t_1)H_I(t_2)\} + \cdots\\
+	= T\left\{\exp\left[-i\int_{t'}^t \text dt''H_I(t'')\right]\right\}
+\end{gather}
+Why is this more convenient?
+\begin{equation}
+	H_I(t) = \int \text d^3x \frac{\lambda}{4!}\varphi_I^4
+\end{equation}
+We now have $\phi(t)$, $\phi_I$ and $U(t,t')$.
+
+Next time: what is $\ket\Omega$?
+\end{document}
+

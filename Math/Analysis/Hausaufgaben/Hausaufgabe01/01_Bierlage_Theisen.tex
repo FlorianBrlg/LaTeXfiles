@@ -1,0 +1,87 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Hausaufgabe 1}
+\author{Florian, Jan}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Summenformeln}
+
+\subsection{a)}
+
+\textit{Beweis:} Beweis durch Induktion. Wir beweisen den Basisfall $n=0$.
+\begin{gather}
+	\sum_{k=1}^0 k^2 = \frac{0(0+1)(2\cdot0+1)}{6}\\
+	0 = 0
+\end{gather}
+Wir nehmen jetzt an, dass die Aussage für $n$ stimmt, und beweisen die Aussage für $n \mapsto n+1$.
+\begin{gather}
+	\sum_{k=1}^{n+1} k^2 = \sum_{k=1}^n k^2 + (n+1)^2\\
+	= \frac{n(n+1)(2n+1)}{6} + \frac{6n^2 + 12n + 6}{6}\\
+	= \frac{(n^2+n)(2n+1)}{6} + \frac{6n^2 + 12n + 6}{6}\\
+	= \frac{2n^3 + n^2 + 2n^2 + n + 6n^2 + 12n + 6}{6} = \frac{2n^3 + 9n^2 + 13n + 6}{6}\\
+	\text{Was wir bekommen wollen ist: } \frac{(n+1)(n+2)(2n+3)}{6} \text{ also berechnen:}\nonumber\\
+	\frac{(n+1)(n+2)(2n+3)}{6} = \frac{(n^2 + 3n + 2)(2n+3)}{6}\\
+	= \frac{2n^3 + 3n^2 + 6n^2 + 9n + 4n + 6}{6} = \frac{2n^3 + 9n^2 +13n + 6}{6}
+\end{gather}
+Das ist genau das was wir haben wollten. Da Die Aussage für $n = 0$ stimmt, und für $n\mapsto n+1$ stimmt, falls die Aussage für $n$ stimmt, stimmt die Aussage für ganz $\mathbb{N}$.
+
+\subsection{b)}
+\textit{Beweis: } Beweis durch Induktion. Wir beweisen den Basisfall $n = 0$.
+\begin{gather}
+	\sum_{k=1}^0 \frac{1}{k(k+1)} = \frac{0}{0 + 1}\\
+	0 = 0
+\end{gather}
+Wir nehmen jetzt an, dass die Aussage für $n$ stimmt, und beweisen die Aussage für $n\mapsto n+1$.
+\begin{gather}
+	\sum_{k=1}^{n+1} \frac{1}{k(k+1)} = \sum_{k=1}^n \frac{1}{k(k+1)} + \frac{1}{(n+1)(n+2)}\\
+	= \frac{n}{n+1} + \frac{1}{(n+1)(n+2)} = \frac{n^2 + 2n + 1}{(n+1)(n+2)}\\
+	= \frac{(n+1)^2}{(n+1)(n+2)} = \frac{n+1}{n+2}
+\end{gather}
+Das ist genau das, was wir haben wollten. Da die Aussage für $n=0$ stimmt, und für $n\mapsto n+1$ stimmt, falls die Aussage für $n$ stimmt, stimmt die Aussage für ganz $\mathbb{N}$
+
+
+
+\section{Ungleichungen}
+\subsection{a)}
+\begin{gather}
+	|3-2x| = \sqrt{(3-2x)^2} < 5\\
+	\Rightarrow -5 < 3-2x < 5\\
+	\Rightarrow -8 < 2x < 2\\
+	\Rightarrow -4<x<1
+\end{gather}
+Somit muss $x\in M = \{m\in\mathbb{R}| -4 < m < 1\}$
+
+\subsection{b)}
+
+\begin{gather}
+	\frac{x+4}{x-2} < x\\
+	x+ 4 < x^2 - 2x\\
+	-x^2 + 3x + 4 < 0\\
+	x^2 - 3x - 4 > 0\\
+	(x - 1.5)^2 - 6.25 > 0\\
+	(x -1.5)^2 > 6.25\\
+	-2.5 > x-1.5 > 2.5\\
+	-1 > x > 4
+\end{gather}
+That means x is smaller than $-1$ and bigger than $4$. Meaning that the inequality is true for all Real numbers except for numbers $-1$ to $4$.
+
+
+
+\section{$F_2$}
+\subsection{a)}
+
+Die 1 lässt das Element Invariant unter Multiplikation. Daher ist $u$ die 1.\\\\
+Die 0 lässt das Element Invariant unter Addition. Daher ist $g$ die 0.
+
+
+\end{document}

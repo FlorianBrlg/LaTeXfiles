@@ -1,0 +1,189 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{AQT Homework Sheet 1}
+\author{Florian, Elias}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+I will be using the dagger to signify complex conjugates because the asterisk looks ugly with my compilation setup. For comparison: $\psi* = \psi^\dagger$.
+\section{Hermitean Operators}
+\subsection{}
+Let $\psi_1 = \psi_2 = \psi$ be Eigenstates of $Q$ with the Eigenvalue $\lambda$. So
+$$
+Q\psi = \lambda\psi
+$$
+We then calculate by Eq(1) in the Sheet
+\begin{gather}
+	\int \text d x \psi^\dagger Q\psi = \int \text d x (Q\psi)^\dagger\psi\\
+	\int \text d x \psi^\dagger \lambda \psi = \int \text d x \lambda^\dagger\psi^\dagger\psi\\
+	\lambda \int\text dx \psi^\dagger\psi = \lambda^\dagger \int\text dx\psi^\dagger\psi\\
+	\Rightarrow \lambda = \lambda^\dagger
+\end{gather}
+and through this we see that $\lambda$ must be real, as $Im(\lambda) = -Im(\lambda) \Rightarrow Im(\lambda) = 0$
+\subsection{}
+Let $\psi_1$ and $\psi_2$ be Eigenstates of $Q$ with respective Eigenvalues $\lambda_1$, $\lambda_2$ and $\psi_1 \neq \psi_2$.
+
+Using Eq(1) off the Sheet again:
+\begin{gather}
+	\int \text dx \psi_1^\dagger Q\psi_2 = \int \text dx (Q\psi_1)^\dagger\psi_2\\
+	\int \text dx \psi_1^\dagger \lambda_2 \psi_2 = \int \text dx \lambda_1^\dagger \psi_1^\dagger \psi_2\\
+	\lambda_2 \int\text dx \psi_1^\dagger \psi_2 = \lambda_1 \int \text dx \psi_1^\dagger \psi_2
+\end{gather}
+we now see why non-degenerative eigenstates must be Orthonormal (Because the equality must hold). This proof doesn't hold for degenerative Eigenstates, as $\lambda_1$ could equal $\lambda_2$.
+
+\subsection{}
+The dagger notation could be confusing here so I will swap to using bars for complex conjugates $\bar z$\\\\
+We want to show that a hermitean operator $Q$ is represented by a hermitean Matrix $Q$, where hermitean matrices follow the relation $(A^\dagger)_{ij} = \bar{A_{ji}}$\\
+We use the relation in the hint
+\begin{gather}
+	Q_{ij} = \int \text dx \bar\psi_i Q\psi_j
+\end{gather}
+Take the complex conjugate
+\begin{gather}
+	\bar{Q}_{ij}= \int \text dx \bar{(Q\psi_j)}\psi_i
+\end{gather}
+Where we recognize $Q$ as the hermitean matrix, as in
+\begin{gather}
+	\bar{Q}_{ij} = \int \text dx \bar\psi_j Q^\dagger \psi_i = (Q^\dagger)_{ji}
+\end{gather}
+because the hermitean matrix acts to the left like the matrix itself would act to the right.
+
+\section{Decomposition of a wave function}
+
+\subsection{}
+
+We take $\psi(x,t) = \psi$ as the wave function. We decompose it as
+\begin{equation}
+	\psi = \sum_n u_n(t) \psi_n(x) = u_n \psi^n 
+\end{equation}
+Rewriting the Integral Eq(4) off the sheet we get:
+\begin{gather}
+	u_n = \int \text dx \psi_n^\dagger \psi\\
+	\rightarrow u_n = \int \text dx \psi_n^\dagger u_m\psi^m\\
+	\rightarrow u_n = u_m \int\text dx \psi_n^\dagger \psi^m\\
+	\text{using the orthonormality condition of Eq(3)}\\
+	\rightarrow u_n = u_m \delta_n^m\\
+	\text{using the implied summation we then receive $u_n$ as expected}
+\end{gather}
+
+basically we use the ability to swap integration and summation to establish a kronecker delta over which we sum with the coefficients, then receiving only the desired coefficient.
+
+\subsection{}
+
+\begin{gather}
+	1 = \int \text dx \psi^\dagger \psi = \int \text dx u_n^\dagger \psi^{n\dagger} u_m \psi^m\\
+	= u_n^\dagger u^m \int \psi^{n\dagger}\psi^m = u_n^\dagger u^m \int \psi^{n\dagger} \psi_m\\
+	= u_n^\dagger u^m \delta^n_m = u_n^\dagger u^n = 1
+\end{gather}
+
+Proven
+
+\subsection{}
+
+\begin{gather}
+\langle Q \rangle := \int \text dx \psi^\dagger Q\psi = \int \text dx u_n^\dagger\psi^{n\dagger} Q u_m \psi^m\\
+= u_n^\dagger u_m \int \text dx \psi^{n\dagger}Q\psi^m = u_n^\dagger u_m \int \text dx \psi^{n\dagger}q_m \psi^m\\
+\text{Now you will notice that there will be 3 $m$ indeces. That's a bummer but whatever.}\nonumber\\
+= u_n^\dagger u_m q_m \int \text dx \psi^{n\dagger}\psi^m = u_n^\dagger u_m q_m \delta^{nm}\\
+= \sum_m u_m^\dagger u_m q_m = \sum_m |u_m|^2 q_m
+\end{gather}
+
+\section{Angular Momentum Operator}
+
+\subsection{}
+
+We apply the Operator to the function.
+
+\begin{gather}
+	L_z \psi = -i\hbar \pdv{}{\phi}\frac{1}{\sqrt{2\pi}}e^{im\phi}\\
+	= -i\hbar im \frac{1}{\sqrt{2\pi}}e^{im\phi} = -(i)^2m\hbar \psi = m\hbar\psi
+\end{gather}
+
+Which, according to the definition of Eigenfunctions and Eigenvalues, $\psi$ is an Eigenfunction with the Eigenvalue $m\hbar$.
+
+\subsection{}
+
+we set $\psi(\phi) = \psi(\phi + 2\pi)$.
+\begin{gather}
+	\frac{1}{\sqrt{2\pi}}e^{im\phi} = \frac{1}{\sqrt{2\pi}}e^{im\phi + im2\pi}\\
+	\rightarrow \psi = \psi\cdot e^{im2\pi}
+\end{gather}
+for this equality to hold, $e^{im2\pi} = 1$, this happens when $m2\pi$ is a multiple of $2\pi$, meaning that $m$ must be an Integer.
+
+\subsection{}
+
+calculate the integral explicitly.
+\begin{gather}
+	\frac{1}{2\pi}\int_0^{2\pi} \text d \phi e^{-il \phi}e^{im\phi}\\
+	= \frac{1}{2\pi}\int_0^{2\pi}\text d \phi e^{i(m-l)\phi}\\
+	\text{ for $l = m$ we have: }\frac{1}{2\pi}\int_0^{2\pi}\text d\phi = \frac{1}{2\pi}2\pi = 1\\
+	\text{for $l \neq m$ we have: }\frac{1}{2\pi}\Bigr[\frac{1}{m-l}e^{i(m-l)\phi}\Bigl]_{\phi=0}^{2\pi}\\
+	= \frac{1}{2\pi(m-l)}\left(e^{i(m-l)2\pi} - e^0\right) = \frac{1}{2\pi(m-l)}(1-1) = 0
+\end{gather}
+Therefore we come to the conclusion that
+$$
+\int_0^{2\pi}\text d\phi \psi_l^\dagger \psi_m = \delta^l_m
+$$
+
+\section{Canonical Transformation}
+
+\subsection{}
+
+\begin{gather}
+	\dot{\bar{q}}_i = \pdv{H}{\bar p_i} = \pdv{H}{p_i}\pdv{p_i}{\bar p_i} + \pdv{H}{q_i}\pdv{q_i}{\bar p_i}
+\end{gather}
+
+\subsection{}
+
+\begin{equation}
+	\bar q = \ln(q^{-1}\sin p),\;\;\;\; \bar p = q\cot p
+\end{equation}
+which then comes to be 
+\begin{equation}
+	\bar q_i = \ln(q_j^{-1}\sin p_j),\;\;\;\; \bar p_i = q_j\cot p_j
+\end{equation}
+
+We check the Poisson brackets
+\begin{gather}
+	\left\{\ln(q_i^{-1}\sin p_i), \ln(q_j^{-1}\sin p_j)\right\}\\
+	\pdv{\ln(q_i^{-1}\sin p_i)}{q_k}\pdv{\ln(q_j^{-1}\sin p_j)}{p_k} - \pdv{\ln(q_i^{-1}\sin p_i)}{p_k}\pdv{\ln(q_j^{-1}\sin p_j)}{q_k}\\
+= \pdv{q_i^{-1}\sin p_i}{q_k}\pdv{q_j^{-1}\sin p_j}{p_k}\frac{q_iq_j}{\sin p_i \sin p_j} - \pdv{q_i^{-1}\sin p_i}{p_k}\pdv{q_j^{-1}\sin p_j}{q_k}\frac{q_iq_j}{\sin p_i \sin p_j}\\
+= \left(-\delta^{ik}q_i^{-2}\sin p_i \delta^{jk}q_j^{-1}\cos p_j + \delta^{ik}q_i^{-1}\cos p_i \delta^{jk}q_j^{-2}\sin p_j\right)\frac{q_iq_j}{\sin p_i \sin p_j}\\
+= 0
+\end{gather}
+
+\begin{gather}
+	\left\{q_i \cot p_i, q_j \cot p_j\right\}\\
+\pdv{q_i\cot p_i}{q_k}\pdv{q_j \cot p_j}{p_k} - \pdv{q_i \cot p_i}{p_k}\pdv{q_j \cot p_j}{q_k}\\
+-\delta^{ik}\cot p_i q_j \delta^{jk}\frac{1}{\sin^2 p_j} + q_i \delta^{ik}\frac{1}{\sin^2 p_i}\delta^{jk}\cot p_j\\
+j = i = k\nonumber\\
+\frac{q_k \cot p_k}{\sin^2 p_k} - \frac{q_k \cot p_k}{\sin^2 p_k} = 0
+\end{gather}
+
+\begin{gather}
+	\left\{\ln(q_i \sin p_i), q_j\cot p_j\right\}\\
+	\pdv{\ln(q_i^{-1}\sin p_i)}{q_k}\pdv{(q_j\cot p_j)}{p_k} - \pdv{\ln(q_i^{-1}\sin p_i)}{p_k}\pdv{(q_j\cot p_j)}{q_k}\\
+-\pdv{q_i^{-1}\sin p_i}{q_k}\frac{q_i}{\sin p_i}\delta^{jk}\frac{q_j}{sin^2(p_j)} - \pdv{q_i^{-1}\sin p_i}{p_k}\frac{q_i}{\sin p_i}\delta^{jk}\cot p_j\\
+\delta^{ik}q_i^{-2}q_i\delta^{jk}\frac{q_j}{\sin^2p_j} - \delta^{ik}\cos p_i q_i^{-1} \frac{q_i}{\sin p_i}\delta^{jk}\cot p_j\\
+\text{$\delta^{ik}\delta^{jk} = \delta^{ij}$ because it only equals one if $i = j$.}\nonumber\\
+\text{and we are eliminating $k$ because we're summing over it}\nonumber\\
+\delta^{ij} \frac{1}{\sin^2 p_j} - \delta^{ij}\cot^2 p_j\\
+= \delta^{ij}
+\end{gather}
+
+\subsection{}
+
+\newpage
+
+I also wanted to say, that I (Florian Bierlage) am currently not in Bonn, and will only be able to attend tutorials coming next year, as I will come back to Germany on the 22nd of December.
+
+\end{document}
+

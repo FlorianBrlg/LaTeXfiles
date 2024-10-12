@@ -1,0 +1,221 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Group Theory - Sheet 1}
+\author{Florian}
+\date{10.10.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Rotation Symmetries of a cube}
+
+\subsection{a)}
+
+The identity is the 1st invariance.\\
+Then there is an Invariance for every $\pi/2$ turn around any axis. That is, taking the example of the $z$ axis, we can turn the cube $\pi/2$, $\pi$, $3\pi/2$ and get an invariance. $2\pi$ is not counted as it is equivalent to the Identity.\\
+These are 3 Invariances for 3 unique axes, meaning that there are 9 Invariances.\\
+There is an Invariance for every $2\pi/3$ turn around any vertex. That is for an axis of the form $(b_x, b_y, b_z)$ where $b_i$ is a basis vector. We can turn the cube $2\pi/3$ and $4\pi/3$ and get an Invariance.\\
+These are 2 Invariances for 4 unique axes, meaning there are 8 Invariances.\\
+There is an invariance for every $\pi$ turn around any edge. That is for an axis of the form $(b_x, b_y, 0)$.\\
+There is 1 Invariance for 6 unique axes, meaning there are 6 Invariances.
+
+In total we have $6+8+9+1 = 24$ Rotational invariances.
+
+
+\section{Chiral Group Axioms}
+
+\subsection{a)}
+In the lecture:
+\begin{itemize}
+	\item Associativity: $(a_i * a_j) * a_k = a_i * (a_j * a_k)$
+	\item Neutral element: $\exists e\in G\forall a\in G(e*a = a*e = a)$
+	\item Inverse element: $\forall a \exists a^{-1}(a*a^{-1} = a^{-1}*a=e)$
+\end{itemize}
+We want to prove that these are equivalent to the Definitions on the Homework sheet. Associativity is trivially equivalent.
+\subsubsection{Neutral Element}
+$$
+\exists e\forall a\in G (e*a = a*e = a) \Leftrightarrow \exists e\in G \forall a\in G(a * e = a)
+$$
+So, we want to see that $a*e = a$ somehow implies $e*a = a$ for this to be equivalent.
+
+\textit{Proof: } Assume that $\exists e\in G \forall a\in G(a*e = a)$. Assume that $\forall a\in G\exists a^{-1}\in G(a*a^{-1} =e)$. We now want to see that $a*e = e*a$. We know that two elements are the same if they are equal if connected with another element $a*e*d = e*a*d$. We will show this by picking $d = a^{-1}$.
+\begin{gather}
+	a*e*a^{-1} = e*a*a^{-1}\\
+	a*a^{-1} = e*e\\
+	e = e
+\end{gather}
+So, $a*e = e$ and $a*a^{-1}=e$ implies $e*a = a*e$. And as equality is transitive, $e = a * e = e* a$. Meaning that the axioms are equivalent, if swapped.
+
+\subsubsection{Inverse Element}
+$$
+\forall a\exists a^{-1}(a*a^{-1} = a^{-1}*a = e) \Leftrightarrow \forall a\exists a^{-1}(a*a^{-1}=e)
+$$
+We then want to see if $a*a^{-1}=e$ implies $a^{-1}*a=e$. We do the same as we did previously, showing that $a * a^{-1} = a^{-1} * a$
+
+\textit{Proof:} Assume that $\forall a\exists a^{-1}(a*a^{-1}=e)$ and $\exists e\forall a(a*e = a)$. Through the previously proven statement we can also Assume that $\exists e \forall a(e*a = a)$. 
+\begin{gather}
+	a * a^{-1} = a^{-1} * a\\
+	a * a * a^{-1} = a * a^{-1} * a\\
+	a * e = e * a\\
+	a = a
+\end{gather}
+So $a*a^{-1} = e$ and $e*a = a*e = a$ imply that $a*a^{-1} = a^{-1}*a$, and through the transitive property of equality we have $e = a*a^{-1} = a^{-1}*a$.
+\subsubsection{Why only one direction}
+I only proved the "$\Leftarrow$" direction in both cases, that is because the "$\Rightarrow$" direction is trivial, as the right hand side is included in the left hand side.
+\subsubsection{Alternative direction}
+These axioms would still be equivalent with $e*a=a$ or $a^{-1}*a=e$, however the proofs would have to be adjusted slightly.
+
+\subsection{b)}
+We want to show that $e^{-1} = e$, so that $e^{-1}$ acts on elements as $e$ would.
+
+\textit{Proof: } Assume $\exists e\forall a (e*a=a)$. As this holds for all $a$, it also holds for $e$. So we know that $e*e = e$. Then, from the definition of inverses we know that $a*a^{-1} = e$, particularly we know that $e*e^{-1}=e$, setting them equal we get $e * e = e* e^{-1}$, from this we find that $e = e^{-1}$.
+
+\section{Groups, Yes or No?}
+\subsection{a)}
+It does not obey associativity:
+\begin{gather}
+	\begin{pmatrix}
+		a_1 \\ a_2 \\ a_3
+	\end{pmatrix}\times \left(
+		\begin{pmatrix}
+			b_1 \\ b_2 \\ b_3
+		\end{pmatrix} \times
+		\begin{pmatrix}
+			c_1 \\ c_2 \\ c_3
+		\end{pmatrix}
+	\right)
+	=
+	\left(
+\begin{pmatrix}
+		a_1 \\ a_2 \\ a_3
+	\end{pmatrix}\times
+		\begin{pmatrix}
+			b_1 \\ b_2 \\ b_3
+		\end{pmatrix}
+		\right)\times
+		\begin{pmatrix}
+			c_1 \\ c_2 \\ c_3
+		\end{pmatrix}
+	\\
+	\begin{pmatrix}
+		a_1\\a_2\\a_3
+	\end{pmatrix}\times
+	\begin{pmatrix}
+		b_2c_3 - b_3c_2 \\ b_3c_1 - b_1c_3\\ b_1c_2 - b_2c_1
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		a_2b_3 - a_3b_2 \\ a_3b_1 - a_1b_3\\ a_1b_2 - a_2b_1
+	\end{pmatrix}\times
+	\begin{pmatrix}
+		c_1 \\ c_2 \\ c_3
+	\end{pmatrix}
+	\\
+	\text{With the first entry on both sides being:}\nonumber\\
+	(a_3b_1 - a_1b_3)c_3 - (a_1b_2 - a_2b_1)c_2 = a_2(b_1c_2 - b_2c_1) - a_3(b_3c_1 - b_1c_3)
+\end{gather}
+Which is not equal as the left side contains $a_1$ while the right side does not.
+\subsection{b)}
+The set lacks an inverse for $3$. (The neutral element is $1$)
+\begin{gather}
+	3\cdot 1(\text{mod}3) = 3 (\text{mod}3)\\
+	3\cdot 2(\text{mod}3) = 6(\text{mod}3) = 3(\text{mod}3)\\
+	3\cdot3(\text{mod}3) = 9(\text{mod}3) = 3(\text{mod}3)
+\end{gather}
+
+\subsection{c)}
+
+\subsubsection{Neutral Element}
+The neutral element is $f_1$.
+\begin{gather}
+	f_1(f_1(x)) = x,\;\;\;\; f_1(f_2(x)) = -x\\
+	f_1(f_3(x)) = \frac{1}{x}, \;\;\;\; f_1(f_4(x)) = \frac{-1}{x}
+\end{gather}
+
+\subsubsection{Inverse Element}
+The inverse element of every element is itself.
+\begin{gather}
+	f_1(f_1(x)) = x\\
+	f_2(f_2(x)) = -(-x) = x\\
+	f_3(f_3(x)) = \frac{1}{1/x} = x\\
+	f_4(f_4(x)) = \frac{-1}{-1/x} = x
+\end{gather}
+
+\subsubsection{Associativity}
+I will prove associativity of composition which is more general than the composition of these 4 elements.
+
+\textit{Proof: } let $f:X\rightarrow X$, $g:X\rightarrow X$, $h:X\rightarrow X$ be functions. Then
+\begin{gather}
+	f\cdot(g\cdot h) = (f\cdot g)\cdot h\\
+	f\cdot(g(h(x))) = (f(g(x))\cdot h\\
+	f(g(h(x))) = f(g(h(x)))
+\end{gather}
+Both sides are equivalent, proving associativity.\\\\
+Hence, The functions form a Group. More generally, bijective functions form a Group.
+\subsection{Simple Statements}
+\subsubsection{a)}
+$$
+\forall a\in G(aG = G),\;\; aG := \{ab|b\in G\}
+$$
+\textit{Proof: }
+As a Group underlies the closure property, $\forall a,b \in G(ab\in G)$. So, all elements of $aG$ are elements of $G$, meaning $aG\subset G$. Every element $b$ can be represented as $b = aa^{-1}b$. As $a^{-1}b\in G$, $aa^{-1}b = b \in aG$. So, $aG \subset G$.
+
+As $G \subset aG$ and $aG \subset G$, $G = aG$.
+\subsubsection{b)}
+$$
+\forall a\in G(a^2 = e) \Rightarrow \forall a,b \in G(ab = ba)
+$$
+\textit{Proof: }Assume $\forall x\in G(x^2 = e)$. Let $a,b \in G$.
+\begin{gather}
+	ab = ba\\
+	\text{Multiplying $ab$ from the left}\nonumber\\
+	abab = abba\\
+	(ab)^2 = aea\\
+	\text{using $x^2 = e$}\nonumber\\
+	e = aa\\
+	e = e
+\end{gather}
+Which proves the statement.
+
+\subsection{c)}
+$Z_2\times Z_4 = \{a_1b_1, a_1b_2, a_1b_3, a_1b_4, a_2b_1, a_2b_2, a_2b_3, a_2b_4\}$\\
+$Z_8 = \{c_1, c_2, c_3, c_4, c_5, c_6, c_7, c_8\}$\\\\
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|}
+	\hline
+	& $a_1b_1$ & $a_1b_2$ & $a_1b_3$ & $a_1b_4$ & $a_2b_1$ & $a_2b_2$ & $a_2b_3$ & $a_2b_4$\\\hline\hline
+	$a_1b_1$ & $a_1b_1$ & $a_1b_2$ & $a_1b_3$ & $a_1b_4$ & $a_2b_1$ & $a_2b_2$ & $a_2b_3$ & $a_2b_4$ \\\hline
+	$a_1b_2$ & $a_1b_2$ & $a_1b_3$ & $a_1b_4$ & $a_1b_1$ & $a_2b_2$ & $a_2b_3$ & $a_2b_4$ & $a_2b_1$ \\\hline
+	$a_1b_3$ & $a_1b_3$ & $a_1b_4$ & $a_1b_1$ & $a_1b_2$ & $a_2b_3$ & $a_2b_4$ & $a_2b_1$ & $a_2b_2$\\\hline
+	$a_1b_4$ & $a_1b_4$ & $a_1b_1$ & $a_1b_2$ & $a_1b_3$ & $a_2b_4$ & $a_2b_1$ & $a_2b_2$ & $a_2b_3$ \\\hline
+	$a_2b_1$ & $a_2b_1$ & $a_2b_2$ & $a_2b_3$ & $a_2b_4$ & $a_1b_1$ & $a_1b_2$ & $a_1b_3$ & $a_1b_4$ \\\hline
+	$a_2b_2$ & $a_2b_2$ & $a_2b_3$ & $a_2b_4$ & $a_2b_1$ & $a_1b_2$ & $a_1b_3$ & $a_1b_4$ & $a_1b_1$ \\\hline
+	$a_2b_3$ & $a_2b_3$ & $a_2b_4$ & $a_2b_1$ & $a_2b_2$ & $a_1b_3$ & $a_1b_4$ & $a_1b_1$ & $a_1b_2$ \\\hline
+	$a_2b_4$ & $a_2b_4$ & $a_2b_1$ & $a_2b_2$ & $a_2b_3$ & $a_1b_4$ & $a_1b_1$ & $a_1b_2$ & $a_1b_3$ \\\hline
+\end{tabular}
+
+
+
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|}
+	\hline
+	& $c_1$ & $c_2$ & $c_3$ & $c_4$ & $c_5$ & $c_6$ & $c_7$ & $c_8$\\\hline\hline
+	$c_1$ & $c_1$ & $c_2$ & $c_3$ & $c_4$ & $c_5$ & $c_6$ & $c_7$ & $c_8$ \\\hline
+	$c_2$ & $c_2$ & $c_3$ & $c_4$ & $c_5$ & $c_6$ & $c_7$ & $c_8$ & $c_1$ \\\hline
+	$c_3$ & $c_3$ & $c_4$ & $c_5$ & $c_6$ & $c_7$ & $c_8$ & $c_1$ & $c_2$ \\\hline
+	$c_4$ & $c_4$ & $c_5$ & $c_6$ & $c_7$ & $c_8$ & $c_1$ & $c_2$ & $c_3$ \\\hline
+	$c_5$ & $c_5$ & $c_6$ & $c_7$ & $c_8$ & $c_1$ & $c_2$ & $c_3$ & $c_4$ \\\hline
+	$c_6$ & $c_6$ & $c_7$ & $c_8$ & $c_1$ & $c_2$ & $c_3$ & $c_4$ & $c_5$ \\\hline
+	$c_7$ & $c_7$ & $c_8$ & $c_1$ & $c_2$ & $c_3$ & $c_4$ & $c_5$ & $c_6$ \\\hline
+	$c_8$ & $c_8$ & $c_1$ & $c_2$ & $c_3$ & $c_4$ & $c_5$ & $c_6$ & $c_7$ \\\hline
+\end{tabular}
+
+As we can see, the neutral elements $a_1b_1$, $c_1$ are in completely different places. Meaning that if we tried to establish an isomorphic mapping, where for example $c_1 = a_1b_1, c_2 = a_1b_2, \cdots, c_8 = a_2b_2$ then we would have $c_1c_1 = e = a_1b_1 a_1b_1$, however we can see from the first table that $a_1b_2 a_1b_4 = e$, meaning that $c_2c_4 = e$, but as you can see from the second table this isn't true. So there is no isomorphic mapping that preserves the Group structure.\\\\
+This could also be proven by comparing the Order of each element of each Group, which is the smallest $n$ such that $g^n = e$ for an element $g\in G$.
+\end{document}
+

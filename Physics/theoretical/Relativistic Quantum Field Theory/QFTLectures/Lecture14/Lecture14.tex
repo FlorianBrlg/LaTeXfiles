@@ -1,0 +1,171 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture14}
+\author{}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{$\phi^4$ self interacting theory} 
+
+$$
+\mathcal{L} = \frac{1}{2}\left(\partial_\mu\phi \partial^\mu\phi\right) - \frac{1}{2}m^2\phi^2 - \frac{\lambda}{4!}\phi^4
+$$
+
+$$
+H = \underbrace{H_0}_{\text{free KG}} + \underbrace{H_\text{interacting}}_{\int\text d^3x \frac{\lambda}{4!}\phi^4}
+$$
+
+\section{Interaction picture}
+
+$$
+\phi_I(t) = \int\frac{\text d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}}\left(a_p e^{-ipx} + a_p^\dagger e^{ipx}\right)
+$$
+And related to the Heisenberg picture
+$$
+\phi(x) = U^\dagger(t,t_0) \phi_I U(t,t_0)
+$$
+defining the operator $U$ with the dyson series
+\begin{equation}
+	U(t,t_0) = T\exp\left[-i\int_{t'}^{t}\text dt'' H_I(t'')\right]
+\end{equation}
+$$
+H_I(t) = e^{iH_0(t-t_0)}H_{\text{int}}e^{-iH_0(t-t_0)}
+$$
+$$
+U(t_0,t') = e^{iH(t'-t_0)}e^{-iH_0(t'-t_0)}
+$$
+
+\section{Correlation functions}
+
+Correlation functions are of the form
+$$
+\bra\Omega T\phi(x)\phi(y)\ket\Omega
+$$
+the vacuum state $\ket0$ has changed to $\ket\Omega$ because of the interaction.\\\\
+we claim that this is equal to
+$$
+\frac{\bra0 T\phi_I(x)\phi_I(y)U(\infty,-\infty)\ket0}{\bra0 U(\infty,-\infty)\ket0}
+$$
+which is from Tong's lecture notes p76 (around about)\\
+we will prove this and then derive Wick's theorem.\\\\
+Assume a mass gap. Meaning that you should assume that between the Energy $E_0$ of the state $\ket\Omega$ and the next possible Energy $E_0 + m$ there is a gap. Meaning the energy spectrum is not continuous down to the base Energy.
+
+Assume that $x^0 > y^0$. Start with the numerator.
+\begin{gather}
+	\bra 0 U(\infty, x^0) \phi_I(x) U(x^0, y^0) \phi_I(y) U(y^0, -\infty)\ket0\\
+	= \bra 0 U(\infty, x^0) U(x^0, t_0) \phi(x) U^\dagger(x^0, t_0) U(x^0, y^0) U(y^0, t_0) \phi(y) U^\dagger(y^0,t_0)U(y^0,-\infty)\ket0\\
+	= \underbrace{\bra0 U(\infty, t_0)\phi(x)U(t_0, t_0)\phi(y)}_{\bra\psi}U(t_0, -\infty)\ket0
+\end{gather}
+Because of the differences in vacuums we now consider:
+$$	
+\bra\psi U(t_0, t')\ket0
+$$
+There is a Mass gap, s.t. 
+$$
+H = E_0 \ket\Omega\bra\Omega + \int \text d\lambda\int \frac{\text d^3p}{(2\pi)^3}\ket{\lambda_p}\bra{\lambda_p}E_{\lambda_p}
+$$
+From Quantum mechanics, we have the form $H = \int \text dn E_n\ket n \bra n$ for a continuous spectrum $n$.\\
+When ommitting the Energies you get the Identity operator
+$$
+1 = \ket\Omega\bra\Omega + \int \text d\lambda\int\frac{\text d^3p}{(2\pi)^3}\ket{\lambda_p}\bra{\lambda_p}
+$$
+And we return to
+\begin{gather}
+	\bra\psi e^{iH(t'-t_0)}e^{-iH_0(t'-t_0)}\ket0\\
+	\text{Only the 0th part of $H_0$ survives, as the annihilator kills the vacuum.}\nonumber\\
+	\bra\psi e^{iH(t'-t_0)}\ket0\\
+	\bra\psi e^{iE_0(t'-t_0)}\ket\Omega\bra\Omega\ket0 + \int\text d\lambda \int\frac{\text d^3p}{(2\pi)^3}\braket{\psi|\lambda_p}\braket{\lambda_p|0}e^{iE_{p\lambda}(t'-t_0)}\\
+	\Rightarrow e^{iE_0(t't_0)} \braket{\psi|\Omega}\braket{\Omega|0} + 0, \text{ by Riemann-Lebesgue Lemma}
+\end{gather}
+And we have the numerator
+\begin{gather}
+\bra 0 U(t'', t_0) \phi(x)\phi(y)\ket\Omega\bra\Omega\ket0 e^{iE_0(t'-t_0)}\\
+e^{iE_0(t'-t_0)}e^{-iE_0(t''-t_0)}\bra0\ket\Omega\bra\Omega\phi(x)\phi(y)\ket\Omega\bra\Omega\ket0
+\end{gather}
+The denominator is the exact same except without the fields.
+\begin{equation}
+	\Rightarrow e^{iE_0(t',t_0)}e^{-iE_0(t''-t_0)}\bra0\ket\Omega\bra\Omega\ket\Omega\bra\Omega\ket0
+\end{equation}
+
+And we calculate the nominator and the denominator together:
+\begin{equation}
+	\frac{\bra\Omega\phi(x)\phi(y)\ket\Omega}{\bra\Omega\ket\Omega} = \bra\Omega\phi(x)\phi(y)\ket\Omega
+\end{equation}
+proving the claim.\\\\
+And the infinite time evolution operator:
+\begin{gather}
+	U(\infty,-\infty) = T\exp\left[-i\int_{-\infty}^\infty \text dt''H_I(t'')\right],\; H_I(t)=\int\text d^3x \frac{\lambda}{4!}\phi_I^4
+\end{gather}
+So everything is expressed in terms of $\phi_I$ which we already know.
+\section{Wick's Theorem}
+\begin{gather}
+	\bra0 T \underbrace{\phi(x_1)\phi(x_2)\cdots\phi(x_n)}_{\text{interaction picture fields}}\ket0
+\end{gather}
+in the case of $n=2$ we can calculate the expectation value with the Feynmann Propagator. With $n>2$ we can calculate it with multiple Feynmann Propagators.
+\subsection{calculating Eq.14}
+
+Write $\phi(x) = \phi^{+}(x) + \phi^- (x)$, here the positive frequency is defined as
+$$
+\phi^+(x) = \int\frac{\text d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}}a_pe^{-ipx},\;\; \phi^{+\dagger} = \phi^-
+$$
+Consider $T\phi(x)\phi(y)$. Assume $x^0 > y^0$. Then 
+
+\begin{gather}
+T\phi(x)\phi(y) = \phi^+(x)\phi^+(y) + \phi^+(x)\phi^-(y) + \phi^-(x)\phi^+(y) + \phi^-(x)\phi^-(y)\\
+= \phi^+(x)\phi^+(y) + \phi^-(x)\phi^+(y) + \phi^-(y)\phi^+(x) + \left[\phi^+(x),\phi^-(y)\right] + \phi^-(x)\phi^-(y).\\
+\text{Assuming $x^0 < y^0$}\nonumber\\
+\phi^+(x)\phi^+(y) + \phi^-(y)\phi^+(x) + \phi^-(x)\phi^+(y) + \left[\phi^+(y), \phi^-(x)\right] + \phi^-(x)\phi^-(y)
+\end{gather}
+For both cases,
+$$
+T\phi(x)\phi(y) = N\phi(x)\phi(y) +
+\begin{cases}
+	\left[\phi^+(x),\phi^-(y)\right], & x^0>y^0\\
+	\left[\phi^+(y),\phi^-(x)\right], & y^0<x^0
+\end{cases}
+$$
+Normal ordering is defined as
+%$$
+%N\{a_pa_q^\dagger a_k^\dagger\} = a_q^\dagge a_k^\dagger = a_q^\dagger a_k^\dagger a_p
+%$$
+putting the annihilation operators to the right.
+\subsection{Wick's Theorem for 2 Fields}
+\begin{equation}
+	T\phi(x)\phi(y) = N\phi(x)\phi(y) + contraction \phi(x)\phi(y)
+\end{equation}
+with the contraction defined as
+\begin{equation}
+	\wick{ \c1\phi(x)\c1\phi(y) }:= 
+	\begin{cases}
+		\left[\phi^+(x),\phi^-(y)\right], & x^0 > y^0\\
+		\cdots
+	\end{cases} = \bra0 T\phi(x)\phi(y) \ket0 = D_F(x-y)
+\end{equation}
+\subsection{Wick's Theorem}
+
+\begin{gather}
+	T\phi(x_1)\phi(x_2)\cdots\phi(x_n) = N\phi(x_1)\cdots\phi(x_n) + \text{all contractions}
+\end{gather}
+for four fields: $\phi_1\phi_2\phi_3\phi_4$
+\begin{equation}
+	\wick{
+	\c1\phi_1\c1\phi_2\phi_3\phi_4 + \c1\phi_1\phi_2\c1\phi_3\phi_4 + \cdots + \c1\phi_1\c1\phi_2\c1\phi_3\c1\phi_4 + \c1\phi_1\c2\phi_2\c1\phi_3\c2\phi_4 + \cdots
+	}
+\end{equation}
+
+\subsubsection{Think about this but not too much because it's stupid}
+
+$1 = aa^\dagger - a^\dagger a$\\
+$N 1 = N aa^\dagger - a^\dagger a = a^\dagger a - a^\dagger a = 0$
+
+\end{document}
+

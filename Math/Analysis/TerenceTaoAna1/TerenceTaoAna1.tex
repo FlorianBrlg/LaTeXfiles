@@ -286,19 +286,23 @@ Two sets $A$ and $B$ are Equal, $A=B$, iff every element of $A$ is an element of
 
 \subsubsection{Lemma of Single Choice}
 Let $A$ be a non-empty set. Then there exists an object $x$ such that $x\in A$.\\
-\textit{Proof:} Proof by Contradiction. Assume there is no Object with $x\in A$, meaning that $\forall x(x\neg\in A)$. Thus, from the Axiom of the Empty Set, $A = \emptyset$ as $x\in A \Leftrightarrow x\in\emptyset$. This contradicts that $A$ is nonempty, as $\emptyset$ is empty. Proving the Lemma.
+\textit{Proof:} Proof by Contradiction. Assume there is no Object with $x\in A$, meaning that $\forall x(x\notin A)$. Thus, from the Axiom of the Empty Set, $A = \emptyset$ as $x\in A \Leftrightarrow x\in\emptyset$. This contradicts that $A$ is nonempty, as $\emptyset$ is empty. Proving the Lemma.
 
 \subsubsection{Example: The Empty set and the Set of the Empty set}
 The empty set $\emptyset$ and the set of the empty set $\{\emptyset\}$ are different sets.\\
 \textit{Proof:} Two sets are the same iff every element in A is an element of B. Per definition, for all $x$, $x\notin \emptyset$. As per the Single Choice Lemma, and that the set of the empty set is not empty, there is an $x \in \{\emptyset\}$. As there is an element in the set of the empty set, and there is no element in the empty set, the sets can't be equal.
 
 \subsubsection{Example: Substitution in Unions}
-Let $A, B, A'$ be sets and $A = A'$. Then $A\cup B = A'\cup B$.\\
-\textit{Proof:} 
+Lemma: Let $A, B, A'$ be sets and $A = A'$. Then $A\cup B = A'\cup B$.\\
+\textit{Proof:} Let $A = A'$, then for all $x$, $x\in A$ iff $x\in A'$. Let $x\in A\cup B$. Then $x$ is either in $B$ or $A$. Let $x$ be in $B$. Then $x\in B$ and therefore $x\in A'\cup B$. Let $x$ be in $A$. As $A = A'$, $x\in A'$, therefore $x\in A'\cup B$. Same reasoning the other way around.
 
+Proving the Lemma.
 
+\subsubsection{Lemma: Unions are Commutative,Associative}
+Let $A, B, C$ be sets. Then $A \cup B = B \cup A$, and $(A\cup B)\cup C = A\cup(B\cup C)$.\\
+\textit{Associativity, Proof:} let $x\in (A\cup B)\cup C$. then 
 
-
+let $x\in (A\cup B)\cup C$. then 
 
 
 \end{document}
