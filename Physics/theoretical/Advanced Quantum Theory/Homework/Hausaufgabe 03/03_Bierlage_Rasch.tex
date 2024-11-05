@@ -1,0 +1,46 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Homework Sheet 03}
+\author{}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Particle in External Electromagnetic Field}
+
+\subsection{}
+
+The canonical momentum is
+\begin{equation}
+	P = \pdv{L}{\dot x} = m\dot x + qA
+\end{equation}
+which is related to the linear momentum $p$ as
+\begin{equation}
+	P = p + qA
+\end{equation}
+
+\subsection{}
+
+We calculate the Hamiltonian
+\begin{gather}
+	H = \dot x\cdot \pdv{L}{\dot x} - L\\
+	= \dot x (m\dot x + qA) - \frac{1}{2}m\dot x^2 + q(V - \dot x A)\\
+	= \frac{1}{2}m\dot x^2 + qA\dot x + q(V -\dot x A)\\
+	= \frac{1}{2}m\dot x^2 + qV\\
+	= \frac{p^2}{2m} + qV\\
+	= \frac{1}{2m}(P-qA)^2 + qV
+\end{gather}
+This is the total energy if $V$ and $A$ do not depend on $t$. As it wasn't specified I will assume that they don't depend on $t$, so the Hamiltonian is the total Energy.
+
+
+
+\end{document}
+

@@ -1,0 +1,135 @@
+%!TeX program = lualatex
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 16}
+\author{}
+\date{16.10.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{The scattering (S) matrix} 
+
+Interaction can involve:
+\begin{itemize}
+	\item self-interaction
+	\item scattering
+	\item production of new particles
+\end{itemize}
+
+\section{Eigenstates of interacting theories $(\phi^4)$}
+Hamiltonian $H$.\\
+Momentum Operator $P$.\\
+From the poincaré symmetry: $[H,P] = 0$.\\
+Assumptions:
+\begin{itemize}
+	\item there exists a unique, translationally invariant and Lorentz invariant state $\ket\Omega$. The Energy zero is chose such that $H\ket\Omega = 0$
+	\item $\bra\Omega \phi(x) \ket\Omega = 0$.
+\end{itemize}
+
+The common Eigenstates of $P$ and $H$, $\ket{\lambda_p}$ with $p$ the total momentum and $\lambda$ the degrees of freedom of the state.
+\begin{equation}
+	H\ket{\lambda_p} = E_p^\lambda\ket{\lambda_p},\;\;\;\; P\ket{\lambda_p} = p\ket{\lambda_p}
+\end{equation} 
+let $m_\lambda := E_p^\lambda I_{p=0}$ be the rest Energy.\\
+Consider a Lorentz transformation from $(m_\lambda, 0) \mapsto (p^0, p)$\\
+$$
+	U^\dagger P^\mu U = \Lambda^\mu_\nu P^\nu
+$$
+\begin{gather}
+	P^\mu U\ket{\lambda_0} = UU^\dagger P^\mu U \ket{\lambda_0}\\ 
+	= U\Lambda^\mu_\nu P^\mu \ket{\lambda_0} = U \Lambda^\mu_0 m_\lambda\ket{\lambda_0}\\
+	= p^\mu U\ket{\lambda_0}
+\end{gather}
+And therefore we conclude that $\ket{\lambda_p} = U\ket{\lambda_0}$
+
+As the Lorentz transformation leaves Four-Vector length invariant, we have\\
+\begin{gather}
+	 (p^0)^2 - p^2 = m_\lambda^2\\
+	 E_p^{\lambda^2} = m_\lambda^2 + p^2
+	 m = m_\lambda\text{ for a single particle}
+\end{gather}
+A single particle starts at the Energy $m$, and is only on the shell. This is the mass gap. A second particle is at the Energy $2m$, and through internal motion can have any Energy above the shell.
+\begin{gather}
+	\phi(x) = e^{iPx}\phi(0) e^{-iPx}\\
+	\bra\Omega \phi(x) \ket{\lambda_p} = \bra\Omega e^{iPx}\phi(0)e^{-iPx}\ket{\lambda_p}\\
+	= \bra\Omega \phi(0) \ket{\lambda_p}e^{-ipx}\\
+	= \bra\Omega UU^\dagger \phi(0) U \ket{\lambda_0}e^{-ipx}\\
+	= \bra\Omega \phi(0) \ket{\lambda_0} e^{-ipx}\\
+	\text{when $\lambda$ is a single particle, $\ket\lambda_0 = \ket{p=0}$.}\nonumber\\
+	Z := \bra\Omega\phi(0)\ket{p=0}^2
+\end{gather}
+
+\section{Defining in and out states}
+\begin{gather}
+	\ket{\lambda_p^\psi} = \int \frac{\text d^3k}{(2\pi)^3}\psi(k-p)\ket{\lambda_k}\\
+	\ket{p^\psi} = \int \frac{\text d^3k}{(2\pi)^3}\psi(k-p) \ket k
+\end{gather}
+Now Define Operators: $a_p^\psi(t) = i\int \bar\Psi_p(x) \overleftrightarrow\partial_0 \phi(x)$\\
+$a_p^{\psi\dagger}(t) = -i\int \Psi(x) \overleftrightarrow\partial_0 \phi(x)$
+
+Where we have define $\Psi(x) = \int \frac{\text d^3k}{(2\pi)^3}\frac{\psi(k-p)}{\sqrt{2E_k}}e^{-ikx}$ with $k^0$ = $E_k = \sqrt{k^2 + m^2}$.\\
+Limits:
+\begin{itemize}
+	\item $t\rightarrow\pm\infty$
+	\item $\psi(k) \rightarrow (2\pi)^3\delta(k)$
+\end{itemize}
+Result:
+\begin{gather}
+a_p^\psi(\pm\infty), a_p^{\psi\dagger}(\pm\infty)	
+\end{gather}
+Work as ladder operators for vacuum and single particles. (First two steps of the ladder)
+\begin{gather}
+	\ket{p} = \frac{\sqrt{2E_p}}{\sqrt{Z}}a_p^{\psi\dagger}(\pm\infty)\ket\Omega\\
+	\braket{p|q} = 2E_p (2\pi)^3\delta(p-q)\\
+	a_p^\psi(\pm\infty)\ket\Omega = 0
+\end{gather}
+Asymptotic in and out states:
+\begin{gather}
+	\ket{k_1,k_2,\cdots}_{\text{in}} = \prod_i \sqrt{\frac{2E_{k_i}}{Z}}a_{k_i}^{\psi\dagger}(-\infty)\ket\Omega\\
+	\ket{p_1,p_2,\cdots}_{\text{out}} = \prod_j \sqrt\frac{2E_{p_j}}{Z} a_{p_j}^{\psi\dagger}(+\infty)\ket\Omega
+\end{gather}
+Both of these states are in the Heisenberg picture.
+
+\section{Scattering in Schrödinger Picture}
+let the reference time be $t=-\infty$. Consider Evolution from $t=-T$ to $t=T$: $S = e^{-iH2T}$.\\
+For $t = -T$ in Schrödinger picture: $\ket{k_1,k_2,\cdots} = \ket{k_1,k_2,\cdots}_\text{in}$ from the Heisenberg picture.\\
+For $t = T$ in Schrödinger picture: $\ket{p_1, p_2, \cdots} = S\ket{p_1,p_2,\cdots}_\text{out}$.\\
+We define the S-Matrix as the overlap of the in and out states
+\begin{gather}
+S_m = \braket{p_1,p_2,\cdots|_\text{out}k_1,k_2,\cdots}_\text{in} = \braket{p_1,p_2,\cdots|_\text{out}S^\dagger S | k_1,k_2,\cdots}_\text{in}\\
+= \braket{p_1,p_2,\cdots | S|k_1,k_1,\cdots}
+\end{gather}
+
+\subsubsection{Errors in Textbooks about the LSZ Reduction}
+\begin{equation}
+	1 = N(1) \neq N(aa^\dagger - a^\dagger a) = 0
+\end{equation}
+\begin{gather}
+	\phi(T)\phi(0) = T\phi(T)\phi(0)\\
+	\text{define $\psi(t) = \phi(-t)$}\nonumber\\
+	= T\psi(-T)\psi(0)\\
+	= \psi(0)\psi(-T)\\
+	= \phi(0)\phi(T)
+\end{gather}
+
+The Time ordering Symbol and the box operator do not commute
+
+
+
+
+%\feynmandiagram[horizontal=a to b]{
+%i1 --[fermion] a -- [fermion] i2,
+%a --[photon] b,
+%f1 -- [fermion] b -- [fermion] f2,
+%};
+
+\end{document}
+

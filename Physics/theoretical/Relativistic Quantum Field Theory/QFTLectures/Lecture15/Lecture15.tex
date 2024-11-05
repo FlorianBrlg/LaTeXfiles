@@ -1,0 +1,155 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+\usepackage{iftex}
+
+\title{QFT - Lecture 15}
+\author{}
+\date{14.10.2024}
+
+
+\begin{document}
+
+I have been compiled with\dots{\ttfamily
+\ifluatex
+    luatex
+\else\ifxetex
+    xetex
+\else\ifpdftex
+    pdftex
+\else
+    NO IDEA!
+\fi\fi\fi}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Correlation functions} 
+
+\begin{equation}
+\bra\Omega T\phi(x)\phi(y)\ket\Omega = \bra0 T\phi(x)\phi(y)e^{-i\int\text dt H_I(t)}\ket 0
+\end{equation}
+with $\phi(x)$, $\phi(y)$ being in the Heisenberg picture on the left and in the Interaction picture on the right.
+$$
+H_I(t) = \int\frac{\lambda}{4!}\phi^4 \text d^3x
+$$
+with $\phi^4$ in the interaction picture.
+
+\section{Wick's Theorem}
+
+$$
+T \phi_1\cdots\phi_n = N(\phi_1\cdots\phi_n + \text{all possible contractions})
+$$
+For example:
+\begin{gather}
+	\bra0 T\phi_1\phi_2\phi_3\phi_4 \ket0 = \wick{
+	\c1\phi_1\c1\phi_2\c1\phi_3\c1\phi_4 + \c1\phi_1\c2\phi_2\c1\phi_3\c2\phi_4 + \c2\phi_1\c1\phi_2\c1\phi_3\c2\phi_4
+	}
+\end{gather}
+Which can be represented as the Feynman Diagrams
+\begin{equation}
+\feynmandiagram[vertical=a to b]{
+	{a [particle = \(x_1\)]} -- {b [particle = \(x_2\)]}
+{c [particle = \(x_3\)]} -- {d [particle = \(x_4)\]},
+};	
+\end{equation}
+
+\begin{tikzpicture}
+\begin{feynman}
+\diagram [vertical'=a to b] {
+i1 [particle=\(e^{-}\)]
+-- [fermion] a
+-- [draw=none] f1 [particle=\(e^{+}\)],
+a -- [photon, edge label'=\(p\)] b,
+i2 [particle=\(e^{+}\)]
+-- [anti fermion] b
+-- [draw=none] f2 [particle=\(e^{-}\)],
+};
+\diagram* {
+(a) -- [fermion] (f2),
+(b) -- [anti fermion] (f1),
+};
+\end{feynman}
+\end{tikzpicture}
+
+
+$Eq1:$ \\ lowest order: Num: $\bra0 T\phi(x)\phi(y)\ket0 = D_F(x-y) =$ Fig2\\
+first order: Num: $\bra0 T\phi(x)\phi(y)\ket0 (-i\lambda/4!)\int \text d^4z \phi(z)^4\bra0$\\
+We now have 6 fields and must fiind all contractions. We can contract $\phi(x)$ and $\phi(y)$ with $\phi(z)$, which leads to $4\cdot3 = 12$ contractions. We can also contract $\phi(x)$ with $\phi(y)$ This leads to $3$ contractions.\\
+Which leads to
+\begin{equation}
+	\frac{-i\lambda}{4!}\int \text d^4z 3D_F(x-y)D_F(z-z)D_F(z-z) + 12 D_F(x-z)D_F(y-z)D_F(z-z)
+\end{equation}
+With the Feynman Propagator
+\begin{equation}
+	D_F(x-y) = \frac{\text d^4p}{(2\pi)^4}\frac{i}{p^2 + m^2 + i\epsilon} e^{-ip(x-y)}
+\end{equation}
+We can see that this integral becomes infinite for $x = y$, and integrating over all space again afterwards will definitely lead to infinity. We will ignore this for now, the divergences will disappear later.
+
+For the 3 contractions we have the following Feynman Diagrams: Fig3\\\\
+For the 12 contractions we have the following Feynman Diagrams: Fig4\\\\
+Now considering a more complicated situation, with the third order:
+\begin{gather}
+	\bra0 T\phi(x)\phi(y) \frac{1}{3!}\left(\frac{-i\lambda}{4!}\right)^3 \int\text d^4z \phi^4 \int \text d^4w \phi^4 \int \text d^4u \phi(u)
+\end{gather}
+We will consider one particular contraction, that being
+%\begin{equation}
+%	\wick{
+%	\c1\phi(x)\c2\phi(y)\c1\phi(z)\c3\phi(z)\c3\phi(z)\c4\phi(z)\c5\phi(w)\c5\phi(w)\c6\phi(w)\c2\phi(w)\c5\phi(u)\c4\phi(u)\c1\phi(u)\c1\phi(u)	}
+%\end{equation}
+With the Feynmann Diagram Fig5
+
+How many contractions give the same expression? We get $3!$ from interchanging verteces, $4\cdot3$ from the placement of contractions in the $z$ vertex, we then get $4\cdot3\cdot2$ placements of the $w$ vertex, and $4\cdot3$ from the $u$ vertex. We have overcounted by a factor of $2$, as we can interchange the contraction between the $w$ and $u$ fields, so we need to divide by 2.\\\\
+we ignore $\frac{1}{3!}3!$ and we ignore $\frac{1}{4!}\cdot4\cdot3$, $\frac{1}{4!}4!$. We then divide by the so called symmetry factor $s$, in our case $s=2\cdot2\cdot2$. The first 2 comes from the line starting and ending at the $z$ vertex, the 2nd from the line starting and ending at the $u$ vertex, and the last because we can interchange the $wu$ lines.
+
+Another possibility of getting a symmetry factor is if two vertices are equivalent. Possible symmetry factors are as following
+\begin{itemize}
+	\item line starting and ending at the same vertex
+	\item equivalent lines
+	\item equivalent vertices
+\end{itemize}
+These Symmetry factors are the reason why we should divide by the symmetry factor instead of leaving $\frac{1}{3!}$ and $\frac{1}{4!}$ in the third order term.
+\subsubsection{Summary:}
+\begin{gather}
+	\bra\Omega T\phi(x)\phi(y)\ket\Omega = \frac{\text{Num}}{\text{Den}}\\
+	\text{Num: } \sum \text{all possible diagrams with two external points}
+\end{gather}
+Feynman rules: Figs7\\\\
+
+Fig8\\\\
+
+Momentum Space Feynman Rules\\\\
+
+Momentum Space Feynman Rules, correlation functions to Fourier space.
+\begin{equation}
+	\bra\Omega T\phi(x)\phi(y)\ket\Omega \mapsto \int \text d^4x e^{ipx} \int \text d^4y e^{ipy}\bra\Omega T\phi(x)\phi(y) \ket\Omega
+\end{equation}
+Omit exponent factors of external points, and the associated $\int\frac{\text d^4p}{(2\pi)^4}$ Integrals.
+\begin{equation}
+	f(x) \mapsto \hat f(p),\;\;\; \hat f(p) \mapsto f(x),\;\;\; f(x) = \int\frac{\text d^4p}{(2\pi)^4}\hat f(p) e^{-ipx}
+\end{equation}
+That way we can get $\hat f(p)$ by itself.
+
+\section{Exponentiation and cancellation}
+Consider Fig9
+
+Then we have a product of two delta functions, which is nonsense\\
+Let $V_i\in\{\text{The set of all different diagrams disconnected from external points}\}$. 
+$$
+A= \text{(Value of connected piece)}\cdot\prod_{i}\frac{1}{n_i!}V_i^{n_i},\;\;\; n_i = \text{number of $V_i$.}
+$$
+$$
+\text{Num=} \sum_{\text{all connected}}\text{(value connected)}\cdot\underbrace{\prod_i\sum_{n_i}\frac{1}{n_1!}V_i^{n_i}}_{\exp(\sum_i V_i)}
+$$
+$$
+\text{Den=} \exp(\sum_i V_i)
+$$
+and therefore what we would like to have is
+$$
+\frac{\text{Num}}{\text{Den}} = \sum\text{all connected}
+$$
+
+\end{document}
+

@@ -1,0 +1,166 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+\title{Homework Sheet 02}
+\author{Florian, Elias}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Canonical Transformations and Classical Trajectories}
+\subsection{}
+We require that $(q_i, p_i)$ is a valid trajectory, so we require that $\frac{\text dq_i}{\text dt} = \pdv{H}{p_i},\;\frac{\text dp_i}{\text dt} = -\pdv{H}{q_i}$. We want to see that
+$$
+\frac{\text d \bar q_i}{\text dt},\;\;\;\;\frac{\text d \bar p_i}{\text dt}
+$$
+Are valid trajectories.
+
+We will use the mappings
+\begin{equation}
+q_i \mapsto \bar q_i = q_i + \epsilon\pdv{g}{p_i},\;\;\;\; p_i \mapsto \bar p_i = p_i - \epsilon\pdv{g}{q_i}
+\end{equation}
+and that
+$$
+\{g,H\} = 0 = \pdv{g}{q_i}\pdv{H}{p_i} - \pdv{g}{p_i}\pdv{H}{q_i} = \pdv{g}{q_i}\pdv{q_i}{t} + \pdv{g}{p_i}\pdv{p_i}{t} = \pdv{g}{t}
+$$
+%We will split the transformed Hamiltonian into two parts:
+%\begin{gather}
+%	H\mapsto H'(\bar p, \bar q) = H(p, q) + \delta H
+%\end{gather}
+%and calculate $\delta H$.
+%\begin{gather}
+%	\delta H = \pdv{H}{q}\delta q + \pdv{H}{p}\delta p\\
+%	\text{using the definitions of $\delta q,\delta p$ from Eq.1}\nonumber\\
+%	\delta H = \epsilon\left(\pdv{H}{q}\pdv{g}{p} - \pdv{H}{p}\pdv{g}{q}\right) = 0
+%\end{gather}
+We calculate explicitly:
+
+\begin{gather}
+	\frac{\text d \bar q}{\text dt} = \frac{\text dq}{\text dt} + \epsilon \frac{\partial^2 g}{\partial t\partial p} = \frac{\text dq}{\text dt}\\
+	\frac{\text d \bar p}{\text dt} = \frac{\text dp}{dt} - \epsilon \frac{\partial^2 g}{\partial t\partial q} = \frac{\text dp}{\text dt}
+\end{gather}
+So, as we know that $(q,p)$ describes a valid trajectory, and the time derivatives of $(\bar q,\bar p)$ are equivalent, they must also describe a valid trajectory.
+
+
+
+\subsection{}
+
+we have a transformation
+$$
+x_k \mapsto x'_k = x_k + \delta
+$$
+We will take a look at the generating function. We know that for transformation of the coordinate $\delta = \delta\pdv{g}{p_k}$. We also know that we do not transform our conjugate momentum, so $0 = \delta\pdv{g}{q_k}$. Therefore we know that
+$$
+g = p
+$$
+WE want to check if this transformation gives us a valid trajectory if $(x_k, p_k)$ is a valid trajectory, hence we will use the method that we have used in the previous task. We will calculate the Poisson bracket:
+\begin{gather*}
+    \{p,H\} = \underbrace{\pdv{p}{q_i}\pdv{H}{p_i}}_{=0} - \pdv{p}{p_i}\pdv{H}{q_i}\\
+    = - \pdv{p}{p_i}\pdv{H}{q_i} = - e_i \pdv{H}{q_i}\\
+    = e_i \dot p_i = \dot p\\
+    \{p,H\} = \pdv{p}{q_i}\pdv{H}{p_i} - \pdv{p}{p_i}\pdv{H}{q_i} = \pdv{p}{q_i}\pdv{q_i}{t} + \pdv{p}{p_i}\pdv{p_i}{t}\\
+    \pdv{p}{t} + \pdv{p}{t} = 2\dot p\\
+    \Rightarrow \{p,H\} = \dot p = 2\dot p = 0
+\end{gather*}
+Now that we know that the Poisson bracket is 0 we can apply what we have found out from the previous task, and infer that $(x'(t), p(t))$ is a valid trajectory, seeing as $(x(t), p(t))$ is a valid trajectory, and the Poisson bracket $\{g,H\} =0$.
+
+
+
+\section{Canonical Transformation in Quantum Mechanics}
+
+\subsection{}
+We apply the operator $U(\xi) = e^{-i\xi g/\hbar}$ on the wave function
+\begin{gather*}
+e^{-i\xi g/\hbar}\psi(q_i,t) = \sum_n e^{-i\xi g/\hbar}c_n(t)\psi_n(q_i)\\
+=  \sum_n c_n(t) e^{-i\xi g_n/\hbar}\psi_n(q_i)\\
+= \sum_n e^{-i\xi g_n/\hbar}c_n(t) \psi_n(q_i) = \sum_n \bar c_n(t) \psi_n(q_i)
+\end{gather*}
+we from this we infer $\bar c_n = e^{-i\xi g_n/\hbar}c_n$.
+
+\subsection{}
+We express our Quantum Operator with $g = L_z$, such that $U(\xi) = \exp(-i\xi L_z/\hbar)$
+
+We know the form of $L_z$, but more importantly we know the Eigenvalues of $L_z$. We will take $\psi_n$ to be Eigenfunctions of $L_z$, that means that $\psi_n(\rho,\phi,\theta) = f(\rho,\theta)e^{-in\phi}$. Then
+\begin{gather*}
+	e^{-i\xi L_z/\hbar} \psi = e^{-i\xi L_z/\hbar}\sum_n c_n f(\rho,\theta)e^{-in\phi}\\
+	= \sum_n c_n e^{-i\xi n}f(\rho,\theta)e^{-in\phi}\\
+	= \sum_n c_n f(\rho,\theta)e^{-in(\phi + \xi)}
+\end{gather*}
+From this we can see that $g = L_z$ generates a shift in $\phi$, which we define as the rotation around the $z$ axis, so $L_z$ generates a rotation around the $z$ axis.
+
+\subsection{}
+
+\section{Gauge Invariance in Classical Electrodynamics}
+
+\subsection{}
+We will show this
+\begin{gather*}
+	\nabla \times A \mapsto \nabla \times (A + \nabla \lambda)\\
+= \nabla \times A + \underbrace{\nabla\times\nabla\lambda}_{=0} = \nabla\times A
+\end{gather*}
+
+\begin{gather*}
+	E = -\nabla U - \pdv{A}{t} \mapsto -\nabla\left(U - \pdv{\lambda}{t}\right) - \pdv{A + \nabla\lambda}{t}\\
+	= -\nabla U + \nabla\pdv{\lambda}{t} - \pdv{A}{t} - \nabla\pdv{\lambda}{t}\\
+	= -\nabla U - \pdv{A}{t}
+\end{gather*}
+Therefore, the $E$ and $B$ fields stay invariant.
+
+\subsection{}
+
+for the $B$ field
+\begin{gather}
+	\nabla B = \nabla (\nabla\times A) = 0
+\end{gather}
+for the $E$ field
+\begin{gather}
+	\nabla \times E = -\nabla\times (\nabla U) - \nabla \times \pdv{A}{t}\\
+	= -\pdv{}{t}\nabla \times A = -\pdv{B}{t}
+\end{gather}
+
+\subsection{}
+
+We plug in the expressions for our fields from the potentials:
+
+\begin{gather*}
+\nabla\left(-\nabla U - \pdv{A}{t}\right) =\frac{\rho}{\epsilon_0}\\
+-\Delta U - \pdv{\nabla A}{t} = \frac{\rho}{\epsilon_0}\\
+-\Delta U + \mu_0\epsilon_0\pdv{^2U}{t^2} = \frac{\rho}{\epsilon_0}
+\end{gather*}
+and
+\begin{gather*}
+	\nabla\times(\nabla\times A) = \mu_0 j + \mu_0\epsilon_0\pdv{-\nabla U - \pdv{A}{t}}{t}\\
+	\nabla\times(\nabla\times A) = \mu_0 j + \mu_0\epsilon_0\left(-\nabla\pdv{U}{t} - \pdv{^2A}{t^2}\right)\\
+\nabla(\nabla A) - \nabla^2 A = \mu_0j - \mu_0\epsilon_0\pdv{^2A}{t^2} -\mu_0\epsilon_0\nabla \pdv{U}{t}\\
+	-\nabla\left(\mu_0\epsilon_0 \pdv{U}{t}\right) - \nabla^2 A = \mu_0j - \mu_0\epsilon_0\pdv{^2A}{t^2} -\mu_0\epsilon_0 \nabla\pdv{U}{t}\\
+	-\Delta A + \mu_0\epsilon_0\pdv{^2A}{t^2} = \mu_0 j
+\end{gather*}
+
+Both of these equations could be made much prettier with the co and contravariant derivative.
+
+\subsection{}
+
+The fields stay invariant, so I will only consider the changes in the Potentials themselves:
+\begin{gather*}
+	-\rho U + jA \mapsto -\rho U + \rho \pdv{\lambda}{t} + jA + j \nabla\lambda
+\end{gather*}
+Charge is conserved, this means that
+\begin{gather*}
+	\partial_t \rho + \nabla j = 0\\
+	\int \text d^4x \partial_t \rho+ \nabla j = 0
+\end{gather*}
+We will consider the Spacetime Integral over the additional terms of the Lagrangian Density.
+\begin{gather*}
+	\delta S = \int \text d^4x \rho\pdv{\lambda}{t} + j\nabla\lambda\\
+	\text{integration by parts, and the surface terms of $\lambda$ are ignored.}\\
+	= -\lambda \int \text d^4x \partial_t \rho + \nabla j = 0
+\end{gather*}
+hence, there is no change in the Action, so it stays Invariant.
+\end{document}
+

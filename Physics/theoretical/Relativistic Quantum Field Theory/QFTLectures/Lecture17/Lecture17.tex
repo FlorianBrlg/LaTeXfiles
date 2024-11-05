@@ -1,0 +1,109 @@
+!%TeX program = lualatex
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+\usepackage{iftex}
+\title{QFT - Lecture 17}
+\author{}
+\date{21.10.2024}
+
+
+\begin{document}
+
+I have been compiled with\dots{\ttfamily
+\ifluatex
+    luatex
+\else\ifxetex
+    xetex
+\else\ifpdftex
+    pdftex
+\else
+    NO IDEA!
+\fi\fi\fi}
+
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{LSZ Reduction} 
+
+\begin{gather}
+	a_p^\psi = i\int \text d^3x \bar\Psi_p(x) \partial_0 \phi(x)\\
+	\Psi_p(x) = \int\frac{\text d^3p}{(2\pi)^3}\frac{\psi(k-p)}{\sqrt{2E_p}}e^{-ikx}\\
+	k^0 = E_k = \sqrt{k^2 + m^2}
+\end{gather}
+Wavepacket in and out states
+\begin{gather}
+	\ket{k_1,k_2}_{\text{in}} := \ket{\text{int}}= \prod_i \sqrt{\frac{2E_{k_i}}{Z}}a_{k_1}^{\psi\dagger}(-\infty)a_{k_2}^{\psi\dagger}(-\infty)\cdots\ket\Omega\\
+	\ket{p_1,p_2}_\text{out} := \ket{\text{out}} = \prod_j \sqrt\frac{2E_{p_j}}{Z} a_{p_1}^{\psi\dagger}(\infty)a_{p_2}^{\psi\dagger}(\infty)\cdots\ket\Omega
+\end{gather}
+with renormalization constants
+\begin{gather}
+	Z_\lambda = |\bra\Omega \phi(0) \ket{\lambda_{p=0}}|^2\\
+	Z = |\bra\Omega \phi(0) \ket{p=0}|^2
+\end{gather}
+we consider the S matrix, which looks like
+\begin{gather}
+	\braket{\text{out}|\text{int}} = \bra{p_1,p_2,\cdots}S\ket{k_1,k_2,\cdots}
+\end{gather}
+We want to get an expression that uses the fields, instead of the ladder operators, as we know how to do calculations with them
+\begin{gather}
+	\bra\Omega T\phi(x)\phi(y) \ket\Omega
+\end{gather}
+We will define from now on that $\prod_i \sqrt{2E_{k_i}/Z} = A$.
+
+\begin{gather}
+	\braket{\text{int}|\text{out}} = A\bra{\text{out}}a_{k_1}^{\psi\dagger}(-\infty)a_{k_2}^{\psi\dagger}(-\infty)\ket\Omega\\
+	= A\bra{\text{out}}\left((a_{k_1}^{\psi\dagger}(-\infty) - a_{k_1}^{\psi\dagger}(\infty)\right) a_{k_2}^{\psi\dagger}(-\infty) \ket\Omega\\
+	\text{Holding as far as $k_1 \neq p_1,p_2,..$}
+\end{gather}
+if $k_1 \neq p_1,p_2$, then they go in different directions. No matter how close they are at the beginning, they will be spacially separated at $\infty$. This means that you can commute the ladder operators which kills the vacuum, resulting in a zero, which is why we can add the term. We will now insert the definitions of the ladder operators with limits.
+\begin{gather}
+	iA \left[\lim_{t_1 \rightarrow \infty} - \lim_{t_1\rightarrow -\infty}\right] \int\text d^3x \Psi_{k_1}(x_1)\overleftrightarrow\partial_0^{x_1}\bra{\text{out}} \phi(x_1)a_{k_2}^{\psi\dagger}(-\infty)\ket\Omega\\
+	\text{we use the identity}\nonumber\\
+	\left[\lim_{t\rightarrow\infty} - \lim_{t\rightarrow-\infty}\right] \int\text d^3x f(x)\overleftrightarrow\partial_0 g(x) = \int\text d^4x\partial_0\left(f(x)\overleftrightarrow\partial_0 g(x)\right)\\
+	= \int\text{d}^4x \left[f(x)\partial_0^2g(x) - \left(\partial_0^2 f(x)\right) g(x)\right],\;\text{$f(x)$ statisfies KG-eq}\\
+	= \int\text d^4x \left[f(x)\partial_0^2g(x) - \left((m^2 - \nabla^2)f(x)\right)g(x)\right]\\
+	\text{and we use integration by parts, surface term goes to 0 if $f(x)\rightarrow0$.}\nonumber\\
+	\int\text d^4x f(x)\left(\partial_\mu\partial^\mu + m^2\right)g(x)
+\end{gather}
+And we use this property on the previous Integral
+\begin{gather}
+	(13) = iA\int\text d^4x \Psi_1(x_1)\left((\partial_\mu\partial^\mu)_{x_1}+m^2\right)\bra{\text{out}}\phi(x_1) a_{k_2}^{\psi\dagger}(-\infty)\ket\Omega
+\end{gather}
+Next step. Result:
+\begin{gather}
+	\braket{\text{out}|\text{in}} = \prod_i i\sqrt{\frac{2E_{k_i}}{Z}}\int \text d^4x_i \Psi_{k_i}(x_i) \left((\partial_\mu\partial^\mu)_{x_i} + m^2\right)\nonumber\\
+\prod_j i\sqrt{\frac{2E_{p_j}}{Z}}\int \text d^4y_j \bar\Psi_{p_j}(y_j)\left((\partial_\mu\partial^\mu)_{y_j} + m^2\right) \bra\Omega T\phi(x_1)\cdots\phi(y_1)\cdots\ket\Omega
+\end{gather}
+Take plane-wave limit, $\psi(k) \rightarrow (2\pi)^3\delta(k)$ which then results in
+$$
+\Psi_{p}(x) \rightarrow \frac{1}{\sqrt{2E_p}}e^{-ipx}
+$$
+And then we get
+\begin{gather}
+	\braket{\text{out}|\text{in}} = \prod_i \frac{1}{i\sqrt Z}\left(k_i^2 - m^2\right)\int\text d^4x_i e^{-ik_ix_i} \prod_j\frac{1}{i\sqrt Z}\left(p_j^2 - m^2\right) \int \text d^4y_j e^{ip_jy_j}\\
+	\underbrace{\bra\Omega T\phi(x_1)\cdots\phi(y_1)\cdots\ket\Omega}_{\text{sum of connected diagrams}}
+\end{gather}
+
+Fourier transforming the diagrams can be done by omitting the exponentials and Integrals of external points.
+
+Consider Fig1.
+
+Fourier Transforming:
+\begin{gather}
+	-i\lambda (2\pi)^4 \delta(p_1 + p_2 - k_1 - k_2) D_F(k_1)D_F(k_2)D_F(p_1)D_F(p_2)
+\end{gather}
+
+it is then convenient to define an S Matrix
+\begin{gather}
+	\text{Define: } i\mathcal{M}:\;\; \braket{\text{out}|\text{in}} = (2\pi)^4 \delta\left(\sum p_j - \sum k_i\right) i\mathcal{M}(k_1,k_2,\cdots p_1,\cdots)\\
+	i\mathcal{M} = \prod_i \frac{1}{i\sqrt Z}\left(k_i^2 - m^2\right) \prod_j \frac{1}{\sqrt Z}\left(p_j^2 -m^2\right)\sum\text{connected diagrams}
+\end{gather}
+where the connected diagrams are with the Feynman rules in momentum space, but not with exponentials and momentum integrals for external lines.
+
+
+\end{document}
+

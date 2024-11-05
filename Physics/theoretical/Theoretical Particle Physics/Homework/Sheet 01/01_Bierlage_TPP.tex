@@ -1,0 +1,279 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Theoretical Particle Phyics - Sheet 01}
+\author{}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Natural Units} 
+
+$$
+\hbar = c = k_B = 1
+$$
+which is
+$$
+J\cdot s = \frac{m}{s} = \frac{J}{\cdot K} = 1
+$$
+which we can show as:
+$$
+J = s^{-1},\;\;\; m = s,\;\;\; J = K
+$$
+
+\subsection{a)}
+\begin{gather}
+	1K = 1.380\cdot10^{-23}J = 8.61\cdot10^{-14}GeV
+\end{gather}
+Mass and Energy dimension of one
+
+\subsection{b)}
+
+\begin{gather}
+	1g = 4.494\cdot10^{15}J = 2.8\cdot10^{25}GeV
+\end{gather}
+Mass and Energy dimension of one
+
+\subsection{c)}
+
+\begin{gather}
+	1cm = 1.509\cdot10^{34}J^{-1} = 
+\end{gather}
+The conversions aren't working at all I give up\\
+Mass and Energy Dimension of minus one
+
+\subsection{d)}
+
+Mass and energy dimension of minus two 
+
+\subsection{e)}
+Mass and energy dimension of one
+
+\section{The Lorentz Group Part1}
+
+\subsection{a)}
+we require that
+$$
+g_{\mu\nu} x^\mu x^\nu = g_{\mu\nu} x'^\mu x'^\nu
+$$
+With the transformation $x'^\mu = \Lambda^\mu_\nu x^\nu$. This leads to
+\begin{gather*}
+	g_{\mu\nu}x^\mu x^\nu = g_{\rho\sigma} x'^\rho x'^\sigma\\
+	g_{\mu\nu}x^\mu x^\nu = g_{\rho\sigma} \Lambda^\rho_\mu x^\mu \Lambda^\sigma_\nu x^\nu\\
+	\Rightarrow g_{\mu\nu} = g_{\rho\sigma} \Lambda^\rho_\mu \Lambda^\sigma_\nu
+\end{gather*}
+
+\subsection{b)}
+First off we produce the required relation:
+\begin{gather}
+	g_{\mu\nu} = g_{\rho\sigma}\Lambda^\rho_\mu\Lambda^\sigma_\nu\nonumber\\
+	1 = g_{\rho\sigma}\Lambda^\rho_\mu\Lambda^\sigma_\nu g^{\mu\nu}\nonumber\\
+	(\Lambda^{-1})^\nu_\sigma = g_{\rho\sigma}\Lambda^\rho_\mu g^{\mu\nu}\nonumber\\
+	\text{rename indeces to get it into the proper form}\nonumber\\
+	(\Lambda^{-1})^\nu_\mu = g^{\nu\sigma}\Lambda^\rho_\sigma g_{\rho\mu}\label{eq:Lambda}
+\end{gather}
+
+We want to see that the covariant coordinate $x_\mu = g_{\mu\nu}x^\nu$ transform under Lorentz transformation as
+$$
+x_\mu \mapsto x'_\mu = x_\nu (\Lambda^{-1})^\nu_\mu
+$$
+So we will insert the previous expression \ref{eq:Lambda}
+\begin{gather}
+	x'_\mu = x_\nu g^{\nu\sigma}\Lambda^\rho_\sigma g_{\rho\mu}\\
+	= g_{\nu\alpha}x^\alpha g^{\nu\sigma}\Lambda^\rho_\sigma g_{\rho\mu}\\
+	= x^\alpha \delta^\sigma_\alpha \Lambda^\rho_\sigma g_{\rho\mu} = x^\sigma \Lambda^\rho_\sigma g_{\rho\mu}\\
+	= x^\sigma \Lambda^{\rho\nu}g_{\nu\sigma}g_{\rho\mu} = x_\nu\Lambda^\nu_\mu\\
+	= \Lambda^\nu_\mu x_\nu
+\end{gather}
+And therefore, that is how the covariant coordinate transforms under Lorentz Transformations.
+
+\subsection{c)}
+
+We will consider a covariant derivate of the new variable $x'$
+\begin{gather}
+	\partial_\mu\mapsto \pdv{}{x'^\mu}\\
+	\text{which we can expand with the chain rule to get the derivative of the old coordinate}\\
+	=\pdv{x^\nu}{x'^\mu}\pdv{}{x^\nu}\\
+	\text{and using the previous definition of the Lorentz transformation}\\
+	=\left(\Lambda^{-1}\right)^\nu_\mu \partial_\nu
+\end{gather}
+Which is what we wanted to show.
+
+\subsection{d)}
+
+We consider to contravariant derivative, but use the metric tensor to express it as the covariant derivative:
+\begin{gather}
+	\partial^\mu = g^{\mu\sigma}\partial_\sigma \mapsto g^{\mu\sigma} \left(\Lambda^{-1}\right)^\nu_\sigma \partial_\nu\\
+	= g^{\mu\sigma}g^{\nu\rho}\Lambda^\alpha_\rho g_{\alpha\sigma}\partial_\nu = \delta^\mu_\alpha \Lambda^\alpha_\rho \partial^\rho\\
+	= \Lambda^\mu_\rho\partial^\mu
+\end{gather}
+
+\subsection{e)}
+From Eq5:
+\begin{gather}
+	g = A^T gA\\
+	\Rightarrow \det(g) = \det(A^T g A)\\
+	\Rightarrow \det(g) = \det(A^T)\det(A)\det(g)\\
+	\det(A^T) = \det(A)\nonumber\\
+	\Rightarrow 1 = \det(A)^2\\
+	\Rightarrow 1 = |\det(A)|
+\end{gather}
+We will inspect the first element closer
+\begin{gather}
+	g_{00} = \left(\Lambda^T g \Lambda\right)_{00}\\
+	g_{00} = g_{\alpha\beta}\Lambda^0_\alpha\Lambda^0_\beta\\
+	g_{00} = \left(\Lambda^0_0\right)^2 -\left(\Lambda^0_i\right)^2\\
+	1 \leq \left(\Lambda^0_0\right)^2
+\end{gather}
+
+\subsection{f)}
+
+wdym?
+
+\subsection{g)}
+
+\begin{gather}
+	\text{consider } A(t) = \exp(tL)\text{ then, though Jacobi's formula:}\\
+	\frac{\text d}{\text dt}\det(A) = \det(A) \text{tr}\left[A^{-1} \frac{\text d}{\text dt}A\right]\\
+\Rightarrow \frac{\text d}{\text dt}\det(A) = \det(A)\text{tr}(tL)\\
+\text{This is a DiffEq and yields the result}\\
+\det(A) = e^{\text{tr}(tL)}
+\end{gather}
+setting $t=1$ then gives us the wanted result. We can show that tr$(L) = 0$ by the fact that
+\begin{gather}
+	1 = e^{\text{tr}(L)}\\
+	\Rightarrow \ln(1) = \ln\left(e^{\text{tr}(L)}\right)\\
+	\Rightarrow 0 = \text{tr}(L)
+\end{gather}
+
+
+\subsection{h)}
+
+we have the defining property
+\begin{equation}
+	g = \Lambda^T g \Lambda
+\end{equation}
+with $\Lambda = \exp(L)$ becomes
+\begin{gather}
+	g = \exp(L)^T g \exp(L)\\
+	g\exp(-L) = \exp(L)^T g\\
+	\exp(-gL) = \exp((gL)^T)\\
+	-gL = (gL)^T
+\end{gather}
+keeping in mind that $L$ is traceless, the most general matrix will look like
+$$
+\begin{pmatrix}
+	0 & a & b & c\\
+	a & 0 & d & e\\
+	b & -d & 0 & f\\
+	c & -e & -f & 0
+\end{pmatrix}
+$$
+the form of $d,e,f$ comes from the fact that $g$ transforms the lower right $3\times3$ portion of the matrix into the negative, while leaving $a,b,c$ as is, meaning that if we take the transpose we willl have to negate all the elements of the $3\times3$ matrix again, so that the equality holds.
+
+There are $6$ free variable, so a basis can be constructed out of $6$ matrices.
+
+\subsection{i)}
+
+\begin{gather*}
+	S_3^2 = 
+	\begin{pmatrix}
+		0 & 0 & 0 & 0\\
+		0 & 0 & -1& 0\\
+		0 & 1 & 0 & 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix}\cdot
+	\begin{pmatrix}
+		0 & 0 & 0 & 0\\
+		0 & 0 & -1& 0\\
+		0 & 1 & 0 & 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix} =
+	\begin{pmatrix}
+		0 & 0 & 0 & 0\\
+		0 & -1& 0 & 0\\
+		0 & 0 & -1& 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix}\\
+	S_3^3 = \begin{pmatrix}
+		0 & 0 & 0 & 0\\
+		0 & -1& 0 & 0\\
+		0 & 0 & -1& 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix}\cdot
+	\begin{pmatrix}
+		0 & 0 & 0 & 0\\
+		0 & 0 & -1& 0\\
+		0 & 1 & 0 & 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		0 & 0 & 0 & 0\\
+		0 & 0 & 1& 0\\
+		0 & -1 & 0 & 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix} = -S_3\\
+	K_1^2 = 
+	\begin{pmatrix}
+		0 & 1 & 0 & 0\\
+		1 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix} \cdot 
+	\begin{pmatrix}
+		0 & 1 & 0 & 0\\
+		1 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix} =
+	\begin{pmatrix}
+		1 & 0 & 0 & 0\\
+		0 & 1 & 0 & 0\\
+		0 & 0 & 0 & 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix}\\
+	K_1^3 = \begin{pmatrix}
+		0 & 1 & 0 & 0\\
+		1 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix} \cdot
+	\begin{pmatrix}
+		1 & 0 & 0 & 0\\
+		0 & 1 & 0 & 0\\
+		0 & 0 & 0 & 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix} = \begin{pmatrix}
+		0 & 1 & 0 & 0\\
+		1 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0\\ 
+		0 & 0 & 0 & 0
+	\end{pmatrix} = K_1\\
+	\mathbb Z_2 \text{ my beloved..}
+\end{gather*}
+
+\subsection{j)}
+
+Taking a look at $(\Lambda_{xy})_{22},(\Lambda_{xy})_{23}, (\Lambda_{xy})_{32}, (\Lambda_{xy})_{33}$ separately:
+\begin{gather}
+	(\Lambda_{xy})_{22} = \left(\exp(-\omega K_3)\right)_{22} = 1 + 0 + \omega^2/2 + 0 + \omega^4/24 + 0 + O(\omega^6) = \cos(\omega)\\
+(\Lambda_{xy})_{22} = (\Lambda_{xy})_{33}\\
+	(\Lambda_{xy})_{23} = \left(\exp(-\omega K_3)\right)_{23} = 0 + \omega + 0 - \omega^3/6 + 0 +\omega^5/120 + O(\omega^6) = \sin(\omega)\\
+	(\Lambda_{xy})_{23} = -(\Lambda_{xy})_{32}
+\end{gather}
+Because I was kind of confused myself for a second: the $1$ in the cosine terms comes from the identity matrix, which is why there is no one in the sine terms, and there are ones along the diagonal in the final matrix!
+
+\subsection{k)}
+
+\subsection{l)}
+
+The matrices $K_i$ and the parameter $\chi$ are generators of the Lorentz boost, where $K_i$ decides the direction of the boost and where $\chi$ influences how strong this boost is. The matrices $S_i$ and the parameter $\omega$ are generators of the spacetime Rotation, where $S_i$ decides the axis of rotation and where $\omega$ influences how far this rotation goes.
+
+\end{document}

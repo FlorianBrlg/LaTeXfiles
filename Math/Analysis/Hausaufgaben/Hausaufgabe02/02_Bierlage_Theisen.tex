@@ -1,0 +1,64 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Analysis 1 - Hausaufgabe 2}
+\author{Florian, Jan}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Wachstum der Fakultät}
+
+\section{Rechenregeln für Suprema}
+
+\section{Cauchy-Schwarz Ungleichung}
+
+\textit{Beweis:} Es gilt für alle $\mu,\lambda\in \mathbb{R}$
+\begin{equation}
+	0 \leq \sum_i (\lambda x_i + \mu y_i)^2
+\end{equation}
+somit
+\begin{gather}
+	0 \leq \lambda^2 \underbrace{\sum_i x_i^2}_{=A} + 2\lambda\mu\underbrace{\sum_i x_iy_i}_{=C} + \mu^2 \underbrace{\sum_i y_i^2}_{=B}
+\end{gather}
+Sei $A$ oder $B$ null, dann sind $x_i$ oder $y_i$ null für alle $i$, somit ist $x_iy_i$ null für alle $i$. Dann ist
+\begin{equation}
+	C^2 \leq AB
+\end{equation}
+Sei $AB\neq0$,
+
+Wähle $\lambda = \sqrt B, \mu = \epsilon\sqrt A$ mit $\epsilon\in\{-1,1\}$, $\epsilon C \leq 0$. Dann
+\begin{gather}
+	0 \leq \lambda^2 A + 2\lambda\mu C + \mu^2 B\\
+	0 \leq BA + 2\sqrt A \epsilon\sqrt B C + \underbrace{\epsilon^2}_{=1} AB\\
+	0 \leq 2AB + 2\sqrt A\sqrt B \epsilon C\\
+\end{gather}
+Teile durch $2\sqrt A\sqrt B \neq0$
+\begin{gather}
+	0 \leq \sqrt A\sqrt B + \epsilon C\\
+	-\epsilon C \leq \sqrt A\sqrt B\\
+	C^2 \leq AB
+\end{gather}
+in beiden Fällen gilt die Cauchy Schwartz Ungleichung. Dies endet den Beweis.
+
+
+\section{$\mathbb{C}$}
+
+\section{Rechnen in $\mathbb{C}$}
+
+\section{Möbiustransformation}
+\subsection{a)}
+Wir nehmen aus der vorherigen aufgabe die Möbius trafo
+\begin{equation}
+	\frac{z-a}{1-\bar a z}
+\end{equation}
+
+\end{document}
+
