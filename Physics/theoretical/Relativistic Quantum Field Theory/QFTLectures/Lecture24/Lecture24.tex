@@ -1,0 +1,136 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 24}
+\author{}
+\date{18.11.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Vertex correction} 
+
+Fig1.
+
+\begin{gather}
+	\bar u (p') \delta\Gamma^\mu u(p) = 2ie^2 \int \frac{\text d^4l}{(2\pi)^4}\int_0^1 \text dx\text dy\text dz \delta(x+y+z-1) \frac{2}{D^3}\\
+	\cdot \bar u(p') \left[\gamma^\mu \underbrace{\left(-\frac{l^2}{2} + (1-x)(1-y)q^2 + (1-4z+z^2) m^2\right)}_{\text{leads to } F_1(q^2)-1} + \frac{i\sigma^{\mu\nu}}{2m}(2m^2z(1-z))\right]u(p)
+\end{gather}
+for $F_1(q^2)$ there is a UV divergence:
+\begin{gather}
+	\int \frac{\text d^4l}{D^3}l^2 \rightarrow \int \text dl l^3 \frac{l^2}{l^6}
+\end{gather}
+a logarithmic divergence.
+
+Confession: We have not included the factor $(\sqrt{Z})^{n+m}$ which we obtained when we simplified the LSZ-formula with amputation. In the lowest Order $Z\approx 1$. So until now it was okay not to include it. Our results so far had been to order $O(\alpha)$. It has also been fine for $F_2(q^2)$, as we had found that it was of order $O(\alpha)$.
+
+For $F_1(q^2)$, we have the form $F_1(q^2) = 1 + O(\alpha)$ therefore we must include the factor $Z$.
+
+We have:
+\begin{gather}
+	\Gamma^\mu(p,p') = \text{fig2, but we need}\\
+	\sqrt{Z}^2 \Gamma^\mu = Z\Gamma^\mu = \gamma^\mu F_1(q^2) + \frac{i\sigma^{\mu\nu}}{2m}F_2(q^2)
+\end{gather}
+Where we have redefined $F_1$ and $F_2$.
+\begin{gather}
+	Z\Gamma^\mu = (1+\delta Z)(\gamma^\mu + \delta \Gamma^\mu) = \gamma^\mu + \delta\Gamma^\mu + \gamma^\mu\delta Z\\
+	\Rightarrow F_1(q^2) = 1 + \delta F_1(q^2) + \delta Z
+\end{gather}
+where $\delta F_1(q^2) = F_1(q^2) -1$ before the $Z$ correction. It turns out that $\delta Z = -\delta F_1(0)$ from Peskin and Schröder 7.1
+\begin{gather}
+	= 1 + \delta F_1(q^2) - \delta F_1(0)
+\end{gather}
+
+
+\section{Infrared divergence}
+
+Photon propagator
+\begin{gather}
+	\frac{-ig_{\mu\nu}}{q^2 + i\epsilon} \mapsto \frac{-ig_{\mu\nu}}{q^2 - \mu^2 + i\epsilon}
+\end{gather}
+Introduce a photon mass as regularization parameter. If we do that then
+\begin{gather}
+	F_1(q^2) = 1 - \frac{\alpha}{2\pi}\log\left(-\frac{q^2}{m^2}\right)\log\left(-\frac{q^2}{m^2}\right), \text{ large $-q^2$}
+\end{gather}
+We are interested in
+\begin{gather}
+	\frac{\text d\sigma}{\text d\Omega}(p\rightarrow p') = \left(\frac{\text d\sigma}{\text d\Omega}\right)_0 \left[1 - \frac{\alpha}{\pi}\log\left(-\frac{q^2}{m^2}\right)\log\left(-\frac{q^2}{\mu^2}\right)\right]
+\end{gather}
+We also had the Bremsstrahlung which was
+\begin{gather}
+	\frac{\text d\sigma}{\text d\Omega}(p\rightarrow p'+\gamma) = \left(\frac{\text d\sigma}{\text d\Omega}\right)_0 \left[+\frac{\alpha}{\pi}\log\left(-\frac{q^2}{m^2}\right) + O(\alpha^2)\right]
+\end{gather}
+It is not possible to distinguish $(p\rightarrow p')$ and $(p\rightarrow p'+\gamma)$, therefore we must add the cross sections together, with with the IR divergence disappears
+
+
+
+\section{The electron self-energy}
+in $\phi^4-theory$:
+\begin{gather}
+	\int \text d^4x e^{ipx}\bra\Omega T\phi(x)\phi(0)\ket\Omega = \sum_\lambda \frac{iZ_\lambda}{p^2 - m_\lambda^2 + i\epsilon} = \text{sum of all diagrams two legs}
+\end{gather}
+Thus for $p^2 \~{} m^2$ ($m$ = single part mass):
+\begin{gather}
+	\sum \text{all diagrams two legs} = \text{fig 3}\\
+	= \frac{i}{p^2 - m_0^2 +i\epsilon} + \cdots\\
+	= \frac{iZ}{p^2 - m^2 + i\epsilon}
+\end{gather}
+
+in QED: 
+
+Consider
+\begin{gather}
+\int \text d^4 x e^{ipx}\bra\Omega T\psi(x)\bar\psi(0)\ket\Omega=\\
+\text{fig4}\\
+= \underbrace{\frac{i(\slashed p + m_0)}{p^2 - m_0^2 + i\epsilon}}_{\text{free field propagator}} + \underbrace{\frac{i(\slashed p + m_0)}{p^2 - m_0^2}\left[-i\Sigma_2 (\slashed p)\right] \frac{i(\slashed p + m_0)}{p^2 - m_0^2 + i\epsilon}}_{\text{electron self-energy}} + \cdots\\
+-i\Sigma_2(\slashed p) = (-ie)^2 \int \frac{\text d^4k}{(2\pi)^4} \gamma^\mu \frac{i(\slashed k+m_0)}{k^2 - m_0^2 + i\epsilon}\gamma_\mu \frac{-i}{(p-k)^2 + i\epsilon}
+\end{gather}
+This is divergent. We introduce Feynman parameters. complete the square, shift the momentum to $l = k-xp$. We use Pauli-Villands cutoff $\Lambda$ momentum integral. And Wick rotate.
+
+Result:
+\begin{gather}
+	\Sigma_2(\slashed p) = \frac{\alpha}{2\pi}\int_0^1 \text dx (2m_0 - x\slashed p) \log\left( \frac{x\Lambda^2}{(1-x)m_0^2 - x(1-x)p^2}\right)
+\end{gather}
+Define one-particle irreducible diagrams (1PI):
+
+Any diagram that cannot be split in two by removing a single line. Fig5
+
+Let $-i\Sigma-2$ be the sum of all 1PI diagrams
+\begin{gather}
+	-iSigma(\slashed p) = 1PI = fig6
+\end{gather}
+We proceed with all diagrams. We want to find the sum of all diagrams like we did in $\phi^4$ theory.
+
+\begin{gather}
+	= \frac{i(\slashed p + m_0)}{p^2 - m^2} + \frac{i(\slashed p +m_0)}{p^2-m^2}\left[-i\Sigma(\slashed p)\right]\frac{i(\slashed p + m_0)}{p^2-m^2} + \cdots\\
+	= \frac{i}{\slashed p - m_0}\left(1 + \frac{\Sigma(\slashed p)}{\slashed p - m_0}\right), \;\;\;\; \frac{i(\slashed p + m_0)}{p^2-m_0^2} := \frac{i}{\slashed p - m_0}\\
+	= \frac{i}{\slashed p - m_0} \frac{i}{1 - \frac{\Sigma(\slashed p)}{\slashed p - m_0}} = \frac{i}{\slashed p - m_0 - \Sigma(\slashed p)}
+\end{gather}
+The pole is shifted from $\slashed p = m_0$ to $\slashed p = m_0 + \Sigma(\slashed p = m) =: m$
+
+Then, the sum of all diagrams:
+\begin{gather}
+	= \frac{iZ}{\slashed p - m + i\epsilon}
+\end{gather}
+close to the pole $\slashed p = m : \Sigma(\slashed p) = \Sigma(\slashed p = m)+\Sigma'(\slashed p = m)(\slashed p - m)$
+
+\begin{gather}
+	\slashed p - m_0 - \Sigma(\slashed p) = \slashed p - m_0 - \Sigma(\slashed p = m) - \Sigma'(\slashed p = m) (\slashed p -m) + \cdots\\
+	= (\slashed p - m)\left(1 - \Sigma'(\slashed p =m) + \cdots\right)\\
+	\Rightarrow Z^{-1} = 1 - \Sigma'(\slashed p = m) + \cdots
+\end{gather}
+
+\begin{gather}
+	\delta m = m - m_0 = \Sigma_2(\slashed p =  m) = \Sigma_2(\slashed p = m_0)\\
+	= \frac{\alpha m_0}{2\pi}\int_0^1 \text dx (2-x)\log\left(\frac{x\Lambda^2}{(1-x)^2 m_0^2}\right) = \frac{3\alpha m_0}{2\pi}\left[\frac{1}{4} + \log\frac{\Lambda}{m_0}\right]
+\end{gather}
+
+For reasonable values of $\Lambda$, $\frac{\delta m}{m_0}$ is small. Let $m_0$ be dependent on $\Lambda$ such that $m$ is not small.
+\end{document}
+

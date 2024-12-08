@@ -1,0 +1,128 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 23}
+\author{}
+\date{13.11.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Vertex correction: Example} 
+
+Fig1.
+
+Static $B$ field
+\begin{equation}
+	iM = -ie (2m) \xi'^\dagger \left(\frac{-1}{2m}\sigma^k \left[F_1(0) + F_2(0)\right] \xi \tilde{B}^k(q)\right)
+\end{equation}
+\begin{gather}
+	iM = -i\tilde{V}(q) \text{ ignoring $(2m)$}\\
+	\Rightarrow V(x) = -\langle \mu \rangle B(x),\\ \langle\mu\rangle = \frac{e}{m}\left[F_1(0)+F_2(0)\right]\xi'^\dagger \frac{\sigma}{2}\xi\\
+	\Rightarrow = g\frac{e}{2m}S,\;\; S = \chi'^\dagger \frac{\sigma}{2}\xi\\
+	\text{Landé g-factor: } g=2\left[F_1(0) + F_2(0)\right] \approx 2
+\end{gather}
+
+\section{Evaluaton of vertex correction}
+
+Fig2.
+
+By the Feynman rules:
+\begin{gather}
+	\bar u(p') \underbrace{\delta T^\mu(p',p)}_{= T^\mu - \gamma^\mu}u(p) = \int\frac{\text d^4k}{(2\pi)^4}\frac{-ig_{\nu\rho}}{(k-p)^2 + i\epsilon}\\
+	\cdot \bar u (p') (-ie\gamma^\nu) \frac{i(k'+m)}{k'^2 -m^2 + i\epsilon}\gamma^\mu \frac{i(k+m}{k^2 - m^2 + i\epsilon}(-ie\gamma^\rho) u(p)\\ %The last two ks in the numerator might be slashed
+	= \int\frac{\text d^4k}{(2\pi)^4}\frac{-i}{(k-p)^2 + i\epsilon}
+	\cdot \bar u (p') (-ie\gamma_\rho) \frac{i(k'+m)}{k'^2 -m^2 + i\epsilon}\gamma^\mu \frac{i(k+m}{k^2 - m^2 + i\epsilon}(-ie\gamma^\rho) u(p)\\
+	\text{Numerator: } \gamma_\rho(\slashed k' + m) \gamma^\mu (\slashed k + m)\gamma^\rho
+\end{gather}
+Using the Gamma identities
+\begin{gather}
+	\gamma_\rho \gamma^\mu \gamma^\rho = -2\gamma^\mu, \; \gamma_\rho\gamma^\mu\gamma^\nu\gamma^\rho = 4g^{\mu\nu}\\
+	\gamma_\rho\gamma^\mu\gamma^\nu\gamma^\sigma\gamma^\rho = -2\gamma^\sigma\gamma^\nu\gamma^\mu
+\end{gather}
+and we then obtain
+\begin{gather}
+	\bar u(p')\delta T^\mu u(p) = 2ie^2\int\frac{\text d^4k}{(2\pi)^4}\frac{\bar u(p')\left[\slashed k \gamma^\mu \slashed k' + m^2\gamma^\mu - 2m(k+k')^\mu \right] u(p)}{\left((k-p)^2 + i\epsilon\right)(k'^2 - m^2 + i\epsilon)(k^2-m^2+i\epsilon)}
+\end{gather}
+
+\section{Feynman Parameters: }
+
+\begin{gather}
+\frac{1}{AB} = \int_0^1 \text dx \frac{1}{\left(xA + (1-x)B\right)^2} = \int_0^2\text dx\int_0^1 \text dy \delta(x+y-1) \frac{1}{\left(xA + (1-x)B\right)^2}\\
+	\frac{1}{B-A}\int_A^B \frac{\text dt}{t^2} = \frac{AB}{AB(B-A)}\left(\frac{1}{A}-\frac{1}{B}\right) = \frac{1}{AB(B-A)}(B-A) = \frac{1}{AB}\\
+	\text{letting $t = B + (A-B)x$ and d$t = (A-B)$d$t$}
+\end{gather}
+Generalizing it by Induction leads to
+\begin{gather}
+	\frac{1}{A_1A_2\cdots A_n} = \int_0^1 \text dx_1 \text dx_2 \cdots \text dx_n \delta\left(\sum_i x_i - 1\right) \frac{(n-1)!}{\left(x_1A_1 + x_2A_2 + \cdots\right)^n}
+\end{gather}
+denominator of (13):
+\begin{gather}
+	\frac{1}{\left((k-p)^2 + i\epsilon\right)(k'^2 - m^2 + i\epsilon)(k^2 - m^2 + i\epsilon}\\ = \int_0^1 \text dx \text dy \text dz \delta(x+y+z-1) \frac{2}{D^3}\\ D = x(k^2 - m^2 + i\epsilon) + y\left(\underbrace{(k+q)^2}_{k'=k+q} - m^2 +i\epsilon\right) + z\left((k-p)^2 + i\eislon\right) = k^2 + 2k(\cdots) + \cdots
+\end{gather}
+and then through completing the square and defining $l = k + yq - zp$
+\begin{gather}
+	\Rightarrow\cdots\Rightarrow D = l^2 - \Delta + i\epsilon,\; \Delta = -xyq^2 + (1-z)^2m^2\\
+	\text{needed was also: } p^2 = m^2 = p'^2 = (p+q)^2 \Rightarrow 2pq + q^2 = 0
+\end{gather}
+We now write down the result of (13)
+\begin{gather}
+	= 2ie^2 \int\frac{\text d^4l}{(2\pi)^4}\int_0^1 \text dx\text dy\text dz \delta(x+y+z-1)\frac{1}{D^3}\\ \cdot\bar u(p') \left[\gamma^\mu \underbrace{\left(\frac{-l^2}{2} + (1-x)(1-y)q^2 + (1-4z+z^2)m^2\right)}_{\text{leads to }F_1(q^2)} + \frac{i\sigma^{\mu\nu}q_\nu}{2m}\underbrace{\left(2m^2z(1-z)\right)}_{\text{leads to }F_2(q^2)}\right]u(p)
+\end{gather}
+We now have a total factor of $1/l$ in the integral for $F_1(q^2)$, which leads to a logarithmic divergence. First, evaluate the $F_2(q^2)$ part, as it is unproblematic.
+
+\section{Wick Rotation}
+
+
+\begin{gather}
+	\frac{\text d^4l}{(2\pi)^4}\frac{1}{(l^2 - \Delta + i\epsilon)^3}
+\end{gather}
+with our square being the Minkowski metric. We want to integrate in the Euclydian metric though. We define $l_E$ such that
+\begin{gather}
+	l_E :\;\; l^0 = il_E,\;\; l = l_E\\
+	\Rightarrow l^2 = l^0^2 - l^2 = -(l_E^0)^2 - l^2 = -l_E^2\\
+	\text d^4l = i\text d^4l_E
+\end{gather}
+so we can express our integral as
+\begin{gather}
+	i\int \frac{\text d^4l_E}{(2\pi)^4} \frac{1}{\left(-l_E^2 - \Delta + i\epsilon\right)}
+\end{gather}
+We originally integrated $l^0$ along the Real axis from $-\infty$ to $\infty$.
+
+We rotate our previous Integral path before our variable transformation, such that we integrate from $-i\infty$ to $i\infty$. We need to rotate the Integral path so that we do not go through the poles, as they would bring a contribution to the integral which we don't want.
+
+Then
+\begin{gather}
+	= \frac{-i}{(2\pi)^4}\int_0^\infty \text dl_E \underbrace{2\pi^2 l_E^3}_{\text{surface of 4D sphere}} \frac{1}{\left(l_E^2 + \Delta - i\epsilon\right)^3}\\
+	= \frac{-i}{(2\pi)^2}\frac{1}{2\Delta}
+\end{gather}
+
+\subsection{$F_2(q^2)$}
+
+\begin{gather}
+	 F_2(q^2) = 2ie^2 \int \frac{\text d^4l}{(2\pi)^4}\int_0^1 \text dx\text dy\text dz \delta(x+y+z-1) \frac{2}{D^3}(2m^2z(1-z))\\
+	 = \frac{\alpha}{2\pi} \int_0^1 \text dx\text dy \text dz \delta(x+y+z-1)\frac{2m^2z(1-z)}{(1-z)^2m^2 - xyq^2}\\
+	 \Rightarrow F_2(0) = \frac{\alpha}{2\pi} \int_0^1 \text dx\text dy\text dz \delta(x+y+z-1) \frac{2z}{1-z}
+\end{gather}
+For a non-zero result from the $x$-integration, $y+z-1$ mus be between $-1$ and $0$. From this, we get $0 \leq y \leq 1-z$.
+\begin{gather}
+	F(0) = \frac{\alpha}{2\pi} \int \text dz \int_0^{1-z}\text dy \frac{2z}{1-z} = \frac{\alpha}{2\pi}\int_0^1 \text dz 2z = \frac{\alpha}{2\pi}
+\end{gather}
+so then we have the result that
+\begin{gather}
+	g = 2 + F_2(0)\\
+	= 2 + \frac{\alpha}{\pi} + O(\alpha^2)
+\end{gather}
+And it is conventional to define
+\begin{gather}
+	a_e = \frac{g-2}{2} = \frac{\alpha}{2\pi} \approx 0.00161\\
+	\text{experimental value: } a_e \approx 0.001160
+\end{gather}
+\end{document}
+

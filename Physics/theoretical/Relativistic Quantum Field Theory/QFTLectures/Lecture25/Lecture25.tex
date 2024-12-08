@@ -1,0 +1,81 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 25}
+\author{}
+\date{20.11.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Renormalization of electric charge} 
+
+Consider corrections to photon propagator
+
+Vacuum polatization diagram: Fig1
+
+\begin{gather}
+	= (-ie)^2 (-1) \int\frac{\text d^4k}{(2\pi)^4}\text{tr}\left[\gamma^\mu \frac{i(\slashed k + m)}{k^2 - m^2 + i\epsilon} \gamma^\nu \frac{i(\slashed k + \slashed q + m)}{(k+q)^2 - m^2 + i\epsilon}\right]\\
+	= i \Pi_2^{\mu\nu}(q)
+\end{gather}
+where we have (-1) and the trace because of the fermion loop.
+
+More generally: Fig 2
+
+$\Pi^{\mu\nu}(q)$ is a tensor. It is comprised of the tensors that are included in the calculation. Then
+\begin{gather}
+	\Pi^{\mu\nu}(q) = Cq^\mu q^\nu + D g^{\mu\nu}\text{, by Lorentz invariance}
+\end{gather}
+We use Ward's Identity:
+\begin{gather}
+	q_\mu \Pi^{\mu\nu} = 0
+\end{gather}
+Which we apply to eq3
+\begin{gather}
+	\Rightarrow Cq^2q^\nu + Dq\nu = 0\\
+	\Rightarrow (Cq^2 + D) q^\nu =  0\\
+	\Rightarrow Cq^2 + D = 0\\
+	\Rightarrow D = -Cq^2
+\end{gather}
+Which we substitute into the previous equation
+\begin{gather}
+	\Pi^{\mu\nu}(q) = C(q^\mu q^\nu - q^2 g^{\mu\nu}\\
+	\text{and we redefine $-C = \Pi(q^2)$.} \nonumber\\
+	= (q^2 g^{\mu\nu} - q^\mu q^\nu)\Pi(q^2)
+\end{gather}
+
+\section{Sum of all correction to the poton propagator}
+
+denoted by Fig 3
+
+\begin{gather}
+	= \text{Fig 4}
+\end{gather}
+
+Consider a low $q^2$ process $(q^2 << m^2)$:
+
+Fig5
+
+What if $q^2$ is not small?
+
+\begin{gather}
+	e_0 \rightarrow \frac{e_0}{\sqrt{1-\Pi(q^2)}} = e\frac{\sqrt{1-\Pi(0)}}{\sqrt{1-\Pi(q^2)}}
+\end{gather}
+The apparent charge is dependent on $q^2$.
+
+That means there is an Effective potential from an electron that is 
+\begin{gather}
+	V(r) = -\frac{\alpha}{r}\left(1 + \frac{\alpha}{4\sqrt\pi}\frac{e^{-2mr}}{(mr)^{3/2}} + \cdots\right)
+\end{gather}
+
+Plotting this, with $V(r) = \frac{-\alpha_{eff}(r)}{r}$: Fig6
+
+When the elctrons are closer together, they have a stronger attraction. Fig7
+\end{document}
+

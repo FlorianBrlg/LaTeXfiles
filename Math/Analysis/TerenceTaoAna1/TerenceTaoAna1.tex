@@ -300,9 +300,63 @@ Proving the Lemma.
 
 \subsubsection{Lemma: Unions are Commutative,Associative}
 Let $A, B, C$ be sets. Then $A \cup B = B \cup A$, and $(A\cup B)\cup C = A\cup(B\cup C)$.\\
-\textit{Associativity, Proof:} let $x\in (A\cup B)\cup C$. then 
+\textit{Associativity, Proof:} let $x\in (A\cup B)\cup C$. Then $x\in (A\cup B)$ or $x\in C$. If $x\in C$ then $x\in(B\cup C)$. If $x\in(A\cup B)$ then $x\in A$ or $x\in B$. if $x\in B$ then $x\in (B\cup C)$. Thus, either $x\in A$ or $x\in(B\cup C)$ so $x\in A\cup(B\cup C)$. The opposite direction is proven by the same argument. This completes the proof.\\
+\textit{Commutativity, Proof:} let $x\in A\cup B$. Assume that $x\notin B\cup A$. Then $x\notin A \wedge x\notin B$. By our previous assumption, $x\in A$ or $x\in B$, however this leads to a contradiction. Then, $x\in B\cup A$. The opposite direction is proven by the same argument. This completes the proof.
 
-let $x\in (A\cup B)\cup C$. then 
+\subsubsection{Example: Triplet, Quadruplet sets}
+
+From our Axioms of singleton sets and Pairwise Union we can now define sets that are finitely large. This means we can define for example
+\begin{equation}
+	\{a\} \cup \{b\} \cup \{c\} = \{a,b,c\}
+\end{equation}
+
+\subsection{Definition of Subsets}
+Let $A,B$ be sets. $A$ is a subset of $B$ iff every element of $A$ is also in $B$. We write
+\begin{equation}
+	\text{for all }x,\; x\in A \rightarrow x\in B.
+\end{equation}
+We use the notation $A\subseteq B$. We call $A$ a proper subset of $B$ if $A\subseteq B$ and $A\neq B$, then we use $A \subset B$.
+
+\subsubsection{Ordering of Sets}
+Sets are partiall ordered by set inclusion.\\
+Let $A,B,C$ be sets. If $A\subseteq B$ and $B\subseteq C$ then $A\subseteq C$. If $A\subseteq B$ and $B\subseteq A$ then $A=B$. If $A\subset B$ and $B\subset C$ then $A\subset C$.\\
+\textit{1, Proof:} Let $A\subseteq B$ and $B\subseteq C$. Let $x$ be arbitrary and let $x\in A$. As $x\in A$ and $A\subseteq B$ then $x\in B$. As $x\in B$ and $B\subset C$ then $x\in C$. Thus, $x\in A$ implies $x\in C$, so $A\subseteq C$.\\
+\textit{2, Proof:} Let $A\subseteq B$ and $B\subseteq A$. Then $\forall x (x\in A \Rightarrow x\in B \wedge x\in B \Rightarrow x\in A)$ which is $\forall x (x\in A \Leftrightarrow x\in B)$ which is $A = B$.\\
+\textit{3, Proof:} Let $A\subset B$ and $B\subset C$. We already know $A\subseteq C$ from $(1)$. From our definitions we know that there is an $x\in B$ such that $x\notin A$ and $x\in C$. As $x\notin A$ and $x\in C$, $A \neq C$. Therefore, $A\subset C$.
+
+\subsection{Definition of Intersections}
+The Intersection $A\cap B$ is defined to be
+\begin{equation}
+	A\cap B := \{x\in A | x\in B\}
+\end{equation}
+So in other words
+\begin{equation}
+	x\in A\cap B \Leftrightarrow x\in A \wedge x\in B
+\end{equation}
+
+\subsection{Definition of Differences of Sets}
+The Difference of the sets $A,B$ is defined as
+\begin{equation}
+	A\backslash B := \{x\in A| x\notin B\}
+\end{equation}
+
+\subsubsection{Set connection laws}
+We can form set connection laws with the Union, Intersection and Difference of Sets. Let $A,B,C$ be sets. let $X$ be the set containing those sets.
+\begin{itemize}
+	\item [a)](Minimal Element) $A\cup \emptyset = A$ and $A\cap\emptyset = \emptyset$
+	\item [b)](Maximal Element) $A\cup X = X$ and $A\cap X = A$
+	\item [c)](Identity) $A\cap A = A$ and $A\cup A = A$
+	\item [d)](Commutativity) $A\cap B = B\cap A$ and $A\cup B = B\cup A$
+	\item [e)](Associativity) Unions and Intersections are Associative.
+	\item [f)](Distributivity) $A\cap (B\cup C) = (A\cap B) \cup (A\cap C)$ and $A\cup(B\cap C) = (A\cup B) \cap (A\cup C)$
+	\item [g)](Partition) $A\cup (X\backslash A) = X$ and $A\cap(X\backslash A) = \emptyset$
+	\item [h)](De Morgan) $X\backslash (A\cup B) = (X\backslash A)\cap(X\backslash B)$ and $X\backslash (A\cup B) = (X\backslash A) \cup (X\backslash B)$
+\end{itemize}
+\textit{Proofs: }
+\begin{itemize}
+	\item[a)] Let $x\in A\cup\emptyset$ 
+	
+\end{itemize}
 
 
 \end{document}

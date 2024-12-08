@@ -46,3 +46,22 @@ plt.ylabel("Charge picked up in nC")
 
 plt.savefig("InvSquared2.png")
 plt.show()
+
+
+x = np.array([1.52, 2.02, 2.52, 3.02, 4.02])
+y = np.array([18.0, 16.14, 14.54, 13.11, 11.05])
+
+reg = stats.linregress(x-1.52, np.log(y*(1/18.0)))
+
+#y = y*(1/18.0)
+#y = np.log(y)
+
+plt.scatter( x-1.52, np.log(y*(1/18.0)))
+plt.plot(x-1.52, reg.slope * (x-1.52) + reg.intercept)
+plt.grid()
+
+print(reg.slope)
+
+plt.savefig("Attenuation Coeff")
+plt.show()
+

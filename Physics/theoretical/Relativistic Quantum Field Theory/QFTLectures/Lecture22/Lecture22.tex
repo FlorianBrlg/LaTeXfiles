@@ -1,0 +1,81 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{QFT - Lecture 22}
+\author{}
+\date{11.11.2024}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\subsection{Vertex Correction} 
+Fig1
+
+Problems:
+\begin{itemize}
+	\item Ultraviolet divergence: repaired by renormalization
+	\item Infrared divergence: Cancelled by divergence for bremsstrahlung
+\end{itemize}
+
+Fig2
+
+\section{Bremsstrahlung}
+
+\begin{gather}
+	iM = -ie\bar u (p') M_0(p', p-k) \frac{i(\slashed p - \slashed k + m)}{(p-k)^2 -m^2} \gamma^\mu \varepsilon^\ast_\mu(k) u(p)\\
+	M_0(p', p-k) \approx M_0(p',p), \text{ plus same simplification as for Compton, and ignore } \slashed k\nonumber\\
+	= \text{Fig3} \cdot e \left[\frac{p'\varpesilon^\ast}{p'k} - \frac{p\varepsilon^\ast}{pk}\right]\\
+	\text d\sigma = \frac{1}{2E_A 2E_B |v_A - v_B|}\prod_f \frac{\text d^3p_f}{(2\pi)^3}\frac{1}{2E_f}\cdot |M(p_Ap_B\rightarrow\{p_f\}|^2 (2\pi)^4 \delta\left(p_A + p_B - \sum_f p_F\right)\\
+	\text{for us: } \text d\sigma(p\rightarrow p' + \gamma) = \text d\sigma (p\rightarrow p')\int\frac{\text d^3k}{(2\pi)^3}\frac{1}{2E_k}\sum_\lambda \left|\frac{p'\varepsilon^\lambda}{p'k}-\frac{p\varepsilon^\lambda}{pk}\right|^2,\;\; E_k = |k|\\
+	\text{From the $1/k^3$ factor and the $k^2$ factor of the integral we get a divergence.}\nonumber\\
+	\text{Setting $E_k = \sqrt{\mu^2 + |k|^2}$ with $\mu$ photon mass tending to 0}\nonumber\\
+	= \cdots = \text d\sigma(p-p') \frac{\alpha}{\pi}\log\left(\frac{-q^2}{\mu^2}\right)\log\left(\frac{-q^2}{m^2}\right)\\
+	\text{ $-q$ large, } q^2 = (E'-E)^2 - (q'-q)^2, \;\; q = p'-p \nonumber
+\end{gather}
+logarithmic divergence as the (artificial) photon mass goes to zero.
+
+\section{Vertex Correction}
+Fig4
+
+We consider $\gamma^\mu \rightarrow \Gamma^\mu$
+
+\begin{gather}
+	= iM = ie^2 \bar u(p') \Gamma^\mu(p,p') u(p) \frac{1}{q^2}\bar u(k') \gamma_\mu u(k)
+\end{gather}
+
+\subsection{Lorentz Invariance:}
+
+$\bar u(p')\Gamma^\mu u(p)$ is a four vector.
+
+\begin{gather}
+	\Gamma^\mu = A\gamma^\mu # B(p'^\mu + p^\mu) + C(p'^\mu - p^\mu)\\
+	A,B,C \text{ can be dependent on } e,\, m,\, p^2,\, p'^2,\, q^2 = (p'-p)^2 = -2pp'\nonumber\\
+	pq = p(p'-p) = pp' - m^2,\, p'q = m^2 - pp'\nonumber\\
+	\slashed p : \bar u(p') \slashed p u(p) = \bar u(p')mu(p)\nonumber\\
+	\rightarrow \text{$A,B,C$ can only depend on $e, m, q^2$.}\nonumber
+\end{gather}
+
+\subsubsection{Word's Identity}
+\begin{gather}
+	0 = \bar u(p') (\Gamma^\mu q_\mu) u(p)\\
+	= A\bar u(p')\gamma^\mu q_\mu u(p) + B\bar u(p') (p'^\mu+p^\mu) q_\mu u(p) + C\bar u(p') (p'^\mu - p^\mu)q_\mu u(p)\\
+	= \underbrace{A\bar u(p')(\slashed p' - \slashed p) u(p)}_{=0} + \underbrace{B \bar u(p') (p'^\mu + p^\mu)(p'_\mu - p_\mu)u(p)}_=0 + C\cdots\\
+	\rightarrow C =0\\
+	\Rightarrow \Gamma^\mu(p,p') = A(q^2) \gamma^\mu + B(q^2) (p'^\mu + p^\mu)\\
+	= \gamma^\mu F_1(q^2) + \frac{i\sigma^{\mu\nu}q_\nu}{2m}F_2(q^2),\; \text{Gordon's Identity}\\
+\end{gather}
+$F_1$ and $F_2$ are called form factors and are important. On Wednesday they will be computed to the lowest (non trivial) order. In the lowest Order $F_1 = 1,\, F_2 = 0$.
+
+\subsubsection{Example:}
+
+
+Fig5
+
+\end{document}
+
