@@ -1,0 +1,2 @@
+# 46
+I feel better, I have gotten faster and clearer when playing. I can play the Tornado of Souls riff and I have learned some of the N.I.B. solo. I want to focus more on my last three fingers, doing metronome exercises with them. My pinky finger hurts when using it.

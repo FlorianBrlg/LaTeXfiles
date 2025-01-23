@@ -1,0 +1,2 @@
+# 46
+I am only drawing boxes to get back into perspective. I didn't hit my goal of 100 boxes. I think I was too ambitious. I'll see about next week when I have more time, I will shrink down to maybe 50 boxes if it doesn't work. I should focus more. It's getting easier to draw more believable boxes, however it's not as good as it once was.
