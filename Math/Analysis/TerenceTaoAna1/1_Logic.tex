@@ -1,0 +1,63 @@
+\chapter{Logical basics}
+
+Here are some of the logical devices I will use in this text. I will not explain every piece of Syntax, as I hope that throughout the text it will be sufficiently clear, when the rules are explained.
+
+\section{Statements}
+
+I will introduce the notion of logical statements here. Logical statements are sentences that are either true or wrong. In logical syntax you would say $\phi$ is a sentence, and $\neg\phi$ is the same sentence but negated. \\
+Meaning that if $\phi$ is true then $\neg\phi$ is false, and if $\phi$ is false then $\neg\phi$ is true. 
+
+Examples of statements in mathematics could be $3 + 4 = 7$ or $\mathbb{C}\subset\mathbb{R}$. The first statement is true and the second is false.
+
+\section{Logical Symbols}
+
+In logic you will use several Symbols to help connect Satements or to portray statements themselves.
+\begin{itemize}
+	\item[] The conjunction $\wedge$. This is used to display an "and"
+	\item[] The disjunction $\vee$. This is used to display an "or"
+\end{itemize}
+One way to memorize which one is which is the fact that there is an "n" in "and", and that the $\wedge$ symbol look like an "n".
+\begin{itemize}
+	\item[] The existential quantification $\exists$ is used to display that a property is true fro at least one object
+	\item[] The the universal quantification $\forall$ is used to display that a property is true for all objects
+\end{itemize}
+What does this mean? Basically you use these symbols in combination with statements to make statements that portray the truth of general statements. For example
+\begin{equation}
+	\exists x,y\left(\frac{1}{x} + \frac{1}{y} = 1\right) 
+\end{equation}
+shows that there exist two elements, x and y, that when inversely added make 1
+\begin{equation}
+	\forall x \exists y, z\left( y = x-1 \wedge z = x + 1\right) 
+\end{equation}
+shows that every number x has a number that follows it, and one that is before it. Here you can also see the conjunction.
+\begin{itemize}
+	\item[] The implication $\rightarrow, \Rightarrow, \leftarrow, \Leftarrow$. Is used to show that if one statement is true, then so is the other, but it isn't necessarily the case that the other way around is also true.
+	\item[] the equivalence $\leftrightarrow, \Leftrightarrow$ Is used to show that one thing implies the other, and also the other way around.
+\end{itemize}
+\section{Logical rules}
+I will now list some rules. I will use the sign $\Gamma$ to stand for an arbitrary assortment of statements, and I will use the sign $\vdash$ to signify that the right side can be constructed from the left side. Greek letters will stand for statements, and latin letters for variables.
+
+\begin{itemize}
+	\item[] Equality Rule - $\Gamma\vdash (t=t)$
+	\item[] Contradiction Rule - $\psi, \neg\psi \vdash \phi$
+	\item[] By Case Rule - $(\Gamma,\psi\vdash\phi)\wedge(\Gamma,\neg\psi\vdash\phi) \Rightarrow \Gamma\vdash\phi$
+	\item[] Implication rule - $(\Gamma,\phi\vdash\psi)\Rightarrow\Gamma\vdash(\phi\rightarrow\psi)$
+	\item[] Modus Ponens - $\phi, (\phi\rightarrow\psi) \vdash \psi$
+	\item[] Substitution Rule - $\phi(a,...,c) \vdash \exists x ... \exists z \phi(x,...,z)$
+	\item[] Implication reversal - $\Gamma\vdash(\phi\rightarrow\psi) \Rightarrow \Gamma,\phi\vdash\psi$
+	\item[] Contraposition - $(\phi\rightarrow\psi)\vdash(\neg\psi\rightarrow\neg\phi)$
+	\item[] Double negation - $\phi\vdash\neg\neg\phi$
+	\item[] Verum ex quodlibet (True Statements follow from anything) - $\psi \vdash (\phi\rightarrow\psi)$
+	\item[] Ex falso sequitur quodlibet (Anything follows from false statements) - $\neg\phi\vdash(\phi\rightarrow\psi)$
+	\item[] Falsum non ex verum (false statements don't follow from true statements) - $\phi,\neg\psi\vdash\neg(\phi\rightarrow\psi)$
+	\item[] Conjunction rule (Introduction) - $\phi,\psi\vdash\phi\wedge\psi$
+	\item[] Conjunction rule (Eradication) - $\phi\wedge\psi\vdash\phi$
+	\item[] Disjunction rule (Introduction) - $\psi\vdash\psi\vee\phi$
+	\item[] Disjunction rule (Eradication) - $(\phi\vee\psi),\neg\phi \vdash \psi$
+	\item[] Negation of universal quantification - $\neg\forall x\phi(x) = \exists x\neg\phi(x)$
+	\item[] Negation of existential quantification - $\neg\exists x\phi(x) = \forall x\neg\phi(x)$
+\end{itemize}
+
+These are many rules, but hopefully many of them will become obvious throughout the text.
+
+

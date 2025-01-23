@@ -1,0 +1,264 @@
+
+
+\chapter{Set Theory}
+
+\section{Fundamentals}
+\subsection{Axioms of Set Theory}
+\begin{itemize}
+	\item[1] (Sets are Objects). If $A$ is a set then $A$ Is also an Object. Given two sets $A$ and $B$, it is meaningful to ask if $A$ is in $B$.
+	\item[2] (Empty Set) There exists a set $\emptyset$, the empty set, which contains no element, so for all elements $x$, $x\notin\emptyset$.
+	\item[3] (Singleton sets) If $a$ is an object, then there exists a set $\{a\}$ whose only element is $a$, so that $\forall x(x \in \{a\} \Leftrightarrow x = a$).
+	\item[4] (Pairwise union) Given two sets $A, B$, there exists a set $A\cup B$ such that its elements consist of all elements which belong to $A$ or $B$, so $x \in A\cup B \Leftrightarrow (x\in A\vee x\in B)$.
+	\item[5] (Specification) Let $A$ be a set and for each $x\in A$ let $P(x)$ be a property of $x$, s.t. $P(x)$ is either true or false, then there exists a set such that $\{x\in A | P(x)\}$, whose elements are all elements of $A$ for which $P(x)$ is true.
+	\item[6] (Replacement) Let $A$ be a set. For any object $x\in A$ and any object $y$, suppose we have a statement $P(x,y)$ such that for any $x$ $P(x,y)$ is true for at most one $y$. Then there exists a set $\{y| P(x,y) , x\in A\}$. Such that for any object $z$
+	\begin{equation*}
+		z\in\{y | P(x,y) x\in A\} \Leftrightarrow P(x,z) \text{is true for some} x\in A.
+	\end{equation*}
+	\item[7] (Infinity) There exists a set $\mathbb{N}$ whose elements are called natural numbers, in which there exists the object $0$ and the object $n++$ for each element in $\mathbb{N}$, such that the Peano Axioms hold.
+	\item[8] (Universal Specification) Suppose that for every object $x$ there is a Property $P(x)$ that pertains to $x$. Then there exists a set $\{x | P(x)\}$, such that for every object $y$
+		\begin{equation}
+			y\in\{x | P(x)\} \Leftrightarrow P(y) \text{is true}
+		\end{equation}
+	This can lead to Paradoxes, so the next Axiom is needed if this Axiom is introduced.
+	\item[9] (Regularity) If $A$ is a non-empty set, then there is at least one element $x$ of $A$ which is either not a set, or is disjoint from $A$.
+\end{itemize}
+
+\subsection{Definition of Equality of Sets}
+
+Two sets $A$ and $B$ are Equal, $A=B$, iff every element of $A$ is an element of $B$ and the other way around.
+
+\subsubsection{Lemma of Single Choice}
+Let $A$ be a non-empty set. Then there exists an object $x$ such that $x\in A$.\\
+\textit{Proof:} Proof by Contradiction. Assume there is no Object with $x\in A$, meaning that $\forall x(x\notin A)$. Thus, from the Axiom of the Empty Set, $A = \emptyset$ as $x\in A \Leftrightarrow x\in\emptyset$. This contradicts that $A$ is nonempty, as $\emptyset$ is empty. Proving the Lemma.
+
+\subsubsection{Example: The Empty set and the Set of the Empty set}
+The empty set $\emptyset$ and the set of the empty set $\{\emptyset\}$ are different sets.\\
+\textit{Proof:} Two sets are the same iff every element in A is an element of B. Per definition, for all $x$, $x\notin \emptyset$. As per the Single Choice Lemma, and that the set of the empty set is not empty, there is an $x \in \{\emptyset\}$. As there is an element in the set of the empty set, and there is no element in the empty set, the sets can't be equal.
+
+\subsubsection{Example: Substitution in Unions}
+Lemma: Let $A, B, A'$ be sets and $A = A'$. Then $A\cup B = A'\cup B$.\\
+\textit{Proof:} Let $A = A'$, then for all $x$, $x\in A$ iff $x\in A'$. Let $x\in A\cup B$. Then $x$ is either in $B$ or $A$. Let $x$ be in $B$. Then $x\in B$ and therefore $x\in A'\cup B$. Let $x$ be in $A$. As $A = A'$, $x\in A'$, therefore $x\in A'\cup B$. Same reasoning the other way around.
+
+Proving the Lemma.
+
+\subsubsection{Lemma: Unions are Commutative,Associative}
+Let $A, B, C$ be sets. Then $A \cup B = B \cup A$, and $(A\cup B)\cup C = A\cup(B\cup C)$.\\
+\textit{Associativity, Proof:} let $x\in (A\cup B)\cup C$. Then $x\in (A\cup B)$ or $x\in C$. If $x\in C$ then $x\in(B\cup C)$. If $x\in(A\cup B)$ then $x\in A$ or $x\in B$. if $x\in B$ then $x\in (B\cup C)$. Thus, either $x\in A$ or $x\in(B\cup C)$ so $x\in A\cup(B\cup C)$. The opposite direction is proven by the same argument. This completes the proof.\\
+\textit{Commutativity, Proof:} let $x\in A\cup B$. Assume that $x\notin B\cup A$. Then $x\notin A \wedge x\notin B$. By our previous assumption, $x\in A$ or $x\in B$, however this leads to a contradiction. Then, $x\in B\cup A$. The opposite direction is proven by the same argument. This completes the proof.
+
+\subsubsection{Example: Triplet, Quadruplet sets}
+
+From our Axioms of singleton sets and Pairwise Union we can now define sets that are finitely large. This means we can define for example
+\begin{equation}
+	\{a\} \cup \{b\} \cup \{c\} = \{a,b,c\}
+\end{equation}
+
+\subsection{Definition of Subsets}
+Let $A,B$ be sets. $A$ is a subset of $B$ iff every element of $A$ is also in $B$. We write
+\begin{equation}
+	\text{for all }x,\; x\in A \rightarrow x\in B.
+\end{equation}
+We use the notation $A\subseteq B$. We call $A$ a proper subset of $B$ if $A\subseteq B$ and $A\neq B$, then we use $A \subset B$.
+
+\subsubsection{Ordering of Sets}
+Sets are partiall ordered by set inclusion.\\
+Let $A,B,C$ be sets. If $A\subseteq B$ and $B\subseteq C$ then $A\subseteq C$. If $A\subseteq B$ and $B\subseteq A$ then $A=B$. If $A\subset B$ and $B\subset C$ then $A\subset C$.\\
+\textit{1, Proof:} Let $A\subseteq B$ and $B\subseteq C$. Let $x$ be arbitrary and let $x\in A$. As $x\in A$ and $A\subseteq B$ then $x\in B$. As $x\in B$ and $B\subset C$ then $x\in C$. Thus, $x\in A$ implies $x\in C$, so $A\subseteq C$.\\
+\textit{2, Proof:} Let $A\subseteq B$ and $B\subseteq A$. Then $\forall x (x\in A \Rightarrow x\in B \wedge x\in B \Rightarrow x\in A)$ which is $\forall x (x\in A \Leftrightarrow x\in B)$ which is $A = B$.\\
+\textit{3, Proof:} Let $A\subset B$ and $B\subset C$. We already know $A\subseteq C$ from $(1)$. From our definitions we know that there is an $x\in B$ such that $x\notin A$ and $x\in C$. As $x\notin A$ and $x\in C$, $A \neq C$. Therefore, $A\subset C$.
+
+\subsection{Definition of Intersections}
+The Intersection $A\cap B$ is defined to be
+\begin{equation}
+	A\cap B := \{x\in A | x\in B\}
+\end{equation}
+So in other words
+\begin{equation}
+	x\in A\cap B \Leftrightarrow x\in A \wedge x\in B
+\end{equation}
+
+\subsection{Definition of Differences of Sets}
+The Difference of the sets $A,B$ is defined as
+\begin{equation}
+	A\backslash B := \{x\in A| x\notin B\}
+\end{equation}
+
+\subsubsection{Set connection laws}
+We can form set connection laws with the Union, Intersection and Difference of Sets. Let $A,B,C$ be sets. let $X$ be the set containing those sets.
+\begin{itemize}
+	\item [a)](Minimal Element) $A\cup \emptyset = A$ and $A\cap\emptyset = \emptyset$
+	\item [b)](Maximal Element) $A\cup X = X$ and $A\cap X = A$
+	\item [c)](Identity) $A\cap A = A$ and $A\cup A = A$
+	\item [d)](Commutativity) $A\cap B = B\cap A$ and $A\cup B = B\cup A$
+	\item [e)](Associativity) Unions and Intersections are Associative.
+	\item [f)](Distributivity) $A\cap (B\cup C) = (A\cap B) \cup (A\cap C)$ and $A\cup(B\cap C) = (A\cup B) \cap (A\cup C)$
+	\item [g)](Partition) $A\cup (X\backslash A) = X$ and $A\cap(X\backslash A) = \emptyset$
+	\item [h)](De Morgan) $X\backslash (A\cup B) = (X\backslash A)\cap(X\backslash B)$ and $X\backslash (A\cup B) = (X\backslash A) \cup (X\backslash B)$
+\end{itemize}
+\textit{Proofs: }
+\begin{itemize}
+	\item[a)] $A\cup\emptyset = A$: Let $x\in A\cup\emptyset$ then either $x\in A$ or $x \in\emptyset$. We know from the empty set axiom that $x\notin\emptyset$, so that means $x\in A$.\\
+		Let $x\in A$. Assume $x\notin A\cup\emptyset$. Then $x\notin A$ and $x\notin\emptyset$. But $x\in A$. So this is a contradiction, so $x\in A\cup\emptyset$. Therefore $A\cup\emptyset = A$.\\\\
+	$A\cap\emptyset = \emptyset$: We use the definition of the intersection: $x\in A\cap\emptyset \Leftrightarrow (x\in A \text{and} x\in\emptyset)$. This statement is always false, so for an arbitrary $x$, $x\notin A\cap\emptyset$. This is the definition of the empty set, so $A\cap\emptyset = \emptyset$.
+	\item[b)] $A\cup X = X$: let $x\in A\cup X$. Then $x\in A$ or $x\in X$. Let $x\in A$, then because $A\subset X$, $x\in X$. Therefore, if $x\in A\cup X$ then $x \in X$.\\
+		let $x\in X$. Assume $x\notin A\cup X$, then $x\notin A$ and $x\notin X$, but $x\in X$, so we must have $x\in A\cup X$. Therefore $A\cup X = X$.\\\\
+		$A\cap X = A$: let $x\in A\cap X$. Then $x\in A$ and $x\in X$, so $x\in A$.\\
+		let $x\in A$ and assume $A\subset X$. Because $x\in A$ and $A\subset X$, $x\in X$. Because $x\in A$ and $x\in X$, $x\inA\cap X$. Concluding: $A\cap X = A$.
+	\item[c)] $A\cap A = A$: Let $x\in A\cap A'$, assume $A=A'$. We have $x\in A$ and $x\in A'$. in either case $x\in A$, so $x\in A$.\\\\
+		$A\cup A$: Let $x\in A\cup A'$, assume $A=A'$. Assume $x\notin A$, then $x\in A'$, but $A = A'$, so $x\in A$ which is a contradiction. So $x\in A$.
+		\item[d), e), f)] From the commutativity, associativity and distributivity of the logical connectives.
+	\item[g)] $A\cup(X\backslash A)=X$: Assume $A\subset X$. let $x\in A\cup(X\backslash A)$: Then $x\in A$ or $x\in X\backslash A \Leftrightarrow (x\in X \wedge x\notin A)$. Assume $x\notin A$, then $x\in X \wedge x\notin A$, so $x\in X$. \\
+		Assume $x\notin X\backslash A$, then $x\in A$, and because $A\subset X$, $x\in X$.\\
+		Let $x\in X$\\
+		Proof by contradiction: assume  that $x\notin A\cup (X\backslash A)$, then we have that $x\notin A \wedge \left(x\notin X \vee x\in A\right)$. As we have that $x\notin A$ and $\x\notin X \vee x\in A$, we know that $x\notin X$, however this contradicts that $x\in X$. Therefore, it must mean that $x\in X\cup(X\backslash A)$\\\\
+		$A\cap (X\backslash A) = \emptyset$: Assume $A\subset X$. Proof by contradiction, assume that there is an element in $A\cap (X\backslash A)$. So $x\in A\cap(X\backslash A)$, then $x\in A$ and $x\in X\backslash A$, which means that $x\in X$ and $x\notin A$, so there is a contradiction that $x\in A$ and $x\notin A$, so we know that such an element does not exist. As there are no elements in $A\cap(X\backslash A)$ we know that it must be equivalent to $\emptyset$.
+		
+	\item[h)] $X\backslash (A\cup B) = (X\backslash A)\cap (X\backslash B)$: Let $x\in X\backslash(A\cup B)$, then $x\in X$ and $x\notin A\cup B$, so that $x\notin A$ or $x\notin B$. Then we know that $x\in X$ and $x\notin A$ or $x\in X$ and $b \notin B$, which is $x\in (X\backslash A) \cap (X\backslash B)$.
+	
+	The rest is proved by the same principle.
+\end{itemize}
+
+\section{Functions}
+
+\subsection{Definition of Functions}
+
+Let $X,Y$ be sets, and let $P(x,y)$ be a property pertaining to $x\in X$ and $y\in Y$ such that for every $x$ there is exactly one $y$ for which the property is true. Then the function $f:X\rightarrow Y$ is the object which assigns every input $x$ an output $f(x)$ defined such that $P(x,f(x))$ is true. So, for any $x,y$
+$$
+y = f(x) \Leftrightarrow P(x,y) is true
+$$
+Functions are also referred to as maps or transformations, sometimes also morphisms.
+
+\subsection{Definition of equality of functions}
+
+Two functions $f:X\rightarrow Y$ and $g:X\rightarrow Y$ are equal, $f=g$ if and only if $f(x) = g(x)$ for all $x\in X$.
+
+\subsection{Definition of Composition of functions}
+
+Let $f:X\rightarrow Y$ and $g:Y\rightarrow Z$ be functions, then we define the composition $g\circ f:X\rightarrow Z$ to be the function which is defined by the formula
+$$
+g\circ f(x) = g(f(x))
+$$
+If the range of $f$ and the domain of $g$ are not equal, then the composition is undefined.
+
+\subsection{Lemma: Composition is Associative, but not Commutative}
+
+let $f:Z\rightarrow W$, $g:Y\rightarrow Z$ and $h:X\rightarrow Y$ be functions. Then 
+$f\circ(g\circ h) = (f\circ g)\circ h$, but in general $f\circ g \neq g\circ f$.
+
+\textit{Associativity, Proof: } Both functions have the same range, that is $X\rightarrow W$. We have to see that the functions are equal for all $x\in X$. We use the definition of composition
+\begin{gather*}
+	(f\circ(g\circ h))(x) = f(g\circ h(x)) = f(g(h(x))) = (f\circ g)(h(x)) = ((f\circ g)\circ h)(x) 
+\end{gather*}
+
+\subsection{Definition of One-to-one functions (Injectivity)}
+a function $f$ is one-to-one if different elements map to different elements
+$$
+x\neq x' \Rightarrow f(x)\neq f(x')
+$$
+or equivalently, the contraposition
+$$
+f(x) = f(x') \Rightarrow x = x'
+$$
+
+\subsection{Definition of onto functions (surjectivity)}
+a function $f$ is onto if $f(X) = Y$. So, every element in $Y$ comes from applying $f$ to some element in $X$
+$$
+\forall y\in Y \;\exists x\in X\;(f(x) = y)
+$$
+
+\subsection{Definition of Bijective functions}
+
+a function is bijective if it is surjective and injective.
+
+\subsection{Definition of inverse functions}
+
+If $f:X\rightarrow Y$ is bijective then there exists exactly one $x\in X$ for every $y\in Y$ such that $f(x) = y$. This value is denoted $x = f^{-1}(y)$. $f^{-1}$ is called the inverse function and is a function from $Y$ to $X$.
+
+
+\subsection{Exercises}
+
+\subsubsection*{1.} Show that the equality of functions is reflexive, symmetric and transitive.
+\begin{itemize}
+	\item reflexivity: let $f$ be a function and let $x$ be arbitrary. Then $f(x) = f(x)$. As $x$ is arbitrary it holds for all $x$, so $\forall x (f(x) = f(x))$. Thus equality is reflexive.
+	\item symmetry: let $f,g$ be functions and let $f=g$. Let $x$ be arbitrary, then because $f(x) = g(x)$ we know that $g(x)=f(x)$. Because $x$ is arbitrary, $\forall x(g(x) = f(x))$ which means $g=f$.
+	\item transitivity: let $f,g,h$ be functions. let $f=g$ and $g=h$. Let $x$ be arbitrary, then $f(x) = g(x)$ and $g(x) = h(x)$. Then we have $f(x) = h(x)$ through the transitivity of the equality. As $x$ is arbitrary we have $\forall x(f(x) = h(x)$, which means $f=h$.
+\end{itemize}
+Verify the substitution property of the composition
+
+\textit{Proof: } let $f,g,\tilde f,\tilde g$ be functions, and let $f=\tilde f$ and $g=\tilde g$.
+$$
+(g\circ f)(x) = g(f(x)) = \tilde g(\tilde f(x)) = (\tilde g\circ\tilde f)(x)
+$$
+where the second equality holds because $\forall x (g(x)=\tilde g(x) \wedge f(x)=\tilde f(x))$
+
+\subsubsection*{2.}
+Let $f:X\rightarrow Y$ and $g:Y\rightarrow Z$ be functions, show that if $f$ and $g$ are injective then so is $g\circ f$, as is the same for surjectivity.
+\begin{itemize}
+\item{Injectivity:} let $f,g$ be injective. we then define the composition $g\circ f = g(f(x))$. We want to show that $g\circ f$ is injective. let $x,x'\in X$ be elements such that $x\neq x'$. Then we know that $f(x) \neq f(x')$, where $f(x),f(x')\in Y$. We also know that for two elements $y,y'\in Y$ with $y\neq y'$, $g(y)\neq g(y')$. Then, as we know that $f(x) \neq f(x')$ we know that $g(f(x)) \neq g(f(x'))$. This means that $x\neq x' \Rightarrow g(f(x)) \neq g(f(x'))$, which is the desired result.
+\item{Surjectivity:} let $f,g$ be surjective. We define the composition $g\circ f = g(f(x))$. We will show that $\forall z\in Z\exists x\in X(g(f(x)) = z)$. We know that there exists some $y$ such that $g(y) = z$, we also know that there exists some $x$ such that $f(x) = y$, which means that there exists some $x$ such that $g(f(x)) = z$, whis is the desired result
+\end{itemize}
+\subsubsection*{3.}
+When is the empty function injective, surjective, bijective? 
+
+idk what to say
+\subsubsection*{4.}
+Let $f,\tilde f: X\rightarrow Y$ and $g,\tilde g:Y\rightarrow Z$ be functions. Show the cancellation laws for composition.
+\begin{itemize}
+	\item{Injective $g$: }Let $g\circ f = g\circ \tilde f$ and let $g$ be injective, show that $f=\tilde f$. We know that $\forall x (g(f(x)) = g(\tilde f(x)))$ Injectivity means that $g(y) = g(y') \Rightarrow y = y'$. As this is the case, we know that $\forall x( f(x)=\tilde f(x))$. If $g$ is not injective, then there may exist two elements $y,y'$ such that $g(y) = g(y')$ and $y\neq y'$. With this, we know that there could be an $x$ such that $f(x) \neq \tilde f(x)$, which means that $f$ and $\tilde f$ aren't equal. So in general, this only holds for injective $g$.
+		\item{Surjective $f$: } Let $g\circ f =\tilde g\circ f$ and let $f$ be surjective, show that $g = \tilde g$. We know that $\forall x(g(f(x)) = \tilde g(f(x)))$. Let $y\in Y$ be arbitrary. From $f$'s surjectivity we know that there exists an $x\in X$ s.t. $f(x) = y$. Replace $f(x)$ with $y$ in the previous equality, and we get $g(y) = \tilde g(y)$. As $y$ is arbitrary, $\forall y\in Y(g(y) = \tilde g(y))$. So we have $g=\tilde g$.  
+\end{itemize}
+	
+\subsubsection*{5.}
+let $f:X\rightarrow Y$ and $g:Y\rightarrow Z$ be functions. Show that if $g\circ f$ is injective then $f$ is injective.
+
+\textit{Proof: } let $g\circ f$ be injective, then $g(f(x)) = g(f(x')) \Rightarrow x = x$. Proof by contradiction, assume that $f$ is not injective, so $\exists x,x' \left( x\neq x' \wedge f(x) = f(x')\right)$. From the definition of the function we know that $y = y' \Rightarrow g(y) = g(y')$. Inserting $f(x) = f(x') = y$ we get $g(f(x')) = g(f(x))$. Then, $x \neq x$, even though $g(f(x)) = g(f(x')) \Rightarrow x = x'$. So $f$ must be injective.\\\\
+Show that if $g\circ f$ is surjective then $g$ is surjective.
+
+\textit{Proof: }let $g\circ f$ be injective, then $\forall z\exists x(g(f(x)) = z)$. Let z be arbitrary. We can find an $x$ such that $g(f(x)) = z$. Evaluating $f(x) = y$ we get the desired result. As $z$ is arbitrary, we have $\forall z\exists y (g(y) = z)$.
+
+\subsubsection*{6.}
+Let $f:X\rightarrow Y$ be a bijective function and let $f^{-1}:Y\rightarrow X$ be its inverse.
+
+\textit{Proof: } For every $y\in Y$ value we have exactly one $x\in X$ such that $f(x) = y$ the value for $x$ is then $f^{-1}(y)$. Then, we see that $f(f^{-1}(y)) = y$. Also knowing that $f(x) = y$ and that $f^{-1}(y) = x$ we see that $f^{-1}(f(x)) = x$.
+
+\subsubsection*{}
+
+\subsubsection*{}
+
+\section{Images and Inverse Images}
+
+\subsection{Definition of Images of sets}
+Let $f:X\rightarrow Y$ be a function and $S\subset X$ then we define the set $f(S)$
+$$
+f(S) := \left\{f(x) | x\in S\right\}
+$$
+this set is a subset of $Y$. Then we say that $S$ is the \textit{Image} of $S$ under $f$ and $f(S)$ is the \textit{forward image}.
+
+\subsubsection*{Example}
+Take the map $f(x)=2x$. Then we calculate
+$$
+f(\{1,2,3\}) = \{2,4,6\}
+$$
+
+\subsubsection*{Theorem}
+
+$$
+y\in f(S) \Longleftrightarrow \exists x\in S ( y = f(x) )
+$$
+
+\subsection{Definition of Inverse images}
+If $U$ is a subset of $Y$, then the set $f^{-1}(U)$ is defined as
+$$
+f^{-1}(U) := \{x\in X | f(x)\in U \}
+$$
+so $f^{-1}(U)$ is the set of all elements that map into $U$.
+$$
+f(x)\in U \Longleftrightarrow x\in f^{-1}(U)
+$$
+
+
+
+
+\end{itemize}
+
+

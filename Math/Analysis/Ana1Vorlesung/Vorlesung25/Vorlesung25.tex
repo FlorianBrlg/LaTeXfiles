@@ -1,0 +1,84 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Vorlesung 25 - Analysis 1}
+\author{}
+\date{13.1.2025}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+ \subsection{Satz 9.34}
+
+$$
+	\int_{-\infty}^\infty |f(x)| \text dx
+$$
+konvergiert, falls
+$$
+	\int_{-R}^R |f(x)| \text dx \;\;\;\;\forall R<\infty
+$$
+
+\section{9.8 Uneigentliche Integrale Teil 2 (Unbeschränkte Funktionen)}
+
+\subsection{}
+Sei $f:[a,b)\rightarrow \mathbb R$ beschränkt und Riemann Integrierbar (Auf kompakten Teilintervallen), aber $f(x)$ konvergiert gegen $\pm\infty$ falls $x$ gegen $a$ oder $b$ geht.
+
+\subsection{Definition 9.35}
+Falls
+$$
+\lim_{\xi\rightarrow b} \int_a^\xi f(x)\text dx \left(\lim_{\xi\rightarrow a} \int_\xi^b f(x)\text dx\right)
+$$
+konvergiert, dann sagen wir dass $\int_a^b f(x)\text dx$ konvergiert, und setzen
+$$
+\int_a^b f(x) \text dx = \lim_{\xi\rightarrow b}\int_a^\xi f(x)\text dx
+$$
+\\\\
+$f:[a,b)\rightarrow \mathbb R$ beschränkt auf allen kompakten Teilintervallen: $f$ beschränkt ist auf $[a,b-\delta]\forall \delta>0$
+
+\subsection{Satz 9.36}
+Falls $|f(x)| \leq \phi(x)\;\;\;\forall x\in[a,b)$ und falls $\int_a^b \phi(x) \text dx$ konvergiert, dann konvergiert $\int_a^b f(x)\text dx$ absolut.
+
+\subsection{Definition 9.37}
+Falls für ein $x\in (a,b)$ gilt dass $f(x)\rightarrow\pm\infty$ für $x\rightarrow c$, dann sagen wir dann $\int_a^b f(x) \text dx$ konvergiert, falls $\int_a^c f(x)\text dx$ und $\int_b^c f(x)\text dx$ konvergieren, dann ist
+$$
+\int_a^b f(x) \text dx = \int_a^c f(x)\text dx + \int_c^b f(x)\text dx
+$$
+
+\subsection{Cauchy Hauptwert}
+Der Cauchy Hauptwert ist definiert als
+$$
+\lim_{\epsilon\rightarrow 0}\int_{(a,b|\backslash (c-\epsilon, c+\epsilon)}f(x)\text dx
+$$
+Der Cauchy Hauptwert kann konvergieren ohne dass $\int_a^c f(x)\text dx$ und $\int_c^b f(x)\text dx$ konvergieren.
+
+\subsubsubsection{Bsp}
+$$
+\int_{-1}^1 \frac{1}{x}\text dx 
+$$
+
+\section{9.9 Riemannsche Integralkriterium}
+Sei $f:[1,\infty)\rightarrow[0,\infty)$ monoton falled, und definiere $a_n := f(n)$
+
+\subsection{Satz 9.38}
+$\sum a_n$ konvergiert genau dann wenn $\int_1^\infty f(x)\text dx$ konvergiert.
+
+\textit{Beweis: }
+$$
+\sum_{n=2}^{N+1}a_n \leq \int_1^{N+1}f(x)\text dx \leq \sum_{n=1}^N a_n
+$$
+
+
+
+
+
+
+
+
+\end{document}
+

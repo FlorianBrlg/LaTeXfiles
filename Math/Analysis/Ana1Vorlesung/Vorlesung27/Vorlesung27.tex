@@ -1,0 +1,89 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Vorlesung 27 - Analysis 1}
+\author{}
+\date{20.1.2025}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Taylorpolynome} 
+Sei $f\in C^{n+1}([a,b])$ mit $x_0,x\in(a,b)$ Dann ist das Taylorpolynom von $f$ gegeben als
+\begin{equation}
+	T_nf(x,x_0) = \sum_{k=0}^{n} \frac{1}{k}f^{(k)}(x_0)(x-x_0)^k
+\end{equation}
+mit den Restgliedern
+$$
+R_{n+1}(x) = f(x) - T_nf(x,x_0)
+$$
+wobei
+$$
+R_{n+1}(x) = \int_{x_0}^{x}\frac{(x-t)^n}{n!}f^{(n)}(t)\text dt = f^{(n)}(\xi)\frac{x-x_0)^{n+1}}{(n+1)!}
+$$
+für ein $\xi\in(x,x_0)$.
+
+\subsection{Definition 10.5 Landausche Ordnungssymbole}
+Sei $I = (x_0,b]$ ein Intervall Seien $f,g: I\rightarrow\mathbb R$ mit $g(x) \neq 0 \;\;\; \forall x\in (I\cap B_\epsilon(x_0))\backslash \{x_0\}$
+
+Wir sagen\\ 1) $f(x) = O(g(x))$ falls $\delta\in(0,\epsilon)$ und $C>0$ existieren s.d.
+$$
+\frac{|f(x)|}{|g(x)|} \leq C\;\;\; \forall x\in(I\cap B_\delta(x_0))\backslash \{x_0\}
+$$
+2) $f(x) = o(g(x))$ falls 
+$$
+\lim_{x\rightarrow x_0} \frac{f(x)}{g(x)} = 0
+$$
+3) $f$ und $g$ sind asymptotisch gleich für $x\rightarrow x_0$, $f~g$, falls
+$$
+\lim_{x\rightarrow x_0} \frac{f(x)}{g(x)} = 1
+$$
+\subsubsection{Korollar 10.6}
+Sei $f\in C^{n+1}([a,b]),\;x_0\in(a,b),x\in[a,b]$
+$$
+f(x) = T_nf(x,x_0) + o(|x-x_0|^n)
+$$
+
+\section{10.2 Taylorreihen}
+
+\subsection{Definition 10.7 Taylorreihen}
+
+sei $f\in C^\infty([a,b]), \;x_0\in(a,b)$ dann ist
+\begin{equation}
+	Tf(x) = Tf(x,x_0) = \sum_k^\infty \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k
+\end{equation}
+heißt Taylorreihe von $f$ im Punkt $x_0$
+
+\subsection{Definition 10.8 Reell Analytisch}
+Sei $f:I\subset\mathbb R \rightarrow \mathbb R$, $f$ heißt reell analytisch, falls $\forall x\in I$ ein $\delta>0$ existiert s.d. auf $B_\delta(x)\cap I$ die Taylorreihe $Tf(x,x_0)$ konvergiert und gleich $f(x)$ ist.
+
+\section{11. Gewöhnliche Differentialgleichung}
+Eine Differentialgleichung ist eine Relation zwischen unabhängigen Variablen, Funktionen und dessen Ableitungen.
+
+Gewöhnlichkeit heißt dann dass die unabhängige Variable aus $\mathbb R$ ist.
+
+\begin{itemize}
+	\item Newton'schen Bewegungsgleichungen
+
+		Sei $t\in I\subset \mathbb R$, und $y(t):I\rightarrow\mathbb R^3$, und $v(t):I\rightarrow \mathbb R^3$. $m>0$ Sei die Masse des Teilchens. Sei $F:\mathbb R^3\rightarrow \mathbb R^3$ das Kraftfeld.
+		\begin{gather}
+			\dot y(t) = v(t)\\
+			m\dot v(t) = F(y(t))
+		\end{gather}
+	\item Matematisches Pendel
+
+		\begin{gather}
+			y(t) = \ell(\sin\theta(t) e_x - \cos\theta(t) e_y)\\
+			F = -mge_y
+		\end{gather}
+\end{itemize}
+
+
+\end{document}
+

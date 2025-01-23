@@ -1,0 +1,110 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Analysis 1 - Vorlesung 24}
+\author{}
+\date{8.1.2025}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\subsection{Hauptsatz der Differentialrechnung} 
+sei $f\in C^0([a,b])$, dann
+\begin{itemize}
+	\item[a)] $c\in[a,b]$, $F(x) = \int_c^x f(t)\text dt$ $\Rightarrow$ $F\in C^1([a,b])$
+		\item[b)] $F$ sei die stammfunktion von $f$, dann $\int_a^b f(x) \text dx = F(b)-F(a)$
+\end{itemize}
+
+\section{Partielle Integration}
+
+\subsection{Satz 9.24}
+Seien $f,g\in C^1([a,b])$, dann ist 
+$$
+\int_a^b f'(x)g(x) = -\int_a^b f(x)g'(x) + (f(b)g(b) - f(a)g(a))
+$$
+\textit{Beweis: }
+$$
+f(b)g(b)-f(a)g(a) = \int_a^b (fg)'(x)\text dx = \int_a^b f'g \text dx + \int_a^b fg' \text dx
+$$
+
+\subsection{Korollar 9.25}
+seien $f\in C^0([a,b]), g\in C^1$. Dann
+$$
+\int_a^b F(x)g(x) \text dx = -\int f(x)g(x)\text dx + F(x)g(x)|_{x=a}^b
+$$
+
+\section{9.6 Substitutionsregel}
+\subsection{Satz 9.26}
+Seien $I,J$ abgeschlossene beschränkte Intervalle. Sei $f\in C^0(I)$ und $\phi\in C^1(J)$ mit $\phi(J)\subset I$. Dann gilt $\forall \alpha,\beta \in J$
+$$
+\int_\alpha^\beta f(\phi(t))\phi'(t)\text dt = \int_{\phi(\alpha)}^{\phi(\beta)} f(x)\text dx
+$$
+\textit{Beweis: }
+Sei $F$ die Stammfunktion von $f$. Sei $g(t) = F(\phi(t))$. Dann ist $g'(t) = F'(\phi(t))\phi'(t) = f(\phi(t))\phi'(t).$ Somit ist
+$$
+\int_\alpha^\beta f(\phi(t))\phi'(x) \text dt = \int_\alpha^\beta g'(x)\text dt = g(\beta) - g(\alpha) = F(\phi(\beta)) - F(\phi(\alpha)) = \int_{\phi(\alpha)}^{\phi(\beta)}f(x)\text dx
+$$
+
+\subsubsection{Beispiel}
+Verschiebung
+$$
+\int_a^b f(t+c)\text dt = \int_{a+c)}^{b+c}f(x)\text dx
+$$
+Multiplikation
+$$
+\int_a^b f(cx)\text dx = \frac{1}{c}\int_{ca}^{cb} f(x)\text dx
+$$
+
+\section{9.7 Uneigentliche Integrale 1 (unbeschränkte Integrale)}
+Ziel: Integral über unbeschränkte Integrale definieren, zum Beispiel
+$$
+\int_0^\infty e^{-x^2}\text dx 
+$$
+\subsection{Definition Uneigentliches Integral 9.27}
+Sei $I = [a,\infty)$ ein Intervall mit $a\in\mathbb R$. Sei $f\in R([a,b]) \;\;\; \forall b<\infty, b>a$
+dann ist
+$$
+\int_0^\infty f(x)\text dx = \lim_{b\rightarrow\infty}\int_a^b f(x)\text dx
+$$
+falls dieser limes existiert. Dieses Integral heißt dann uneigentliches Integral von $f$ über $[a,\infty)$. Ansonsten ist das Integral divergent.
+
+\subsection{Satz 9.28}
+Das Uneigentliche Integral $\int_a^\infty f(x)\text dx$ existiert genau dann, wenn $\forall \epsilon>0 \exists \xi \geq a$ s.d.
+$$
+|\int_b^{b'} f(x) \text dx| < \epsilon \;\;\;\; \forall b,b' > \xi
+$$
+
+\subsection{Definition Absolut Konvergentes Uneigentliches Integral 9.29}
+
+Das Integral $\int_a^\infty f(x)\text dx$ heißt absolut konvergent, falls $\int_a^\infty |f(x)|\text dx$ konvergiert.
+
+\subsection{Satz 9.30}
+Falls ein Integral absolut konvergent ist, ist es auch konvergent.
+
+\textit{Beweis: }
+$$
+|\int_b^{b'} f(x) \text dx| \leq \int_b^{b'}|f(x)|\text dx
+$$
+
+\subsection{Satz 9.31 Majorantenkriterium für Integrale}
+Sei $g\in R([a,b]),\;\;\;\forall b<\infty,\; g\geq 0,\; \int_a^\infty g(x)\text dx\text{ konvergiert}$
+dann existiert ein $y\geq a$ für das $|f(x)|\leq g(x)$ für alle $x$. Dann konvergiert $\int_a^\infty f(x) \text dx$ absolut
+
+\textit{Beweis:} Sei $\epsilon >0$.
+\begin{gather*}
+	\int_b^{b'}|f(x)|\text dx \leq \int_b^{b'}g(x)\text dx < \epsilon \;\; \forall b,b' \geq \text{max}(\xi,y)
+\end{gather*}
+
+
+
+
+
+
+\end{document}
+
