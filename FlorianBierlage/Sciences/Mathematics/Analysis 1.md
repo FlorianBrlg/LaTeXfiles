@@ -154,10 +154,52 @@ and with that
 $$
 ||a|-|b|| \leq |a-b|
 $$
+### Completeness of $\mathbb R$
+#### Def: Bounded Set, Upper (Lower) Bound
+Let $M$ be a non-empty set, then $M$ is bounded above (below) if there exists a $k\in\mathbb R$ such that $x\leq k$ ($x\geq k$) for all $x\in M$. $k$ is then called an upper (lower) bound of $M$. $M$ is called Bounded if there is an upper and a lower bound.
 
+#### Def: Supremum / Infimum
+The Supremum is the smallest upper bound of the set, the infimum is the biggest lower bound of the set.
+If the set $M$ is unbounded then we say that $\sup M = \infty$ and $\inf M = -\infty$. 
 
+#### Axiom of Completeness
+Every non-empty set $M\subset\mathbb R$ with an upper bound contains a supremum in $\mathbb R$. This is called $\sup M$.
 
+#### Def: Maximum / Minimum
+$m\in M$ is a Maximum (Minimum) of $M$, if $x\leq m$ ($x\geq m$) for all $x$. If $M$ has a Maximum (Minimum), then $\sup M = \max M$ ($\inf M = \min M$).
+
+#### Theorem  
+1. If $\sup M<\infty$ then for all $\epsilon>0$ there exists an $x\in M$ with $\sup M - \epsilon < x$
+2. If $\sup M = \infty$ then for all $k>0$ there exists an $x\in M$ with $x>k$.
+*proof:*
+1. Proof by contradiction. Assume that the statement is untrue. Then there exists an $\epsilon>0$ for all $x\in M$ such that $\sup M - \epsilon \geq x$ which would mean that $\sup M - \epsilon$ is an upper bound, that is smaller than $\sup M$, which is a contradiction. Thus the Theorem holds.
+2. Proof by contradiction. Assume that the statement is untrue. Then there exists a $k>0$ such that for all $x\in M$ $x\leq k$, that means that $k$ is an upper bound, but we know that there is no upper bound, so this is a contradiction. Thus the theorem holds.
 # 42
+Defining Intervals
+- $[a,b] := \{x\in\mathbb R| a\leq x\leq b\}$ Closed Interval
+- $(a,b) := \{x\in\mathbb R|a<x<b\}$ Open Interval
+- $[a,b):=\{x\in\mathbb R|a\leq x< b\}$ Half open Interval
+- $(a,b] := \{x\in\mathbb R|a<x\leq b\}$ Half open Interval
+The length of these Intervals is $|a-b|$. 
+
+#### Def: Nested Intervals
+Let $I_n$ be a sequence of closed intervals with length $|I_n|$. Then $I_n$ is a nested Interval, if
+1. $I_{n+1} \subset I_n$ for all $n\in\mathbb N$ 
+2. $|I_n|\rightarrow 0$ for $n\rightarrow\infty$, so for all $\epsilon>0$ there exists an $I_n$ with $|I_n|<\epsilon$ 
+
+##### Theorem: Nested Interval Principle
+For every Nested Interval there exists an $x\in\mathbb R$ with $x\in\cap_n I_n$. 
+*Proof:* With $I_n = [a_n,b_n]$ follows that $a_1 \leq \cdots \leq a_n \leq b_n \leq \cdots \leq b_1$. Let $M:= \{a_n|n\in\mathbb N\}$ then $b_n$ is an upper bound for all $n$. From the completeness of $\mathbb R$ we know that there exists an $a = \sup M$ such that $a_n \leq a \leq b_n$ for all $n$ and with that $a\in\cap_n I_n$. 
+
+##### Lemma: Existence of $x/2$. 
+let $x\in\mathbb R$ be a number. If $x\leq 0$ then there exists a number $x/2$ such that $x\leq x/2 \leq 0$. If $0\leq x$ then there exists a number $x/2$ such that $0\leq x/2 \leq x$.
+
+
+##### Theorem: Existence of roots
+For every $c\geq 0$ there exists exactly one $x\in\mathbb R_+ \cup \{0\}$ with $x^2 = c$. Then $x$ is the square root of $c$, $x = \sqrt c = c^{1/2}$. 
+*Proof:*
+Let $M = \{z\in\mathbb R| z\geq 0, z^2\leq c\}$. This set is not empty.  
+
 
 # 43
 
