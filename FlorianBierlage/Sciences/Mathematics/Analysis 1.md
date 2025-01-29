@@ -198,10 +198,91 @@ let $x\in\mathbb R$ be a number. If $x\leq 0$ then there exists a number $x/2$ s
 ##### Theorem: Existence of roots
 For every $c\geq 0$ there exists exactly one $x\in\mathbb R_+ \cup \{0\}$ with $x^2 = c$. Then $x$ is the square root of $c$, $x = \sqrt c = c^{1/2}$. 
 *Proof:*
-Let $M = \{z\in\mathbb R| z\geq 0, z^2\leq c\}$. This set is not empty.  
+Let $M = \{z\in\mathbb R| z\geq 0, z^2\leq c\}$. This set is not empty because $0\in M$. This set is bounded above 
 
+### $\mathbb R$ is not countable
+
+#### Def: Injectivity
+a function $f:M\rightarrow N$ is injective if $f(x_1)=f(x_2) \rightarrow x_1=x_2$.
+#### Def: Surjectivity 
+a function $f:M\rightarrow N$ is surjective, if $\forall n\in N\exists m\in M (f(m) = n)$.
+#### Def: Bijectivity
+a function $f:M\rightarrow N$ is bijective if it is injective and surjective.
+
+#### Def: Cardinality
+two set $M$ and $N$ have an equal cardinality if there exists a bijective map from $M$ to $N$.
+#### Def: Countability
+a set $M$ is called countable if it is the empty set, if it is finite, or if it has an equal cardinality to $\mathbb N$. Otherwise it is uncountable.
+
+##### Cantor's Theorem
+
+## Complex Numbers
+
+Add later
+
+## Sequences
+
+### Sequences, Convergence
+
+#### Def: Sequence in $\mathbb R$, $\mathbb C$.
+A sequence of complex (real) numbers is a map $f:\mathbb N \rightarrow \mathbb C$ ($\mathbb R$). We write $a_n := f(n)$.
+
+#### Def: Convergence of a sequence
+A sequence $a_n$ is called "convergent", if there exists an $a$ such that
+$$
+\forall \varepsilon>0\exists n_0\forall n>n_0 \;\;(|a_n-a|<\epsilon)
+$$
+And $a$ is called the Limit (Grenzwert) of a sequence.
+If a sequence does not converge, then it diverges (it is divergent).
+If the Limit is 0 then the sequence is a Nullfolge.
+
+##### Def: Epsilon Neighborhood
+We define the (open) Epsilon Ball, Epsilon Neighborhood as
+$$
+B_\epsilon(a) := \{z\in\mathbb C|\; |z-a|<\epsilon\}
+$$
+#### Def: Nearly All
+Let $A(n)$ be a statement for $n\in \mathbb N$. $A(n)$ is true for nearly all $n$ if there exists an $n_0$ for which all $A(n)$ with $n>n_0$ are true.
+
+##### Theorem: Uniqueness of the Limit
+The Limit of a Sequence is Unique.
+*Proof:* 
 
 # 43
+#### Def: Bounded Sequence
+A Sequence $a_n$ is called bounded, if there is an $M\in \mathbb R$ such that $|a_n|\leq M$ for all $n\in\mathbb N$.
+
+##### Theorem: Converging Sequences are Bounded
+*Proof:* Let $n>n_0$ such that $|a_n - a| < 1$. Then we have $|a_n| = |a_n - a + a| \leq |a_n - a| + |a|$ which then, substituting the previous expression gives
+$$
+|a_n| < 1 + |a|
+$$
+Then we can choose a bound $M := \max(1+|a|, a_{n_0-1}, a_{n_0-2},\cdots,a_1,a_0)$
+
+##### Theorem: Calculation rules for limits
+let $a_n,b_n$ be sequences with $a_n\rightarrow a$ and $b_n\rightarrow b$. then
+- $a_n + b_n \rightarrow a+b$
+- $a_n b_n \rightarrow ab$
+- for $b\neq 0$ $a_n/b_n \rightarrow a/b$.
+##### Theorem: More calculation rules for limits
+- $|a_n|\rightarrow|a|$
+- $\bar a_n \rightarrow \bar a$
+- $\text{Re } a_n \rightarrow \text{Re } a$
+- $\text{Im }a_n\rightarrow \text{Im }a$
+##### Theorem: Comparison rule for real sequences
+let $a_n$ and $b_n$ be real sequences. If $a_n \leq b_n$ for nearly all $n$ then $a\leq b$.
+*Proof:* let $\epsilon>0$ and $n_0$ such that
+$$ a-\epsilon < a_n
+$$
+$$ b_n < b + \epsilon
+$$
+as well as
+$$
+a_n \leq b_n
+$$
+for all $n\geq n_0$. Then it follows that $a - b < 2\epsilon$. As $\epsilon$ is arbitrarily small this means that $a \leq b$. 
+##### Theorem: Sandwich principle 
+let $a_n,b_n,c_n$ be real sequences such that $a_n\rightarrow a,\,b_n\rightarrow a$. If $a_n \leq c_n\leq b_n$ for nearly all $n$ then $c_n\rightarrow a$.
 
 # 44
 
