@@ -284,6 +284,84 @@ for all $n\geq n_0$. Then it follows that $a - b < 2\epsilon$. As $\epsilon$ is 
 ##### Theorem: Sandwich principle 
 let $a_n,b_n,c_n$ be real sequences such that $a_n\rightarrow a,\,b_n\rightarrow a$. If $a_n \leq c_n\leq b_n$ for nearly all $n$ then $c_n\rightarrow a$.
 
+#### Def: Asymptomatic Equality
+Let $a_n,b_n$ be sequences. If $\lim_{n\rightarrow \infty}\,a_n/b_n = 1$ then they are asymptomatically equivalent.
+
+#### Definition $\bar{\mathbb R}$
+We define $\bar{\mathbb R} := \mathbb R \cup \{\infty\} \cup \{-\infty\}$
+
+#### Def:  Divergence against $\pm\infty$
+A sequence $a_n$ diverges against $\infty(-\infty)$, if for every $k\in\mathbb R$ there exists an $n_0$ such that $a_n\geq k (a_n\leq k)$ for all $n\geq n_0$.
+
+### Monotone sequences
+
+#### Def: Monotonically increasing / decreasing sequences
+$a_n\subset\mathbb R$ is monotone increasing (decreasing) if $a_n\leq a_{n+1} (a_n\geq a_{n+1})$ for all $n\in\mathbb N$. If $a_n< a_{n+1}(a_n> a_{n+1})$ then it is strictly monotone increasing (decreasing).
+
+##### Theorem: Every bounded monotone sequences converges
+1. An increasing sequence converges against $\sup\{a_n|n\in\mathbb N\}$
+2. A decreasing sequence converges against $\inf\{a_n|n\in\mathbb N\}$.
+*proof:* 
+
+##### Ex: Euler's number
+The sequences $a_n =  \left(1+\frac{1}{n}\right)^n$ and $b_n = \left(1+\frac{1}{n}\right)^{n+1}$ define a nested Interval $I_n = [a_n,b_n]$, such that $|I_n|\rightarrow 0$, while $a_n\leq b_n$ for all $n\in\mathbb N$. 
+*proof:* 
+
+### Bolzano-Weierstraß Theorem
+
+#### Def: Accumulation Point
+For a sequence $a_n\subset \mathbb C$ the point $h\in\mathbb C$ is called an Accumulation Ppint if for every $\epsilon$ neighborhood of $h$ there exist infinitely many $n\in\mathbb N$ such that $a_n$ is contained in it. 
+
+#### Def: Subsequence
+let $a_n$ be a sequence and $n_n$ a strictly monotone increasing sequence in $\mathbb N$, then $a_{n_n}$ is a subsequence of $a_n$.
+
+##### Theorem: Accumulation Point is limit of a subsequence
+$h\in\mathbb C$ is an Accumulation Point of $a_n$ if and only if there exists a subsequence of $a_n$ that converges to $h$ 
+
+##### Theorem: Bolzano Weierstraß, Real Version
+Let $a_n\subset\mathbb R$ be bounded. Then $a_n$ has a converging subsequence. More precisely, $a_n$ has a biggest Accumulation point $h^+$ and a smallest accumulation point $h^-$. For every $\epsilon >0$ it is true that $h^- \leq a_n \leq h^+ + \epsilon$. For nearly all $n$. 
+$$
+h^+ := \limsup_{n\rightarrow\infty}a_n
+$$
+$$
+h^- := \liminf_{n\rightarrow\infty} a_n
+$$
+##### Corollary: Bolzano Weierstraß
+$a_n\subset\mathbb R$ converges if and only if $\limsup a_n = \liminf a_n$.
+
+##### Theorem: Bolzano Weierstraß, Complex Version
+Every bounded sequence in $\mathbb C$ has a converging subsequence.
+
+### Cauchy Sequences
+
+#### Def: Cauchy Sequence
+a sequence $a_n\subset\mathbb C$ is Cauchy if for every $\epsilon>0$ there exists an $n_0$ such that
+$$
+|a_m-a_n|<\epsilon \;\;\;\;\;\;\forall m,n>n_0
+$$
+##### Cauchy Criteria
+$a_n$ converges if and only if $a_n$ is a Cauchy sequence
+
+## Series
+
+### Converging Series
+#### Def: Converging Series
+For a sequence $a_n\subset \mathbb C$ you define a new sequence
+$$
+s_n := \sum_{k=1}^n a_k
+$$
+This sequence is called series. The sole $s_n$ are called partial sums. The Series is convergent, if the partial sum $s_n$ converges. If $s = \lim_{n\rightarrow\infty}s_n$ then we write $s=\sum_{k=1}^\infty a_n$.
+### Convergence Criteria
+#### Theorem: Cauchy-Criteria for Series
+$\sum a_k$ converges if and only if for every $\epsilon>0$ there exists an $n_0$ such that $|a_{n+1} + \cdots a_{m}|<\epsilon$ for all $m>n\geq n_0$. 
+
+#### Theorem: Direct Comparison Test
+Let $|a_k|\leq|b_k|$. If $\sum |b_k|$ converges then $\sum a_k$ also converges, and $|\sum a_k|\leq \sum|b_k|$. If $\sum a_k$ diverges then $\sum |b_k|$ also diverges. 
+
+#### Theorem: Leibniz Criteria for alternating Series
+Let $a_n$ be a real monotone decreasing sequence converging to $0$, then $\sum (-1)^n a_n$ converges. For the Grenzwert we have that $|s-s_n|\leq a_{n+1}$ for all $n$. 
+
+
 # 44
 
 # 45

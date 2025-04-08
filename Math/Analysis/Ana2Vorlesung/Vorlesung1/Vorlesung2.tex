@@ -1,0 +1,124 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Vorlesung 1 - Ana 2}
+\author{Florian Bierlage}
+\date{7.4.2025}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Metrische und Normale Räume}
+
+\subsection{Def: Metrik, Metrischer Raum}
+Sei $X$ eine Menge. Dann ist $d: X\times X\rightarrow \[0,\infty)$ eine Metrik, falls
+	\begin{itemize}
+		\item $d(x,x) = 0$, $d(x,y)\geq 0$
+		\item $d(x,y) = d(y,x)$
+		\item $d(x,z) \leq d(x,y) + d(y,z)$
+	\end{itemize}
+und dann ist $(X,d)$ ein Metrischer Raum.
+
+\subsubsection*{Beispiel:}
+Sei $X=\mathbb R^n$ und $d(x,y) = ||x-y||_p$. Dann ist $d$ eine Metrik.
+\\
+Die Diskrete Metrik
+$$
+d(x,y) = \begin{cases}
+	0 & x=y\\
+	1 & x\neq y
+\end{cases}
+$$
+\\
+Die Induzierte Metrik
+
+Sei $(X,d)$ ein metrischer Raum und $A\subset X$, und sei $d_A = d$ dann ist $d_A$ eine Induzierte Metrik auf $A$.
+
+\subsection{Def: Norm}
+Eine funktion $||\cdot||:V\rightarrow \[0,\infty)$ Ist eine Norm, falls
+	\begin{itemize}
+		\item $||u||\geq 0$
+		\item $||\lambda u|| = |\lambda| ||u||$
+		\item $||u + v|| \leq ||u|| + ||v||$
+	\end{itemize}
+
+\subsection{Satz: Norm induziert Metrik}
+Sei $(V,||\cdot||)$ ein normierter Raum, dann ist $d(u,v) = ||u-v||$ eine Metrik.
+
+\subsection{Def: Skalarprodukt, Euklidischer Raum}
+sei $V$ ein reeller Vektorraum, $\langle \cdot,\cdot\rangle : V\times V\rightarrow \mathbb R$ ist ein Skalarprodukt, falls
+\begin{itemize}
+	\item $\langle u,v\rangle = \lange v,u\rangle$
+	\item $\langle \lambda u + \mu v, w\rangle = \lambda\langle u,v\rangle + \mu\langle v,w\rangle$
+	\item $\langle u,u\rangle \geq 0$
+\end{itemize}
+Dann ist $(V,\langle\cdot,\cdot\rangle)$ ein euklidischer Raum.
+
+\subsection{Satz: Skalarprodukt induziert Norm}
+Sei $(V,\langle\cdot,\cdot\rangle$ ein  euklidischer Raum. Dann definiert $||u|| = \sqrt{\langle u,u\rangle}$ eine Norm auf $V$.
+
+\subsubsection{Lemma: }
+Sei $V$ ein euklidischer Raum. Dann ist $\langle u,v\rangle \leq ||u||||v||$.
+
+\textit{Beweis: } $0\leq ||\lambda u-v||^2$
+
+\subsection{Def: Äquivalenz von Normen}
+Zwei normen $f, g$ sind Äquivalent auf einem Vektorraum $V$, falls konstanten $c_1,c_2>0$ existieren s.d. $c_2 f(u) \leq g(u) \leq c_1 f(u)$ für alle $u\in V$.
+
+\subsubsection{Beispiel}
+$||\cdot||_\infty$ und $|\cdot|$ sind äquivalent auf $\mathbb R^n$
+
+$$
+||x||_\infty \leq |x| = \left(\sum_{i=1}^n x_i^2\right)^{1/2} \leq \left(n \max_{i}|x_i|^2\right)^{1/2} = \sqrt{n}||x||_\infty
+$$
+Alle Normen auf $\mathbb R^n$ sind äquivalent. Dies gilt nicht für unendliche Räume.
+
+\subsection{Def: Folgenräume}
+$V = \left\{ (x_i)_{i\in\mathbb N} | x_i \in\mathbb R\right\}$\\
+$||x||_{l^p} = \left(\sum_i^\infty x^p\right)^{1/p}$\\
+$||x||_{l^p} = \sup_{i\in\mathbb N} |x_i|$\\
+$l^p := \left\{x\in V| ||x||_{l^p}<\infty\right\}$ 
+
+\subsubsection{$l^p$ ist VR}
+für $l=1$. $x\in \ell^1\Rightarrow \lambda x\in\ell^1$ für $\lambda\in\mathbb R$, weil
+$$
+||\lambda x||_{\ell^1} = \sum_i^\infty |\lambda x_i| = |\lambda|\sum_i^\infty x_i < \infty
+$$
+Wenn $x,y\in\ell^1$ dann $x+y\in\ell^1$.
+$$
+\sum_i^N |x_i + y_i| = \sum_i^N |x_i| + \sum_i^N |y_i| \leq ||x||_{\ell^1} + ||y||_{\ell^1}
+$$
+$\sum_i^N |x_i+y_i|$ ist monoton wachsend und beschränkt, also konvergent. Somit $x+y\in \ell^1$.
+
+Es gilt $||x||_{\ell^\infty} \leq ||x||_{\ell^1}$ und somit $\ell^1 \subset \ell^\infty$.
+
+zu $\epsilon>0\exists i$ s.d. $|x_i| \geq ||x||_{\ell^\infty} - \epsilon$\\
+Somit $||x||_{\ell^\infty} \leq |x_i| + \epsilon \leq \sum_i^\infty |x_i| + \epsilon$
+
+\section{Konvergenz in Metrischen Räumen}
+
+\subsection{Def: }
+Sei $X$ ein metrischer Raum mit $d$. Eine Folge $(x_n)\subset X$ heißt beschränkt, falls $x_0\in X$ und $K>0$ sodass $d(x_k, x_0)\leq K$ für alle $k$. $(x_n)\subset X$ heißt konvergent, falls ein $x\in X$ existiert sodass $d(x_k, x) \rightarrow 0$ für $k\rightarrow \infty$.
+
+
+\subsection{Satz: Bolzano Weierstraß}
+Jede beschränkte Folge in $\mathbb R^n$ besitzt eine konvergente Teilfolge
+
+\subsection{Def: }
+Sei $X$ ein metrischer Raum und $(x^k)\subset X$ eine Folge. Diese Folge ist eine Cauchy Folge, falls für alle $\epsilon>0$ ein $k_0\in\mathbb N$ existiert s.d. $d(x^k, x^m)<\epsilon$ für all $k,m \geq k_0$ 
+
+\subsection{Jede konvergente Folge ist Cauchy}
+Nicht jede Cauchy Folge ist konvergent. Beispiel: $X=\mathbb Q$ mit $d(p,q) = |p-q|$. 
+
+\subsection{Def: Vollständiger Raum}
+Ein Metrischer Raum $X$ heißt vollständig, falls jede Cauchy Folge darin konvergiert. Ein Vollständiger Normierter Raum heißt Banach Raum. Ein Vollständiger Euklidischer Raum heißt Hilbert Raum.
+
+
+\end{document}
+

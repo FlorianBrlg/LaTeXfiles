@@ -20,6 +20,18 @@
               "icon": "lucide-file",
               "title": "Analysis 1"
             }
+          },
+          {
+            "id": "ad55ae916a44316d",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.3"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.3"
+            }
           }
         ]
       }

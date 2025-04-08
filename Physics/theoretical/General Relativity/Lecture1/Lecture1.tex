@@ -1,0 +1,131 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{General Relativity - Lecture 1}
+\author{Florian Bierlage}
+\date{7.4.2025}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Literature} 
+Mainly using Sean M Carol.
+
+-Lecture Notes on General Relativity, arXiv: gt-qc/97/20/9
+
+-Book: Spacetime and Geometry, Camebridge University Press\\
+Also used is Heinz Stephani
+
+-Book: General Relativity, Camebridge University Press\\
+Also used is S Weinberg
+
+-Book: Gravitation and Cosmology\\
+For mathematical topics, M Nakahara's Geometry, Topology and Physics is used. For Recreational reading there is Kip Thorne's Black Holes and Timewarps and Brian Cox \& Jeff Forshaw's Black Holes.
+
+Outline of the Lecture:
+\begin{itemize}
+	\item Introduction
+	\item Special Relativity
+	\item Relativistic Field Theory
+	\item Principle of Equivalence
+	\item Manifolds and Curvature (Math block)
+	\item Tests for GR, Schwarschild Solution
+	\item Gravitational Waves
+	\item Black Holes
+	\item Cosmology
+\end{itemize}
+
+\section{Introduction}
+
+General Relativity unifies Special Relativity and Newtonian gravity.\\
+Newtonian Gravity:
+$$
+\Delta V_{N} = 4\pi G\rho
+$$
+For Point masses $m_N$ at positions $x_N$ we have
+$$
+m_N \frac{\text d^2 x_N}{\text dt^2} = G\sum_{M\neq N}\frac{m_N m_M (x_M - x_N)}{|x_M-x_N|^3}
+$$
+with $G$ the Gravitational constant 
+
+$G = 6.6\cdot 10^{-11} m^3 kg^{-1} s^{-2}$. 
+
+$G/c^2 = 7.41 \cdot 10^{-29} cm/g$\\
+For two masses
+$$
+F = -\frac{Gm_1m_2 r}{r^3},\;\;\;\; V\propto 1/r
+$$
+
+Keplers law follows from this.\\
+Uranus' Orbit predicted Neptune
+
+precession of Mercury's perihelion was off by 35 arcseconds per century. Vulcan predicted, but not observed. The explanation for this was given by GR.
+
+\section{Special Relativity}
+Newton: The principle of relativity states that the laws of physics are invariant under Gallilei transformations.\\
+Maxwell: Electrodynamics is not invariant under Galilei transformations. Proposed solution: Ether (not observed), Or the principle of relativity doesn't apply.\\
+
+\subsection{Einstein 1905}
+Galilei transformations $\longrightarrow$ Lorentz transformations. Then, he called this principle special relativity. In Newton's Mechanics there is an absolute space, so every observer sees the same distances, this is replaced by absolute spacetime. Special Relativity is leaves spacetime distances invariant for all observers.\\
+If $v << c$ then special relativity becomes newtonian mechanics. This also implies weak gravitational fields.
+
+\subsection{Einstein 1916}
+Generalized Principle of Relativity. In GR there is no absolute space or absolute spacetime. Newtonian Mehcanics obtained in the weak gravity limit. There also exists a Geometric Interpretation. Observations confirmed Einsteins Theory, Mercury was discovered, the deflection of light by the sun, red shift of spectral lines, Lense-Thirtring effect, Gravitational Waves
+
+\subsection{Gravity is Special}
+Gravity is the weakest force. In Order, we have The strong force, electromagnetic force, weak force, gravitational force. Assuming the strong force has a strength of 1, electromagnetism has a strenght of $10^{-2}$, weak force a strength of $10^{-5}$ and Gravity of $10^{-35}$.\\
+Gravity is the only really long force. Weak and Strong forces have short ranges and Electromagnetism tends to cancel out through opposite charges.\\
+GR is relevant in the Universe; deviations from Newton, large masses (black holes), cosmic singularities, cosmology. Gravity is transmitted by spin 2 particles called gravitons. This produces a fundamental difference to spin half or spin one particles. 
+
+
+\section{Special Relativity (for real)}
+
+\subsection{Principle of Relativity in Newton Mechanics}
+There exists an absolute space inertial frame with constant speed relative to absolute space. All related by Galilei transformations
+\begin{gather}
+	t' = t + a\\
+	x' = x + vt\\
+	x' = Ax + b, \;\; A^T = A^{-1}
+\end{gather}
+Electrodynamics and Experiments confirmed that the speed of light is constant. Maxwell Equations are not covariant under Galilei Transformations\\
+A Way out: modify the notion of inertial frames.
+
+\subsection{Principle of Relativity in Special Relativity}
+consider $$(\Delta S)^2 = -c^2 (\Delta t)^2 + (\Delta x)^2$$
+impose $c$ is the same in all inertial frames. If $(\Delta S)^2 = 0$ in one Inertial frame, then $(\Delta S')^2 = 0$ in another. (Argument following will be from Landau, Lifshitz)
+
+So it must be that $(\Delta S)^2 = a(\Delta S')^2$\\
+Consider three inertial frames $K, K_1, K_2$. $v_1$ is the velocity between $K,K_1$, $v_2$ between $K, K_2$ and $v_{12}$ between $K_1$ and $K_2$.
+\begin{gather}
+	(\Delta S_2)^2 = a(v_2) (\Delta S)^2 = a(v_{12}) (\Delta S_{1})^2 = a(v_{12})a(v_1)(\Delta S)^2\\
+	\Rightarrow a(v_{12}) = \frac{a(v_2)}{a(v_2)}
+\end{gather}
+Then $v_{12}$ depends on the angle between $v_1,v_2$. $v_1,v_2$ do not. Therefore, $a(v)$ = const, then $a= 1$. For Intertial frames
+\begin{equation}
+	(\Delta S)^2 = (\Delta S')^2
+\end{equation}
+and $\Delta S$ is the Minkowski distance. Transformations leaving this distance invariant are called Lorentz Transformations
+
+\subsection{Notation, Conventions, Terminology}
+Coordinates in spacetime $x^0 = ct$, $x^m = x_m$: $x^\mu$.\\
+Putting $c=1$ means that $1s = 3\times 10^8 m$\\
+Sum convention: $(\Delta S)^2 = \sum_\mu \sum_\nu \eta_{\mu\nu} \Delta x^\mu \Delta x^\nu = \eta_{\mu\nu} \Delta x^\mu \Delta x^\nu$\\
+Minkowski Metric $(-+++)$\\
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
