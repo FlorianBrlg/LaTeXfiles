@@ -1,0 +1,197 @@
+\documentclass[]{scrbook}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Vorlesung 2 - Ex 4}
+\author{}
+\date{10.4.2025}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Lorentz Modell}
+
+fig 1.1\\
+Dipolmoment: $d = -ex(t)$\\
+Harmonischer Oszillator: $x(t) = x_0 \cos(\omega t)$
+
+\subsubsection{Abgestrahlte Leistung}
+$$
+P = \frac{e^2 x_0^2 \omega^4}{12\pi\epsilon_0 c^3}
+$$
+Dies vergleichen wir mit der Energie des Elektrons selber
+$$
+E = \frac{m}{2}\omega^2 x_0^2
+$$
+und somit
+$$
+\frac{\text dE}{\text dt} = -P = \underbrace{-\frac{e^2\omega^2}{6\pi\epsilon_0 mc^3}}_{1/\tau}\cdot E = -\frac{E}{\tau}
+$$
+also fällt die Energie exponentiell ab
+
+\subsubsection{Natrium}
+D-Linie: $\lambda = 589$nm\\
+$\Gamma = \frac{1}{\tau} = 6\cdot 10^{7}$ und der experimentelle fall\\
+$\Gamma_{exp} = 6\cdot 10^{7}$
+\subsubsection{Wasserstoff}
+$\lambda = 121$nm
+\begin{gather*}
+	\Gamma = 1.5\cdot10^{9}\\
+	\Gamma_{exp} = 6\cdot10^{8}
+\end{gather*}
+und für Yb $\lambda = 467$nm
+\begin{gather*}
+	\Gamma = 10^{8}\\
+	\Gamma_{exp} = 10^{-7}
+\end{gather*}
+
+\subsection{Einstein Ratengleichungen}
+
+Seien zwei zustände $E_2, E_1$ mit $E_1$ Grundzustand.\\
+fig 1.2\\
+
+Absorption: die änderung von $E_2$
+$$
+\frac{\text dN_2}{\text d t} = N_1\cdot B_{12} \cdot \rho(\omega)
+$$
+für Stimulierte Emission
+$$
+\frac{\text dN_2}{\text dt} = -N_2\cdot B_{21}\cdot\rho(\omega)
+$$
+für Spontane Emission
+$$
+\frac{\text dN_2}{\text dt} = -N_2\cdot A_{21}
+$$
+und wir wissen über $N_1$ dass
+$$
+\frac{\text dN_1}{\text dt} = -\frac{\text dN_2}{\text dt}
+$$
+
+fig 1.3
+
+Das Plank'sche Strahlungsgesetz
+$$
+\rho(\omega) = \frac{\hbar \omega^3}{\pi^2 c^3} \frac{1}{\exp\left(\frac{\hbar\omega}{k_BT}\right)-1}
+$$
+und wir finden dass
+\begin{gather}
+	A_{21} = \frac{\hbar\omega_{12}^3}{\pi^2 c^3} B_{21}
+\end{gather}
+mit $B_{21}$ als Intrinsische Eigenschaft des Atoms von Einstein her.
+
+\subsection{Atome in einem Magnetfeld}
+
+Das bewegte Elektron ist ein Kreisstrom.
+$$
+I = -\frac{er}{2\pi r}
+$$
+besitzt ein Magnetisches moment
+$$
+\mu = -\frac{1}{2}e\vec r\times \vec v
+$$
+
+Ein Magnetisches Moment in einem externen Magnetfeld $B$ hat die Wechselwirkungsenergie (Potentielle Energie)
+$$
+V = -\vec\mu \cdot\vec B
+$$
+
+\section{Lorentz Modell}
+
+$$
+m\frac{\text dr}{\text dt} = \underbrace{-m\omega_0^2 r}_{H.O.} - \underbrace{er\times B}_{\text{Lorentzkraft}}
+$$
+wir definieren $B = B_0 e_z$
+\begin{equation}
+	\ddot r + 2\Omega_L \dot r \times e_z + \omega_0^2 r = 0\;\;\;\;\; \Omega_L = \frac{eB}{2m}
+\end{equation}
+Wir lösen mit dem Ansatz
+\begin{equation}
+	r(t) = (xe_x + ye_y + ze_z) e^{-i\omega t}
+\end{equation}
+und die matrixform ist dann
+\begin{equation}
+	\begin{pmatrix}
+		\omega_0^2 & -2i\omega\Omega_L & 0\\
+		2i\omega\Omega_L & \omega_o^2 & 0\\
+		0 & 0 & \omega_0^2
+	\end{pmatrix}
+	\begin{pmatrix}
+		x \\ y \\ z
+	\end{pmatrix}
+	= \omega^2
+	\begin{pmatrix}
+		x \\ y\\ z
+	\end{pmatrix}
+\end{equation}
+Eigenwertgleichung mit char. Polynom
+\begin{equation}
+	\left[\omega^4 - (2\omega_0^2 + 4\Omega_L^2)\omega^2 + \omega_0^4\right](\omega^2 - \omega_0^2) = 0
+\end{equation}
+Wir nehmen an, dass $\Omega_L << \omega_0$. So finden wir dass $\omega \approx \omega_0 \pm \Omega_L$, und wir erhalten die Eigenvektoren
+\begin{equation}
+	\begin{matrix}
+		\omega = \omega_0 - \Omega_L & \omega=\omega_0 & \omega = \omega_0+\Omega_L\\
+		\begin{pmatrix}
+			\cos(\omega t)\\
+			-\sin(\omega t)\\
+			0
+		\end{pmatrix}		
+
+		& z_0
+		\begin{pmatrix}
+			0 \\ 0 \\ \cos(\omega_0 t)
+		\end{pmatrix}
+		&
+		\begin{pmatrix}
+			\cos(\omega t)\\
+			\sin (\omega t)\\
+			0
+		\end{pmatrix}
+	\end{matrix}
+\end{equation}
+
+\chapter{Quantenmechanik}
+\begin{itemize}
+	\item diskrete Energieniveaus
+	\item Abstrahlung von Energie führt zu Änderung des Zustands des Elektrons 
+\end{itemize}
+\subsection*{Offene Fragen}
+\begin{itemize}
+	\item Auspaltung der D-Linie in Natrium.
+	\item Anormaler Zeemaneffekt (Aufspaltung in Gerade Anzahl von Linien)
+\end{itemize}
+
+\section{Doppelspaltexperiment}
+
+Konstruktive Interferenz für
+$$
+\Delta \ell = n\lambda, \;\;\; n = 0, \pm1, \pm2,\cdots
+$$
+desuktrive Interferenzen für
+$$
+\Delta \ell = (n+1/2)\lambda
+$$
+Die Intensität auf dem Schirm ist proportional zum Betragsquadrat der
+\begin{gather}
+	I \propto |E_1 + E_2|^2\\
+	I \propto |E_1|^2 + |E_2|^2 + \underbrace{2\text{Re}(E_1* E_2)}_{\text{Interferenz}}
+\end{gather}
+
+Was passiert mit einem Teilchen auf dem Doppelspalt?\\
+deBroglie: Auch Teilchen haben Welleneigenschaften
+$$
+\lambda = h/p
+$$
+Einstein: Energie Impuls Beziehung
+$$
+E = \hbar\omega = \sqrt{(mc^2)^2 + p^2c^2}
+$$
+und für Masselose teilchen $E=pc = \hbar kc = \hbar\omega$ und somit ist $\omega = ck$\\
+Für massive Teilchen $E = mc^2 \sqrt{1 + \frac{p^2}{m^2c^2}} \approx mc^2 + \frac{p^2}{2m}$ und damit gilt dann $\omega = \frac{\hbar k^2}{2m}$ mit kinetischer Energie kleiner als $mc^2$.
+\end{document}
+
