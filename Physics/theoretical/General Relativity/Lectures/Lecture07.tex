@@ -1,0 +1,30 @@
+\subsection{Continuous Map}
+let $X,Y$ be topological spaces. Let $f$ be a map from $X$ to $Y$. Then $f$ is continuous if and only if the inverse of an open set $Y$ is open in $X$.
+
+\subsubsection*{example}
+let $f(x) = \begin{cases}
+	x+1, & x\geq 0\\
+	x, & x<0
+\end{cases}$\\
+on $y\in(0,1/2)$ this is open, as $f^{-1}(0,1/2) = \emptyset$.\\
+for $y\in(1/2,3/2)$ this is not open, as $f^{-1}(1/2,3/2) = [0,1/2]$ therefore $f$ is not continuous.
+\subsection{Def: Homeomorphism}
+Let $X_1$ and $X_2$ be topological spaces, then $f:X_1\rightarrow X_2$ is a homeomorphism if
+\begin{itemize}
+	\item $f$ is bijective
+	\item $f$ is continuous
+	\item $f^{-1}$ is continuous
+\end{itemize}
+If a homeomorphism exists between $X_1$ and $X_2$ then the spaces are called homeomorphic.
+
+\subsection{Def: Manifolds}
+$M$ is an $n-$dimensional differentiable manifold if and only if 
+\begin{itemize}
+	\item $M$ is a topological space
+	\item $M$ is provided with a family of pairs $\left\{(u_i,\phi_i)\right\}$
+	\item $u_i$ is a family of open sets which covers $M$
+	\item $\phi_i$ is a homeomorphism from $u_i$ to an open subset in $\mathbb R^n$.
+	\item given $u_i, u_f$ such that $u_i\cap u_f \neq \emptyset$ and the map $\psi_{if} = \phi_i \cdot \phi^{-1}_f:\;\; \phi_f(u_1\cap u_2)\rightarrow \phi_i(u_i\cap u_f)$ is infinitely differentiable from $\mathbb R^n$ to $\mathbb R^n$.
+	\item $\phi_i: p\in\mathbb \rightarrow \underbrace{(x^1(p), \cdots, x^n(p))}_{\text{coordinates of $p$}}\in\mathbb R^n$
+	\item the family $\{(u_i,\phi_i\}$ is called the atlas consisting of charts $(u_i,\phi_i)$.
+\end{itemize}

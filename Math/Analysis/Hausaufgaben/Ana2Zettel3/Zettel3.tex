@@ -1,0 +1,67 @@
+\documentclass[]{scrartcl}
+
+\usepackage{\string~"/LaTeX/StylePackage"}
+
+\title{Zettel 3}
+\author{}
+\date{xx.xx.2025}
+
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{}
+
+\section{}
+
+\section{}
+\subsection{(i)}
+
+Sei $K = \cup_i k_i \subset X$ mit $k_i$ kompakten Mengen. Da $k_i$ kompakt gibt es 
+jeweils eine offene Überdeckung $U_i = \cup_j\left(\{U_j\}_i\right)$, s.d. $k_i\subset U_i$.
+Wir finden jeweils eine Teilmenge $M_i$ sodass $M_i$ eine endliche Teilmenge von $U_i$
+ist, welche $k_i$ bedeckt.\\
+Jetzt ist $\cup_i U_i$ eine offene Überdeckung von $K$ und $\cup_i M_i$ eine endliche Teilmenge von $cup_i U_i$.\\
+Da dies für beliebige $K=\cup_i k_i$ gilt ist die Aussage korrekt.
+
+\subsection{(ii)}
+Sei $K_n = [1/n, 1]$. Diese Mengen sind kompakt. Jetzt sei $K = \cup_n^\infty K_n$, diese Menge ist
+$$
+(0, 1]
+$$
+Diese Menge ist offen in $\mathbb R$, und somit nicht kompakt. Die Aussage ist somit falsch.
+
+\subsection{(iii)}
+$\mathbb R$ ist vollständig, allerdings ist $\mathbb R$ offen und somit nicht kompakt.
+
+\subsection{(iv)}
+Sei $X$ ein kompakter Raum. In kompakten Räumen hat jede Folge eine Konvergierende Teilfolge. 
+Sei $x_n$ eine Cauchy Folge, dann hat $x_n$ eine konvergierende Teilfolge. 
+In einem metrischen Raum konvergieren alle Cauchy Folgen die eine konvergierende Teilfolge haben, 
+somit konvergieren alle Cauchy Folgen und $X$ ist Vollständig
+
+\subsection{(v)}
+Sei $a_n$ eine Folge in $\ell^2$. Sei $a_n = e_n$ die $n$-te Basis. $\ell^2$ ist unendlich 
+dimensional, also hat $a_n$ keinen Grenzwert, und auch keine konvergierende Teilfolge. 
+Somit ist $\ell^2$ nicht kompakt.
+
+\section{}
+
+\subsection{(i)}
+Sei $A\subset X$ abgeschlossen. Sei $U_i$ eine offene Überdeckung von $A$. Da $A$ in $X$ abgeschlossen ist, ist $X\backslash A$ offen. Dann ist $U_i \cap X\backslash A$ eine offene Überdeckung von $X$. Da $X$ Kompakt ist, existiert eine endliche Teilüberdeckung $\{U_1,\cdots, U_n\}\cap X\backslash A$.
+Dann ist $\{U_1,\cdots, U_n\}$ eine offene Teilüberdeckung von $A$. Somit ist $A$ kompakt.
+
+\subsection{(ii)}
+
+Sei $U$ eine offene Überdeckung von $f(K)$. Weil $f$ stetig ist, ist $f^{-1}(u)$ offen für alle $u\in U$.
+Die Menge $\{f^{-1}(u)| u\in U\}$ ist eine offene Überdeckung von $K$, 
+weil für alle $x\in K$ $f(x)$ in einem $u\in U$ sein muss.\\
+Weil $K$ kompakt ist, hat es eine endliche Überdeckung $\{f^{-1}(u_1), \cdots, f^{-1}(u_n)\}$.
+Daraus folgt dass $\{u_1, \cdots, u_n\}$ eine endliche Überdeckung von $f(K)$ ist.
+
+\end{document}
+

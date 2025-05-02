@@ -1,0 +1,103 @@
+%\subsection{Dispersionsrelation}
+Für masselose Teilchen
+$$
+\hbar\omega = c\hbar k
+$$
+für massive Teilchen
+$$
+\omega = \frac{\hbar k^2}{2n}
+$$
+
+Wellenfunktion für ein Teilchen
+$$
+\psi(x,t) = C \cdot \exp (ikx - i\omega t)
+$$
+Wobei $C$ eine normierungskonstante ist, die bestimmt werden muss.\\
+$\psi$ legt den Zustand eines Teilchens am Ort $x$ zur Zeit $t$ vollständig fest.
+
+Zeitentwicklung ist gegeben durch eine Wellengleichung
+\begin{itemize}
+	\item Zeitentwicklung ist gegeben durch eine Wellengleichung
+	\item Intensität der Welle beschreibt Wahrscheinlichkeitsdichte $\rho(x,t) = |\psi(x,t)|^2$
+	\item Eine Komplexe Phasenverschiebung lässt die Wahrscheinlichkeitsdichte Invariant
+	\item $\rho$ beschreibt die Wahrscheinlichkeit ein Teilchen am Ort $x, x+\text dx$ zu finden.
+	\item $\int_V \rho \text dV = 1$, Die Wellenfunktion ist normiert
+	\item die Teilchenzahldichte: $n = N\cdot \rho$
+\end{itemize}
+Das Elektron ist unterteilbar und punktförmig, also ist es nur an einer Stelle detektiert werden. Jede Stelle ist möglich, aber nicht gleich wahrscheinlich. Die Wahrscheinlichkeit ist gegeben durch $\rho(x,t)$.\\
+Im Doppelspalt haben wir zwei Wellenfunktionen, die jeweils durch einen Spalt gehen.
+\begin{equation}
+	\psi(x,t) = \frac{1}{\sqrt 2}\left(\psi_1(x,t) + \psi_2(x,t)\right)
+\end{equation}
+Wir wissen nicht, durch welchen Spalt das Elektron fliegt. Es fliegt quasi gleichzeitig durch beide. Falls wir messen durch welchen Spalt das Elektron fliegt, verschwindet das Interferenzmuster, sogar falls es nur möglich ist dies zu messen verschwindet das Interferenzmuster.
+
+\subsection{Die Schrödingergleichung}
+
+\begin{itemize}
+	\item Klassische Mechanik: 
+		$$
+		F= ma
+		$$
+	\item Elektrodynamike:
+		$$
+		\frac{\partial^2 E}{\partial x^2} = \frac{1}{c^2} \frac{\partial^2 E}{\partial t^2}
+		$$
+\end{itemize}
+\begin{gather}
+	\psi(x,t) = C \exp\left[\left(i(px - \frac{p^2}{2m}t)\right)/\hbar\right]\\
+	i\hbar \frac{\psi(x,t)}{\partial t} = -\frac{\hbar^2}{2m}\nabla^2 \psi(x,t)
+\end{gather}
+Eigenschaften der Schrödinger Gleichung:
+\begin{itemize}
+	\item Linear in $\psi$. Falls $\psi_1,\psi_2$ Lösungen sind, ist $\alpha\psi_1 + \beta\psi_2$ auch eine.
+	\item Erste Ordnung in der Zeit; $\psi(x,t_0)$ legt alle Lösungen fest.
+	\item Homogene Differentialgleichung; Daher bleibt die normalisierung erhalten.
+\end{itemize}
+Allgemeine Form der Schrödinger Gleichung für Potentiale;
+\begin{equation}
+	i\hbar \frac{\partial}{\partial t}\psi(x,t) = \left(\underbrace{-\frac{\hbar^2}{2m}\nabla^2}_{\text{kinetische Energie}} + V(x,t)\right)\psi(x,t)
+\end{equation}
+Da der Operator welcher in der Klammer steht die Gesamte Energie darstellt, heißt dieser auch Hamilton Operator $H$.
+
+\subsection{Wellenpakete und Unschärferelation}
+
+Biespiel: Zwei ebene Wellen
+\begin{gather}
+	\psi = C\left[e^{i(px-\frac{p^2}{2m}t)/\hbar} + e^{i(px-\frac{p^2}{2m}t)/\hbar}\right]\\
+	= Ce^{-\frac{ip^2}{\hbar 2m}t}\underbrace{\left[e^{ipx/\hbar} + e^{-ipx/\hbar}\right]}_{= 2\cos(px/\hbar)}
+\end{gather}
+
+Den Mittelwert des Ortes bestimmt man durch
+\begin{equation}
+	\langle x\rangle = \int_{-\infty}^{\infty} \text dx x|\psi(x,t)| 
+\end{equation}
+Schwankungsbreite und Generell berechnet man:
+\begin{gather}
+	\langle \Delta x^2\rangle = \langle (x-\langle x\rangle)^2 \rangle\\
+	\langle f \rangle = \int_{-\infty}^{\infty} \text dx f|\psi(x,t)|
+\end{gather}
+Das produkt der Schwankungsbreiten ist die Heisenbergsche Unschärferelation
+\begin{equation}
+	\sqrt{\langle \Delta x^2\rangle}\sqrt{\langle \Delta p^2\rangle} = \frac{\hbar}{2}
+\end{equation}
+Was ein Spezialfall ist
+
+\subsection{Heisenberg-Mikroskop}
+
+Wir wollen wissen wie schnell ein Elektron ist und wo es ist. Wir beleuchten das Elektron mit einem Laser, und nutzen die Streuung des Elektrons um das Licht in einem Detektor aufzufangen. Die Auflösung des Mikroskops ist durch den Öffnungswinkel $\phi$ gegeben. $d = \frac{\lambda}{\sin(\phi)} = \Delta x$ Der Rückstoß an das Elektron ist $\Delta p_x = \frac{2\pi}{\lambda}\hbar\sin(\phi)$. Die Messung verändert also die Geschwindigkeit des Elektrons. Hier $\Delta x \Delta p = 2\pi\hbar$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

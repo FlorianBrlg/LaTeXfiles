@@ -1,0 +1,99 @@
+\section{Vorherige Vorlesung} 
+$(X,d)$ Metrischer Raum\\
+$(V, ||\cdot||)$ Normierter Raum\\
+$(V, \langle\cdot,\cdot\rangle)$ Euklidischer Raum\\
+
+\subsection{Äquivalenz von Normen}
+zwei normen $f, g$ sind äquivalent, falls $c_1,c_2$ existieren, so dass
+$$
+	c_2f(x) \leq g(x) \leq c_1f(x)
+$$
+Alle normen auf $\mathbb R^n$ sind äquivalent. 
+
+\subsection{Vollständiger Raum}
+Der metrische Raum $(X,d)$ ist vollständig falls alle Cauchy Folgen konvergieren.
+
+\subsubsection{$\ell^1$ Vollständigkeit}
+$(\ell^1, ||\cdot||_{\ell^1}$ ist vollständig. Sei $x\subset\ell^1$ eine Cauchy Folge in $\ell^1$. D.h. dass
+\begin{gather}
+	\forall \epsilon>0 \exists k_0\in\mathbb N (\underbrace{||x^k - x^m||_{\ell^1}}_{=\sum_i^\infty |x_i^k - x_i^m}<\epsilon)\forall k,m\geq k_0\\
+\Rightarrow x^k \text{ ist CF für } \mathbb R\; \Rightarrow\exists x_i\in\mathbb R(x_i^k\rightarrow x_i, k\rightarrow\infty
+\end{gather}
+
+\section{(1.3) Offene und abgeschlossene Menge}
+\subsection{Def: }
+Sei $(X,d)$ ein mtrischer Raum, $x_0\in X$ und $r>0$ Dann ist
+\begin{itemize}
+	\item $B_r(x_0) = \{x\in X | d(x,x_0) < r\}$ die Offene Kugel
+	\item $\overline B_r(x_0) = \{x\in X | d(x,x_0) \leq r\}$ abgeschlossene Kugel
+	\item $U\subset X$ heißt umgebung von $x_0$, falls $\exists\epsilon>0$ mit $B_\epsilon(x_0)\subset U$.
+	\item $U\subset X$ heißt offen falls $\forall x\in U$ $\exists \epsilon>0$ mit $B_\epsilon \subset U$.
+	\item $A\subset X$ ist abgeschlossen falls $A^c$ offen ist.
+\end{itemize}
+\subsubsection{Elementare Eigenschaften}
+\begin{itemize}
+	\item $\emptyset$ und $X$ sind offen und abgeschlossen.
+	\item $B_r(x_0)$ ist offen. Sei $x\in B_r(x_0)$ und sei $\epsilon = r-d(x,x_0) > 0$ dann ist $B_\epsilon(x) \subset B_r(x_0)$
+	\item $y\in (\overline B_r(x_0))^c \Rightarrow d(y,x_0)>r$ und sei $\epsilon = d(y,x_0) - r > 0$ Dann $B_\epsilon(y)\subset\left(\overline B_r(x_0) \right)$
+	\item Durchschnitt endlich vieler offenen mengen ist offen. Sei $V,U$ offen. Sei $x\in U\cap V$, sei $\epsilon_1,\epsilon_2$ s.d. $B_{\epsilon_1}(x) \subset U$ und $B_{\epsilon_2}(x) \subset V$ dann sei $\epsilon = \min(\epsilon_1,\epsilon_2)$ und $B_\epsilon(x) \subset U\cap V$ 
+\end{itemize}
+
+\subsection{Satz: }
+Sei $(X,d)$ ein metrischer Raum, $x,y\in X$ mit $x\neq y$. Dann existiert eine Umgebung von $X$ und $V$ von $y$ mit $U\cap V = \emptyset$.\\
+\textit{Beweis: } $2\epsilon = d(x,y)>0$ sei $U = B_\epsilon(x), V = B_\epsilon(y)$ dann $\exists z \in B_\epsilon(x)\cap B_\epsilon(y)$ und dann $2\epsilon = d(x,y) \leq d(x,z) + d(z,y) < 2\epsilon$ 
+
+\subsection{Satz: }
+Sei $A\subset X$ abgeschlossen, das ist äquivalent zu $\forall (x^k)\subset A$ mit $x^k\rightarrow x$ in $X$ dann gilt $x\in A$.\\
+\textit{Beweis: } "$\Rightarrow$": Annahme: $x\notin A$ dann $\exists\epsilon >0$ so dass $B_\epsilon (x) \subset A^c$. Widerspruch zu $x_k\in B_\epsilon(x)$ für $k\geq k_0$.\\
+"$\Leftarrow$": Nehme an dass $A^c$ nicht offen ist. Dann existiert ein $x\in A^c$ sodass $B_\epsilon (x) \not\subset A^c$ für alle $\epsilon$. Wähle $\epsilon = 1/n$, dann $\exists x_n\in B_{1/n}(x)$, $x_n \in A$ Dann $x_n\rightarrow x$, nach vorherigem $x\in A$ Widerspruch
+
+\subsection{Def: }
+Sei $(X,d)$ ein metrischer Raum, Sei $M\subset X$ und $x_0 \in X$ heißt innerer Punk von $M$ falls $x_0 \in M$ und $\exists\epsilon>0$ s.d. $B_\epsilon(x_0) \subset M$.\\
+$x_0\in X$ heißt innerer Punkt, falls alle $\epsilon$ Kugel um $x_0$ ein $y\in M$ und ein $z\in M^c$ enthält.\\
+$x_0\in X$ heißt Häufungspunkt von $M$ falls in jeder $\epsilon$ kugel von $x_0$ ein $y\in M$ mit $y\neq x_0$ liegt.\\
+$x_0\in X$ heißt Isolierter punkt falls $x_0\in M$ aber ist kein Häufungspunkt.
+\begin{itemize}
+	\item $\dot M$ Menge der Inneren Punkte von $M$
+	\item $\partial M$ Menge der Randpunkte von $M$
+	\item $\overline M = M \cup \partial M$ ist der Abschluss von $M$ 
+\end{itemize}
+
+\subsection{Teilraumtopologie}
+Sei $(X,d)$ ein metrischer raum, sei $X_0\subset X$ dann ist $(X_0, d)$ auch ein metrischer Raum. Dann ist $U_0 \subset X_0$ offen, falls $U\subset X$ existiert, offen und $U\cap X_0 = U_0$ ist.
+\subsection{Produkttopologie}
+Seien $(X,d_x)$ und $(Y,d_y)$ metrische Räume, dann ist $(X\times Y, d)$  ein metrischer Raum mit der metrik
+$$
+d((x_1,y_1), (x_2,y_2)) = \max(d_x(x_1,x_2), d_y(y_1, y_2))
+$$
+$W\subset X\times Y$ ist offen, falls $\forall (x,y)\in W$ eine umgebung $U$ von $x\in X$ existiert und eine Umgebung $V$ von $y\in Y$ s.d. $U\times V \subset W$ 
+
+\section{Stetige Abbildung zwischen Metrischen Räumen}
+\subsection{Def: Stetigkeit}
+Seien $(X, d_x), (Y,d_y)$ metrische Räume. Sei $f:X\rightarrow Y$ eine Abbildung. diese Abbildung ist stetig in $x_0$ falls
+$$
+\forall \epsilon>0\exists\delta>0 \forall x(d_y(f(x),f(x_0)) < \epsilon \text{ und } d_x(x,x_0)<\delta)
+$$
+Falls für alle $x\in X$ $f$ stetig ist, dann heißt $f$ stetig.
+\subsection{Def: Lipschitz Stetig}
+falls $L\geq 0$ exisiert und
+$$
+d_y(f(x),f(x')) \leq Ld_x(x,x') \;\;\;\;\; \forall x,x'\in X
+$$
+
+\subsection{Satz: }
+Seien $(X,d_x), (Y,d_y)$ metrische Räume, $f:X\rightarrow Y$ ist stetig gdw $f^{-1}(V) \subset X$ offen für alle $V\subset Y$, $V$ offen, ist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

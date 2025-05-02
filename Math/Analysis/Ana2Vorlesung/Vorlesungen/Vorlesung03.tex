@@ -1,0 +1,105 @@
+\section{Vorherige Vorlesung}
+
+\begin{itemize}
+	\item Stetige Abb $f: X\rightarrow Y$. $\epsilon\delta$ Kriterium ist äquivalent zum Folgenkriterium.
+	\item Lipschitstetigkeit
+	\item Rechenregeln
+	\item $f$ stetig Äquivalent zu Urbild offener Menge offen
+\end{itemize}
+
+\subsection{Def: Homeomorphismus}
+Eine bijektive stetige Abbildung $f:X\rightarrow Y$ deren inverse auch stetig ist heißt Homeomorphismus. $X$ ist heomeomorph zu $Y$, falls es einen Homeomorphismus von $X$ zu $Y$ gibt.
+
+\subsubsection{Bsp}
+$f:[0,2\pi) \rightarrow S^1\subset\mathbb R^2$ mit $f(t) = (\cos t, \sin t)$ ist eine bijektive stetige Abbildung dessen Inverse nicht stetig ist. Falls der Definitionsraum Kompakt ist (Beschränkt und Abgeschlossen) So ist die Inverse stetig.
+
+\subsubsection{Bsp}
+\begin{itemize}
+	\item $B_1(0)\subset\mathbb R^n$ ist homeomorph zu $\mathbb R^n$ mit $f(x) = \frac{x}{1-|x|}$
+	\item Invers und stereographischen Projection $p\in\mathbb R^n, \alpha>0$ funktion $i: \mathbb R^n \backslash\{p\} \rightarrow \mathbb R^n \backslash \{p\}$ mit Eigenschaften
+		\begin{itemize}
+			\item $i(x)$ und $x$ liegen auf Halbgeraden durch punkt $x$: $i(x) - p = \lambda(x-p)$ für ein $\lambda$
+			\item $|i(x) - p||x-p| = \alpha \Rightarrow i(x) = p + \frac{\alpha}{|x-p|^2}(x-p)$
+		\end{itemize}
+	$i$ ist stetig und es gilt $i^{-1} = i$
+	\begin{gather}
+		i(x) - p = \frac{\alpha}{|x-p^2|}(x-p) = \frac{1}{\alpha}|i(x)-p|^2 (x-p)\\
+		\Rightarrow x-p = \frac{\alpha}{|i(x)-p|^2}(i(x)-p)
+	\end{gather}
+\end{itemize}
+\subsubsection{Bsp}
+$\mathbb R^n$, $p = N = (0,\cdots,0,1)$ und $\alpha = 2$
+$$
+	i_N(x) = N + \frac{2}{|X-N|^2}(X-N)
+$$
+Behauptung: $i_N$ bildet die Hyperebene $\{x\in\mathbb R^{n+1}\}$ auf den Ball $S^1\backslash\{N\}$ bijektiv ab.
+\begin{gather}
+	1 = |i_N(x)|^2 = |N + \frac{2}{|X-N|^2}(X-N)|^2\\
+	= 1 + 2\langle N, \frac{2}{|X-N|^2}(X-N)\rangle + \frac{4}{|X-N|^2}\\
+	0 = \frac{4}{|X-N|^2}\langle X,N\rangle - \frac{4}{|X-N|^2}\langle N,N\rangle + \frac{4}{|X-N|^2}\\
+	\Rightarrow \langle N,X\rangle = 0 \Leftrightarrow x_{n+1} = 0
+\end{gather}
+Stereographische Projektion
+$\sigma_N: \mathbb R^n \rightarrow S^n\backslash\{N\}$ definiert als $i_N((x,0))$
+
+\subsubsection{Polarkoordinaten in $\mathbb R^2$}
+$P_2 : \mathbb R_+ \times (-\pi,\pi)$, $(r,\phi)\rightarrow\mathbb R^2\backslash\{t,0\} P_2(r,\phi)=(r\cos\phi, r\sin\phi)$ \\Und die Umkehrabbildung $g_2(x, y) = (\sqrt{x^2 + y^2}, \text{sgn}(y)\arccos(\frac{x}{\sqrt{x^2+y^2}})$
+
+\subsection{Def: }
+Seien $X,Y$ metrische Räume. Sei $f_n: X\rightarrow Y$ eine Funktionenfolge. Diese ist gleichmäßig konvergent, falls
+\begin{equation}
+	\forall\epsilon>0\exists n \left(d_Y(f_m(x), f_k(x)) < \epsilon \right)\;\;\;\; \forall x\in X\forall m,k\geq n
+\end{equation}
+Falls $Y$ vollständig ist, und $f_n$ gleichmäßig konvergiert, so exstiert eine funktion von $X$ nach $Y$ mit $f_n\rightarrow f$, d.h. $$\forall \epsilon>0\exists n_0 \left(d_Y(f_n, f\right)<\epsilon \;\;\;\; \forall x\in X \forall n\geq n_0$$
+
+\subsection{Satz: }
+Sei $Y$ vollständig, $f_n \rightarrow f$ gleichmäßig konvergent und $f_n$ stetig für alle $n$, dann ist $f$ stetig
+
+\section{Lineare Abbildungen, Operator Norm}
+
+Hier: $(V,||\cdot||_V)$, $W$ ,$U$ normierte Vektorräume.
+
+\subsection{Satz:}
+lineare Abbildungen $A$ von $V$ nach $W$ sind stetig, falls $\text{dim} V <\infty$.
+
+$e_1,\cdots,e_n$ basis von $V$. $x= x_ie_i$ und $y = y_i e_i$. Definiere $M = max (||Ae_1||_W ,\cdots, ||Ae_n||_W)$.\\
+$||Ax - Ay||_W = ||(x_i - y_i) A e_i||_W \leq |x_i - y_i|||Ae_i||_W \leq M \sum_i |x_i - y_i| \leq MC||x-y||_V$
+
+\subsection{Satz: }
+Eine Lineare Abbildung $A:V\rightarrow W$ ist stetig, genau dann wenn $c>0$ existiert sodass $||Ax||_W = C||x||_V$ für alle $x\in C$. $A$ ist dann auch Lipschitz stetig.\\
+\textit{Beweis: } "$\Leftarrow$": $||A_x - A_y||_W = ||A(x-y||_W = C||x-y||_V$\\
+"$\Rightarrow$": $A$ ist stetig: $A$ stetig in $y = 0$: für $\epsilon = 1$ existiert ein $\delta>0$ 
+\begin{gather}
+	||Ay||_W < 1 \;\;\;\;\forall ||y||_V \leq \delta\\
+	\Rightarrow ||Ax||_W = ||A \frac{\delta x}{||x||_V}\frac{||x||_V}{\delta}||_W = \frac{||x||_V}{\delta}||A \frac{\delta x}{||x||_V}||_W
+\end{gather}
+
+\subsection{Def: }
+Sei $L(V,W)$ der Raum der stetigen linearen Abbildungen von $V$ nach $W$.
+\begin{gather}
+	||A||_{L(V,W)} = \sup\{||Ax||_W | ||x||\leq 1\}\\
+	= \sup\{\frac{||Ax||_W}{||x||_V} | x\in V, x\neq 0\}
+\end{gather}
+ist die Operattornorm auf $L(V,W)$
+
+\section{Kompakte Räume}
+
+\subsection{Def: }
+Sei $X$ ein metrischer Raum. Sei $K\subset X$. $K$ heißt (Überdeckungs)kompakt, falls es zu jeder offenen Überdeckung $\cup_i U_i$ von $K$ eine endliche Teilmenge gibt, die $K$ überdeckt.
+
+\subsection{Def: Offene Überdeckung}
+Eine Offene Überdeckung ist eine Familie offener Mengen $U_i$, s.d. jedes $x\in K$ in mindestens einem $U_i$ liegt.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

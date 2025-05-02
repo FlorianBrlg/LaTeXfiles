@@ -1,0 +1,120 @@
+\chapter{Principle of Equivalence}
+
+\section{Special Relativity Pros and Cons}
+
+Pros
+\begin{itemize}
+	\item composition of velocity
+	\item $E=\gamma mc^2$
+	\item time dilation
+	\item unify with QM for QFT
+\end{itemize}
+Cons
+\begin{itemize}
+	\item notion of absolute spacetime
+	\item What happens in accelerated frames?
+\end{itemize}
+
+\section{Principle of Equivalence}
+inertial mass: Resistance against acceleration
+\begin{equation}
+	F = m_i a  = m_i \diff{v}{t}, \;\; m_i: \text{Intertial Mass}
+\end{equation}
+Gravitational mass: factor of proportionality in gravitational force
+
+\subsection{Galilei (Newton, Huggels)}
+forces fall at same rate independent of their mass. In a free Fall:
+\begin{equation}
+	m_i a = m_g g \rightarrow a = \frac{m_g}{m_i}g
+\end{equation}
+Observation: $\frac{m_g}{m_i}$ is universal, $g$ can be defined such that $m_i = m_g$
+
+\subsection{Eötvös Experiment (1889)}
+(Weinberg)
+Simplified picture:\\
+revolving heavy disk with a scale that balances vertical forces and at the same time radial forces.\\
+The torque pendulum: There are two masses on a scale held up by a string that can freely rotate. Let $F_g$ denote the respective gravity force on the mass, and let $F_C$ be the centrifugal forces on the masses. The gravitational balance is
+\begin{equation}
+	l_A m_{gA} = l_B m_{g_B}
+\end{equation}
+The resulting torque through centripetal force
+\begin{equation}
+	T = (l_A m_{iA} - l_B m_{iB})g_i
+\end{equation}
+Then $g_i$ is thhe acceleration due to the centripetal force. Observation: $T=0$, so we take that $m_i = m_g$
+
+\subsection{Einstein Thought Experiment}
+freely falling elevator of mass $m$.\\
+The external observer sees 
+$$
+m\diff{^2x}{t^2} = mg
+$$
+The internal observer sees
+$$
+x' = x - \frac{1}{2}gt^2
+$$
+Then we compute $x'$ and we find
+$$
+m\diff{^2 x'}{t^2} = 0
+$$
+The principle of equivalence tells us that the gravitational and inertial forces can be cancelled for all freely falling objects.
+
+The strong equivalence principle (SEP)(Popular in exam): At every spacetime point in an arbitrary gravitational field it is possible to choose a locally inertial coordinate system such that, within a sufficiently small region around the point in question the laws of nature take the same form as in an unaccelerated cartesian coordinate system in the absence of gravity 
+
+Effects of gravitational field can be detected by non-local experiment. Applied to measure earth gravitational field GOCE. Gravitational wave detection is non local.
+
+The weak equivalence principle: Laws of nature replaced by laws of motion ($m_i = m_g$).
+
+Einstein Equivalence Principle: Laws of nature replaced by non gravitational laws of nature
+
+Gravitational binding energy affects $m_g$ differently from $m_i$
+
+\subsection{gravitational red shift (from SEP or EEP)}
+Let $1$ and $2$ be spaceships with a constant distance $z$, while accelerating with $a$. $1$ sends a photon to $2$, time between being sent and being detected is $\Delta t = z/c$. Gained speed during $\Delta t$ is $\Delta v = a\Delta t = \frac{az}{2}$. Incremental Doppler Shift $\frac{\Delta v}{c} = \frac{\Delta \lambda}{\lambda_0} = \frac{az}{c}$
+\subsubsection{Equivalent setup with a=g}
+let $1$ and $2$ be observers, where $2$ is on top of a tower. $1$ sends a photon to $2$. Applying the previous relation we see that
+$$
+\frac{\Delta\lambda}{\lambda_0}= \frac{gz}{c^2}
+$$
+is the gravitational redshift.\\
+Intuition: The energy of a photon is given by $h\nu$, the change is $\Delta(h\nu) = -\frac{gz}{c^2}h\nu$. The change of energy in a photon is the change of potential energy $(mgz = \frac{h\nu}{c^2}hz$ if $m\rightarrow \frac{E}{c^2}$.
+
+\subsubsection{Observation: Pound \& Rebka (1960)}
+let $\gamma$ ray from $Fe^{57}$ fall 22.6 meters. Resonant absorption showed
+\begin{gather}
+	\frac{\Delta \nu}{\nu} = (2.57 \pm 0.26)\cdot 10^{-15}\\
+	\text{With the theory: } \frac{\Delta \nu}{\nu} = 2.46\cdot 10^{-15}
+\end{gather}
+
+
+\chapter{Manifolds}
+\section{Definitions and Examples}
+Topologies generalize the notion of open intervalls, balls, etc
+
+\subsection{Def:}
+Let there be a collection of subsects $\tau = \left\{U_i|i\in I\right\}$ in a set $X$ such that it possesses the following properties:
+\begin{itemize}
+	\item $\emptyset, X \in \tau$
+	\item for any $J\subset I$ we have that $\cup_J U_j \in \tau$.
+	\item for any finite $J\subset I$ we have that $\cap_J U_j \in \tau$.
+\end{itemize}
+Then $I,J$ are index sets, $\tau$ is a topology in $X$, and $X$ is a topological space. The elements of $\tau$ are called open subsets. For example
+\begin{itemize}
+	\item trivial topology $\tau = \{\emptyset, X\}$
+	\item discrete topology $\tau = \{\text{all subsets in }X\}$
+	\item Euclidean topology $X=\mathbb R^n, I=\mathbb R^n$, $U_y$ is the open ball with radius $r$ and all unions and intersections
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

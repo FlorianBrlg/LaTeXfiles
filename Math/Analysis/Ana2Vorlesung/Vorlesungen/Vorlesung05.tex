@@ -1,0 +1,94 @@
+\chapter{Differentialrechnung mehrerer Variablen}
+
+\subsection{Differentierbarkeit in $\mathbb R$}
+Sei $I\subset \mathbb R$, $f:I\rightarrow\mathbb R$ und $x_0\in I$. Dann ist $f$ in $x_0$ differentierbar, falls
+\begin{equation}
+	f'(x_0) = \lim_{h\rightarrow 0}\frac{f(x_0 + h) - f(x_0)}{h}
+\end{equation}
+existiert.\\
+Das ist äquivalent zu\\
+Es existiert eine lineare Abbildung $L$ s.d.
+\begin{equation}
+	\lim_{h\rightarrow 0}\frac{f(x_0 + h) + f(x_0) - Lh}{h} = 0
+\end{equation}
+
+\subsection{Ableitung Vektorwertiger Funktion}
+
+Sei $f: I\subset\mathbb R \rightarrow \mathbb R ^m$ mit $f(x) = \left(f(x),\;\cdots,\; f_m(x)\right)^T$.\\
+$f$ ist differentierbar, falls
+\begin{equation}
+	f'(x_0) = \lim_{h\rightarrow 0}\frac{f(x_0 + h) - f(x_0)}{h}\in\mathbb R^m
+\end{equation}
+existiert, oder gleiche äquivalenzen für oben für die einzelnen funktionsteile.
+
+\section{Kurven in $\mathbb R^n$}
+\subsection{Def: Kurven}
+Eine Kurve in $\mathbb R^n$ ist eine stetige Abbildung $\gamma: I\subset\mathbb R\rightarrow \mathbb R^n$. Eine Kurve heißt (stetig) differentierbar, falls $\gamma$ (stetig) differentierbar ist. $\gamma(I)\subset\mathbb R^n$ heißt Spur von $\gamma$.
+
+\subsection{Def: Ableitung von Kurven}
+Sei $\gamma$ eine differentierbare Kurve. Dann ist
+\begin{equation}
+	\gamma'(t) = \left(\gamma'_1(t), \cdots, \gamma'_n(t)\right)^T
+\end{equation}
+der Tangentialvektor von $\gamma$ in $t$. Wobei $|\gamma'(t)|$ die Geschwindigkeit ist, und $T_\gamma = \frac{\gamma'(t)}{|\gamma'(t)|}$ der Tangentialeinheitsvektor
+
+\subsection{Def: Regulär, Singulär}
+Eine stetig differentierbare Kurve $\gamma$ heißt regulär, falls $\gamma'(t)$ ungleich null für alle $t\in I$ ist. Falls $t\in I$ mit $\gamma'(t) = 0$, dann heißt $t$ singulär.
+
+\subsection{Def: Schnittwinkel}
+Wir nehmen zwei sich schneidende Graphen $\gamma_1$ und $\gamma_2$. Seien beide regulär und $\gamma_1(t_1) = \gamma_2(t_2) = x$. Dann ist der Schnittwinkel $\alpha$ in $x$
+\begin{equation}
+	\cos\alpha = \langle T_{\gamma_1}(t_1) , T_{\gamma_2}(t_2)\rangle
+\end{equation}
+
+\subsection{Def: Polygonzug}
+sei $\gamma$ eine Kurve. Sei $\mathcal Z$ eine Zerlegung von $[a,b]$ mit 
+\begin{equation}
+	a = t_0 < t_1 < \cdots < t_k = b
+\end{equation}
+Verbinde $\gamma(t_{i-1})$ und $\gamma(t_i)$ durch Geraden. Diese Kurve ist ein Polygonzug.
+\begin{equation}
+	P_\gamma(t_0,\cdots,t_k) = \sum_i^k |\gamma(t_i) - \gamma(t_{i+1}|
+\end{equation}
+ist die Länge des Polygonzugs.
+
+\subsection{Def: Rektifizierbare Kurvven}
+Die Kurve $\gamma$ heißt rektifizierbar mit Länge $L$ falls
+\begin{equation}
+	\forall\epsilon>0\exists\delta>0\forall Z (\Delta(Z) < \delta \rightarrow |P_\gamma - L|<\epsilon)
+\end{equation}
+
+\subsubsection{Lemma: }
+Sei $\gamma\in C^1$.
+\begin{equation}
+	\forall\epsilon>0\exists\delta>0\left(
+	|t-s|<\delta \rightarrow
+	|\frac{\gamma(t)-\gamma(s)}{t-s} - \gamma'(t)|<\epsilon
+	\right)
+\end{equation}
+\textit{Beweis: } für $n=1$\\
+$\gamma'$ ist gleichmäßig stetig auf $[a,b]$, dann $\forall\epsilon>0\exists\delta>0\left(|t-\tau|<\delta\rightarrow |\gamma'(t) - \gamma'(\tau)|<\epsilon\right)$\\
+Per Mittelwertsatz
+\begin{gather}
+	\frac{\gamma(t) - \gamma(s)}{t-s} = \gamma'(\tau) \;\;\;\text{für ein $\tau\in(s,t)$}\\
+	\Rightarrow |t-s|<\delta \;\rightarrow\;|\frac{\gamma(t)-\gamma(s)}{t-s}-\gamma'(t)| = |\gamma'(\tau) - \gamma'(t)| <\epsilon
+\end{gather}
+und für $n\in\mathbb N$. Nach $n=1$:
+\begin{gather}
+	\forall\epsilon>0\delta_i>0\left(|t-s|<\delta_i \rightarrow |\frac{\gamma_i(t) - \gamma_i(s)}{t-s} - \gamma'_i(t)|<\epsilon\right)\\
+	\delta = \min_i(\delta_i)\\
+	|\frac{\gamma(t) - \gamma(s)}{t-s} - \gamma'(t)| \leq \sqrt n \max_i |\frac{\gamma_i(t) \gamma_i(s)}{t-s} - \gamma'_i(t)| < \sqrt n\epsilon
+\end{gather}
+
+\subsection{Satz: }
+Sei $\gamma$ stetig und differenzierbar. Dann ist $\gamma$ rektifizierbar mit
+\begin{equation}
+	L = \int_a^b |\gamma'(t)|\text dt
+\end{equation}
+\textit{Beweis:} $|\gamma'(t)|$ stetig impliziert Riemann Integrierbarkeit
+\begin{gather}
+	\text{zu } \forall\epsilon>0\exists\delta>0: |\int_a^b |\gamma'(t)|\text dt - \sum_i^n |\gamma'(t_i)||t_i - t_{i-1}||< \frac{\epsilon}{2}\;\;\forall Z \text{mit $\Delta(Z) < \delta_1$}\\
+	\text{Vorheriges Lemma:} \exists\delta\in(0,\delta_1]\left(|\frac{\gamma(t_i) - \gamma(t_{i-1})}{t_i - t_{i-1}} - \gamma'(t_i)|<\frac{\epsilon}{2(b-a)}\right)
+\end{gather}
+
+

@@ -1,0 +1,132 @@
+\section{last time}
+
+\begin{gather}
+	\Lambda_\mu^\rho \Lambda_\nu^\kappa \eta_{\rho\kappa} = \eta_{\mu\nu}\\
+	x^\mu\mapsto \Lambda^\mu_\nu x^\nu\\
+	a_\mu = \eta_{\nu\mu}a^\nu\\\
+	(\text d\tau)^2 = -(\text ds)^2
+\end{gather}
+
+\subsection{Examples}
+
+4-vector: $x^\mu = (ct, \vec x)$.\\
+4-velocity: $\frac{\text dx^\mu}{\text d\tau} = u^\mu$
+\begin{gather}
+	\vec x = \vec v t,\; u^\mu = (\frac{\text dt}{\text d\tau}), \vec u = \frac{\text dt}{\text d\tau})\\
+	\text d\tau^2 = \text dt^2 - \text dx^2,\;\; \text d\tau = \frac{1}{\gamma}\text dt\\
+	u^\mu = \gamma(1,\vec v),\;\;\; u_\mu u^\mu = -1
+\end{gather}
+4-acceleration: $a^\mu = \frac{\text d^2 x^\mu}{\text d\tau^2}, \;\;\; a_\mu u^\mu = 0$\\
+
+\subsubsection{Tensors}
+\begin{equation}
+	\tilde T^{\mu_1,\cdots,\mu_k}_{\nu_1,\cdots,\nu_m} = \Lambda^{\mu_1}_{\kappa_1}\cdots\Lambda^{\mu_k}_{\kappa_k}\Lambda^{\lambda_1}_{\nu_1}\cdots\Lambda^{\lambda_m}_{\nu_m}T^{\kappa_1,\cdots,\kappa_k}_{\lambda_1,\cdots,\lambda_m}
+\end{equation}
+\subsubsection{Examples for Tensors}
+Electrodynamics $E$, $B$ not part of $4$ vectors.
+\begin{equation}
+	F_{\mu\nu} \partial_\mu A_\nu - \partial_\nu A_\mu, \;\; B_i = \epsilon_{ijk}F_{jk}, \;\; E_i = F_{i0}
+\end{equation}
+$\eta_{\mu\nu}$ invariant.\\
+$\epsilon_{\mu\nu\rho\lambda}$ the totally anti-symmetric pseudo-tensor, invariant.
+\begin{gather}
+	\tilde \epsilon_{\mu\nu\rho\lambda}=\det(\Lambda) \underbrace{\Lambda_\mu^\kappa \Lambda_\nu^\phi \Lambda_\rho^\psi \Lambda_\lambda^\xi \epsilon_{\kappa\phi\psi\xi}}_{\text{totally anti-symmetric}}\\
+	= \det(\Lambda)\epsilon_{\mu\nu\rho\lambda}\Lambda_0^\kappa \Lambda_1^\phi \Lambda_2^\psi \Lambda_3^\xi \epsilon_{\kappa\phi\psi\xi} = \det(\Lambda)^2 \epsilon_{\mu\nu\rho\lambda}
+\end{gather}
+the determinant is the cause for the pseudo-tensor property.
+
+
+\chapter{Relativistic Field Theory}
+-Relativistic Quantum Field Theory $\rightarrow$ Particle Physics\\
+-Here, Classical Field Theories, only two relevant examples. That is, Electrodynamics and General Relativity.
+
+\section{Euler Lagrange Equation}
+For simplicity, one scalar field $\tilde\phi(\tilde x^\mu) = \phi(x^\mu)$.
+\begin{gather}
+	S = \int \text dt L = \int \text d^4 x \mathcal L \left(\phi(x^\mu),\partial_\mu\phi(x^\mu)\right)
+\end{gather}
+(The derivative is also a 4-vector with a lower index.)\\
+Least Action Principle; the action should be extremal, so the variation should be 0.
+\begin{gather}
+	0 = \delta S = \int \text d^4x \frac{\partial\mathcal L}{\partial\phi}\delta \phi + \frac{\partial\mathcal L}{\partial \partial_\mu\phi}\delta\partial_\mu\phi
+\end{gather}
+Now integrate by parts and choose boundary conditions so that the contributions vanish.
+\begin{gather}
+	0 = \int \text d^4 x \left(\frac{\partial\mathcal L}{\partial \phi} - \partial_\mu \frac{\partial\mathcal L}{\partial \partial_\mu\phi}\right)\delta\phi\\
+	\Rightarrow \partial_\mu\frac{\partial\mathcal L}{\partial\partial_\mu\phi} - \frac{\partial\mathcal L}{\partial\phi} = 0
+\end{gather}
+
+\subsection{Examples}
+\begin{itemize}
+	\item Massive real scalar field (e.g. Higgs)
+		$$
+		\mathcal L = \frac{-1}{2}\partial_\mu \phi \partial^\mu \phi - \frac{m^2}{2}\phi^2
+		$$
+	\item Electromagnetic field
+		$$
+			S = \int\text d^4x\left(-\frac{1}{4}F_{\kappa\lambda}F^{\kappa\lambda} + j_\lambda A^\lambda\right)
+		$$
+\end{itemize}
+
+\section{Noether Theorem}
+For every continuous global symmetry there exists one conserved current.\\
+\textit{Proof: } A continuous symmetry is parametrized by a continuous parameter (e.g. rotation angle). Global means that the symmetry does not depend on space or time.\\
+Consider one parameter symmetry, call parameter $a$. Consider$a(x^\mu)$ non-constant, then
+$$
+\delta_a S \int \text d^4x (\partial_\mu a)j^\mu.
+$$
+Integration by parts, $a_{\partial r}=0$.
+$$
+\delta_a S = -\int \text d^4x a\partial_\mu j^\mu.
+$$
+If the Equations of Motions are satisfied then $\delta S = 0$ for any $a$.
+$$
+0 = \int \text d^4x a\partial_\mu j^\mu
+$$
+for any $a \rightarrow \partial_\mu j^\mu = 0$.
+
+\subsection{Noether Charge}
+\begin{gather}
+	Q = \int \text d^3x j^0\\
+	\frac{\text dQ}{\text dt} = \int \text d^3x \partial_0\partial^0 = \text d^3x \div j = 0
+\end{gather}
+
+\subsection{examples}
+Complex Scalar Field
+\begin{equation}
+	\mathcal L = -\frac{1}{2}\partial_\mu \phi \partial^\mu \phi^\dagger - m^2 \phi\phi^\dagger
+\end{equation}
+invariant under complex phase change.
+\begin{gather}
+	e^{i\alpha}\phi \approx (1+i\alpha)\phi\\
+	e^{-i\alpha}\phi \approx (1-i\alpha)\phi\\
+	\delta_\alpha S = -\partial_\mu(i\alpha\phi)\partial^\mu\phi^\dagger - \partial_\mu\phi\partial^\mu(-i\alpha\phi^\dagger) - m^2i\alpha\phi\phi^\dagger - m^2\phi(-i\alpha\phi^\dagger)\\
+	= \partial_\mu\alpha\left(-i\phi\partial^\mu\phi^\dagger + i(\partial^\mu\phi) \phi^\dagger\right)
+\end{gather}
+So then we can see that
+\begin{equation}
+	j^\mu = -i\phi\partial^\mu\phi^\dagger + i(\partial_\mu \phi)\phi^\dagger
+\end{equation}
+This would be the electromagnetic current.
+
+\subsubsection{Remark}
+if the action is invariant under a local symmetry then the Noether Theorem does not apply. However, conserved currents can also come from the Equations of motion.\\
+e.g.
+\begin{equation}
+	\partial_\mu F^{\mu\nu} = j^\nu,\;\;\; \partial_\nu j^\nu = \partial_\nu\partial_\mu F^{\mu\nu} = 0,\;\;\;\text{Noether's 2nd Theorem}
+\end{equation}
+conservation laws appears as integrability condition on equation of motion 
+\begin{equation}
+	A_\mu\rightarrow A_\mu + \partial_\mu \alpha
+\end{equation}
+
+\subsection{Energy Momentum}
+symmetry $x\mu \rightarrow x^\mu + a^\mu
+
+
+
+
+
+
+
+

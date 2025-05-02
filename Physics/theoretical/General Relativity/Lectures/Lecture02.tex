@@ -1,0 +1,49 @@
+\subsection{twin Paradox} 
+proper time of
+\begin{gather}
+	\text{twin 1: } \Delta \tau_{ABC} = \Delta t\\
+	\text{twin 2: } \Delta\tau_{AB'C} = \Delta\tau_{AB'} + \Delta\tau_{B'C}\\
+	\Delta\tau_{AB'} = \sqrt{1-v^2} \frac{\Delta t}{2} = \Delta\tau_{B'C}
+\end{gather}
+Therefore
+\begin{equation}
+	\Delta\tau_{AB'C} = \sqrt{1-v^2}\Delta\tau_{ABC}
+\end{equation}
+travelling twin is younger
+
+
+\section{Lorentz Transformations}
+
+\begin{gather}
+	\tilde x^\mu = \Lambda^\mu_\nu x^\nu
+\end{gather}
+impose that the Minkowski Distance from the origin is invariant, such that
+\begin{equation}
+	\tilde x^\mu \tilde x^\nu \eta_{\mu\nu} = x^\mu x^\nu \eta_{\mu\nu}
+\end{equation}
+Then
+\begin{equation}
+	\eta_{\mu\nu} \Lambda^\mu_\kappa \Lambda^\nu_\lambda = \eta_{\kappa\lambda}
+\end{equation}
+
+This property describes the Lorentz Group $0(3,1)$. In this Group there exist 4 branches.
+\begin{gather}
+	\kappa=\lambda=0\;\;\Rightarrow\;\; \eta_{00} = -1 = -(\Lambda^0_0)^2 + \underbrace{(\Lambda^i_0)^2}_{\geq 0}\\
+	\Rightarrow\;\; \Lambda^0_0 \geq 0 \text{ or } \Lambda^0_0 \leq -1
+	\text{from Matrix equation } \Lambda^T \eta \Lambda = \eta\\
+	\Rightarrow \;\; \det(\Lambda^T \eta\Lambda) = \det(\eta) \;\;\Rightarrow\;\; \det(\Lambda)^2 =1
+\end{gather}
+then we get the four branches
+\begin{itemize}
+	\item proper Lorentz group (contains the identity) $\Lambda^0_0,\det\Lambda = 1$
+	\item combine with time reversal $\Lambda^0_0 \leq -1,\det\Lambda = -1$
+	\item combine with parity (e.g. $x\rightarrow -x$) $\Lambda^0_0 \geq 1,\det\Lambda = -1$
+	\item time reversal and parity $\Lambda^0_0 \leq -1,\det\Lambda = +1$
+\end{itemize}
+Raising and lowering an index with the (Minkowski) metric tensor
+\begin{equation}
+	a_\mu = \eta_{\mu\nu} a^\nu
+\end{equation}
+and we have that $\eta_{\mu\nu} = \eta^{\mu\nu}$
+
+

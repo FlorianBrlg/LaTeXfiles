@@ -1,0 +1,95 @@
+\subsection{Last Time}
+$$
+x^\mu \rightarrow x^\mu + \alpha^\mu,\;\;\;\alpha^\mu = \alpha^\mu(x)
+$$
+
+Noether Theorem
+\begin{equation}
+	\delta_a S = \int \text d^4x \partial_{\mu a}j^\mu = 0 \rightarrow \partial_\mu j^\mu = 0
+\end{equation}
+Energy Momentum tensor
+\begin{equation}
+	\mathcal L(\phi, \partial_\mu\phi) \rightarrow \partial_\mu T^{\mu\nu} = 0,\;\; T^{\mu\nu} = \pdv{\mathcal L}{\partial_\mu\phi}\partial^\nu\phi - \eta^{\mu\nu}\mathcal L
+\end{equation}
+
+Lorentz Transformation Matrix
+\begin{gather}
+	(\Lambda^{-1})^\mu_{\;\nu} = \Lambda_\nu^{\;\mu} \neq (\Lambda^T)^\mu_{\;\nu} = \Lambda^\nu_{\;\mu}
+\end{gather}
+
+\section{Energy Momentum Tensor of Ideal Fluid}
+
+
+\textit{remark: }not a relativistic field theory.\\
+\textit{non-interacting particles: } positions $\vec x_n(t), \; x_n^0 = t$. All particles have the same mass $m$. Particles have a momentum 
+\begin{equation}
+	p^\mu_n = m\diff{x^\mu}{\tau} =  \frac{m}{\sqrt{1-v^2_n}}\diff{x^\mu}{\tau} = E_n \diff{x^\mu}{\tau}
+\end{equation}
+Noether Charge: total 4-momentum.
+\begin{equation}
+	T^{0\mu} = \sum_n p^\mu_n(t) \delta(x-x_n(t))\;\;\;\;\;\text{Charge Density}
+\end{equation}
+What is the Noether current? Recall continuity equation from fluid dynamics
+\begin{equation}
+	\dot\rho + \nabla j = 0\;\;\;\; j = \rho v.
+\end{equation}
+for us $\rho\rightarrow T^{0\mu}$ and $j\rightarrow T^{i\mu}$
+\begin{equation}
+	T^{i\mu} = \sum_n p^\mu_n(t) \diff{x_n(t)}{t}\delta\left(x-x_n(t)\right)
+\end{equation}
+Together this is 
+\begin{equation}
+	T^{\mu\nu} = \sum_n p_n^\nu \diff{x^\mu}{t}\delta\left(x-x_n(t)\right)
+\end{equation}
+Then we can put in eq 1.31
+\begin{equation}
+	\sum_n \frac{p_n^\mu p_n^\nu}{E_n}\delta\left(x-x_n(t)\right)
+\end{equation}
+average over ensemble of fluids with given temperature (volume = $\infty$) and particle number fixed (canonical ensemble) and the fluid is at rest with respect to the observer.
+\begin{gather}
+	\langle p_n^\mu\rangle =\langle \diff{x^\mu}{t}\rangle = 0
+\end{gather}
+isotropy leads to rotational invariance $\langle p^\mu_n p^\nu_n\rangle = 0$ for $\mu\neq \nu$.
+\begin{equation}
+	T^{00} = \sum_n \langle p_n^0 \delta(x-x_n(t))\rangle = \rho\;\;\text{Energy Density}
+\end{equation}
+\begin{equation}
+	T^{ii} = \sum_n \langle p_n^i \sigma_n^i \delta(x-x_n(t))\rangle
+\end{equation}
+consider a classical ideal gas $v<<1$, then $\gamma \approx 1$.
+\begin{gather}
+	T^{ii} = \sum_k \langle m(v^i_n)^2\delta(x-x_n(t))\rangle =  \cdots\\
+	\text{Isotropy: } \langle (v^i_n)^2\rangle = 1/3 \langle v^2 \rangle\nonumber\\
+	E_{n,kin} = \frac{m}{2}(v_n)^2	\nonumber\\
+	\cdots = \frac{2}{3}\mathcal E_{kin}
+\end{gather}
+equation of state $\mathcal E_{kin} = \frac{3}{2}\frac{NkT}{V} = \frac{3}{2}P$ pressure.
+\begin{equation}
+	T^{ii} = P
+\end{equation}
+So then
+\begin{equation}
+	T^{\mu\nu} =
+	\begin{pmatrix}
+		\rho & 0 & 0 & 0\\
+		0 & P & 0 & 0\\
+		0 & 0 & P & 0\\
+		0 & 0 & 0 & P
+	\end{pmatrix}
+\end{equation}
+true for all ideal fluids (relativistic, quantum)\\
+For example, non-relativistic: $T^{\mu\nu} = 
+\begin{pmatrix}
+	\rho & 0 & 0 & 0\\
+	0 & 0 & 0 & 0\\
+	0 & 0 & 0 & 0\\
+	0 & 0 & 0 & 0
+\end{pmatrix}
+$
+and relativistic: $\begin{pmatrix}
+	\rho & 0 & 0 & 0\\
+	0 & -1/3\rho & 0 & 0\\
+	0 & 0 & -1/3\rho & 0\\
+	0 & 0 & 0 & -1/3\tho
+\end{pmatrix}$
+

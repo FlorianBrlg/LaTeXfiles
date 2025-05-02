@@ -240,11 +240,13 @@ $$
 f(\{1,2,3\}) = \{2,4,6\}
 $$
 
-\subsubsection*{Theorem}
-
+\subsubsection*{Lemma}
+$y$ is in the Image of $f$ if and only if there exists an $x\in S$ such that $f(x) = y$. 
 $$
 y\in f(S) \Longleftrightarrow \exists x\in S ( y = f(x) )
 $$
+
+\textit{Proof: } Clear through contradictional proof
 
 \subsection{Definition of Inverse images}
 If $U$ is a subset of $Y$, then the set $f^{-1}(U)$ is defined as
@@ -255,7 +257,17 @@ so $f^{-1}(U)$ is the set of all elements that map into $U$.
 $$
 f(x)\in U \Longleftrightarrow x\in f^{-1}(U)
 $$
+Then $f^{-1}(U)$ is called the inverse Image of $U$.
 
+\subsubsection{Example, non-equivalence}
+In general $f(f^{-1}(S)) \neq S$. Consider the set $S = (1,2)$ and the function $f(x) = x^2$. Then $f^{-1}(S) = \{-1, 1\}$, and with that $f(f^{-1}(S)) = \{1\}$. This is because in the Natural numbers there is no root for $2$, so there is no number $x$ such that $x^2 = 2$.\\
+In general $f^{-1}(f(S)) \neq S$, also. Consider $S = \{1\}$, then $f(S) = 1$ and $f^{-1}(f(S)) = \{-1,1\}$.
+
+\subsection{Axiom: Power Sets}
+Let $X,Y$ be sets, then there exists a set $Y^{X}$ of all functions from $X$ to $Y$.
+$$
+f\in Y^{X} \Leftrightarrow \text{($f$ is a function with domain $X$ and range $Y$)}
+$$
 
 
 

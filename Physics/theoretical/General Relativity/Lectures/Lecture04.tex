@@ -1,0 +1,78 @@
+\section{Energy Momentum Tensor}
+
+
+the symmetry $x^\mu \rightarrow x^\mu + a^\mu$ leads to the Energy momentum tensor $T^{\mu\nu}$.\\
+Energy conservation in classical mechanics, start with  $L$
+$$
+\frac{\text dL}{\text dt} = \frac{\text d}{\text dt}\left(\frac{\partial L}{\partial q}q\right)
+$$
+which leads to
+$$
+\frac{\text d}{\text dt}\left( \frac{\partial L}{\partial q}\dot q - L\right) = 0
+$$
+which is energy conservation. Now with $\mathcal L$
+\begin{gather}
+	\partial_\mu \mathcal L = \frac{\partial \mathcal L}{\partial \phi}\partial_\mu \phi + \frac{\partial \mathcal L}{\partial\partial_\nu \phi}\partial_\mu \partial_\nu\phi = \left(\partial_\nu \frac{\partial L}{\partial \partial_\nu \phi}\right)\partial_\mu\phi + \frac{\partial\mathcal L}{\partial \partial_\nu\phi}\partial_\nu \partial_\mu\phi\\
+	= \partial_\nu\left(\frac{\partial\mathcal L}{\partial \partial_\mu\phi}\partial_\mu\phi\right)\\
+	T^\nu_\mu = \delta_\mu^\nu \mathcal L - \frac{\partial L}{\partial \partial_\nu \phi}\partial_\mu \phi
+\end{gather}
+
+\subsection{conserved quantities}
+
+\begin{gather}
+	Q_\mu = \int \text d^3x T^0_\mu\\
+	\Rightarrow T^0_0 \text{ Energy Density},\;\;\;\; T^0_i = \pi_i = \text{ momentum density}
+\end{gather}
+remark: we could have obtained the above result with Noether's method
+$$
+x^\mu \rightarrow x^\mu + a^\mu(x) \Rightarrow \delta_{a^\mu} S = \int \text d^4x \partial_\nu a^\mu (T^\nu_\mu)
+$$
+Infinitesimal rotations:
+\begin{align*}
+	x^0 \rightarrow x^0\\
+	x \rightarrow x + \omega\times x
+\end{align*}
+so therefore
+\begin{equation}
+	\delta_\omega S = \int \text d^4x \partial_\mu \left(\epsilon^{ijk}\omega_j x_k\right)T^\mu_i
+\end{equation}
+For a rotational symmetry $\partial_\omega S = 0$ for constant $\omega$.
+\begin{equation}
+	\delta_\omega S = \int \text d^4x \left(\partial_\mu \omega_j\right)\underbrace{\epsilon^{ijk}x_k T^\mu_i}_{J^\mu_k}
+\end{equation}
+charge density
+\begin{gather}
+	\epsilon^{ijk} x_k T^0_i \nonumber\\
+	\epsilon^{jki} x_k \pi_i = (x\times \Pi)^j
+\end{gather}
+
+\subsection{Example of energy momentum tensor}
+Take the Maxwell Theory without a source
+\begin{gather}
+	S = \int \text d^4x (-\frac{1}{4}F^{\mu\nu}F_{\mu\nu})\\
+	T^{\mu\nu} = \eta^{\mu\nu}\mathcal L - \frac{\partial L}{\partial\partial_\mu A_\lambda}\partial^\nu A_\lambda\\
+	= -\frac{1}{4}\eta^{\mu\nu}F^2 - F^{\mu\lambda}\partial^\mu A_\lambda
+\end{gather}
+not "nice": $T^{\mu\nu} \neq T^{\nu\mu}$, not gauge invariant\\
+\subsection{"improvement"}
+add something that is conserved by itself.
+\begin{gather}
+	\partial_\mu\left(-F^{\mu\lambda}\partial_\lambda A^\nu\right) = \partial_\mu F^{\mu\lambda}\partial_\lambda A^\nu + F^{\mu\lambda}\partial_\mu\partial_\lambda A^\nu
+\end{gather}
+So we can add tis to the previous energy momentum tensor without affecting the action
+\begin{gather}
+	T^{\mu\nu} = F^{\mu\nu}F^\nu_\lambda - \frac{1}{4}\eta^{\mu\nu}F^2
+\end{gather}
+
+
+
+
+
+
+
+
+
+
+
+
+

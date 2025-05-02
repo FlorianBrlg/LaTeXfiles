@@ -1,0 +1,58 @@
+
+\section{7 QM vs klassische Physik}
+
+klassische Messgröße: Impuls\\
+QM: Erwartungswert $\langle p \rangle$\\
+Was ist die Bewegungsgleichung für $\langle A\rangle$?
+\begin{gather}
+	\langle A\rangle = (\psi, A\psi) = \int \text d^3x \psi^\dagger A\psi\\
+	\diff{}{t}\langle A\rangle = \int\text d^3x \left(\underbrace{\pdv{\psi^\dagger}{t}A\psi}_{= i/\hbar \psi^\dagger H} + \psi^\dagger \pdv{A}{t}\psi + \underbrace{\psi^\dagger A \pdv{\psi}{t}}_{=-i/\hbar H\psi}\right)\\
+	= \langle \pdv{A}{t}\rangle + \frac{i}{\hbar}\langle[H,A]\rangle
+\end{gather}
+Bewegungsgleichung des Erwartungswerts des Operators $A$.\\
+klassisch: $\diff{p}{t} = F$\\
+QM:
+\begin{gather}
+	\diff{\langle p\rangle}{t} = \underbrace{\langle \pdv{p}{t}\rangle}_{=0} + \frac{i}{\hbar}\langle[H,p]\rangle\\
+	H = \frac{p^2}{2m} + V\\
+	[p^2, p] = p^2 p - p p^2 = 0 \\
+	[p, V] = i\hbar \pdv{V}{x}\\
+	\diff{\langle p \rangle}{t} = -\langle \Nabla V\rangle
+\end{gather}
+Also ist die Klassische Trajektorie ein spezialfall der QM.
+
+
+\section{8 Drehimpuls in der QM}
+Klassisch: Teilchen dreht sich um einen Ort, $L = x\times p$. Sphärisch Symmetrische Probleme: Drehimpulserhaltung.\\
+Wir definieren in der Quantenmechanik dann den Drehimpuls als $L = x\times p$. Der Operator hat eine "Länge" $L^2$. Die Länge ist Rotationsinvariant.
+\begin{gather}
+	[L_i,L_j] = i\hbar \epsilon_{ijk} L_k\\
+	[L_x, L] = [L_x,  L_y^2 + L_z^2] = 0
+\end{gather}
+
+Lösungen der Eigenwertgleichungen
+\begin{gather}
+	L^2 \psi = \hbar^2\ell(\ell+1)\psi_{lm}\\
+	L_z \psi = \hbar m \psi_{lm}
+\end{gather}
+
+Def: Auf und Absteigeoperatoren
+\begin{gather}
+	L_+ = L_x + iL_y\\
+	L_- = L_x - iL_y\\
+	[L_z, L_\pm] = \pm \hbar L_\pm\\
+	[L^2, L_\pm] = 0
+\end{gather}
+damit kann berechnet werden dass die auf und absteigeoperatoren das $m$ verändern aber nicht das $\ell$
+$|m|\leq\ell$ Wobei $\ell$ halb oder ganzzahlig sein kann, und $m$ läuft  ganzzahlig von $-\ell$ zu $\ell$.
+
+\subsection{Wie sehen die Eigenfunktionen aus?}
+Wir transformieren in die Polarkoordinaten, dann ist
+\begin{gather}
+	L_z = -i\hbar\partial_\phi\\
+	L^2 = -\hbar^2\left(\frac{1}{\sin\theta}\partial_\theta\left(\sin\theta\partial_\theta\right)+ \frac{1}{\sin\theta^2\partial_\phi^2}\right)
+\end{gather}
+Die Lösungen dazu sind die Kugelflächenfunktionen $Y_{lm}$
+
+
+
