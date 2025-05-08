@@ -1,0 +1,130 @@
+\section{Vectors}
+
+remark about chain rule:\\
+consider two functions $f:\mathbb R^m\rightarrow \mathbb R^m$ and $g:\mathbb R^n \rightarrow \mathbb R^l$. Then
+$$
+	g\cdot f = \mathbb R^m \rightarrow \mathbb R^l
+$$
+then with $a\in\{1,\cdots, m\}$ and $c\in\{1,\cdots,l\}$
+$$
+	\frac{\partial}{\partial x^a}(g\cdot f)^c = \sum_{b=1} \pdv{f^b}{x^a} \pdv{g^c}{f^b}
+$$
+More formally, renaming $f\rightarrow y$ (we use the Einstein sum convention).
+$$
+\frac{\partial}{\partial x^a} = pdv{y^b}{x^a}\frac{\partial}{y^b}
+$$
+applying this to a coordinate transformation $y^\mu = \tilde x^\mu = \tilde x^\mu (x)$.
+$$
+\frac{\partial}{\partial x^\mu} = \frac{\partial \tilde x^\nu}{\partial x^\mu}\frac{\partial}{\partial \tilde x^\nu}
+$$
+We also have that
+$$
+\partial_{\nu'} = \frac{\partial x^\mu}{\partial x^{\nu'}}\partial_\mu
+$$
+so, in a matrix sense we have
+$$
+\left(\frac{\partial x^\mu}{\partial x^{\nu'}}\right)^{-1} = \frac{\partial^{\nu'}}{\partial x^\mu}
+$$
+Taking a look at vectors again, we want to look at a general Vector $V = V^\mu e_\mu = V^\mu \partial_\mu$. Under a coordinate change:
+$$
+\partial_\mu = \frac{\partial x^{\mu'}}{\partial x^\mu}\partial_{\mu'},\;\; V^\mu = \frac{\partial x^\mu}{\partial^{\mu'}} V^{\mu'}\;\;\Longrightarrow V\text{ invariant}
+$$
+Let $\gamma:\mathbb R\rightarrow \mathbb R^n$ be a curve in Minkowski space. Then we have the tangent vector
+$$
+	V^\mu = \frac{\text dx^\mu}{\text d\lambda} = 
+	\lim_{\epsilon\rightarrow 0}\frac{x^\mu(\lambda + \epsilon) - x^\mu(\lambda)}{\epsilon}
+$$
+$$
+	V = \frac{\text d x^\mu}{\text d\lambda}\partial_\mu = \frac{\text d}{\text d\lambda}\;\;\; \text{ coordinate invariant}
+$$
+Now we replace $\mathbb R^n$ with $M$, and the curve $\lambda\in\mathbb R\mapsto \gamma(\lambda)\in M$.
+$$
+	\frac{\text d\gamma}{\text d\lambda} = \lim_{\epsilon\rightarrow 0}\frac{\gamma(\lambda + \epsilon) - \gamma(\lambda)}{\epsilon}
+$$
+which cannot be done as $M$ is not a vector space and so we have no definition for subtraction. Now consider a function $f:M\rightarrow \mathbb R$. Then
+$$
+	\frac{\text d f(\gamma(\lambda))}{\text d\lambda} = \frac{\text d}{\text d\lambda}f\cdot\gamma
+$$
+where $\text d/\text d\lambda$ is the tangent vector, the directional derivative.\\
+\subsection{Def: Tangent Space}
+We now define the Tangent Space $T_p$, which is the space of all directional derivative operators along curves through $p\in M$.
+\subsection{Def: Tangent Bundle}
+the Tangent Bundle is
+$$
+T(M) = \bigcup_{p\in M} T_p
+$$
+Now we claim that $T_p$ is a vector space.
+\begin{align}
+	\frac{\text df}{\text d\lambda} =& \frac{\text df\cdot \gamma}{\text d\lambda} = \frac{\text d}{\text d\lambda}\left(f\cdot \phi^{-1} \cdot \underbrace{\phi \cdot \gamma}_{\lambda\mapsto x^\mu(\lambda)}\right)
+	= \frac{\partial f\cdot \phi^{-1}}{\text d x^\mu} \frac{\text dx^\mu}{\text d\lambda}
+	= \partial_\mu \frac{\text dx^\mu}{\text d\lambda}\\
+	\Rightarrow& \frac{\text d}{\text d\lambda} = \frac{\partial x^\mu}{\partial \lambda}\partial_\mu = V^\mu \partial_\mu
+\end{align}
+the Right hand side is a vector in $\mathbb R^n$, so it's an isomorphism $T_p \cong R^n$\\
+We look at a coordinate transformation $x^\mu \rightarrow x^{\mu'}(x)$. We impose invariance of $\text d/\text d\lambda$.
+$$
+V^\mu = \frac{\partial \lambda^\mu}{\partial \lambda^{\mu'}}V^{\mu'}
+$$
+\subsection{Remarks:}
+\begin{itemize}
+	\item coordinates $\neq$ 4 vector
+	\item Lie bracket maps two vectors to one vector
+		$$
+		[X,Y] = XY - YX ,  [X,Y]^\mu\partial_\mu = (X^\lambda\partial_\lambda Y^\mu - Y\lambda\partial_\lambda X^\mu)\partial_\mu
+		$$
+\end{itemize}
+
+\section{Dual Vectors - One Forms}
+
+$T_p*$ is the cotangent space. It is defined through the linear forms on $T_p$.\\
+Let $w\in T_p*$. $w$ is a linear map $T_p\rightarrow \mathbb R$.\\
+now consider $f:M\rightarrow \mathbb R$ as before. Define the gradient of $f$, $\text df\in T_p*$.
+\begin{equation}
+\text df \left(\frac{\text d}{\text d\lambda}\right) = \frac{\text df}{\text d\lambda}
+\end{equation}
+which refers to the curve $\gamma(\lambda)$. Pick a basis in $T_p$ which would be $\{\partial_\mu\}$ for us. The natural basis in $T_p*$ is then $\text dx^\mu$. We have the property
+$$
+\text d^\mu \partial_\nu = \delta^\mu_\nu
+$$
+The left hand side of 3.3
+\begin{gather}
+	= (\text df)_\mu \text dx^\mu \left( \frac{\text dx^\nu}{\text d\lambda}\partial_\mu\right) = (\text df)_\mu \frac{\text dx^\nu}{\text d\lambda}\text dx^\mu (\partial_\nu) = (\text df)_\mu \frac{\text dx^\mu}{\text d\lambda}
+\end{gather}
+right hand side of 3.3
+\begin{gather}
+	\frac{\text df}{\text d\lambda} = \partial_\mu f \frac{\text dx^\mu}{\text d\lambda}\\
+	\Rightarrow (\text df)_\mu = \partial_\mu f \rightarrow \text df = \partial_\mu f\text dx^\mu
+\end{gather}
+
+Doing a coordinate transformation $\partial_{\mu'} = \cdots$ impose that $\text dx^{\mu'}(\partial_{\nu'} = \delta^{\mu'}_{\nu'}$ Then
+$$
+\rightarrow \text dx^{\mu'} = \frac{\partial x^{\mu'}}{\partial x^\mu}\text dx^\mu
+$$
+a general element of $T_p*$. Then impose indepence in choice of coordinate
+\begin{equation}
+	w_{\mu'} = \frac{\partial x^\mu}{\partial^{\mu'}}w_\mu
+\end{equation}
+
+\section{Tensors}
+Define the direct product of vector spaces. $V_1, V_2$ are vector spaces, then
+$$
+V_1 \times V_2 = \{(v_1,v_2)|v_1\in V_1, v_2\in V_2\}
+$$
+Tensors are a multi linear form
+$$
+T: T_p*\cdots T_p*\times T_p\cdots T_p \rightarrow \mathbb R
+$$
+
+\subsection{Tensor Product}
+$T = (k,l)$ tensor\\
+$S = (m,n)$ tensor\\
+$T\otimes S = (k+m, l+n)$ tensor.\\
+\begin{gather}
+T\otimes S (\omega^1, \cdots, \omega^{(k+m)}, V^1,\cdots V^{l+n})\\
+= T(\omega^1,\cdots,\omega^k, V^1,\cdots, V^l)S(\omega^{k+1},\cdots,\omega^{(k+n)}, V^{l+1},\cdots, V^{(l+n)}
+\end{gather}
+elements of $T_p$ can be viewed as linear on $T_p*$
+
+
+
+

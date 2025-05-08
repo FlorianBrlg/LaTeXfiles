@@ -1,0 +1,40 @@
+
+- basis in $(k,l)$ tensor space = tensor product of $(1,0)$ and
+$$
+T = T^{\mu_1\cdots\mu_k}_{\nu_1\cdots\nu_l} \partial_{\mu_1}\otimes\cdots\otimes\partial_{\mu_k}\otimes\text dx^{\nu_1}\otimes\cdots\otimes\text dx^{\nu_l}
+$$
+example $(2,0)$ tensor
+$$
+T(\omega^1, \omega^2) = T^{\mu_1\mu_2}\partial_{\mu_1}\otimes \partial_{\mu_2}\left(\omega_{\nu_1}^1 \text dx^{\nu_1}, \omega^2_{\nu_2}\text dx^{\nu_2}\right)
+$$
+
+\section{Manipulating Tensors}
+
+\subsection{Tensor product}
+
+\begin{gather}
+	T\otimes S(\omega^1, \cdots, \omega^{k+m},V^{1}, \cdots, V^{l+n}) =\\
+	T(\omega^1,\cdots,\omega^k,V^1,\cdots, V^l) S(\omega^{k+1}, \cdots,\omega^{k+l},V^{l+1},V^{l+n})
+\end{gather}
+in components
+$$
+\left(T\otimes S\right)^{\mu_1\cdots\mu_{k+m}}_{\nu_1\cdots\nu_{l+n}} = T^{\mu_1\cdots\mu_k}_{\nu_1\cdots\nu_l}S^{\mu_{k+1}\cdots\mu_{k+m}}_{\nu_{l+1}\cdots\nu_{l+n}}
+$$
+\subsection{contraction}
+first for $(1,1)$ tensor. $T:T_p* \times T_p\rightarrow \mathbb R$\\
+we can view $T\in \text{Span}(T_p\otimes T_p*)$\\
+and the contraction $C: T_p\otimes T_p*\rightarrow \mathbb R$. $C(V,\omega) = \omega(V).$
+$$
+T = T^\mu_\nu \partial_\mu \otimes \text dx^\nu
+$$
+and
+$$
+C(T) = T^\mu_\nu C(\partial_\mu,\text dx^\nu) = T^\mu_\nu \text dx^\nu(\partial_\mu) = T^\mu_\mu
+$$
+Generalization to $T\in\text{Span}(T_p\otimes\cdots\otimes T_p\otimes T_p*\otimes\cdots\otimes T_p*)$ with $k$ vector spaces and $l$ covector spaces. Pick a pair $T_p, T_p*$ and treat that as in the $(1,1)$ case $\Rightarrow$ $(k-1,l-1)$ tensor.
+
+
+
+
+
+

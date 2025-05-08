@@ -1,0 +1,67 @@
+\section{Höhere partielle Ableitung und Differentialoperatoren}
+
+\subsection{Def: }
+Sei $f:\Omega\subset\mathbb R^n \rightarrow \mathbb R^m$. Dann ist die höhere partielle Ableitung der Ordnung $k\in\mathbb N$
+$$
+\partial_{i_1}\cdots\partial_{i_k} = \partial_{i_1}\left(\cdots\partial_{i_k}\right)f(x)
+$$
+Und wir definieren den VR $C^k(\Omega,\mathbb R^m$ der $k-$mal stetig differenzierbaren Funktionen. Für $m=1$ ist $C^k(\Omega)$.\\
+$C^k(\bar\Omega,\mathbb R^m) = \left\{f\in C^k(\Omega,\mathbb R^m | \text{alle Ableitungen von $f$ lassen sich stetig auf $\bar\Omega$ fortsetzen.}\right\}.$
+
+\subsection{Satz: Satz von Schwartz}
+sei $f\in C^2(\Omega)$. Dann gilt, dass $\partial_{ij} f = \partial_{ji} f$\\
+\textit{Beweis: }
+$$
+\partial_j^t f = \frac{f(x+te_j) - f(x)}{t}
+$$
+dann ist
+$$
+\partial_{ij}f(x) = \lim_{s\rightarrow 0}\lim_{t\rightarrow 0}\partial_i^s \partial_j^t f(x).
+$$
+Sei $g:\omega\rightarrow\mathbb R$, falls $\partial_i g(x)$ existiert, dann existiert ein $\alpha\in(0,1)$ s.d. $\partial_i^s g(x) = \partial_i g(x+\alpha e_i)$.
+\begin{align}
+	\partial_i^s \partial_j^t f(x) =& \partial_i (\partial_j^t f)(x+\alpha s e_i).\;\;\; \alpha = \alpha(s,t) \in (0,1)\\
+=& \partial_j^t (\partial_ i f)(x+ \alpha s e_i)\\
+=& \partial_j(\partial_i f) (x + \alpha se_i + \beta t e_j, \;\;\; \beta\in(0,1)\\
+\rightarrow& \partial_j\partial_i f(x), \text{ weil $\partial_j\partial_i f\in C(\Omega)$}
+\end{align}
+
+\subsection{Differentialoperatoren}
+\begin{itemize}
+	\item Divergenz $f\in C^1(\Omega,\mathbb R^n)$
+		$$
+		\text{div} f(x) = \sum_i^n \partial_i f_i(x) = \text{tr}(Df(x))
+		$$
+	\item Rotation $f\in C^1(\Omega\subset\mathbb R^3, \mathbb R^3)$.
+		$$
+		\text{rot} f(x) = 
+		\begin{pmatrix}
+			\partial_2 f_2 - \partial_3 f_2\\
+			\partial_3 f_1 - \partial_1 f_3\\
+			\partial_1 f_2 - \partial_2 f_1
+		\end{pmatrix} =
+		\nabla \times f
+		$$
+	\item Rotation in $\mathbb R^2$,
+		$$
+		\text{rot}f(x) = \partial_1 f_2 - \partial_2 f_1
+		$$
+	\item Gradient ist Rotationslos
+		$$
+		\text{rot}(\nabla f) = 0
+		$$
+	\item Laplace Operator $f\in C^2(\Omega)$
+		$$
+		\Delta f(x) = \text{div}(\nabla f)(x) = \sum_i^n \partial_i \partial_i f(x)
+		$$
+		Funktionen für die $\Delta f = 0$ heißen harmonisch.
+\end{itemize}
+
+\section{Totale Differenzierbarkeit}
+\subsection{Def: Totale Differenzierbarkeit}
+sei $f:\Omega\rightarrow\mathbb R^m$, dann ist $f$ in $x$ total differenzierbar, falls es eine Lineare Abbildung $L:\mathbb R^n\rightarrow \mathbb R^m$ gibt, s.d.
+$$
+\lim_{h\rightarrow 0}\frac{f(x+h) - f(x) - Lh}{|h|} = 0
+$$
+
+
